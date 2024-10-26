@@ -364,7 +364,6 @@ event.preventDefault();
 							</div>
 						</div>
 
-
 						<hr>
 						<h6>Documents For Account Opening:</h6>
 						<div class="row formline" style="padding: 2px 0;">
@@ -1326,7 +1325,6 @@ event.preventDefault();
 						<hr>
 
 
-
 						<h6>Sanctions Screening & Due Diligence - Entity</h6>
 						<div class="row formline" style="padding: 2px 0px 0px 0px;">
 							<div class="col-sm-5"
@@ -1334,40 +1332,40 @@ event.preventDefault();
 								<div align="right">UAE</div>
 								<div>
 									<input type="checkbox" name="SanctionsUaeMatch"
-										th:value="${user_data.SanctionsUaeMatch}" id="UAE" value="No"
-										class="form-check-input custom-checkbox"
+										th:checked="${user_data.SanctionsUaeMatch == 'Yes'}" id="UAE"
+										value="Yes" class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
 
 								<div align="right">UN</div>
 								<div>
 									<input type="checkbox" name="SanctionsUnMatch"
-										th:value="${user_data.SanctionsUnMatch}" id="UN" value="No"
-										class="form-check-input custom-checkbox"
+										th:checked="${user_data.SanctionsUnMatch == 'Yes'}" id="UN"
+										value="Yes" class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
 
 								<div align="right">OFAC</div>
 								<div>
 									<input type="checkbox" name="SanctionsOfacMatch"
-										th:value="${user_data.SanctionsOfacMatch}" id="OFAC"
-										value="No" class="form-check-input custom-checkbox"
+										th:checked="${user_data.SanctionsOfacMatch == 'Yes'}"
+										id="OFAC" value="Yes" class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
 
 								<div align="right">HMT</div>
 								<div>
 									<input type="checkbox" name="SanctionsHmtMatch"
-										th:value="${user_data.SanctionsHmtMatch}" id="HMT" value="No"
-										class="form-check-input custom-checkbox"
+										th:checked="${user_data.SanctionsHmtMatch == 'Yes'}" id="HMT"
+										value="Yes" class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
 
 								<div align="right">EU</div>
 								<div>
 									<input type="checkbox" name="SanctionsEuMatch"
-										th:value="${user_data.SanctionsEuMatch}" id="EU" value="No"
-										class="form-check-input custom-checkbox"
+										th:checked="${user_data.SanctionsEuMatch == 'Yes'}" id="EU"
+										value="Yes" class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
 
@@ -1380,97 +1378,105 @@ event.preventDefault();
 							</div>
 
 							<div class="col-sm-1">
-								<label for="CBUAE_BBL" title="CBUAE BBL check done">CBUAE
+								<label for="CbuaeBblCheckDone" title="CBUAE BBL check done">CBUAE
 									BBL</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="CBUAE_BBL_Yes"
-									th:value="${user_data.CbuaeBblCheckDone}"
+								<input type="radio" id="CbuaeBblCheckDoneYes"
+									th:checked="${user_data.CbuaeBblCheckDone == 'Yes'}"
 									name="CbuaeBblCheckDone" value="Yes" /> <label
-									for="CBUAE_BBL_Yes">Yes</label> <input type="radio"
-									id="CBUAE_BBL_No" name="CbuaeBblCheckDone" value="No" /> <label
-									for="CBUAE_BBL_No">No</label>
+									for="CbuaeBblCheckDoneYes">Yes</label> <input type="radio"
+									id="CbuaeBblCheckDoneNo"
+									th:checked="${user_data.CbuaeBblCheckDone == 'No'}"
+									name="CbuaeBblCheckDone" value="No" /> <label
+									for="CbuaeBblCheckDoneNo">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="Google_Media_Search"
+								<label for="GoogleMediaSearchDone"
 									title="Google open Media search">Google Media Search</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="Google_Media_Search_Yes"
-									th:value="${user_data.GoogleMediaSearchDone}"
+								<input type="radio" id="GoogleMediaSearchDoneYes"
+									th:checked="${user_data.GoogleMediaSearchDone == 'Yes'}"
 									name="GoogleMediaSearchDone" value="Yes" /> <label
-									for="Google_Media_Search_Yes">Yes</label> <input type="radio"
-									id="Google_Media_Search_No" name="GoogleMediaSearchDone"
-									value="No" /> <label for="Google_Media_Search_No">No</label>
+									for="GoogleMediaSearchDoneYes">Yes</label> <input type="radio"
+									id="GoogleMediaSearchDoneNo"
+									th:checked="${user_data.GoogleMediaSearchDone == 'No'}"
+									name="GoogleMediaSearchDone" value="No" /> <label
+									for="GoogleMediaSearchDoneNo">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="Internal_Deny_List"
+								<label for="InternalDenyListNameScreening"
 									title="Internal deny list screening">Internal Deny List</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="Internal_Deny_List_Yes"
-									th:value="${user_data.InternalDenyListNameScreening}"
+								<input type="radio" id="InternalDenyListNameScreeningYes"
+									th:checked="${user_data.InternalDenyListNameScreening == 'Yes'}"
 									name="InternalDenyListNameScreening" value="Yes" /> <label
-									for="Internal_Deny_List_Yes">Yes</label> <input type="radio"
-									id="Internal_Deny_List_No" name="InternalDenyListNameScreening"
-									value="No" /> <label for="Internal_Deny_List_No">No</label>
+									for="InternalDenyListNameScreeningYes">Yes</label> <input
+									type="radio" id="InternalDenyListNameScreeningNo"
+									th:checked="${user_data.InternalDenyListNameScreening == 'No'}"
+									name="InternalDenyListNameScreening" value="No" /> <label
+									for="InternalDenyListNameScreeningNo">No</label>
 							</div>
 						</div>
 
 						<div class="row formline" style="padding: 2px 0px 0px 0px;">
 							<div class="col-sm-1">
-								<label for="Suspicion_Observed" title="Suspicion observed">Suspicion
+								<label for="SuspicionObserved" title="Suspicion observed">Suspicion
 									Observed</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="Suspicion_Observed_Yes"
-									th:value="${user_data.SuspicionObserved}"
+								<input type="radio" id="SuspicionObservedYes"
+									th:checked="${user_data.SuspicionObserved == 'Yes'}"
 									name="SuspicionObserved" value="Yes" /> <label
-									for="Suspicion_Observed_Yes">Yes</label> <input type="radio"
-									id="Suspicion_Observed_No" name="SuspicionObserved" value="No" />
-								<label for="Suspicion_Observed_No">No</label>
+									for="SuspicionObservedYes">Yes</label> <input type="radio"
+									id="SuspicionObservedNo"
+									th:checked="${user_data.SuspicionObserved == 'No'}"
+									name="SuspicionObserved" value="No" /> <label
+									for="SuspicionObservedNo">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="Suspicion_Details" title="Suspicious details">Suspicion
+								<label for="SuspicionDetails" title="Suspicious details">Suspicion
 									Details</label>
 							</div>
 							<div class="col-sm-2">
-								<input type="text" name="SuspicionDetails"
-									id="Suspicion_Details" th:value="${user_data.SuspicionDetails}"
+								<input type="text" name="SuspicionDetails" id="SuspicionDetails"
+									th:value="${user_data.SuspicionDetails}"
 									class="form-control form-control-sm bg-white border border-dark" />
 							</div>
 
 							<div class="col-sm-1">
-								<label for="SupportingDocuments" title="Supporting Documents">Supporting
-									Documents</label>
+								<label for="RedFlagSupportingDocsObtained"
+									title="Supporting Documents">Supporting Documents</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="SupportingDocuments_Yes"
-									th:value="${user_data.RedFlagSupportingDocsObtained}"
-									name="SupportingDocuments" value="Yes" /> <label
-									for="SupportingDocuments_Yes">Yes</label> <input type="radio"
-									id="SupportingDocuments_No" name="SupportingDocuments"
-									value="No" /> <label for="SupportingDocuments_No">No</label>
+								<input type="radio" id="RedFlagSupportingDocsObtainedYes"
+									th:checked="${user_data.RedFlagSupportingDocsObtained == 'Yes'}"
+									name="RedFlagSupportingDocsObtained" value="Yes" /> <label
+									for="RedFlagSupportingDocsObtainedYes">Yes</label> <input
+									type="radio" id="RedFlagSupportingDocsObtainedNo"
+									th:checked="${user_data.RedFlagSupportingDocsObtained == 'No'}"
+									name="RedFlagSupportingDocsObtained" value="No" /> <label
+									for="RedFlagSupportingDocsObtainedNo">No</label>
 							</div>
 
-
 							<div class="col-sm-1">
-								<label for="Supporting_Document"
-									title="Supporting Document Details">Support Doc Detail</label>
+								<label for="RedFlagDetails" title="Supporting Document Details">Support
+									Doc Detail</label>
 							</div>
 							<div class="col-sm-2">
-								<input type="text" name="RedFlagDetails"
-									id="Supporting_Document" th:value="${user_data.RedFlagDetails}"
+								<input type="text" name="RedFlagDetails" id="RedFlagDetails"
+									th:value="${user_data.RedFlagDetails}"
 									class="form-control form-control-sm bg-white border border-dark"
 									style="margin-left: 20px" />
 							</div>
 						</div>
 
 						<hr>
-
 
 						<h6>Sanctions screening & Due Diligence -
 							UBO/Signatories/POA/Directors</h6>
@@ -1578,49 +1584,49 @@ event.preventDefault();
 									Observed</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="UboSuspicionObservedYes"
+								<input type="radio" id="UboSuspicionObservedYes1"
 									th:checked="${user_data.UboSuspicionObserved == 'Yes'}"
 									name="UboSuspicionObserved" value="Yes" /> <label
-									for="UboSuspicionObservedYes">Yes</label> <input type="radio"
-									id="UboSuspicionObservedNo"
+									for="UboSuspicionObservedYes1">Yes</label> <input type="radio"
+									id="UboSuspicionObservedNo1"
 									th:checked="${user_data.UboSuspicionObserved == 'No'}"
 									name="UboSuspicionObserved" value="No" /> <label
-									for="UboSuspicionObservedNo">No</label>
+									for="UboSuspicionObservedNo1">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="UboSuspicionDetails" title="Suspicious details">Suspicion
+								<label for="UboSuspicionDetails1" title="Suspicious details">Suspicion
 									Details</label>
 							</div>
 							<div class="col-sm-2">
 								<input type="text" name="UboSuspicionDetails"
-									id="UboSuspicionDetails"
+									id="UboSuspicionDetails1"
 									th:value="${user_data.UboSuspicionDetails}"
 									class="form-control form-control-sm bg-white border border-dark" />
 							</div>
 
 							<div class="col-sm-1">
-								<label for="UboRedFlagSupportingDocsObtained"
+								<label for="UboRedFlagSupportingDocsObtained1"
 									title="Supporting Documents">Supporting Documents</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="UboRedFlagSupportingDocsObtainedYes"
+								<input type="radio" id="UboRedFlagSupportingDocsObtainedYes1"
 									th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'Yes'}"
 									name="UboRedFlagSupportingDocsObtained" value="Yes" /> <label
-									for="UboRedFlagSupportingDocsObtainedYes">Yes</label> <input
-									type="radio" id="UboRedFlagSupportingDocsObtainedNo"
+									for="UboRedFlagSupportingDocsObtainedYes1">Yes</label> <input
+									type="radio" id="UboRedFlagSupportingDocsObtainedNo1"
 									th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'No'}"
 									name="UboRedFlagSupportingDocsObtained" value="No" /> <label
-									for="UboRedFlagSupportingDocsObtainedNo">No</label>
+									for="UboRedFlagSupportingDocsObtainedNo1">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="UboRedFlagDetails"
+								<label for="UboRedFlagDetails1"
 									title="Supporting Document Details">Support Doc Detail</label>
 							</div>
 							<div class="col-sm-2">
 								<input type="text" name="UboRedFlagDetails"
-									id="UboRedFlagDetails"
+									id="UboRedFlagDetails1"
 									th:value="${user_data.UboRedFlagDetails}"
 									class="form-control form-control-sm bg-white border border-dark"
 									style="margin-left: 20px" />
@@ -1628,50 +1634,62 @@ event.preventDefault();
 						</div>
 
 
+
 						<hr>
-						<h6>Sanctions screening & Due Diligence - Counter Parties</h6>
-						<div class="row formline" style="padding: 2px 0px 0px 0px;">
+						<h6>Sanctions Screening & Due Diligence - Counter Parties</h6>
+						<div class="row formline" style="padding: 2px 0;">
 							<div class="col-sm-5"
 								style="display: flex; justify-content: space-between;">
 								<div align="right">UAE</div>
 								<div>
 									<input type="checkbox" name="sanctions_uae_cp"
 										id="sanctions_uae_cp" value="No"
-										class="form-check-input custom-checkbox"  th:value="${user_data.CounterpartySanctionsUaeMatch}"
+										class="form-check-input custom-checkbox"
+										th:value="${user_data.CounterpartySanctionsUaeMatch}"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
+
 								<div align="right">UN</div>
 								<div>
 									<input type="checkbox" name="sanctions_un_cp"
-										id="sanctions_un_cp" value="No" th:value="${user_data.CounterpartySanctionsUnMatch}"
+										id="sanctions_un_cp" value="No"
+										th:value="${user_data.CounterpartySanctionsUnMatch}"
 										class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
+
 								<div align="right">OFAC</div>
 								<div>
 									<input type="checkbox" name="sanctions_ofac_cp"
-										id="sanctions_ofac_cp" value="No" th:value="${user_data.CounterpartySanctionsOfacMatch}"
+										id="sanctions_ofac_cp" value="No"
+										th:value="${user_data.CounterpartySanctionsOfacMatch}"
 										class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
+
 								<div align="right">HMT</div>
 								<div>
 									<input type="checkbox" name="sanctions_hmt_cp"
 										id="sanctions_hmt_cp" value="No"
-										class="form-check-input custom-checkbox" th:value="${user_data.CounterpartySanctionsHmtMatch}"
-										onchange="this.value = this.checked ? 'Yes' : 'No';" />
-								</div>
-								<div align="right">EU</div>
-								<div>
-									<input type="checkbox" name="sanctions_eu_cp"
-										id="sanctions_eu_cp" value="No" th:value="${user_data.CounterpartySanctionsEuMatch}"
+										th:value="${user_data.CounterpartySanctionsHmtMatch}"
 										class="form-check-input custom-checkbox"
 										onchange="this.value = this.checked ? 'Yes' : 'No';" />
 								</div>
+
+								<div align="right">EU</div>
+								<div>
+									<input type="checkbox" name="sanctions_eu_cp"
+										id="sanctions_eu_cp" value="No"
+										th:value="${user_data.CounterpartySanctionsEuMatch}"
+										class="form-check-input custom-checkbox"
+										onchange="this.value = this.checked ? 'Yes' : 'No';" />
+								</div>
+
 								<div align="right">Others</div>
 								<div>
-									<input type="text" name="sanctions_others_cp" th:value="${user_data.CounterpartySanctionsOthersMatch}"
+									<input type="text" name="sanctions_others_cp"
 										id="sanctions_others_cp"
+										th:value="${user_data.CounterpartySanctionsOthersMatch}"
 										class="form-control form-control-sm bg-white border border-dark" />
 								</div>
 							</div>
@@ -1681,7 +1699,8 @@ event.preventDefault();
 									BBL</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="transaction_commensurate_yes" th:value="${user_data.CounterpartyCbuaeBblCheckDone}"
+								<input type="radio" id="transaction_commensurate_yes"
+									th:value="${user_data.CounterpartyCbuaeBblCheckDone}"
 									name="Transaction_commensurate" value="Yes" /> <label
 									for="transaction_commensurate_yes">Yes</label> <input
 									type="radio" id="transaction_commensurate_no"
@@ -1693,13 +1712,13 @@ event.preventDefault();
 								<label for="google_media_search_cp"
 									title="Google open Media search">Google Media sch</label>
 							</div>
-							<div class="col-sm-1"> 
-								<input type="radio" id="transaction_commensurate_yes" th:value="${user_data.CounterpartyGoogleMediaSearchDone}"
-									name="Transaction_commensurate" value="Yes" /> <label
-									for="transaction_commensurate_yes">Yes</label> <input
-									type="radio" id="transaction_commensurate_no"
-									name="Transaction_commensurate" value="No" /> <label
-									for="transaction_commensurate_no">No</label>
+							<div class="col-sm-1">
+								<input type="radio" id="google_media_search_yes"
+									th:value="${user_data.CounterpartyGoogleMediaSearchDone}"
+									name="GoogleMediaSearch" value="Yes" /> <label
+									for="google_media_search_yes">Yes</label> <input type="radio"
+									id="google_media_search_no" name="GoogleMediaSearch" value="No" />
+								<label for="google_media_search_no">No</label>
 							</div>
 
 							<div class="col-sm-1">
@@ -1707,69 +1726,71 @@ event.preventDefault();
 									title="Internal deny list screening">Internal deny list</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="transaction_commensurate_yes" th:value="${user_data.CounterpartyInternalDenyListScreening}"
-									name="Transaction_commensurate" value="Yes" /> <label
-									for="transaction_commensurate_yes">Yes</label> <input
-									type="radio" id="transaction_commensurate_no"
-									name="Transaction_commensurate" value="No" /> <label
-									for="transaction_commensurate_no">No</label>
+								<input type="radio" id="internal_deny_list_yes"
+									th:value="${user_data.CounterpartyInternalDenyListScreening}"
+									name="InternalDenyList" value="Yes" /> <label
+									for="internal_deny_list_yes">Yes</label> <input type="radio"
+									id="internal_deny_list_no" name="InternalDenyList" value="No" />
+								<label for="internal_deny_list_no">No</label>
 							</div>
 						</div>
 
-						<div class="row formline" style="padding: 2px 0px 0px 0px;">
-								<div class="col-sm-1">
-								<label for="UboSuspicionObserved" title="Suspicion observed">Suspicion
-									Observed</label>
+						<div class="row formline" style="padding: 2px 0;">
+							<div class="col-sm-1">
+								<label for="CounterpartySuspicionObserved"
+									title="Suspicion observed">Suspicion Observed</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="UboSuspicionObservedYes" th:value="${user_data.CounterpartySuspicionObserved}"
+								<input type="radio" id="UboSuspicionObservedYes2"
+									th:value="${user_data.CounterpartySuspicionObserved}"
 									th:checked="${user_data.UboSuspicionObserved == 'Yes'}"
 									name="UboSuspicionObserved" value="Yes" /> <label
-									for="UboSuspicionObservedYes">Yes</label> <input type="radio"
-									id="UboSuspicionObservedNo"
+									for="UboSuspicionObservedYes2">Yes</label> <input type="radio"
+									id="UboSuspicionObservedNo2"
 									th:checked="${user_data.UboSuspicionObserved == 'No'}"
 									name="UboSuspicionObserved" value="No" /> <label
-									for="UboSuspicionObservedNo">No</label>
+									for="UboSuspicionObservedNo2">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="UboSuspicionDetails" title="Suspicious details">Suspicion
+								<label for="UboSuspicionDetails2" title="Suspicious details">Suspicion
 									Details</label>
 							</div>
 							<div class="col-sm-2">
 								<input type="text" name="UboSuspicionDetails"
-									id="UboSuspicionDetails"
+									id="UboSuspicionDetails2"
 									th:value="${user_data.UboSuspicionDetails}"
 									class="form-control form-control-sm bg-white border border-dark" />
 							</div>
 
 							<div class="col-sm-1">
-								<label for="UboRedFlagSupportingDocsObtained"
+								<label for="UboRedFlagSupportingDocsObtained2"
 									title="Supporting Documents">Supporting Documents</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="UboRedFlagSupportingDocsObtainedYes"
+								<input type="radio" id="UboRedFlagSupportingDocsObtainedYes2"
 									th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'Yes'}"
 									name="UboRedFlagSupportingDocsObtained" value="Yes" /> <label
-									for="UboRedFlagSupportingDocsObtainedYes">Yes</label> <input
-									type="radio" id="UboRedFlagSupportingDocsObtainedNo"
+									for="UboRedFlagSupportingDocsObtainedYes2">Yes</label> <input
+									type="radio" id="UboRedFlagSupportingDocsObtainedNo2"
 									th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'No'}"
 									name="UboRedFlagSupportingDocsObtained" value="No" /> <label
-									for="UboRedFlagSupportingDocsObtainedNo">No</label>
+									for="UboRedFlagSupportingDocsObtainedNo2">No</label>
 							</div>
 
 							<div class="col-sm-1">
-								<label for="UboRedFlagDetails"
+								<label for="UboRedFlagDetails2"
 									title="Supporting Document Details">Support Doc Detail</label>
 							</div>
 							<div class="col-sm-2">
 								<input type="text" name="UboRedFlagDetails"
-									id="UboRedFlagDetails"
+									id="UboRedFlagDetails2"
 									th:value="${user_data.UboRedFlagDetails}"
 									class="form-control form-control-sm bg-white border border-dark"
 									style="margin-left: 20px" />
 							</div>
 						</div>
+
 
 						<hr>
 						<h6>Enhance Due Diligence</h6>
@@ -1781,7 +1802,7 @@ event.preventDefault();
 									site visit</label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="transaction_commensurate_yes"
+								<input type="radio" id="transaction_commensurate_yes" th:value="${user_data.SiteVisitCompleted}"
 									name="Transaction_commensurate" value="Yes" /> <label
 									for="transaction_commensurate_yes">Yes</label> <input
 									type="radio" id="transaction_commensurate_no"
@@ -1794,7 +1815,7 @@ event.preventDefault();
 									site visit </label>
 							</div>
 							<div class="col-sm-1">
-								<input type="radio" id="transaction_commensurate_yes"
+								<input type="radio" id="transaction_commensurate_yes" th:value="${user_data.SiteVisitReportAttached}"
 									name="Transaction_commensurate" value="Yes" /> <label
 									for="transaction_commensurate_yes">Yes</label> <input
 									type="radio" id="transaction_commensurate_no"
