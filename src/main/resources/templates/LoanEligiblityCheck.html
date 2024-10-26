@@ -1,0 +1,1166 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+
+
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+
+
+</head>
+<title>XBRL</title>
+<style>
+.customcol {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	border-color: #e9ecef;
+}
+
+.modal-backdrop {
+	background-color: +;
+	zoom: 1;
+}
+
+.addedit {
+	color: #007bff;
+}
+
+input:invalid+span:after {
+	content: '✖';
+	padding-left: 5px;
+}
+
+input:valid+span:after {
+	content: '✓';
+	padding-left: 5px;
+}
+</style>
+
+
+<!----------------------------------------Scripts to edit report details-------------------------------------------->
+<script th:inline="javascript">
+	/*<![CDATA[*/
+$(function() {
+/* 
+		$("#agedate").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			maxDate : new Date(),
+			dateFormat : "dd-mm-yy"
+		}); */
+
+	/* 	$("#agedate1").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			maxDate : new Date(),
+			dateFormat : "dd-mm-yy"
+		});
+ */
+	});
+	
+	function showmodel(a){
+		$('#finusers').modal("hide");
+		
+	//	var loantype = $('#function').val();
+		var loantype = a.getAttribute("data-product_code");
+ 		
+																		 
+		$("#loantype").val(a.getAttribute("data-product_code"));										
+	  	$("#product_desc").val(a.getAttribute("data-product_desc"));
+		$("#minimum_loan").val(a.getAttribute("data-minimum_loan"));
+		$("#maximum_loan").val(a.getAttribute("data-maximum_loan"));
+		$("#income_range").val(a.getAttribute("data-income_range"));
+		$("#monthly_expenses").val(a.getAttribute("data-monthly_expenses"));
+		$("#purpose").val(a.getAttribute("data-purpose"));
+		$("#eligible_category").val(a.getAttribute("data-eligible_category"));
+		$("#age_limit").val(a.getAttribute("data-age_limit"));
+		$("#credit_score").val(a.getAttribute("data-credit_score"));
+		$("#capital_base").val(a.getAttribute("data-capital_base"));
+		$("#interest_range").val(a.getAttribute("data-interest_range"));
+		$("#property_type").val(a.getAttribute("data-property_type"));
+		$("#emi_tenure").val(a.getAttribute("data-emi_tenure"));
+		$("#conditions").val(a.getAttribute("data-conditions"));
+		$("#special_conditions").val(a.getAttribute("data-special_conditions"));
+		$("#eligibility_criteria").val(a.getAttribute("data-eligibility_criteria"));  
+		$("#minamt").val(a.getAttribute("data-minimum_loan"));
+		$("#maxamt").val(a.getAttribute("data-maximum_loan"));
+		var minamt = a.getAttribute("data-minimum_loan");
+		var maxamt= a.getAttribute("data-maximum_loan");
+		var minsal = a.getAttribute("data-income_range");
+		var maxtenure= a.getAttribute("data-emi_tenure");
+		$("#interest").val(a.getAttribute("data-interest_range"));
+		
+		if(loantype=="HOMELOAN"){
+			$("#entercost").attr({
+				   "max" : maxamt,
+				   "min" : minamt
+				});
+			$("#salary").attr({
+				"min":minsal,
+				"max":100000
+			});
+			$("#tenure").attr({
+				"max":maxtenure
+			});
+			$('#housemodel').modal("toggle");
+			$('#housemodel').modal({
+				backdrop : 'static',
+				keyboard : 'false'
+			})
+		 	$('#modalheader').text("Housing Loan");
+		}else if(loantype=="MORTGAGELOAN"){
+			$("#minamt1").val(a.getAttribute("data-minimum_loan"));
+			$("#maxamt1").val(a.getAttribute("data-maximum_loan"));
+			$("#interest1").val(a.getAttribute("data-interest_range"));
+			$("#entercost1").attr({
+				   "max" : maxamt,
+				   "min" : minamt
+				});
+			$("#salary1").attr({
+				"min":minsal,
+				"max":150000
+			});
+			$("#tenure1").attr({
+				"max":maxtenure
+			});
+			$("#propertytype1").attr({
+				"min":100000,
+				"max":(maxamt *2)
+					});
+			 
+			$('#mortgageloan').modal("toggle");
+			$('#mortgageloan').modal({
+				backdrop : 'static',
+				keyboard : 'false'
+			})
+		}else if(loantype=="LANDPURCHASE"){
+			$("#entercost").attr({
+				   "max" : maxamt,
+				   "min" : minamt
+				});
+			$("#salary").attr({
+				"min":minsal,
+				"max":100000
+			});
+			$("#tenure").attr({
+				"max":maxtenure
+			});
+			$('#housemodel').modal("toggle");
+			$('#housemodel').modal({
+				backdrop : 'static',
+				keyboard : 'false'
+			})
+			$('#modalheader').text("Land Purchase Loan");
+		}else if(loantype=="CARLOAN"){
+			$("#minamt2").val(a.getAttribute("data-minimum_loan"));
+			$("#maxamt2").val(a.getAttribute("data-maximum_loan"));
+			$("#interest2").val(a.getAttribute("data-interest_range"));
+			$("#entercost2").attr({
+				   "max" : maxamt,
+				   "min" : minamt
+				});
+			$("#salary2").attr({
+				"min":minsal,
+				"max":150000
+			});
+			$("#tenure2").attr({
+				"max":maxtenure
+			});
+			$('#CARLOAN').modal("toggle");
+			$('#CARLOAN').modal({
+				backdrop : 'static',
+				keyboard : 'false'
+			})
+		}
+	}
+	function propertyamt(){
+		document.getElementById("scorehousediv").style.display= "none";
+
+		var entercost = $('#entercost').val();
+		var minamt =$("#minamt").val();
+		var maxamt = $("#maxamt").val();
+		var firstval= entercost*0.85;
+		var secondval= entercost*0.75;
+		var enterrating = (10 - (9.0 * (entercost - minamt) / (maxamt - minamt)));
+		$("#firstproperty").val(firstval);
+		$("#secproperty").val(secondval);
+		$("#enterrating").val(enterrating.toFixed(2));
+ 
+		let text;
+		if (isNaN(entercost) || entercost < minamt || entercost > maxamt) {
+		    text = "Input not valid";
+		  } else {
+		    text = "Input OK";
+		  }
+		document.getElementById("demo").innerHTML = text;
+		//enterrating
+	}
+	function propertyage(){
+		document.getElementById("scorehousediv").style.display= "none";
+
+ 		var datea = $('#agedate').val();
+		/* var year = new Date();
+		var data = new Date(datea);
+		var dateParts = datea.split("-");
+		//alert((year.getFullYear())-dateParts[2]);
+		var datapart2 = dateParts[2];
+		var age =(year.getFullYear())-datapart2; */
+		var minage = "25";
+		var maxage = "65";
+		var enterrating = (10 - (9.0 * (datea - minage) / (maxage - minage)));
+		
+		if(enterrating >='10'){
+			$("#enterage").val("10");
+		}else if (enterrating <='1'){
+		$("#enterage").val("1");
+		}else{
+		$("#enterage").val(enterrating.toFixed(2));
+		}
+	}function propertyage1(){
+		document.getElementById("scoremortagediv").style.display= "none";
+ 		var datea = $('#agedate1').val();
+		/* var year = new Date();
+		var data = new Date(datea);
+		var dateParts = datea.split("-");
+		//alert((year.getFullYear())-dateParts[2]);
+		var datapart2 = dateParts[2];
+		var age =(year.getFullYear())-datapart2; */
+		var minage = "25";
+		var maxage = "65";
+		var enterrating = (10 - (9.0 * (datea - minage) / (maxage - minage)));
+		
+		if(enterrating >='10'){
+			$("#enterage1").val("10");
+		}else if (enterrating <='1'){
+		$("#enterage1").val("1");
+		}else{
+		$("#enterage1").val(enterrating.toFixed(2));
+		}
+	}function propertyage2(){
+		document.getElementById("scorecardiv").style.display= "none";
+ 		var datea = $('#agedate2').val();
+		/* var year = new Date();
+		var data = new Date(datea);
+		var dateParts = datea.split("-");
+		//alert((year.getFullYear())-dateParts[2]);
+		var datapart2 = dateParts[2];
+		var age =(year.getFullYear())-datapart2; */
+		var minage = "25";
+		var maxage = "65";
+		var enterrating = (10 - (9.0 * (datea - minage) / (maxage - minage)));
+		
+		if(enterrating >='10'){
+			$("#enterage2").val("10");
+		}else if (enterrating <='1'){
+		$("#enterage2").val("1");
+		}else{
+		$("#enterage2").val(enterrating.toFixed(2));
+		}
+	}
+	function propertysalaryscore(){
+		document.getElementById("scorehousediv").style.display= "none";
+
+		var entercost = $("#salary").val();
+ 		var minamt =$("#income_range").val();
+ 	 
+		if(!entercost < "100000"){
+			var maxamt ='100000';
+ 			var enterrating = (10 - (9.0 * (entercost - maxamt) / (minamt - maxamt)));
+			 $("#entersalaryscore").val(enterrating.toFixed(2));
+		}else if(entercost > "100000"){
+ 			$("#entersalaryscore").val('10');
+		}
+		var entersalaryscore =$("#entersalaryscore").val(); 
+		if(entersalaryscore < '1'){
+			alert("salary must be greater than "+minamt);
+			$("#salary").val('');
+			$("#entersalaryscore").val('');
+		}
+	}
+	function propertysalaryscore2(){
+		document.getElementById("scorecardiv").style.display= "none";
+
+		var entercost = $("#salary2").val();
+ 		var minamt =$("#income_range").val();
+ 	 
+		if(!entercost < "100000"){
+			var maxamt ='100000';
+ 			var enterrating = (10 - (9.0 * (entercost - maxamt) / (minamt - maxamt)));
+			 $("#entersalaryscore2").val(enterrating.toFixed(2));
+		}else if(entercost > "100000"){
+ 			$("#entersalaryscore2").val('10');
+		}
+		var entersalaryscore =$("#entersalaryscore2").val(); 
+		if(entersalaryscore < '1'){
+			alert("salary must be greater than "+minamt);
+			$("#salary2").val('');
+			$("#entersalaryscore2").val('');
+		}
+	}
+	function propertytenurescore(){
+		document.getElementById("scorehousediv").style.display= "none";
+		var enteryear = $("#tenure").val();
+		var maxamt =$("#emi_tenure").val();
+		
+		var enterrating = (10 - (9.0 * (enteryear - 1) / (maxamt - 1)));
+		$("#entertenurescore").val(enterrating);
+	}
+	function propertytenurescore1(){
+		document.getElementById("scoremortagediv").style.display= "none";
+		var enteryear = $("#tenure1").val();
+		var maxamt =$("#emi_tenure").val();
+		
+		var enterrating = (10 - (9.0 * (enteryear - 1) / (maxamt - 1)));
+		$("#entertenurescore1").val(enterrating);
+	}
+	function propertytenurescore2(){
+		document.getElementById("scorecardiv").style.display= "none";
+		var enteryear = $("#tenure2").val();
+		var maxamt =$("#emi_tenure").val();
+		
+		var enterrating = (10 - (9.0 * (enteryear - 1) / (maxamt - 1)));
+		$("#entertenurescore2").val(enterrating);
+	}
+	function propertyvaluescore1(){
+		document.getElementById("scoremortagediv").style.display= "none";
+		var enter = $("#propertytype1").val();
+		var minamt =$("#minamt1").val();
+		var maxamt = $("#maxamt1").val();
+		 
+		var enterrating = (10 - (9.0 * (enter - (maxamt*2)) / ((minamt*2) - (maxamt*2))));
+		$("#enterpropertyscore1").val(enterrating.toFixed(2));
+		
+	}
+	function propertysalary(){
+		document.getElementById("scoremortagediv").style.display= "none";
+		var enter  = $('#entercost1').val();
+		var minamt =$("#minamt1").val();
+		var maxamt = $("#maxamt1").val();
+		 
+		var enterrating = (10 - (9.0 * (enter - minamt) / (maxamt - minamt)));
+		$("#enterrating1").val(enterrating.toFixed(2));
+		
+		var org_amt = $('#entercost1').val();
+		var entercost = $('#salary1').val();
+		var firstval= entercost*36;
+		$("#secproperty1").val(firstval);
+		if(org_amt > firstval){
+			$("#eligibleamt1").val(firstval);
+		}else {
+			$("#eligibleamt1").val(org_amt);
+		}
+		
+	 
+ 		var minamt1 =$("#income_range").val();
+ 	 
+		if(!entercost < "100000"){
+			var maxamt1 ='150000';
+ 			var enterrating = (10 - (9.0 * (entercost - maxamt1) / (minamt1 - maxamt1)));
+			 $("#entersalaryscore1").val(enterrating.toFixed(2));
+		}else if(entercost > "150000"){
+ 			$("#entersalaryscore1").val('10');
+		}
+		var entersalaryscore =$("#entersalaryscore1").val(); 
+		if(entersalaryscore < '1'){
+			alert("salary must be greater than "+minamt1);
+			$("#salary1").val('');
+			$("#entersalaryscore1").val('');
+		}
+		   
+	}
+	function propertycar(){
+		document.getElementById("scorecardiv").style.display= "none";
+
+		var org_amt = $('#entercost2').val();
+		var minamt =$("#minamt2").val();
+		var maxamt = $("#maxamt2").val();
+		 
+		var enterrating = (10 - (9.0 * (org_amt - minamt) / (maxamt - minamt)));
+		$("#enterrating2").val(enterrating.toFixed(2));
+		var firstval= org_amt*0.80;
+		var secondval= org_amt*0.75;
+		var thirdval= org_amt*0.60;
+		$("#firstproperty2").val(firstval);
+		$("#secproperty2").val(secondval);
+		$("#thirdproperty2").val(thirdval);
+	}
+	function checkmortgage(){
+		var entercost = $('#entercost1').val();
+		var salary = $('#salary1').val();
+		var agedate = $('#agedate1').val();
+		var interest = $('#interest1').val();
+		var propertyvalue = $('#propertytype1').val();
+		var tenure =$('#tenure1').val();
+		var tenure_in_month = tenure*12;
+		var salary_sixtymonth = salary*36;
+		var interest_val =interest/100;
+		var eligible_amt = $("#eligibleamt1").val();
+		var interest = (eligible_amt *  interest_val)/tenure_in_month;
+		var total =((eligible_amt/tenure_in_month)+ interest).toFixed(2);
+if (total < (salary/2)){
+	if((propertyvalue/2)> eligible_amt){ 
+	document.getElementById("ELIGIBLE1").style.display = "block";
+	document.getElementById("NOT_ELIGIBLE1").style.display = "none";
+	document.getElementById("check_eligible1").style.display = "none";
+	}else{
+		document.getElementById("ELIGIBLE1").style.display = "none";
+		document.getElementById("NOT_ELIGIBLE1").style.display = "block";
+		document.getElementById("check_eligible1").style.display = "none";
+	}
+}else{
+	document.getElementById("ELIGIBLE1").style.display = "none";
+	document.getElementById("NOT_ELIGIBLE1").style.display = "block";
+	document.getElementById("check_eligible1").style.display = "none";
+}
+	}
+	function checkhouse(){
+		var entercost = $('#entercost').val();
+		var firstval= $('#firstproperty').val();
+		var secondval= $('#secproperty').val();
+		var salary = $('#salary').val();
+		var agedate = $('#agedate').val();
+		var interest = $('#interest').val();
+		var property = $('#propertytype').val();
+		var tenure =$('#tenure').val();
+		var tenure_in_month = tenure*12;
+		var salary_sixtymonth = salary*60;
+		var interest_val =interest/100;
+		var eligible_amt;
+	
+		if(property == "1"){
+		 
+				eligible_amt = firstval;
+			 
+		}else if(property == "2"){
+		 
+				eligible_amt = secondval;
+			 
+		}
+		var interest = (eligible_amt *  interest_val)/tenure_in_month;
+		var total =((eligible_amt/tenure_in_month)+ interest).toFixed(2);
+if (total < (salary/2)){
+	document.getElementById("ELIGIBLE").style.display = "block";
+	document.getElementById("NOT_ELIGIBLE").style.display = "none";
+	document.getElementById("check_eligible").style.display = "none";
+}else{
+	document.getElementById("ELIGIBLE").style.display = "none";
+	document.getElementById("NOT_ELIGIBLE").style.display = "block";
+	document.getElementById("check_eligible").style.display = "none";
+}		
+	}
+	function checkcar(){
+		var entercost = $('#entercost2').val();
+		var firstval= $('#firstproperty2').val();
+		var secondval= $('#secproperty2').val();
+		var thirdval= $('#thirdproperty2').val();
+		var salary = $('#salary2').val();
+		var agedate = $('#agedate2').val();
+		var interest = $('#interest2').val();
+		var property = $('#propertytype2').val();
+		var tenure =$('#tenure2').val();
+		var tenure_in_month = tenure*12;
+		var salary_sixtymonth = salary*60;
+		var interest_val =interest/100;
+		var eligible_amt;
+	
+		if(property == "1"){
+				eligible_amt = firstval;
+		}else if(property == "2"){
+				eligible_amt = secondval;
+		}else if(property == "3"){
+			eligible_amt = thirdval;
+	}
+		var interest = (eligible_amt *  interest_val)/tenure_in_month;
+		var total =((eligible_amt/tenure_in_month)+ interest).toFixed(2);
+if (total < (salary/2)){
+	document.getElementById("ELIGIBLE2").style.display = "block";
+	document.getElementById("NOT_ELIGIBLE2").style.display = "none";
+	document.getElementById("check_eligible2").style.display = "none";
+}else{
+	document.getElementById("ELIGIBLE2").style.display = "none";
+	document.getElementById("NOT_ELIGIBLE2").style.display = "block";
+	document.getElementById("check_eligible2").style.display = "none";
+}		
+	}
+	function checkhousescore(){
+		document.getElementById("enterratingdiv").style.display = "flex";
+		document.getElementById("entersalarydiv").style.display = "flex";
+		document.getElementById("enteragediv").style.display = "flex";
+		document.getElementById("entertenurediv").style.display = "flex";
+		const  val1= document.getElementById("enterrating").value;
+		const  val2= document.getElementById("entersalaryscore").value; 
+		const  val3=document.getElementById("enterage").value; 
+		const  val4= document.getElementById("entertenurescore").value; 
+		
+		const  total = +val1 + +val2 + +val3 + +val4;
+	 	const tot1 = (total/4)*10;
+		$("#scorehouse").val(tot1.toFixed(2));
+		document.getElementById("scorehousediv").style.display= "flex";
+	}
+	function propertytypecar(){
+		document.getElementById("scorecardiv").style.display= "none";
+
+		var	propertytype2 =  document.getElementById("propertytype2").value;
+		
+		if(propertytype2 == '1'){
+			$("#enterpropertyscore2").val('10');
+		}else if(propertytype2 == '2'){
+			$("#enterpropertyscore2").val('7');
+		}else if(propertytype2 == '3'){
+			$("#enterpropertyscore2").val('5');
+		}
+		
+	}
+	function checkmortagescore(){
+		document.getElementById("enterratingdiv1").style.display = "flex";
+		document.getElementById("entersalarydiv1").style.display = "flex";
+		document.getElementById("enteragediv1").style.display = "flex";
+		document.getElementById("entertenurediv1").style.display = "flex";
+		document.getElementById("enterpropertydiv1").style.display="flex";
+		const  val1= document.getElementById("enterrating1").value;
+		const  val2= document.getElementById("entersalaryscore1").value; 
+		const  val3=document.getElementById("enterage1").value; 
+		const  val4= document.getElementById("entertenurescore1").value; 
+		const val5 = document.getElementById("enterpropertyscore1").value;
+		
+		const  total = +val1 + +val2 + +val3 + +val4 + +val5;
+	 	const tot1 = (total/5)*10;
+		$("#scoremortage").val(tot1.toFixed(2));
+		document.getElementById("scoremortagediv").style.display= "flex";
+	}
+	function checkcarscore(){
+		document.getElementById("enterratingdiv2").style.display = "flex";
+		document.getElementById("entersalarydiv2").style.display = "flex";
+		document.getElementById("enteragediv2").style.display = "flex";
+		document.getElementById("entertenurediv2").style.display = "flex";
+		document.getElementById("enterpropertydiv2").style.display="flex";
+		const  val1= document.getElementById("enterrating2").value;
+		const  val2= document.getElementById("entersalaryscore2").value; 
+		const  val3=document.getElementById("enterage2").value; 
+		const  val4= document.getElementById("entertenurescore2").value; 
+		const val5 = document.getElementById("enterpropertyscore2").value;
+		
+		const  total = +val1 + +val2 + +val3 + +val4 + +val5;
+	 	const tot1 = (total/5)*10;
+		$("#scorecar").val(tot1.toFixed(2));
+		document.getElementById("scorecardiv").style.display= "flex";
+	}
+	
+	/*]]>*/
+</script>
+<body>
+	<!----------------------------------------------------- Header Section starts ----------------------------------------------------->
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+	<!----------------------------------------------------- Header Section Ends ------------------------------------------------------->
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+	<div class="container content" th:fragment="reportcontent">
+
+		<div class="row">
+			<div class="col-sm-12 customcol">
+				<div class="card">
+					<div class="card-header">
+						<div class="float-left">
+							<h4>Loan Eligibility Check</h4>
+						</div>
+
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+
+							<div class="row formline">
+								<div class="col-sm-2">
+									<label for="userId">Loan Type</label>
+								</div>
+								<div class="col-sm-3">
+									<input type="text" id="loantype"
+										class="form-control form-control-sm" name="loantype"
+										autocomplete="off" required readonly />
+								</div>
+								<div class="col-sm-1">
+									<a><i class="fas fa-search searchico" data-toggle="modal"
+										data-target="#finusers" id="iconacc"></i></a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+
+					<!-- -----------------------------------Details edit modal form----------------------------------------------------->
+					<div class="modal fade" id="mortgageloan" th:fragment="dataedit" data-backdrop="static" data-keyboard="false">
+						<div
+							class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Mortgage Loan</h4>
+									<button type="button" class="close" data-dismiss="modal" onclick="location.reload();">×</button>
+								</div>
+								<div class="modal-body" style="text-align: center">
+									<div class="form-group">
+										<div class="row" style="display: none;">
+											<label class="col-sm-5">Maximum Amount</label> <input
+												class="form-control col-sm-5" type="number" id="maxamt1"
+												readonly />
+										</div>
+										<div class="row" style="display: none;">
+											<label class="col-sm-5">Minimum Amount</label> <input
+												class="form-control col-sm-5" type="number" id="minamt1"
+												readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Enter Cost</label> <input
+												type="range" step="1000"
+												oninput="this.nextElementSibling.value = this.value"
+												class="form-control col-sm-5" id="entercost1" />
+											<output></output>
+										</div>
+										<div class="row" style="display: none;" id="enterratingdiv1">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="enterrating1" readonly style="color: red;" />
+										</div>
+
+
+										<div class="row">
+											<label class="col-sm-5">Salary</label> <input type="range"
+												step="1000"
+												oninput="this.nextElementSibling.value = this.value"
+												class="form-control col-sm-5" id="salary1"
+												onchange="propertysalary()" />
+											<output></output>
+										</div>
+										<div style="display: none;" id="entersalarydiv1" class="row">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="entersalaryscore1" readonly style="color: red;" />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Maximum amount</label> <input
+												class="form-control col-sm-5" type="number"
+												id="secproperty1" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Eligible amount</label> <input
+												class="form-control col-sm-5" type="number"
+												id="eligibleamt1" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Age As On Date</label> <input
+												oninput="this.nextElementSibling.value = this.value"
+												class="form-control col-sm-5" type="range" id="agedate1"
+												min="25" max="60" onchange="propertyage1();" />
+											<output></output>
+										</div>
+										<div class="row" style="display: none;" id="enteragediv1">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												style="color: red;" id="enterage1" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Tenure in years</label> <input
+												oninput="this.nextElementSibling.value = this.value"
+												class="form-control col-sm-5" type="range" id="tenure1"
+												onchange="propertytenurescore1();" max="25" />
+											<output></output>
+										</div>
+										<div class="row" style="display: none;" id="entertenurediv1">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="entertenurescore1" readonly style="color: red;" />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Interest</label> <input
+												class="form-control col-sm-5" type="number" value="2.95"
+												id="interest1" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Property Value</label> <input
+												class="form-control col-sm-5" type="range"
+												oninput="this.nextElementSibling.value = this.value"
+												step="10000" id="propertytype1"
+												onchange="propertyvaluescore1();" />
+											<output></output>
+											<input type="hidden" id="product_code1" /> <input
+												type="hidden" id="product_desc1" /> <input type="hidden"
+												id="minimum_loan1" /> <input type="hidden"
+												id="maximum_loan1" /> <input type="hidden"
+												id="income_range1" /> <input type="hidden"
+												id="monthly_expenses1" /> <input type="hidden"
+												id="purpose1" /> <input type="hidden"
+												id="eligible_category1" /> <input type="hidden"
+												id="age_limit1" /> <input type="hidden" id="credit_score1" />
+											<input type="hidden" id="capital_base1" /> <input
+												type="hidden" id="interest_range1" /> <input type="hidden"
+												id="property_type1" /> <input type="hidden"
+												id="emi_tenure1" /> <input type="hidden" id="conditions1" />
+											<input type="hidden" id="special_conditions1" /> <input
+												type="hidden" id="eligibility_criteria1" />
+										</div>
+										<div class="row" style="display: none;" id="enterpropertydiv1">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="enterpropertyscore1" readonly style="color: red;" />
+										</div>
+										<div class="row" style="display: none;" id="scoremortagediv">
+											<label class="col-sm-5">Total Score</label> <input
+												class="form-control col-sm-5" type="number"
+												style="color: red;" id="scoremortage" readonly />
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="ELIGIBLE1" class="btn btn-warning"
+										style="margin-left: 100px; margin-right: 100px; display: none;"
+										onclick="checkmortgage();">Eligible</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="NOT_ELIGIBLE1" class="btn btn-danger"
+										style="margin-left: 100px; margin-right: 100px; display: none;"
+										onclick="checkmortgage();">Not Eligible</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="check_eligible1"
+										class="btn btn-primary"
+										style="margin-left: 100px; margin-right: 100px;"
+										onclick="checkmortgage();">Check Eligibility</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="scorehouseget"
+										class="btn btn-primary"
+										style="margin-left: 100px; margin-right: 100px;"
+										onclick="checkmortagescore();">Get Score</button>
+								</div>
+								<label></label> <label></label>
+							</div>
+						</div>
+					</div>
+					<!-------------------------------------Details edit modal form----------------------------------------------------->
+
+					<div class="modal fade" id="housemodel" th:fragment="dataedit" data-backdrop="static" data-keyboard="false">
+						<div
+							class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+							style="max-width: 600px;">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title" id="modalheader">Housing Loan</h4>
+									<button type="button" class="close" data-dismiss="modal"onclick="location.reload();">×</button>
+								</div>
+								<div class="modal-body" style="text-align: center">
+									<div class="form-group">
+										<div class="row" style="display: none;">
+											<label class="col-sm-5">Maximum Amount</label> <input
+												class="form-control col-sm-5" type="number" id="maxamt"
+												readonly />
+										</div>
+										<div class="row" style="display: none;">
+											<label class="col-sm-5">Minimum Amount</label> <input
+												class="form-control col-sm-5" type="number" id="minamt"
+												readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Property Value</label> <input
+												class="form-control col-sm-5" type="range" step="1000"
+												oninput="this.nextElementSibling.value = this.value"
+												onchange="propertyamt()" id="entercost" required />
+											<output></output>
+											<span class="validity"></span>
+										</div>
+										<div class="row" style="display: none;" id="enterratingdiv">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number" id="enterrating"
+												readonly style="color: red;" />
+										</div>
+
+										<div class="row">
+											<label class="col-sm-5">First Loan</label> <input
+												class="form-control col-sm-5" type="number"
+												id="firstproperty" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Second Loan</label> <input
+												class="form-control col-sm-5" type="number" id="secproperty"
+												readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Salary</label> <input
+												class="col-sm-5" type="range" id="salary"
+												onchange="propertysalaryscore();"
+												oninput="this.nextElementSibling.value = this.value"
+												required />
+											<output></output>
+											<span class="validity"></span>
+										</div>
+										<div style="display: none;" id="entersalarydiv" class="row">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="entersalaryscore" readonly style="color: red;" />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Age As On Date</label> <input
+												class="col-sm-5" type="range" id="agedate"
+												onchange="propertyage();" min="25" max="60"
+												oninput="this.nextElementSibling.value = this.value" />
+											<output></output>
+
+										</div>
+										<div class="row" style="display: none;" id="enteragediv">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												style="color: red;" id="enterage" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Tenure in years</label> <input
+												class="col-sm-5" type="range" id="tenure"
+												onchange="propertytenurescore();"
+												oninput="this.nextElementSibling.value = this.value" min="1"
+												REQUIRED />
+											<output></output>
+											<span class="validity"></span>
+										</div>
+										<div class="row" style="display: none;" id="entertenurediv">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="entertenurescore" readonly style="color: red;" />
+										</div>
+
+										<div class="row">
+											<label class="col-sm-5">Interest</label> <input
+												class="form-control col-sm-5" type="number" value="2.95"
+												id="interest" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Property Type</label> <select
+												name="propertytype" id="propertytype"
+												class="col-sm-5 form-control" required>
+												<option>Select</option>
+												<option value="1">First Property</option>
+												<option value="2">Second Property</option>
+
+											</select> <input type="hidden" id="product_code" /> <input
+												type="hidden" id="product_desc" /> <input type="hidden"
+												id="minimum_loan" /> <input type="hidden" id="maximum_loan" />
+											<input type="hidden" id="income_range" /> <input
+												type="hidden" id="monthly_expenses" /> <input type="hidden"
+												id="purpose" /> <input type="hidden" id="eligible_category" />
+											<input type="hidden" id="age_limit" /> <input type="hidden"
+												id="credit_score" /> <input type="hidden" id="capital_base" />
+											<input type="hidden" id="interest_range" /> <input
+												type="hidden" id="property_type" /> <input type="hidden"
+												id="emi_tenure" /> <input type="hidden" id="conditions" />
+											<input type="hidden" id="special_conditions" /> <input
+												type="hidden" id="eligibility_criteria" />
+										</div>
+										<div class="row" style="display: none;" id="scorehousediv">
+											<label class="col-sm-5">Total Score</label> <input
+												class="form-control col-sm-5" type="number"
+												style="color: red;" id="scorehouse" readonly />
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="ELIGIBLE" class="btn btn-warning"
+										style="margin-left: 100px; margin-right: 100px; display: none;"
+										onclick="checkhouse();">Eligible</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="NOT_ELIGIBLE" class="btn btn-danger"
+										style="margin-left: 100px; margin-right: 100px; display: none;"
+										onclick="checkhouse();">Not Eligible</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="check_eligible"
+										class="btn btn-primary"
+										style="margin-left: 100px; margin-right: 100px;"
+										onclick="checkhouse();">Check Eligibility</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="scorehouseget"
+										class="btn btn-primary"
+										style="margin-left: 100px; margin-right: 100px;"
+										onclick="checkhousescore();">Get Score</button>
+								</div>
+
+								<label></label> <label></label>
+							</div>
+						</div>
+					</div>
+					<!-------------------------------------Details delete modal dialog----------------------------------------------------->
+
+					<!-- ---------------------------------CAR LOAN-------------------------------------------- -->
+					<div class="modal fade" id="CARLOAN" th:fragment="dataedit" data-backdrop="static" data-keyboard="false">
+						<div
+							class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Car Loan</h4>
+									<button type="button" class="close" data-dismiss="modal" onclick="location.reload();">×</button>
+								</div>
+								<div class="modal-body" style="text-align: center">
+									<div class="form-group">
+										<div class="row" style="display: none;">
+											<label class="col-sm-5">Maximum Amount</label> <input
+												class="form-control col-sm-5" type="number" id="maxamt2"
+												readonly />
+										</div>
+										<div class="row" style="display: none;">
+											<label class="col-sm-5">Minimum Amount</label> <input
+												class="form-control col-sm-5" type="number" id="minamt2"
+												readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Loan Amount</label> <input
+												class="form-control col-sm-5" type="range" step="1000"
+												oninput="this.nextElementSibling.value = this.value"
+												onchange="propertycar()" id="entercost2" />
+											<output></output>
+										</div>
+										<div class="row" style="display: none;" id="enterratingdiv2">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="enterrating2" readonly style="color: red;" />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">New Car</label> <input
+												class="form-control col-sm-5" type="number"
+												id="firstproperty2" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Reconditioned Car</label> <input
+												class="form-control col-sm-5" type="number"
+												id="secproperty2" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Second Hand Car</label> <input
+												class="form-control col-sm-5" type="number"
+												id="thirdproperty2" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Salary</label> <input step="1000"
+												oninput="this.nextElementSibling.value = this.value"
+												class="form-control col-sm-5" type="range" id="salary2"
+												onchange="propertysalaryscore2();" />
+											<output></output>
+										</div>
+										<div style="display: none;" id="entersalarydiv2" class="row">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="entersalaryscore2" readonly style="color: red;" />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Age As On Date</label> <input
+												onchange="propertyage2();" class="form-control col-sm-5"
+												type="range" id="agedate2" min="25" max="65"
+												oninput="this.nextElementSibling.value = this.value" />
+											<output></output>
+										</div>
+										<div class="row" style="display: none;" id="enteragediv2">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												style="color: red;" id="enterage2" readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Tenure in years</label> <input
+												class="form-control col-sm-5" type="range" id="tenure2"
+												oninput="this.nextElementSibling.value = this.value"
+												max="25" onchange="propertytenurescore2();" />
+											<output></output>
+										</div>
+										<div class="row" style="display: none;" id="entertenurediv2">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="entertenurescore2" readonly style="color: red;" />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Interest</label> <input
+												class="form-control col-sm-5" type="number" id="interest2"
+												readonly />
+										</div>
+										<div class="row">
+											<label class="col-sm-5">Car Type</label> <select
+												name="propertytype2" id="propertytype2"
+												onchange="propertytypecar();" class="col-sm-5 form-control"
+												required>
+												<option>Select</option>
+												<option value="1">New Car</option>
+												<option value="2">Reconditioned Car</option>
+												<option value="3">Second Hand Car</option>
+
+											</select> <input type="hidden" id="product_code2" /> <input
+												type="hidden" id="product_desc" /> <input type="hidden"
+												id="minimum_loan" /> <input type="hidden"
+												id="maximum_loan2" /> <input type="hidden"
+												id="income_range2" /> <input type="hidden"
+												id="monthly_expenses2" /> <input type="hidden"
+												id="purpose2" /> <input type="hidden"
+												id="eligible_category2" /> <input type="hidden"
+												id="age_limit2" /> <input type="hidden" id="credit_score2" />
+											<input type="hidden" id="capital_base2" /> <input
+												type="hidden" id="interest_range2" /> <input type="hidden"
+												id="property_type2" /> <input type="hidden"
+												id="emi_tenure2" /> <input type="hidden" id="conditions2" />
+											<input type="hidden" id="special_conditions2" /> <input
+												type="hidden" id="eligibility_criteria2" />
+										</div>
+										<div class="row" style="display: none;" id="enterpropertydiv2">
+											<label class="col-sm-5"> </label> <input
+												class="form-control col-sm-5" type="number"
+												id="enterpropertyscore2" readonly style="color: red;" />
+										</div>
+										<div class="row" style="display: none;" id="scorecardiv">
+											<label class="col-sm-5">Total Score</label> <input
+												class="form-control col-sm-5" type="number"
+												style="color: red;" id="scorecar" readonly />
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="ELIGIBLE2" class="btn btn-warning"
+										style="margin-left: 100px; margin-right: 100px; display: none;"
+										onclick="checkcar();">Eligible</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="NOT_ELIGIBLE2" class="btn btn-danger"
+										style="margin-left: 100px; margin-right: 100px; display: none;"
+										onclick="checkcar();">Not Eligible</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="check_eligible2"
+										class="btn btn-primary"
+										style="margin-left: 100px; margin-right: 100px;"
+										onclick="checkcar();">Check Eligibility</button>
+								</div>
+								<div class="modal-footer" style="display: contents;">
+									<button type="button" id="scorecarget" class="btn btn-primary"
+										style="margin-left: 100px; margin-right: 100px;"
+										onclick="checkcarscore();">Get Score</button>
+								</div>
+								<label></label> <label></label>
+							</div>
+						</div>
+					</div>
+					<!-- ---------------------------------CAR LOAN END-------------------------------------------- -->
+					<div class="modal fade" id="datadelete">
+						<div
+							class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+							<div class="modal-content">
+								<div class="modal-body" style="text-align: center">
+									<button type="button" class="close" data-dismiss="modal">×</button>
+									Are you Sure want to delete?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary"
+										onclick="submitdataform();">Submit</button>
+									<button type="button" class="btn btn-primary"
+										data-dismiss="modal">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-------------------------------------Details delete modal dialog----------------------------------------------------->
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+	<div class="modal fade" id="alert">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg"></p>
+					<button type="button" class="btn btn-primary"
+						onclick="location.reload();" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="finusers">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Loan Products</h4>
+					<button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-hover" id="finusertb">
+						<thead class="thead-light">
+							<tr>
+								<th>Product Code</th>
+								<th>Product Description</th>
+								<th>Purpose</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="bank : ${loanparameter}"
+								th:id="${bank.product_code}" class="userlist"
+								th:onclick="showmodel(this)"
+								th:attr="data-product_code=${bank.product_code},
+													data-product_desc=${bank.product_desc},
+													data-minimum_loan=${bank.minimum_loan},
+													data-maximum_loan=${bank.maximum_loan},
+													data-income_range=${bank.income_range},
+													data-monthly_expenses=${bank.monthly_expenses},
+													data-purpose=${bank.purpose},
+													data-eligible_category=${bank.eligible_category},
+													data-age_limit=${bank.age_limit},
+													data-credit_score=${bank.credit_score},
+													data-interest_range=${bank.interest_range},
+													data-property_type=${bank.property_type},
+													data-emi_tenure=${bank.emi_tenure},
+													data-conditions=${bank.conditions},
+													data-special_conditions=${bank.special_conditions},
+													data-eligibility_criteria=${bank.eligibility_criteria}">
+								<td th:text="${bank.product_code}">123</td>
+								<td th:text="${bank.product_desc}">123</td>
+								<td th:text="${bank.purpose}">456</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+</body>
+</html>

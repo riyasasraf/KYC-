@@ -1,0 +1,619 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XBRL</title>
+
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/datatables/1.10.19/css/jquery.dataTables.min.css"
+	th:href="@{/webjars/datatables/1.10.19/css/jquery.dataTables.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+
+<script src="/webjars/jquery-validation/1.19.0/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.min.js}"></script>
+
+<script src="/webjars/datatables/1.10.19/js/jquery.dataTables.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/jquery.dataTables.min.js}"></script>
+<script
+	src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
+
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<style>
+.customcol {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	border-color: #e9ecef;
+}
+
+.modal-backdrop {
+	background-color: +;
+	zoom: 1;
+}
+
+.addedit {
+	color: #007bff;
+}
+</style>
+
+<script th:inline="javascript">
+	/*<![CDATA[*/
+		
+		var dtltype = /*[[${glsubhead}]]*/null;
+		console.log(dtltype);
+		function showdetails(mode,num,maxpage) {
+		
+		
+		var n=parseInt(num);
+		var max = parseInt(maxpage);
+		
+		var today = new Date();
+		var Callurl = /*[[@{'/GlSubHead'}]]*/
+		
+		switch(mode){
+		case "nextpage":
+			n=n+1;
+			if(n>max){
+				break;
+			}
+			Callurl = Callurl+"?page="+n;
+			console.log("Callurl "+Callurl);
+			break;
+		case "prevpage":
+			n=n-1;
+			if(n<0){
+				break;
+			}
+			Callurl = Callurl+"?page="+n;
+			break;
+		case "givenpage":
+			n=parseInt($("#pageno").val())-1;
+			if(n>max||n<0){
+			break;
+			}
+			Callurl = Callurl+"?page="+n;
+		}
+		
+		
+		
+		$.ajax({
+			type : 'get',
+			url : Callurl,
+			success : function(data) {
+				
+				/*<![CDATA[*/
+
+				$('.content').html(data);
+				
+				
+				/*]]>*/
+
+			}
+		})
+	}
+	
+	
+		function searchRecord(){			
+			$("#search").modal("toggle");
+
+		};
+		
+		function submit(a){
+			//alert("yy");
+			$("#edit").hide();
+			
+			var url4 ="./CONTACT?";
+			alert(url4);
+			$("#dataedit").attr('action',url4);
+			var options = {
+			success : showResponse
+		// post-submit callback 
+		};
+        
+	
+		$('#dataedit').ajaxSubmit(options);
+
+		function showResponse(responseText, statusText, xhr, $form) {
+
+			$("#alertmsg").text(responseText);
+
+			if ($('#addedit').is(':visible')) {
+				$('#addedit').modal("hide");
+
+			}
+			;
+			if ($('#datadelete').is(':visible')) {
+				$('#datadelete').modal("hide");
+
+			}
+			;
+			$('#alert').modal("toggle");
+
+		}
+
+			
+		};
+		
+		function addRecord() {
+			
+
+	/* 	alert("hi")
+				//Assign action url for the edit/add form
+				var url = /*[[@{'rbscontactadd'}]]*/
+				
+				$("#dataedit").attr('action', url);
+		console.log("hi")
+				//Reset form if any data present
+				document.getElementById("dataedit").reset();
+
+				//make readonly false to unique fields
+				//Make readonly fields
+			/* 	$("#SRL_NO_edit").attr("readonly", false); */
+					
+				
+				/* $("#addedit").modal("toggle"); */
+		};
+				function addRecord1() {
+					
+				
+				
+
+					//Reset form if any data present
+
+					document.getElementById("dataedit").reset();
+
+					//make readonly false to unique fields
+					//Make readonly fields
+		        $("#SRL_NO_edit").attr("readonly", false);
+				$("#CONTACT_NAME_edit").attr("readonly", false);
+				$("#DESIGNATION_edit").attr("readonly", false);
+				$("#PHONE_NUMBER_edit").attr("readonly", false);
+				$("#EMAIL_ID_edit").attr("readonly", false);
+				$("#MODULE_edit").attr("readonly", false);
+			
+				
+
+					$("#addedit").modal("toggle");
+
+			
+			};
+			
+		
+		
+		
+		
+		
+		function submitdataform(){
+			
+			if($("#dataedit").valid()){
+				
+				var options = { 
+				        success: showResponse  // post-submit callback 
+				    }; 
+				
+				 $('#dataedit').ajaxSubmit(options);
+				 
+				 function showResponse(responseText, statusText, xhr, $form) { 
+					 
+					 $("#alertmsg").text(responseText);
+					 
+					 if($('#addedit').is(':visible')){
+						 $('#addedit').modal("hide");
+					 };
+					 if($('#datadelete').is(':visible')){
+						 $('#datadelete').modal("hide");
+					 };
+					 $('#alert').modal("toggle");
+		                
+				 }
+				
+			}
+			
+		}
+		
+		
+		function editRecord(a) {
+			
+			alert("hii");
+
+				var url = /*[[@{'/rbscontactedit'}]]*/
+				$("#dataedit").attr('action', url);
+				//Assign selected values to the model box fields
+				$("#SRL_NO_edit").val(a.getAttribute("data-srl_no"));
+				$("#CONTACT_NAME_edit").val(a.getAttribute("data-name"));
+				$("#DESIGNATION_edit").val(a.getAttribute("data-designation"));
+				$("#PHONE_NUMBER_edit").val(a.getAttribute("data-phone"));
+				$("#EMAIL_ID_edit").val(a.getAttribute("data-email"));
+				$("#MODULE_edit").val(a.getAttribute("data-module"));
+				
+
+				$("#addedit").modal("toggle");
+
+				//Make readonly fields
+				$("#SRL_NO_edit").attr("readonly", true);
+				
+
+			
+
+		};
+		
+		function deleteRecord(a) {
+		console.log("deleteRecord");
+			
+
+				//Assign action url for the edit/add form
+				var url = /*[[@{'rbscontactdelete'}]]*/
+				$("#dataedit").attr('action', url);
+
+				//Assign selected values to the model box fields
+				$("#SRL_NO_edit").val(a.getAttribute("data-srl_no"));
+				$("#CONTACT_NAME_edit").val(a.getAttribute("data-name"));
+				$("#DESIGNATION_edit").val(a.getAttribute("data-designation"));
+				$("#PHONE_NUMBER_edit").val(a.getAttribute("data-phone"));
+				$("#EMAIL_ID_edit").val(a.getAttribute("data-email"));
+				$("#MODULE_edit").val(a.getAttribute("data-module"));
+
+				$("#datadelete").modal("toggle");
+
+			
+
+		};
+		
+
+	/*]]>*/
+</script>
+
+</head>
+<body>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+
+	<div class="container content" th:fragment="reportcontent">
+		<div class="row">
+			<div class="col-sm-12 customcol" th:if="${displaymode}=='detail'"
+				th:fragment="detail">
+				<div class="card">
+					<div class="card-header">
+						<div class="float-left">
+							<h4>BBRF CONTACT DETAIL</h4>
+
+
+						</div>
+
+
+					</div>
+
+					<div class="card-body">
+
+
+						<div style="overflow-x: auto; border-right: 1px solid #dee2e6">
+							<table class="table  table-bordered  table-hover table-sm"
+								style="margin-bottom: 0px; width: 2000px" id="glsubheadtb">
+								<thead class="thead-light">
+									<tr>
+										<th><a data-toggle="tooltip" class="editrec"
+											title="Click to add new Records"><i
+										
+												class="fa fa-plus-circle" onclick="addRecord1();"
+												aria-hidden="true"></i></a></th>
+										<th class="second_left"><a href="#" data-toggle="tooltip"
+											title="Click to Search Record"><i class="fa fa-search"
+												onclick="searchRecord();" aria-hidden="true"></i></a></th>
+										<th>Srl No</th>
+										<th>Contact Name</th>
+										<th>Designation</th>
+										<th>Mobile Number</th>
+										<th>Email ID</th>
+										<th>Module</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr th:each="continfo : ${ContactInfo}" class="ContactInfo">
+										<td class="first_left"><a data-toggle="tooltip"
+											class="editrec" title="Click to Edit this Record"><i
+												class="fas fa-edit"
+												th:classappend="${session.PERMISSIONS == 'W'}  ? addedit "
+												th:attr="data-srl_no=${continfo.SRL_NO},
+												data-name=${continfo.CONTACT_NAME},
+												data-designation=${continfo.DESIGNATION},
+												data-phone=${continfo.PHONE_NUMBER},
+												data-email=${continfo.EMAIL_ID},
+												data-module=${continfo.MODULE},
+												data-remark=${continfo.REMARKS},
+												data-report=${continfo.REPORT_SECTION},
+												data-entryuser=${continfo.ENTRY_USER},
+												data-modifyuser=${continfo.MODIFY_USER},
+												data-verifyuser=${continfo.VERIFY_USER},
+												data-entrytime=${continfo.ENTRY_TIME},
+												data-modifytime=${continfo.MODIFY_TIME},
+												data-verifytime=${continfo.VERIFY_TIME}"
+												onclick="editRecord(this)"></i></a></td>
+
+										<td class="second_left"><a data-toggle="tooltip"
+											class="editrec" title="Click to delete this Record"><i
+												th:classappend="${session.PERMISSIONS == 'W'}  ? addedit "
+												class="fas fa-minus-circle"
+												th:attr="data-srl_no=${continfo.SRL_NO},
+												data-name=${continfo.CONTACT_NAME},
+												data-designation=${continfo.DESIGNATION},
+												data-phone=${continfo.PHONE_NUMBER},
+												data-email=${continfo.EMAIL_ID},
+												data-module=${continfo.MODULE},
+												data-remark=${continfo.REMARKS},
+												data-report=${continfo.REPORT_SECTION},
+												data-entryuser=${continfo.ENTRY_USER},
+												data-modifyuser=${continfo.MODIFY_USER},
+												data-verifyuser=${continfo.VERIFY_USER},
+												data-entrytime=${continfo.ENTRY_TIME},
+												data-modifytime=${continfo.MODIFY_TIME},
+												data-verifytime=${continfo.VERIFY_TIME}"
+												onclick="deleteRecord(this)"></i></a></td>
+
+										<td th:text="${continfo.SRL_NO}">CHENNAI</td>
+										<td th:text="${continfo.CONTACT_NAME}">CHENNAI</td>
+										<td th:text="${continfo.DESIGNATION}">CHENNAI</td>
+										<td th:text="${continfo.PHONE_NUMBER}">CHENNAI</td>
+										<td th:text="${continfo.EMAIL_ID}">CHENNAI</td>
+										<td th:text="${continfo.MODULE}">CHENNAI</td>
+									</tr>
+
+
+								</tbody>
+							</table>
+
+
+							<!--  -->
+							<table th:if="${searchmsg} != null"
+								class="table  table-bordered  table-hover table-sm"
+								style="margin-bottom: 0px; width: 2000px" id="glsubheadtb">
+								<thead class="thead-light">
+									<tr>
+										<th><a data-toggle="tooltip" class="editrec"
+											title="Click to add new Records"><i
+												th:classappend="${session.PERMISSIONS == 'W'}  ? addedit "
+												class="fa fa-plus-circle" onclick="addRecord();"
+												aria-hidden="true"></i></a></th>
+										<th class="second_left"><a href="#" data-toggle="tooltip"
+											title="Click to Search Record"><i class="fa fa-search"
+												onclick="searchRecord();" aria-hidden="true"></i></a></th>
+										<th>Gl Head</th>
+										<th>Gl Sub Head Code</th>
+										<th>Gl Desc</th>
+										<th>Type</th>
+										<th>Scheme Type</th>
+										<th>Scheme Code</th>
+										<th>Assets</th>
+										<th>Liab</th>
+										<th>Assests Memo</th>
+										<th>Liab Memo</th>
+										<th>Available in MCBL</th>
+										<th>Net Flag</th>
+										<th>BLS0110</th>
+										<th>SUP0500</th>
+										<th>SUP0700</th>
+										<th>FIM0600</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="10">No Data Available</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+
+
+
+
+				</div>
+				<!-- -----------------------------------Details edit modal form----------------------------------------------------->
+	<div class="modal fade" id="addedit" th:fragment="dataedit">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Add/Edit Records</h4>
+					<button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+				<div class="modal-body" style="text-align: center">
+					<form th:object=${singledetail} id="dataedit" method="post">
+						<div class="form-group">
+							<div class="row">
+								<label class="col-sm-5" for=gl_head>SRL_NO</label> <input
+									class="form-control col-sm-5" type="text" th:field="*{SRL_NO}"
+									id="SRL_NO_edit" required />
+							</div>
+
+							<div class="row">
+								<label class="col-sm-5" for=gl_sub_head_code>Contact
+									Name</label> <input class="form-control col-sm-5" type="text"
+									th:field="*{CONTACT_NAME}" id="CONTACT_NAME_edit" required />
+							</div>
+
+							<div class="row">
+								<label class="col-sm-5" for=schm_type>Designation</label> <input
+									class="form-control col-sm-5" type="text"
+									th:field="*{DESIGNATION}" id="DESIGNATION_edit" required />
+							</div>
+
+						  <div class="row">
+								<label class="col-sm-5" for=schm_code>Phone Number</label> <input
+									class="form-control col-sm-5" type="number"
+									th:field="*{PHONE_NUMEBR}" id="PHONE_NUMBER_edit" required />
+							</div>  
+
+							<div class="row">
+								<label class="col-sm-5" for=schm_code>Mail ID</label> <input
+									class="form-control col-sm-5" type="text"
+									th:field="*{EMAIL_ID}" id="EMAIL_ID_edit" required />
+							</div>
+							<div class="row">
+								<label class="col-sm-5" for=schm_code>Module</label> <input
+									class="form-control col-sm-5" type="text" th:field="*{MODULE}"
+									id="MODULE_edit" required />
+							</div>
+
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						onclick="submit(this);">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+			</div>
+		</div>
+		<div class="float-right" th:if="${ContactInfo.totalPages} gt 1">
+			<a href="#"><i class="fas fa-caret-left fa-2x"
+				th:onclick="|showdetails('prevpage',${ContactInfo.number},${ContactInfo.totalPages});|"></i></a>
+			<input type="text" id="pageno" style="width: 30px"
+				th:value="${ContactInfo.number+1}"
+				th:onchange="|showdetails('givenpage',${ContactInfo.number},${ContactInfo.totalPages});|"></input>
+			of <font th:text="${ContactInfo.totalPages}"></font> <a href="#"><i
+				class="fas fa-caret-right fa-2x"
+				th:onclick="|showdetails('nextpage',${ContactInfo.number},${ContactInfo.totalPages});|"></i></a>
+		</div>
+	</div>
+
+	<!-- -----------------------------------Search modal form----------------------------------------------------->
+	<div class="modal fade" id="search" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Search
+						Record</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:object=${singledetail} id="searchdtl" method="post">
+						<div class="form-group">
+
+							<div class="row">
+								<label class="col-sm-5" for=gl_head>SRL_NO</label> <input
+									class="form-control col-sm-5" type="text" th:field="*{SRL_NO}"
+									id="SRL_NO" required />
+							</div>
+
+							<div class="row">
+								<label class="col-sm-5" for=gl_sub_head_code>Contact
+									Name</label> <input class="form-control col-sm-5" type="text"
+									th:field="*{CONTACT_NAME}" id="CONTACT_NAME" required />
+							</div>
+
+							<div class="row">
+								<label class="col-sm-5" for=schm_type>Designation</label> <input
+									class="form-control col-sm-5" type="text"
+									th:field="*{DESIGNATION}" id="DESIGNATION" required />
+							</div>
+
+						 	<div class="row">
+								<label class="col-sm-5" for=PHONE_NUMBER>Phone Number</label> <input
+									class="form-control col-sm-5" type="text"
+									th:field="*{PHONE_NUMEBR}" id="PHONE_NUMBER" required />
+							</div> 
+
+						</div>
+
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"
+						onclick="submitSearchRecord();">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-------------------------------------Search modal form----------------------------------------------------->
+	
+	<!-------------------------------------Details edit modal form----------------------------------------------------->
+
+
+	<!-------------------------------------Details delete modal dialog----------------------------------------------------->
+	<div class="modal fade" id="datadelete">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					Are you Sure want to delete?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						onclick="submitdataform();">Submit</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-------------------------------------Details delete modal dialog----------------------------------------------------->
+
+
+
+
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+	<div class="modal fade" id="alert">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg"></p>
+					<button type="button" class="btn btn-primary"
+						onclick="location.reload();" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/datatables/1.10.19/css/jquery.dataTables.min.css"
+	th:href="@{/webjars/datatables/1.10.19/css/jquery.dataTables.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+
+<script src="/webjars/jquery-validation/1.19.0/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.min.js}"></script>
+
+<script src="/webjars/datatables/1.10.19/js/jquery.dataTables.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/jquery.dataTables.min.js}"></script>
+<script
+	src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
+</head>
+
+<style>
+.container-manager {
+	width: 90.5%;
+	padding-left: 128px;
+	margin-right: 0;
+	margin-left: 8.5%;
+	margin-top: 130px;
+	padding-bottom: 40px;
+}
+
+.custom-checkbox {
+	width: 20px; /* Adjust width */
+	height: 20px; /* Adjust height */
+	/* Optional: add some margin */
+	margin: 0;
+	/* Optional: increase hit area */
+	cursor: pointer;
+}
+
+.btn-outline-primary {
+	border-radius: 50px; /* Optional: More rounded */
+	padding: 10px 20px;
+	width: 30% /* Optional: Adjust padding */
+}
+
+.btn-outline-primary2 {
+	border-radius: 50px; /* Optional: More rounded */
+	padding: 10px 20px;
+	width: 30%; /* Optional: Adjust padding */
+	background-color: #007bff;
+	color: white;
+}
+
+.button_container {
+	display: flex;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield; /* Firefox */
+}
+</style>
+<script type="text/javascript">
+	function submitForm(mode) {
+
+		const newUrl = `?formmode=${mode}`;
+		const currentUrl = window.location.href;
+		const baseUrl = currentUrl.split('?')[0];
+		if (!currentUrl.includes(`formmode=${mode}`)) {
+
+			window.location.href = baseUrl + newUrl;
+		}
+
+	}
+
+	function navigateToForm(element, action, type) {
+		// Get the customer ID from the clicked element
+		var custid = element.getAttribute('data-custid');
+		console.log(custid);
+		console.log(action);
+
+	
+		var baseUrl = `http://localhost:8086/BRF/kyc/${type}`;
+		var url;
+
+		if (action === 'view') {
+			// Navigate to the view page with custid
+			url = `${baseUrl}?custid=${custid}&formmode=view`;
+		} else if (action === 'verify') {
+			// Navigate to the verify page with custid
+			url = `${baseUrl}?custid=${custid}&formmode=verify`;
+		}
+
+		// Redirect to the constructed URL
+		if (url) {
+			window.location.href = url;
+		}
+	}
+</script>
+
+
+<title>XBRL</title>
+<body>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+
+	<div class="container-manager">
+		<div class="card">
+			<div class="card-header">
+				<h4>KYC</h4>
+			</div>
+			<div class="card-body">
+				<form id="kycForm" action="kyc" method="post">
+					<div class="button_container card-title">
+						<!-- 	th:classappend="${formmode == 'individual'} ? 'btn-primary' : 'btn-outline-primary'" -->
+						<div
+							style="width: 50%; display: flex; align-items: center; justify-content: center;">
+							<button type="button" class="btn"
+								th:classappend="${formmode == 'individual'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
+								id="individual" onclick="submitForm(this.id)">KYC
+								Individual</button>
+						</div>
+
+						<div
+							style="width: 50%; display: flex; align-items: center; justify-content: center;">
+							<button type="button" class="btn"
+								th:classappend="${formmode == 'corporate'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
+								id="corporate" onclick="submitForm(this.id)">KYC
+								Corporate</button>
+						</div>
+
+					</div>
+				</form>
+
+
+
+				<div class="table-responsive" th:if="${formmode == 'individual'}">
+					<table class="table table-bordered  table-hover table-sm"
+						id="usertable">
+						<thead>
+							<tr>
+								<th>Customer ID</th>
+								<th>Name</th>
+								<th>Account Number</th>
+								<th>Account Type</th>
+								<th>Account Opening Date</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="row : ${reportlist}">
+								<td th:text="${row[0]}"></td>
+								<td th:text="${row[1]}"></td>
+								<td th:text="${row[2]}"></td>
+								<td th:text="${row[3]}"></td>
+								<td th:text="${#dates.format(row[4], 'dd-MM-yyyy')}"></td>
+
+								<td align="center" width="100px">
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle" type="button"
+											id="dropdownMenuButton" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">Action</button>
+										<div class="dropdown-menu"
+											aria-labelledby="dropdownMenuButton">
+											<a class="dropdown-item" th:attr="data-custid=${row[0]}"
+												onclick="navigateToForm(this,'view','individual')">View</a>
+											<a class="dropdown-item" th:if="${row[5].toString() == 'Y'}"
+												th:attr="data-custid=${row[0]}"
+												onclick="navigateToForm(this,'verify','individual')">Verify</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+
+				<div class="table-responsive" th:if="${formmode == 'corporate'}">
+					<table class="table table-bordered  table-hover table-sm"
+						id="usertable">
+						<thead>
+							<tr>
+
+								<th>Customer ID</th>
+								<th>Company Name</th>
+								<th>Account Number</th>
+								<th>Trade License Number</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="row : ${kycData}">
+								<td th:text="${row[0]}"></td>
+								<td th:text="${row[1]}"></td>
+								<td th:text="${row[2]}"></td>
+								<td th:text="${row[3]}"></td>
+
+
+								<td align="center" width="100px">
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle" type="button"
+											id="dropdownMenuButton" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">Action</button>
+										<div class="dropdown-menu"
+											aria-labelledby="dropdownMenuButton">
+											<a class="dropdown-item" th:attr="data-custid=${row[0]}"
+												onclick="navigateToForm(this,'view','corporate')">View</a> <a
+												class="dropdown-item" th:if="${row[4].toString() == 'Y'}"
+												th:attr="data-custid=${row[0]}"
+												onclick="navigateToForm(this,'verify','corporate')">Verify</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

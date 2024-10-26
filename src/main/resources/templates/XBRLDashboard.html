@@ -1,0 +1,153 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/datatables/1.10.19/css/jquery.dataTables.min.css"
+	th:href="@{/webjars/datatables/1.10.19/css/jquery.dataTables.min.css}">
+
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<script src="/webjars/datatables/1.10.19/js/jquery.dataTables.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/jquery.dataTables.min.js}"></script>
+<script
+	src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
+
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/chartjs/2.8.0/Chart.min.css"
+	th:href="@{webjars/chartjs/2.8.0/Chart.min.css}">
+<script src="webjars/chartjs/2.8.0/Chart.min.js"
+	th:src="@{webjars/chartjs/2.8.0/Chart.min.js}"></script>
+
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script>
+	$(function() {
+
+		$("#replist").DataTable({
+			
+			"info": false,
+			"lengthChange": false
+
+		});
+
+		/* $("#replist_length").parent().remove();
+		$("#replist_info").parent().remove();
+		 */
+	});
+</script>
+
+<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	$(function() {
+		var completed = /*[[${completed}]]*/0;
+		var uncompleted = /*[[${uncompleted}]]*/0;
+
+		var ctxL = document.getElementById("pieChart").getContext('2d');
+		var myLineChart = new Chart(ctxL, {
+			type : 'pie',
+			data : {
+				labels : [ "Completed", "Un Completed" ],
+				datasets : [ {
+					label : "My First dataset",
+					data : [ completed, uncompleted ],
+					backgroundColor : [ 'rgba(102,153,51,1)',
+							'rgba(105, 0, 132, .2)' ],
+					borderColor : [ 'rgba(102,153,51,1)',
+							'rgba(200, 99, 132, .7)' ],
+					borderWidth : 2
+				} ]
+			},
+			options : {
+				responsive : true
+			}
+		});
+
+	});
+
+	/*]]>*/
+</script>
+
+<style>
+#replist_filter {
+	padding-left: 100px;
+}
+
+/* #replist>tbody>tr>td {
+	line-height: 10px;
+} */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	padding: 0px;
+}
+
+</style>
+</head>
+<title>XBRL</title>
+<body>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+	<div class="container content">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>DashBoard</h4>
+					</div>
+					<div class="row card-body">
+						<div class="col-lg-6" style="padding-top: 145px">
+							<canvas id="pieChart"></canvas>
+						</div>
+						<div class="col-sm-6" style="height:600px">
+							<table class="table table-bordered  table-hover table-sm" style="width: 100%" id="replist">
+								<thead class="thead-light">
+									<tr>
+										<th>Report Id</th>
+										<th>Frequency</th>
+										<th>DueDate</th>
+										<th>Completed</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="report : ${reportList}">
+										<td th:text="${report.reportId}"
+											th:title="${report.reportName}">Report Id</td>
+										<td th:text="${report.frequency}">Report Id</td>
+										<td
+											th:text="${#dates.format(report.report_date,'dd-MM-yyyy')}">Report
+											Id</td>
+										<td th:text="${report.completedFlg}">Report Id</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

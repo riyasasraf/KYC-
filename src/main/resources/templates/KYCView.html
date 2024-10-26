@@ -1,0 +1,1623 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/datatables/1.10.19/css/jquery.dataTables.min.css"
+	th:href="@{/webjars/datatables/1.10.19/css/jquery.dataTables.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+
+<script src="/webjars/jquery-validation/1.19.0/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.min.js}"></script>
+
+<script src="/webjars/datatables/1.10.19/js/jquery.dataTables.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/jquery.dataTables.min.js}"></script>
+<script
+	src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
+</head>
+
+<style>
+.container-manager {
+	width: 90.5%;
+	padding-left: 128px;
+	margin-right: 0;
+	margin-left: 8.5%;
+	margin-top: 80px;
+	margin-top: 80px;
+	padding-bottom: 40px;
+}
+</style>
+<script type="text/javascript">
+// Assign the Thymeleaf variable to a JavaScript variable
+var data = /*[[${data}]]*/ 'No data'; // Default value if data is null
+
+// Print to console
+console.log("Data from Controller:", data);
+</script>
+
+
+<title>XBRL</title>
+<body>
+	<div th:insert="BGLSHeaderMenu :: header"></div>
+	<div class="container-manager">
+		<div class="row">
+			<div class="col-sm-11 ml-5 mt-2">
+				<div class="card">
+					<div class="card-header "
+						style="background-color: #e9ecef; height: 50px">
+
+						<div class="float-left">
+							<h6 style="font-size: 1.2rem; color: black;">KYC</h6>
+						</div>
+
+					</div>
+					<form action="" id="individual_form">
+						<div class="card-body">
+							<h2>Customer Information</h2>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="Customer_id" title="Customer ID">Customer
+										ID</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Customer_id" id="Customer_id"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Account_type" title="Account Type">Acct
+										Type</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Account_type" id="Account_type"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Name" title="Name (As per Passport)">Name</label>
+								</div>
+								<div class="col-sm-2 d-flex align-items-center">
+									<input type="text" name="Name" id="Name"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Account_number" title="Account Number">Account
+										No</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Account_number" id="Account_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<!-- ----r2----- -->
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="Date_of_birth" title="Date of Birth">Date
+										of Birth</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Date_of_birth" id="Date_of_birth"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Place_of_birth" title="Place of Birth">Place
+										of Birth</label>
+								</div>
+								<div class="col-sm-2 d-flex align-items-center">
+									<input type="text" name="Place_of_birth" id="Place_of_birth"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Nationality" title="Nationality">Nationality</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Nationality" id="Nationality"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Account_opening_date" title="Account Opening Date">Acct
+										Opening</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Account_opening_date"
+										id="Account_opening_date"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<!-- ----r3---------- -->
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="Country_of_citizenship"
+										title="Country of Citizenship">Country of Cit.</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Country_of_citizenship"
+										id="Country_of_citizenship"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Country_of_current_residency"
+										title="Country of Current Residency">Curr. Residency</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Country_of_current_residency"
+										id="Country_of_current_residency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Occupation" title="Occupation">Occupation</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Occupation" id="Occupation"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Business_activity" title="Line of Business">Line
+										of Business</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Business_activity"
+										id="Business_activity"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<!-- ----r4---------- -->
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="Annual_income" title="Annual Income">Annual
+										Income</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Annual_income" id="Annual_income"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Source_of_funds" title="Source of Funds">Source
+										of Funds</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Source_of_funds" id="Source_of_funds"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Purpose_of_account_opening"
+										title="Purpose of Account">Purpose of Acc.</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Purpose_of_account_opening"
+										id="Purpose_of_account_opening"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Tax_registration" title="Tax Registration">Tax
+										Registration</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Tax_registration"
+										id="Tax_registration"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<!-- ----r5---------- -->
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="Tax_id_number" title="Tax ID Number">Tax ID
+										Number</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Tax_id_number" id="Tax_id_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<hr>
+
+							<!-- Primary Address Section -->
+							<p>Primary Address</p>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- First Row -->
+								<div class="col-sm-1">
+									<label for="primary_address" title="Primary Address">Address</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="primary_address" id="primary_address"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="primary_address_country" title="Country">Country</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="primary_address_country"
+										id="primary_address_country"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="primary_address_city" title="City">City</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="primary_address_city"
+										id="primary_address_city"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="primary_address_po_box" title="PO Box">PO
+										Box</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="primary_address_po_box"
+										id="primary_address_po_box"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Second Row -->
+								<div class="col-sm-1">
+									<label for="mobile_number" title="Mobile Number">Mobile
+										No</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Mobile_number" id="mobile_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="phone_number1" title="Phone Number 1">Phone
+										No 1</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name=Primary_telephone id="phone_number1"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="phone_number2" title="Phone Number 2">Phone
+										No 2</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name=Secondary_telephone id="phone_number2"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="email" title="Email Address">Email</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="email" name="Email_id" id="email"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+
+							</div>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="primary_residential_status"
+										title=" Residential Status">Res. Status</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Residential_status_changed"
+										id="primary_residential_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="primary_new_country" title="New Country">New
+										Country</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="New_country_of_residency"
+										id="primary_new_country"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="primary_new_city" title="New City">New City</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="New_city_of_residency"
+										id="primary_new_city"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+
+								<!-- Fifth Row -->
+								<div class="col-sm-1">
+									<label for="primary_new_po_box" title="New PO Box">New
+										PO Box</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="New_po_box_of_residency"
+										id="primary_new_po_box"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+
+
+							</div>
+
+							<hr>
+							<p>Joint Holder 1 Information</p>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- First Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_1_name" title="Joint Holder 1 Name">Name</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_name"
+										id="joint_holder_1_name"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_address"
+										title="Joint Holder 1 Address">Address</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_address"
+										id="joint_holder_1_address"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_country"
+										title="Joint Holder 1 Country">Country</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_address_country"
+										id="joint_holder_1_country"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_city" title="Joint Holder 1 City">City</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_address_city"
+										id="joint_holder_1_city"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Second Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_1_po_box"
+										title="Joint Holder 1 PO Box">PO Box</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_address_po_box"
+										id="joint_holder_1_po_box"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_mobile"
+										title="Joint Holder 1 Mobile">Mobile No</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_mobile"
+										id="joint_holder_1_mobile"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_primary_tel"
+										title="Joint Holder 1 Primary Tel">Primary Tel</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_primary_telephone"
+										id="joint_holder_1_primary_tel"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_secondary_tel"
+										title="Joint Holder 1 Secondary Tel">Secondary Tel</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_secondary_telephone"
+										id="joint_holder_1_secondary_tel"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Third Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_1_email" title="Joint Holder 1 Email">Email
+										ID</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="email" name="Joint_holder1_email"
+										id="joint_holder_1_email"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_residential_status"
+										title="Joint Holder 1 Residential Status">Res. Status</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text"
+										name="Joint_holder1_residential_status_changed"
+										id="joint_holder_1_residential_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_new_country"
+										title="Joint Holder 1 New Country">New Country</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text"
+										name="Joint_holder1_new_country_of_residency"
+										id="joint_holder_1_new_country"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_1_new_city"
+										title="Joint Holder 1 New City">New City</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_new_city_of_residency"
+										id="joint_holder_1_new_city"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Fifth Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_1_new_po_box"
+										title="Joint Holder 1 New PO Box">New PO Box</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder1_new_po_box_of_residency"
+										id="joint_holder_1_new_po_box"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+
+								<div class="col-sm-9"></div>
+							</div>
+
+							<hr>
+							<p>Joint Holder 2 Information</p>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- First Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_2_name" title="Joint Holder 2 Name">Name</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="joint_holder_2_name"
+										id="Joint_holder2_name"
+										class="form-control form-control-sm bg-white border border-dark"
+										required />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_address"
+										title="Joint Holder 2 Address">Address</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder2_address"
+										id="joint_holder_2_address"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_country"
+										title="Joint Holder 2 Country">Country</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder2_address_country"
+										id="joint_holder_2_country"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_city" title="Joint Holder 2 City">City</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder2_address_city"
+										id="joint_holder_2_city"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Second Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_2_po_box"
+										title="Joint Holder 2 PO Box">PO Box</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder2_address_po_box"
+										id="joint_holder_2_po_box"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_mobile"
+										title="Joint Holder 2 Mobile">Mobile No</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="tel" name="Joint_holder2_mobile"
+										id="joint_holder_2_mobile"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_primary_tel"
+										title="Joint Holder 2 Primary Tel">Primary Tel</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="tel" name="Joint_holder2_primary_telephone"
+										id="joint_holder_2_primary_tel"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_secondary_tel"
+										title="Joint Holder 2 Secondary Tel">Secondary Tel</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="tel" name="Joint_holder2_secondary_telephone"
+										id="joint_holder_2_secondary_tel"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Third Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_2_email" title="Joint Holder 2 Email">Email
+										ID</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="email" name="Joint_holder2_email"
+										id="joint_holder_2_email"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_residential_status"
+										title="Joint Holder 2 Residential Status">Res. Status</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text"
+										name="Joint_holder2_residential_status_changed"
+										id="joint_holder_2_residential_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_new_country"
+										title="Joint Holder 2 New Country">New Country</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text"
+										name="Joint_holder2_new_country_of_residency"
+										id="joint_holder_2_new_country"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="joint_holder_2_new_city"
+										title="Joint Holder 2 New City">New City</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_holder2_new_city_of_residency"
+										id="joint_holder_2_new_city"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Fifth Row -->
+								<div class="col-sm-1">
+									<label for="joint_holder_2_new_po_box"
+										title="Joint Holder 2 New PO Box">New PO Box</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="joint_holder_2_new_po_box"
+										id="Joint_holder2_new_po_box_of_residency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-9"></div>
+							</div>
+							<hr>
+
+
+							<h4>Nationality and Documents</h4>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<p class="col-sm-3">Account Holder</p>
+								<p class="col-sm-3">Primary Account Holder</p>
+								<p class="col-sm-3">Joint Account Holder 1</p>
+								<p class="col-sm-3">Joint Account Holder 2</p>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- First Row -->
+								<div class="col-sm-3">
+									<label for="nationality_primary"
+										title="Nationality of Primary Account Holder"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Nationality </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Primary_account_holder_nationality"
+										id="nationality_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_account_holder_1_nationality"
+										id="nationality_joint1"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_account_holder_2_nationality"
+										id="nationality_joint2"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-3">
+									<label for="passport_primary"
+										title="Passport Number of Primary Account Holder"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Passport </label>
+								</div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="passport_primary_yes"
+											name="Primary_account_holder_passport" value="yes" /> <label
+											for="passport_primary_yes">Yes</label> <input type="radio"
+											id="passport_primary_no"
+											name="Primary_account_holder_passport" value="no" /> <label
+											for="passport_primary_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="passport_joint1_yes"
+											name="Joint_account_holder_1_passport" value="yes" /> <label
+											for="passport_joint1_yes">Yes</label> <input type="radio"
+											id="passport_joint1_no"
+											name="Joint_account_holder_1_passport" value="no" /> <label
+											for="passport_joint1_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="passport_joint2_yes"
+											name="Joint_account_holder_2_passport" value="yes" /> <label
+											for="passport_joint2_yes">Yes</label> <input type="radio"
+											id="passport_joint2_no"
+											name="Joint_account_holder_2_passport" value="no" /> <label
+											for="passport_joint2_no">No</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-3">
+									<label for="visa_primary"
+										title="Visa or EID of Primary Account Holder"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Visa/EID </label>
+								</div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="visa_primary_yes"
+											name="Primary_account_holder_visa_eid" value="yes" /> <label
+											for="visa_primary_yes">Yes</label> <input type="radio"
+											id="visa_primary_no" name="Primary_account_holder_visa_eid"
+											value="no" /> <label for="visa_primary_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="visa_joint1_yes"
+											name="Joint_account_holder_1_visa_eid" value="yes" /> <label
+											for="visa_joint1_yes">Yes</label> <input type="radio"
+											id="visa_joint1_no" name="Joint_account_holder_1_visa_eid"
+											value="no" /> <label for="visa_joint1_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="visa_joint2_yes"
+											name="Joint_account_holder_2_visa_eid" value="yes" /> <label
+											for="visa_joint2_yes">Yes</label> <input type="radio"
+											id="visa_joint2_no" name="Joint_account_holder_2_visa_eid"
+											value="no" /> <label for="visa_joint2_no">No</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-3">
+									<label for="residence_address_primary"
+										title="Valid Residence Address of Primary Account Holder"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Residence Addr.</label>
+								</div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="residence_address_primary_yes"
+											name="Primary_account_holder_valid_residence" value="yes" />
+										<label for="residence_address_primary_yes">Yes</label> <input
+											type="radio" id="residence_address_primary_no"
+											name="Primary_account_holder_valid_residence" value="no" />
+										<label for="residence_address_primary_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="residence_address_joint1_yes"
+											name="Joint_account_holder_1_valid_residence" value="yes" />
+										<label for="residence_address_joint1_yes">Yes</label> <input
+											type="radio" id="residence_address_joint1_no"
+											name="Joint_account_holder_1_valid_residence" value="no" />
+										<label for="residence_address_joint1_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="residence_address_joint2_yes"
+											name="Joint_account_holder_2_valid_residence" value="yes" />
+										<label for="residence_address_joint2_yes">Yes</label> <input
+											type="radio" id="residence_address_joint2_no"
+											name="Joint_account_holder_2_valid_residence" value="no" />
+										<label for="residence_address_joint2_no">No</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<!-- Second Row -->
+								<div class="col-sm-3">
+									<label for="proof_income_primary"
+										title="Proof of Source of Income for Primary Account Holder"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Proof of Income </label>
+								</div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="proof_income_primary_yes"
+											name="Primary_account_holder_proof_source_income" value="yes" />
+										<label for="proof_income_primary_yes">Yes</label> <input
+											type="radio" id="proof_income_primary_no"
+											name="Primary_account_holder_proof_source_income" value="no" />
+										<label for="proof_income_primary_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="proof_income_joint1_yes"
+											name="Joint_account_holder_1_proof_source_income" value="yes" />
+										<label for="proof_income_joint1_yes">Yes</label> <input
+											type="radio" id="proof_income_joint1_no"
+											name="Joint_account_holder_1_proof_source_income" value="no" />
+										<label for="proof_income_joint1_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<div>
+										<input type="radio" id="proof_income_joint2_yes"
+											name="Joint_account_holder_2_proof_source_income" value="yes" />
+										<label for="proof_income_joint2_yes">Yes</label> <input
+											type="radio" id="proof_income_joint2_no"
+											name="Joint_account_holder_2_proof_source_income" value="no" />
+										<label for="proof_income_joint2_no">No</label>
+									</div>
+								</div>
+							</div>
+
+							<hr>
+
+							<p>Linked Accounts</p>
+							<!-- Linked Account Header -->
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<p class="col-sm-2">Columns</p>
+								<div class="col-sm-1"></div>
+								<p class="col-sm-2">Linked Account 1</p>
+								<p class="col-sm-2">Linked Account 2</p>
+								<p class="col-sm-2">Linked Account 3</p>
+								<p class="col-sm-2">Linked Account 4</p>
+							</div>
+
+							<!-- Linked Account Fields -->
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="linked_account1_name" title="Linked Account 1 Name">Name</label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account1_name"
+										id="linked_account1_name"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account2_name"
+										id="linked_account2_name"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account2_name"
+										id="linked_account3_name"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account4_name"
+										id="linked_account4_name"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="linked_account1_number"
+										title="Linked Account 1 Number">Number</label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account1_number"
+										id="linked_account1_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account2_number"
+										id="linked_account2_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account3_number"
+										id="linked_account3_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account4_number"
+										id="linked_account4_number"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="linked_account1_type" title="Linked Account 1 Type">Type</label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account1_type"
+										id="linked_account1_type"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account2_type"
+										id="linked_account2_type"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account3_type"
+										id="linked_account3_type"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account4_type"
+										id="linked_account4_type"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="linked_account1_opening_date"
+										title="Linked Account 1 Opening Date">Opening Date</label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="date" name="Linked_account1_opening_Date"
+										id="linked_account1_opening_date"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Linked_account2_opening_date"
+										id="linked_account2_opening_date"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Linked_account3_opening_date"
+										id="linked_account3_opening_date"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Linked_account4_opening_date"
+										id="linked_account4_opening_date"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="linked_account1_currency"
+										title="Linked Account 1 Currency">Currency</label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account1_currency"
+										id="linked_account1_currency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account2_currency"
+										id="linked_account2_currency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account3_currency"
+										id="linked_account3_currency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account4_currency"
+										id="linked_account4_currency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="linked_account1_status"
+										title="Linked Account 1 Status">Status</label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account1_status"
+										id="linked_account1_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account2_status"
+										id="linked_account2_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account3_status"
+										id="linked_account3_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Linked_account4_status"
+										id="linked_account4_status"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<hr>
+							<p>Account and Transaction Details</p>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="account_satisfactory" title="Account Satisfactory">
+										Account is satisfactory? </label>
+								</div>
+								<div class="col-sm-1">
+									<div>
+										<input type="radio" id="account_satisfactory_yes"
+											name=Account_satisfactory value="yes" /> <label
+											for="account_satisfactory_yes">Yes</label> <input
+											type="radio" id="account_satisfactory_no"
+											name="account_satisfactory" value="no" /> <label
+											for="account_satisfactory_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-2">
+									<label for="high_value_transactions"
+										title="High Value Transactions Observed"> High Value
+										transactions observed </label>
+								</div>
+								<div class="col-sm-1">
+									<div>
+										<input type="radio" id="high_value_transactions_yes"
+											name="High_value_transactions_observed" value="yes" /> <label
+											for="high_value_transactions_yes">Yes</label> <input
+											type="radio" id="high_value_transactions_no"
+											name="High_value_transactions_observed" value="no" /> <label
+											for="high_value_transactions_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-2">
+									<label for="suspicion_observed" title="Suspicion Observed">
+										If any suspicion is observed </label>
+								</div>
+								<div class="col-sm-1">
+									<div>
+										<input type="radio" id="suspicion_observed_yes"
+											name="Suspicion_observed" value="yes" /> <label
+											for="suspicion_observed_yes">Yes</label> <input type="radio"
+											id="suspicion_observed_no" name="Suspicion_observed"
+											value="no" /> <label for="suspicion_observed_no">No</label>
+									</div>
+								</div>
+								<div class="col-sm-1">
+									<label for="suspicion_observed_details"
+										title="Suspicion Observed Details"> If yes, specify- </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Suspicion_observed_details"
+										id="suspicion_observed_details"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="high_value_details_1"
+										title="High Value Transactions Details 1"> High Value
+										transactions Details </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="High_value_transactions_details1"
+										id="high_value_details_1"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="High_value_transactions_details2"
+										id="high_value_details_2"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="High_value_transactions_details3"
+										id="high_value_details_3"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="High_value_transactions_details4"
+										id="high_value_details_4"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">
+									<label for="branch_satisfied"
+										title="Branch Satisfied with Transactions"> Branch is
+										satisfied </label>
+								</div>
+								<div class="col-sm-1">
+									<input type="radio" id="branch_satisfied_yes"
+										name="Branch_satisfied_with_transactions" value="yes" /> <label
+										for="branch_satisfied_yes">Yes</label> <input type="radio"
+										id="branch_satisfied_no"
+										name="Branch_satisfied_with_transactions" value="no" /> <label
+										for="branch_satisfied_no">No</label>
+								</div>
+								<div class="col-sm-2">
+									<label for="transaction_commensurate"
+										title="Transaction Commensurate"> Nature/Volume of
+										customer profile </label>
+								</div>
+								<div class="col-sm-1">
+									<input type="radio" id="transaction_commensurate_yes"
+										name="Transaction_commensurate" value="yes" /> <label
+										for="transaction_commensurate_yes">Yes</label> <input
+										type="radio" id="transaction_commensurate_no"
+										name="Transaction_commensurate" value="no" /> <label
+										for="transaction_commensurate_no">No</label>
+								</div>
+								<div class="col-sm-2">
+									<label for="supporting_documents"
+										title="Supporting Document Obtained"> Transactions
+										supporting document </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="radio" id="Supporting_document_obtained_yes"
+										name="Supporting_document_obtained" value="yes" /> <label
+										for="Supporting_document_obtained_yes">Yes</label> <input
+										type="radio" id="Supporting_document_obtained_no"
+										name="Supporting_document_obtained" value="no" /> <label
+										for="Supporting_document_obtained_no">No</label>
+								</div>
+							</div>
+
+							<hr>
+							<p>Turnover and Transaction Info</p>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="current_turnover" title="Current Turnover"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Curr Turnover </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="number" name="Current_turnover"
+										id="current_turnover"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="expected_turnover" title="Expected Turnover"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Expe Turnover </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="number" name="Expected_turnover"
+										id="expected_turnover"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="transaction_frequency"
+										title="Transaction Frequency"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Debit </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="number" name="transaction_frequency"
+										id="transaction_frequency"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="known_countries_credit"
+										title="Known Countries of Transaction 1"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Credit </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="number" name="known_countries_credit"
+										id="known_countries_credit"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="transaction_frequency_2"
+										title="Transaction Frequency"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Frequency </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Transaction_frequency"
+										id="transaction_frequency_2"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="transaction_volume" title="Transaction Volume"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Volume </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="number" name="Expected_transaction_volume"
+										id="transaction_volume"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="Expected_transaction_types"
+										title="Expected_transaction_types"
+										style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+										Type of transactions </label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Expected_transaction_types"
+										id="Expected_transaction_types"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<p>Known country with customer conduct transactions:</p>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1" align="right">1.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Known_countries_of_transaction_1"
+										id="known_country_1"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">2.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Known_countries_of_transaction_2"
+										id="known_country_2"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">3.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Known_countries_of_transaction_3"
+										id="known_country_3"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">4.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Known_countries_of_transaction_4"
+										id="known_country_4"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<p>Known or expected countries related to transactional
+								activity (other than mentioned above):</p>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1" align="right">1.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Other_expected_countries_1"
+										id="expected_country_1"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">2.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Other_expected_countries_2"
+										id="expected_country_2"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">3.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Other_expected_countries_3"
+										id="expected_country_3"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">4.</div>
+								<div class="col-sm-2">
+									<input type="text" name="Other_expected_countries_4"
+										id="expected_country_4"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+
+							<hr>
+
+							<p>C. Sanctions Screening & Due Diligence – Primary Account
+								Holder</p>
+							<p>If any positive match, please mention the sanctions list
+								as below</p>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1" align="right">UAE</div>
+								<div class="col-sm-1">
+									<input type="text" name="Other_expected_countries_1"
+										id="sanctions_uae_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">UN</div>
+								<div class="col-sm-1">
+									<input type="text" name="Un" id="sanctions_un_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+
+								<div class="col-sm-1" align="right">OFAC</div>
+								<div class="col-sm-1">
+									<input type="text" name="Ofac" id="sanctions_ofac_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">HMT</div>
+								<div class="col-sm-1">
+									<input type="text" name="Hmt" id="sanctions_hmt_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">EU</div>
+								<div class="col-sm-1">
+									<input type="text" name="Eu" id="sanctions_eu_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">Others</div>
+								<div class="col-sm-1">
+									<input type="text" name="Others" id="sanctions_others_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">CBUAE BBL</div>
+								<div class="col-sm-1">
+									<input type="radio" id="bbl_yes_primary" name="Cbu_check_done"
+										value="yes" /> <label for="bbl_yes_primary">Yes</label> <input
+										type="radio" id="bbl_no_primary" name="Cbu_check_done"
+										value="no" /> <label for="bbl_no_primary">No</label>
+								</div>
+								<div class="col-sm-2">Google Open Media Search</div>
+								<div class="col-sm-1">
+									<input type="radio" id="google_yes_primary"
+										name="Google_media_search" value="yes" /> <label
+										for="google_yes_primary">Yes</label> <input type="radio"
+										id="google_no_primary" name="Google_media_search" value="no" />
+									<label for="google_no_primary">No</label>
+								</div>
+
+								<div class="col-sm-2">Internal Deny List Name Screening</div>
+								<div class="col-sm-1">
+									<input type="radio" id="denylist_yes_primary"
+										name="Internal_deny_list_screening" value="yes" /> <label
+										for="denylist_yes_primary">Yes</label> <input type="radio"
+										id="denylist_no_primary" name="Internal_deny_list_screening"
+										value="no" /> <label for="denylist_no_primary">No</label>
+								</div>
+								<div class="col-sm-2">Suspicion Observed Details</div>
+								<div class="col-sm-2">
+									<input type="text" name="adverse_info_details_primary"
+										id="adverse_info_details_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">Document to Discount Red Flag</div>
+								<div class="col-sm-2">
+									<input type="text" name="Supporting_document_obtained_2"
+										id="provide_reason_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+							<hr>
+							<p>C. Sanctions Screening & Due Diligence – Joint Account
+								Holder 1, 2, 3.</p>
+							<p>If any positive match, please mention the sanctions list
+								as below:</p>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1" align="right">UAE</div>
+								<div class="col-sm-1">
+									<input type="text" name="Joint_uae" id="sanctions_uae_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">UN</div>
+								<div class="col-sm-1">
+									<input type="text" name="Joint_un" id="sanctions_un_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+
+								<div class="col-sm-1" align="right">OFAC</div>
+								<div class="col-sm-1">
+									<input type="text" name="Joint_ofac" id="sanctions_ofac_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">HMT</div>
+								<div class="col-sm-1">
+									<input type="text" name="Joint_hmt" id="sanctions_hmt_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">EU</div>
+								<div class="col-sm-1">
+									<input type="text" name="Joint_eu" id="sanctions_eu_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1" align="right">Others</div>
+								<div class="col-sm-1">
+									<input type="text" name="Joint_others"
+										id="sanctions_others_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">CBUAE BBL</div>
+								<div class="col-sm-1">
+									<input type="radio" id="bbl_yes_joint"
+										name="Joint_cbu_check_done" value="yes" /> <label
+										for="bbl_yes_joint">Yes</label> <input type="radio"
+										id="bbl_no_joint" name="Joint_cbu_check_done" value="no" /> <label
+										for="bbl_no_joint">No</label>
+								</div>
+								<div class="col-sm-2">Google Open Media Search</div>
+								<div class="col-sm-1">
+									<input type="radio" id="google_yes_joint"
+										name="Joint_google_media_search" value="yes" /> <label
+										for="google_yes_joint">Yes</label> <input type="radio"
+										id="google_no_joint" name="Joint_google_media_search"
+										value="no" /> <label for="google_no_joint">No</label>
+								</div>
+
+								<div class="col-sm-2">Internal Deny List Name Screening</div>
+								<div class="col-sm-1">
+									<input type="radio" id="denylist_yes_joint"
+										name="Joint_internal_deny_list_screening" value="yes" /> <label
+										for="denylist_yes_joint">Yes</label> <input type="radio"
+										id="denylist_no_joint"
+										name="Joint_internal_deny_list_screening" value="no" /> <label
+										for="denylist_no_joint">No</label>
+								</div>
+								<div class="col-sm-2">Suspicion Observed Details</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_suspicion_observed"
+										id="adverse_info_details_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">Document to Discount Red Flag</div>
+								<div class="col-sm-2">
+									<input type="text" name="Joint_supporting_document_obtained"
+										id="provide_reason_joint"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<hr>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">Whether customer is PEP</div>
+								<div class="col-sm-2">
+									<input type="radio" id="pep_yes" name="Is_pep" value="yes" />
+									<label for="pep_yes">Yes</label> <input type="radio"
+										id="pep_no" name="Is_pep" value="no" /> <label for="pep_no">No</label>
+									<input type="radio" id="pep_na" name="is_pep" value="na" /> <label
+										for="pep_na">NA</label>
+								</div>
+								<div class="col-sm-2">Senior Management Approval</div>
+								<div class="col-sm-2">
+									<input type="radio" id="approval_yes"
+										name="Senior_management_approval" value="yes" /> <label
+										for="approval_yes">Yes</label> <input type="radio"
+										id="approval_no" name="Senior_management_approval" value="no" />
+									<label for="approval_no">No</label> <input type="radio"
+										id="approval_na" name="Senior_management_approval" value="na" />
+									<label for="approval_na">NA</label>
+								</div>
+								<div class="col-sm-2">Requesting Foreign</div>
+								<div class="col-sm-2">
+									<input type="radio" id="request_foreign_yes"
+										name="Foreign_currency_request" value="yes" /> <label
+										for="request_foreign_yes">Yes</label> <input type="radio"
+										id="request_foreign_no" name="Foreign_currency_request"
+										value="no" /> <label for="request_foreign_no">No</label> <input
+										type="radio" id="request_foreign_na"
+										name="Foreign_currency_request" value="na" /> <label
+										for="request_foreign_na">NA</label>
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-2">Customer Risk</div>
+								<div class="col-sm-2">
+									<input type="radio" id="risk_high" name="Customer_risk"
+										value="high" /> <label for="risk_high">High</label> <input
+										type="radio" id="risk_medium" name="Customer_risk"
+										value="medium" /> <label for="risk_medium">Medium</label> <input
+										type="radio" id="risk_low" name="Customer_risk" value="low" />
+									<label for="risk_low">Low</label>
+								</div>
+								<div class="col-sm-2">Senior Management Approval FC</div>
+								<div class="col-sm-2">
+									<input type="radio" id="Senior_approval_yes"
+										name="Senior_management_approval_fc" value="yes" /> <label
+										for="Senior_approval_yes">Yes</label> <input type="radio"
+										id="Senior_approval_no" name="Senior_management_approval_fc"
+										value="no" /> <label for="Senior_approval_no">No</label> <input
+										type="radio" id="Senior_approval_na"
+										name="Senior_management_approval_fc" value="na" /> <label
+										for="Senior_approval_na">NA</label>
+								</div>
+							</div>
+
+
+							<hr>
+
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-4">Reason for categorizing customer
+									risk as High risk. (only for High risk customer) Analysis of
+									underline ML/TF risk.</div>
+								<div class="col-sm-2">
+									<input type="text" name="High_risk_reason"
+										id="High_risk_reason"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-4">Observations of Bank official (List
+									any adverse features if any found post CDD/ECDD)</div>
+								<div class="col-sm-2">
+									<input type="text" name="Observations_of_bank_official"
+										id="Observations_of_bank_official"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-6">Further, Due Diligence done by the
+									Branch for account being categorized as high risk. ( provide
+									the supporting document and information) (only for High risk
+									customer)</div>
+								<div class="col-sm-2">
+									<input type="text" name="Further_due_diligence"
+										id="Further_due_diligence"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-5">Account Opening Officer</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="signature_primary">Signature:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Account_opening_officer_signature"
+										id="signature_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="name_primary">Name:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Account_opening_officer_name"
+										id="name_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="designation_primary">Designation:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Account_opening_officer_designation"
+										id="designation_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="date_primary">Date:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Account_opening_officer_Date"
+										id="date_primary"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-5">Branch Official</div>
+							</div>
+
+							<div class="row formline" style="padding: 15px 0px 2px 0px;">
+								<div class="col-sm-1">
+									<label for="signature_branch">Signature:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Branch_official_signature"
+										id="signature_branch"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="name_branch">Name:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Branch_official_name" id="name_branch"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="designation_branch">Designation:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="text" name="Branch_official_designation"
+										id="designation_branch"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+								<div class="col-sm-1">
+									<label for="date_branch">Date:</label>
+								</div>
+								<div class="col-sm-2">
+									<input type="date" name="Branch_official_Date" id="date_branch"
+										class="form-control form-control-sm bg-white border border-dark" />
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn-xs btn-primary"
+							form="individual_form" id="btnSubmit" onclick="submitform();">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

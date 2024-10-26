@@ -1,0 +1,270 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+<script src="/webjars/jquery-validation/1.19.0/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.min.js}"></script>
+
+
+
+<style>
+.row1 {
+	padding: 7px;
+}
+
+.error {
+	color: red;
+	padding-left: 10px;
+}
+.underline {
+	text-decoration: underline;
+	color: #08a6f1;
+	cursor: pointer;
+}
+.ui-datepicker {
+    width: 22em !IMPORTANT; }
+</style>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var reportlist = /*[[${reportlist}]]*/null;
+	var frequency;
+	$(function() {
+	$("#dt2").datepicker({
+		changeMonth : true,
+		changeYear : true,
+		maxDate: new Date(),
+		dateFormat : "dd/mm/yy"
+	});
+	});
+	function submitform(a) {
+		//alert("responseText");
+
+		var input = document.getElementById("dt2");
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input.value)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+			location.href = "rbsValidations?reportDate=" + $("#dt2").val();
+		}
+	}
+
+
+	function submitformOR(a) {
+		//alert("responseText");
+
+		var input =  $("#dt2").val();;
+		var input1 = $("#report_id").val();
+		
+	//	location.href = 'Reports/RBSDownload?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+
+//location.href = 'Reports/Download?reportid=RL&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+			location.href = 'Reports/DownloadOR?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+		}
+	}
+	function submitformRR(a) {
+
+		var input =  $("#dt2").val();;
+		var input1 = $("#report_id").val();
+
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+
+
+			location.href = 'Reports/DownloadRR?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+		}
+	}
+	
+	function submitformLR(a) {
+		//alert("responseText");
+
+		var input =  $("#dt2").val();;
+		var input1 = $("#report_id").val();
+		
+	//	location.href = 'Reports/RBSDownload?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+
+//location.href = 'Reports/Download?reportid=RL&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+			location.href = 'Reports/DownloadOR?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+		}
+	}
+	
+	function submitformCR(a) {
+		//alert("responseText");
+
+		var input =  $("#dt2").val();;
+		var input1 = $("#report_id").val();
+		
+	//	location.href = 'Reports/RBSDownload?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+
+//location.href = 'Reports/Download?reportid=RL&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+			location.href = 'Reports/DownloadCR?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+		}
+	}
+
+	function submitformMR(a) {
+		//alert("responseText");
+
+		var input =  $("#dt2").val();;
+		var input1 = $("#report_id").val();
+		
+	//	location.href = 'Reports/RBSDownload?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+		var validformat = /^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+
+		if (!validformat.test(input)) {
+
+			$("#alertmsg1").text("Invalid Date Format");
+			$("#alert1").modal("toggle");
+
+		} else {
+
+//location.href = 'Reports/Download?reportid=RL&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+
+			location.href = 'Reports/DownloadCR?reportid='+input1+'&currency=mur&filetype=excel&fromdate='+ input + '&todate=' + input+ '&asondate=' + input;
+		}
+	}
+	/*]]>*/
+</script>
+</head>
+<title>XBRL</title>
+<body>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+	<div class="container content">
+		<div class="row">
+			<div class="col-sm-12">
+				<form class="form-horizontal" method="post" name="CriteriaForm"
+					id="reportform">
+					<div class="card" style="width: 1400px">
+						<div class="card-header">
+							<h4 th:text="${menu}"></h4>
+						</div>
+						<div class="card-body" style="height: 100px;">
+							<div class="form-group">
+
+
+								<div class="row row1">
+									<label class="col-sm-3 control-label">Report Date<span
+										style="color: red; font-size: 10px;" class="mant">*</span></label> <input
+										type="text" name="todate" id="dt2" value=""
+										class="col-sm-3 form-control" placeholder="dd/mm/yyyy"
+										required />
+										<input type="hidden" th:value="${reportid}" id ="report_id">
+								</div>
+
+							</div>
+						</div>
+						<div class="card-footer text-center">
+							<button type="button" class="btn btn-xs btn-primary" th:if="${reportid} == 'RBSReportGeneration'"
+								id="btnDownload" onclick="submitform(this);" form="reportform">Download</button>
+								<button type="button" class="btn btn-xs btn-primary" th:if="${reportid} == 'LRReportGeneration'"
+								id="btnDownload" onclick="submitformOR(this);" form="reportform">DownloadLR</button>
+									<button type="button" class="btn btn-xs btn-primary" th:if="${reportid} == 'ORReportGeneration'"
+								id="btnDownload" onclick="submitformOR(this);" form="reportform">DownloadOR</button>
+								<button type="button" class="btn btn-xs btn-primary" th:if="${reportid} == 'RRReportGeneration'"
+								id="btnDownload" onclick="submitformRR(this);" form="reportform">DownloadRR</button>
+								<button type="button" class="btn btn-xs btn-primary" th:if="${reportid} == 'CRReportGeneration'"
+								id="btnDownload" onclick="submitformCR(this);" form="reportform">DownloadCR</button>
+								<button type="button" class="btn btn-xs btn-primary" th:if="${reportid} == 'MRReportGeneration'"
+								id="btnDownload" onclick="submitformMR(this);" form="reportform">DownloadMR</button>
+							<button type="reset" class="btn btn-xs btn-primary" id="btnClear">Clear</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+		<div class="modal fade" id="alert">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg"></p>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="alert1">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg1"></p>
+					<button type="button" class="btn btn-primary" onclick="close123()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+
+
+
+</body>
+</body>
+</html>

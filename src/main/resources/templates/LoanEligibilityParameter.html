@@ -1,0 +1,488 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+
+
+<script src="/webjars/jquery-form/4.2.2/jquery.form.min.js"
+	th:src="@{/webjars/jquery-form/4.2.2/jquery.form.min.js}"></script>
+
+
+</head>
+<title>XBRL</title>
+<style>
+.customcol {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	border-color: #e9ecef;
+}
+
+.modal-backdrop {
+	background-color: +;
+	zoom: 1;
+}
+
+.addedit {
+	color: #007bff;
+}
+</style>
+
+
+<!----------------------------------------Scripts to edit report details-------------------------------------------->
+<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	$(function() {
+
+		$("#repDate").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			maxDate : new Date(),
+			dateFormat : "dd-mm-yy"
+		});
+
+	});
+
+	var permission = /*[[${session.PERMISSIONS}]]*/null;
+
+	function editRecord(a) {
+
+		if (permission == 'W') {
+			var url = /*[[@{'/loanparameteredit'}]]*/
+			$("#dataedit").attr('action', url);
+			//Assign selected values to the model box fields
+			$("#product_code").val(a.getAttribute("data-product_code"));
+			$("#product_desc").val(a.getAttribute("data-product_desc"));
+			$("#minimum_loan").val(a.getAttribute("data-minimum_loan"));
+			$("#maximum_loan").val(a.getAttribute("data-maximum_loan"));
+			$("#income_range").val(a.getAttribute("data-income_range"));
+			$("#monthly_expenses").val(a.getAttribute("data-monthly_expenses"));
+			$("#purpose").val(a.getAttribute("data-purpose"));
+			$("#eligible_category").val(a.getAttribute("data-eligible_category"));
+			$("#age_limit").val(a.getAttribute("data-age_limit"));
+			$("#credit_score").val(a.getAttribute("data-credit_score"));
+			$("#capital_base").val(a.getAttribute("data-capital_base"));
+			$("#interest_range").val(a.getAttribute("data-interest_range"));
+			$("#property_type").val(a.getAttribute("data-property_type"));
+			$("#emi_tenure").val(a.getAttribute("data-emi_tenure"));
+			$("#conditions").val(a.getAttribute("data-conditions"));
+			$("#special_conditions").val(a.getAttribute("data-special_conditions"));
+			$("#eligibility_criteria").val(a.getAttribute("data-eligibility_criteria"));
+
+			$("#addedit").modal("toggle");
+
+			//Make readonly fields
+			$("#repDate").attr("readonly", true);
+
+		}
+
+	};
+	function addRecord() {
+
+		if (permission == 'W') {
+			//Assign action url for the edit/add form
+			var url = /*[[@{'loanparameteradd'}]]*/
+			$("#dataedit").attr('action', url);
+			//Reset form if any data present
+			document.getElementById("dataedit").reset();
+
+			//make readonly false to unique fields
+			//Make readonly fields
+			$("#repDate").attr("readonly", false);
+			$("#tier1").attr("readonly", false);
+			$("#tier2").attr("readonly", false);
+			$("#tier3").attr("readonly", false);
+			$("#basedepositerate").attr("readonly", false);
+			$("#stareserve").attr("readonly", false);
+			$("#assignedcapital").attr("readonly", false);
+			$("#assigned_capital_fc").attr("readonly", false);   
+			$("#retained_earnings_fc").attr("readonly", false);
+			$("#other_reserves").attr("readonly", false);
+			$("#capital_base").attr("readonly", false);
+			$("#base_loan").attr("readonly", false);
+
+			
+			$("#addedit").modal("toggle");
+
+		}
+	};
+
+	function deleteRecord(a) {
+
+		if (permission == 'W') {
+
+			//Assign action url for the edit/add form
+			var url = /*[[@{'loanparameterdelete'}]]*/
+			$("#dataedit").attr('action', url);
+
+			//Assign selected values to the model box fields
+				$("#product_code").val(a.getAttribute("data-product_code"));
+			$("#product_desc").val(a.getAttribute("data-product_desc"));
+			$("#minimum_loan").val(a.getAttribute("data-minimum_loan"));
+			$("#maximum_loan").val(a.getAttribute("data-maximum_loan"));
+			$("#income_range").val(a.getAttribute("data-income_range"));
+			$("#monthly_expenses").val(a.getAttribute("data-monthly_expenses"));
+			$("#purpose").val(a.getAttribute("data-purpose"));
+			$("#eligible_category").val(a.getAttribute("data-eligible_category"));
+			$("#age_limit").val(a.getAttribute("data-age_limit"));
+			$("#credit_score").val(a.getAttribute("data-credit_score"));
+			$("#capital_base").val(a.getAttribute("data-capital_base"));
+			$("#interest_range").val(a.getAttribute("data-interest_range"));
+			$("#property_type").val(a.getAttribute("data-property_type"));
+			$("#emi_tenure").val(a.getAttribute("data-emi_tenure"));
+			$("#conditions").val(a.getAttribute("data-conditions"));
+			$("#special_conditions").val(a.getAttribute("data-special_conditions"));
+			$("#eligibility_criteria").val(a.getAttribute("data-eligibility_criteria"));
+
+			$("#datadelete").modal("toggle");
+
+		}
+
+	};
+
+	function submitdataform() {
+
+		var options = {
+			success : showResponse
+		// post-submit callback 
+		};
+
+		$('#dataedit').ajaxSubmit(options);
+
+		function showResponse(responseText, statusText, xhr, $form) {
+
+			$("#alertmsg").text(responseText);
+
+			if ($('#addedit').is(':visible')) {
+				$('#addedit').modal("hide");
+
+			}
+			;
+			if ($('#datadelete').is(':visible')) {
+				$('#datadelete').modal("hide");
+
+			}
+			;
+			$('#alert').modal("toggle");
+
+		}
+
+	}
+
+	/*]]>*/
+</script>
+<body>
+	<!----------------------------------------------------- Header Section starts ----------------------------------------------------->
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+	<!----------------------------------------------------- Header Section Ends ------------------------------------------------------->
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+	<div class="container content" th:fragment="reportcontent">
+
+		<div class="row">
+			<div class="col-sm-12 customcol">
+				<div class="card">
+					<div class="card-header">
+						<div class="float-left">
+							<h4>Loan Eligibility Paramete</h4>
+						</div>
+						
+					</div>
+					<div class="card-body">
+					<div style="overflow-x: auto; border-right: 1px solid #dee2e6">
+						<table class="table table-hover table-sm" id="detailtb" style="width: 2000px;">
+							<thead class="thead-light">
+								<tr>
+									<th><a  data-toggle="tooltip" class="editrec"
+										title="Click to add new Records"><i
+										th:classappend="${session.PERMISSIONS == 'W'}  ? addedit "
+											class="fa fa-plus-circle" onclick="addRecord();"
+											aria-hidden="true"></i></a></th>
+									<th></th>
+									<th>Product Type</th>
+									<th>Product Description</th>
+									 <th>Minimum Loan</th>
+									 <th>Maximum Loan</th>
+									 <th>Income Range Min</th>
+									 <th>Monthly Expenses Min</th>
+									 <th>Purpose</th>
+									 <th>Eligible Categories</th>
+									 <th>Age Limit</th>
+									 <th>Credit Score</th>
+									 <th>Interest Range</th>
+									 <th>Property Type</th>
+									 <th>EMI Tenure</th>
+									 <th>Conditions</th>
+									 <th>Special Conditions</th>
+									 <th>Eligibility Criteria</th>
+								</tr>
+							</thead>
+							<tbody class="databody det1" id="det1">
+								<tr th:if="${loanparameter}!=null" th:each="bank : ${loanparameter}">
+
+									<td><a  data-toggle="tooltip" class="editrec"
+										title="Click to Edit this Record"><i 
+										th:classappend="${session.PERMISSIONS == 'W'}  ? addedit "
+										class="fas fa-edit"
+										th:attr="data-product_code=${bank.product_code},
+													data-product_desc=${bank.product_desc},
+													data-minimum_loan=${bank.minimum_loan},
+													data-maximum_loan=${bank.maximum_loan},
+													data-income_range=${bank.income_range},
+													data-monthly_expenses=${bank.monthly_expenses},
+													data-purpose=${bank.purpose},
+													data-eligible_category=${bank.eligible_category},
+													data-age_limit=${bank.age_limit},
+													data-credit_score=${bank.credit_score},
+													data-interest_range=${bank.interest_range},
+													data-property_type=${bank.property_type},
+													data-emi_tenure=${bank.emi_tenure},
+													data-conditions=${bank.conditions},
+													data-special_conditions=${bank.special_conditions},
+													data-eligibility_criteria=${bank.eligibility_criteria}"
+											onclick="editRecord(this)"></i></a></td>
+
+
+									<td><a  data-toggle="tooltip" class="editrec"
+										title="Click to delete this Record"><i
+											th:classappend="${session.PERMISSIONS == 'W'}  ? addedit "
+											class="fas fa-minus-circle"
+											th:attr="data-product_code=${bank.product_code},
+													data-product_desc=${bank.product_desc},
+													data-minimum_loan=${bank.minimum_loan},
+													data-maximum_loan=${bank.maximum_loan},
+													data-income_range=${bank.income_range},
+													data-monthly_expenses=${bank.monthly_expenses},
+													data-purpose=${bank.purpose},
+													data-eligible_category=${bank.eligible_category},
+													data-age_limit=${bank.age_limit},
+													data-credit_score=${bank.credit_score},
+													data-interest_range=${bank.interest_range},
+													data-property_type=${bank.property_type},
+													data-emi_tenure=${bank.emi_tenure},
+													data-conditions=${bank.conditions},
+													data-special_conditions=${bank.special_conditions},
+													data-eligibility_criteria=${bank.eligibility_criteria}"
+											onclick="deleteRecord(this)"></i></a></td>
+											
+									<td th:text="${bank.product_code}"></td>
+									<td th:text="${bank.product_desc}"></td>
+									<td th:text="${bank.minimum_loan}"></td>
+									<td th:text="${bank.maximum_loan}"></td>
+									<td th:text="${bank.income_range}"></td>
+									<td th:text="${bank.monthly_expenses}"></td>
+									<td th:text="${bank.purpose}"></td>
+									<td th:text="${bank.eligible_category}">CHENNAI</td>
+									<td th:text="${bank.age_limit}">CHENNAI</td>
+									<td th:text="${bank.credit_score}">CHENNAI</td>
+									<td th:text="${bank.interest_range}">CHENNAI</td>
+									<td th:text="${bank.property_type}"></td>
+									<td th:text="${bank.emi_tenure}">CHENNAI</td>
+									<td th:text="${bank.conditions}">CHENNAI</td>
+									<td th:text="${bank.special_conditions}"></td>
+									<td th:text="${bank.eligibility_criteria}">CHENNAI</td>
+								 
+									
+								</tr>
+							</tbody>
+						</table>
+</div>
+
+
+
+						<!-- -----------------------------------Details edit modal form----------------------------------------------------->
+						<div class="modal fade" id="addedit" th:fragment="dataedit">
+							<div
+								class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+								<div class="modal-content">
+
+									<!-- Modal Header -->
+									<div class="modal-header">
+										<h4 class="modal-title">Add/Edit Records</h4>
+										<button type="button" class="close" data-dismiss="modal">×</button>
+									</div>
+									<div class="modal-body" style="text-align: center">
+										<form th:object=${singledetail} id="dataedit" method="post">
+											<div class="form-group">
+												<div class="row">
+													<label class="col-sm-5">Product Code</label> <input
+														class="form-control col-sm-5" type="text"
+														th:field="*{product_code}" th:value="${product_code}"
+														id="product_code" />
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Product Description</label> <input
+														class="form-control col-sm-5" type="text"
+														th:field="*{product_desc}"
+														th:value="${product_desc}" id="product_desc" />
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Minimum Loan</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{minimum_loan}"
+														th:value="${minimum_loan}" id="minimum_loan" />
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Maximum Loan</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{maximum_loan}"
+														th:value="${maximum_loan}" id="maximum_loan">
+												</div>
+												
+												<div class="row">
+													<label class="col-sm-5">Income Range - Minimum</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{income_range}"
+														th:value="${income_range}" id="income_range">
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Monthly Expenses - Minimum</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{monthly_expenses}"
+														th:value="${monthly_expenses}" id="monthly_expenses">
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Purpose</label> <input
+														class="form-control col-sm-5" type="text"
+														th:field="*{purpose}"
+														th:value="${purpose}" id="purpose">
+												</div>
+												
+												
+												<div class="row">
+													<label class="col-sm-5">Eligible Categories</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{eligible_category}"
+														th:value="${eligible_category}" id="eligible_category">
+												</div>
+												
+												<div class="row">
+													<label class="col-sm-5">Age Limit</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{age_limit}"
+														th:value="${age_limit}" id="age_limit">
+												</div>
+												
+												<div class="row">
+													<label class="col-sm-5">Credit Score</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{credit_score}"
+														th:value="${credit_score}" id="credit_score">
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Interest Range</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{interest_range}"
+														th:value="${interest_range}" id="interest_range">
+												</div>
+												
+												<div class="row">
+													<label class="col-sm-5">Property Type</label>
+													<input class="form-control col-sm-5" type="text"
+															th:field="*{property_type}"
+															th:value="${property_type}" id="property_type">
+												
+												</div>
+<div class="row">
+													<label class="col-sm-5">EMI Tenure</label> <input
+														class="form-control col-sm-5" type="number"
+														th:field="*{emi_tenure}"
+														th:value="${emi_tenure}" id="emi_tenure">
+												</div>
+												
+												<div class="row">
+													<label class="col-sm-5">Conditions</label> <input
+														class="form-control col-sm-5" type="text"
+														th:field="*{conditions}"
+														th:value="${conditions}" id="conditions">
+												</div>
+												<div class="row">
+													<label class="col-sm-5">Special Conditions</label> <input
+														class="form-control col-sm-5" type="text"
+														th:field="*{special_conditions}"
+														th:value="${special_conditions}" id="special_conditions">
+												</div>
+												
+												<div class="row">
+													<label class="col-sm-5">Eligibility Criteria</label>
+													<input class="form-control col-sm-5" type="text"
+															th:field="*{eligibility_criteria}"
+															th:value="${eligibility_criteria}" id="eligibility_criteria">
+												
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary"
+											onclick="submitdataform();">Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-------------------------------------Details edit modal form----------------------------------------------------->
+						<!-------------------------------------Details delete modal dialog----------------------------------------------------->
+						<div class="modal fade" id="datadelete">
+							<div
+								class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+								<div class="modal-content">
+									<div class="modal-body" style="text-align: center">
+										<button type="button" class="close" data-dismiss="modal">×</button>
+										Are you Sure want to delete?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary"
+											onclick="submitdataform();">Submit</button>
+										<button type="button" class="btn btn-primary"
+											data-dismiss="modal">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-------------------------------------Details delete modal dialog----------------------------------------------------->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+	<div class="modal fade" id="alert">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-body" style="text-align: center">
+					<p id="alertmsg"></p>
+					<button type="button" class="btn btn-primary"
+						onclick="location.reload();" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------------------------------- Modal for alert messages-------------------------------->
+</body>
+</html>

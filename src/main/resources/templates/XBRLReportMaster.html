@@ -1,0 +1,141 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/font-awesome/5.9.0/css/all.min.css"
+	th:href="@{/webjars/font-awesome/5.9.0/css/all.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/datatables/1.10.19/css/jquery.dataTables.min.css"
+	th:href="@{/webjars/datatables/1.10.19/css/jquery.dataTables.min.css}">
+<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script src="/webjars/popper.js/1.14.7/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<script src="/webjars/datatables/1.10.19/js/jquery.dataTables.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/jquery.dataTables.min.js}"></script>
+<script
+	src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js"
+	th:src="@{/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	$(function() {
+
+		$("#reports").DataTable({
+			
+			"info" : false,
+			"lengthChange" : false,
+			"columns" : [
+				
+				{"title":"Report Id"},
+				{"title":"Report Name"},
+				{"title":"Frequency"},
+				{"title":"Taxonomy Version"},
+				{"title":"Enabled",
+				 "orderable": false},
+				{"title":"Domain"},
+			]
+			
+		});
+
+		
+	})
+
+	function updateValidity(a) {
+
+
+		var reportid = a.getAttribute("value");
+		var valid;
+		if ($(a).is(":checked")) {
+
+			valid = "Y";
+
+		} else {
+
+			valid = "N";
+		}
+		;
+
+		var url = "./updateValidity?reportid=" + reportid + "&valid=" + valid
+		$.ajax({
+			type : 'post',
+			url : url,
+			success : function(data) {
+
+				alert(data);
+			}
+		});
+
+	}
+
+	/*]]>*/
+</script>
+<style>
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	padding: 0px;
+} 
+
+</style>
+</head>
+<title>XBRL</title>
+<body>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+	<i class="fa fa-question-circle" aria-hidden="true"
+		onclick="docEmb('Report')" id="ques"></i>
+	<div class="container content">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="float-left">
+							<h4>Reports Master</h4>
+						</div>
+					</div>
+					<div class="card-body">
+						<table class="table table-bordered  table-hover table-sm"
+							id="reports">
+							<!-- <thead>
+								<tr>
+									<th>Report Id</th>
+									<th>Report Name</th>
+									<th>Frequency</th>
+									<th>Taxonomy Version</th>
+									<th>Enabled</th>
+									<th>Domain</th>
+								</tr>
+							</thead> -->
+							<tbody>
+								<tr th:each="report : ${reportList}">
+									<td th:text="${report.reportid}"></td>
+									<td th:text="${report.report_name}"></td>
+									<td th:text="${report.report_frequency}"></td>
+									<td th:text="${report.xbrl_taxonomy_version}"></td>
+									<td><input type="checkbox" th:name="${report.reportid}"
+										th:value="${report.reportid}" th:id="${report.reportid}"
+										th:onchange="updateValidity(this)"
+										th:attr="checked = ${report.report_validity=='Y'} ? true : false ">
+									</td>
+									<td th:text="${report.domain_id}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
