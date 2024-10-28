@@ -812,6 +812,10 @@ public class XBRLNavigationController {
 	Kyc_Repo kyc_repo;
 	@Autowired
 	Kyc_Corprate_Repo kyc_corporate_repo;
+	@Autowired
+	Kyc_individual_service kyc_individual_service;
+	@Autowired
+	com.bornfire.xbrl.services.Kyc_Corprate_service Kyc_Corprate_service;
 
 	@RequestMapping(value = "kyc", method = { RequestMethod.GET, RequestMethod.POST })
 	public String KYCHome(@RequestParam(required = false) String formmode, Model md) {
@@ -841,9 +845,6 @@ public class XBRLNavigationController {
 		md.addAttribute("formmode", formmode);
 		return "KYC_Home";
 	}
-
-	@Autowired
-	Kyc_individual_service kyc_individual_service;
 
 	@RequestMapping(value = "/kyc/individual", method = { RequestMethod.GET, RequestMethod.POST })
 	public String kycIndividual(@RequestParam(required = false) String formmode,
@@ -876,18 +877,18 @@ public class XBRLNavigationController {
 	public String kyccorporate(@RequestParam(required = false) String formmode,
 			@RequestParam(required = false) String custid, @ModelAttribute Kyc_Corprate data, Model model)
 			throws FileNotFoundException, JRException, SQLException {
-//
-//		if ("submit".equals(formmode)) {
-//
-//			kyc_individual_service.updateKycData(custid, data);
-//
-//		} else if ("verified".equals(formmode)) {
-//
-//			kyc_individual_service.verified(custid);
-//		} else if ("download".equals(formmode)) {
-//			System.out.println(custid);
-//			File repfile = kyc_individual_service.GrtPdf(custid);
-//		}
+		System.out.println(formmode);
+		if ("submit".equals(formmode)) {
+
+			Kyc_Corprate_service.updateKycData(custid, data);
+
+		} else if ("verified".equals(formmode)) {
+			System.out.println("inside else if");
+			Kyc_Corprate_service.verified(custid);
+		} else if ("download".equals(formmode)) {
+			System.out.println(custid);
+			File repfile = Kyc_Corprate_service.GrtPdf(custid);
+		}
 
 		// Fetch user data regardless of the mode (view or modify)
 		List<Kyc_Corprate> user_data = kyc_corporate_repo.GetUser(custid);
@@ -897,6 +898,36 @@ public class XBRLNavigationController {
 		model.addAttribute("formmode", formmode);
 
 		return "kyc_corporate"; // Return the appropriate view
+	}
+
+	@RequestMapping(value = "kyc/corporate/download", method = RequestMethod.GET)
+
+	@ResponseBody
+	public ResponseEntity<InputStreamResource> corporateDownload(HttpServletResponse response,
+
+			@RequestParam(required = false) String custid) throws IOException, SQLException {
+
+		try { // Log customer ID
+			System.out.println("Customer ID: " + custid);
+
+			// Generate the PDF file
+			File repfile = Kyc_Corprate_service.GrtPdf(custid);
+
+			// Log file name for debugging
+			System.out.println("Generated file: " + repfile.getName());
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+			headers.setContentDispositionFormData("attachment", repfile.getName());
+
+			InputStreamResource resource = new InputStreamResource(new FileInputStream(repfile));
+
+			return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_OCTET_STREAM)
+					.contentLength(repfile.length()).body(resource);
+		} catch (IOException | SQLException | JRException e) {
+			logger.error("Error occurred while processing the file download: " + e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
 	}
 
 	@RequestMapping(value = "kyc/individual/download", method = RequestMethod.GET)
