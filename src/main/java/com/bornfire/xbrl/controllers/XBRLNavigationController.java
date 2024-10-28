@@ -14,8 +14,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -784,29 +786,6 @@ public class XBRLNavigationController {
 
 		return "RR/RRReports";
 	}
-	/*
-	 * @Autowired Kyc_Repo kyc_repo;
-	 */
-
-	/*
-	 * @RequestMapping(value = "kyc", method = { RequestMethod.GET,
-	 * RequestMethod.POST }) public String KYCIndividual(@RequestParam Map<String,
-	 * String> formData,
-	 * 
-	 * @RequestParam(required = false) String formmode, @RequestParam(required =
-	 * false) String act, Model md, HttpServletRequest rq, @ModelAttribute KYC_I
-	 * kyc_data) {
-	 * 
-	 * // Process the form data if ("add".equals(formmode)) {
-	 * kyc_repo.save(kyc_data); return "KYC"; } else if ("Modify".equals(formmode))
-	 * {
-	 * 
-	 * kyc_repo.GetUser("Pariatur Numquam do");
-	 * 
-	 * return "KYCView"; }
-	 * 
-	 * // For GET request or when no form data is submitted return "KYC"; }
-	 */
 
 	@Autowired
 	Kyc_Repo kyc_repo;
@@ -819,7 +798,6 @@ public class XBRLNavigationController {
 
 	@RequestMapping(value = "kyc", method = { RequestMethod.GET, RequestMethod.POST })
 	public String KYCHome(@RequestParam(required = false) String formmode, Model md) {
-		System.out.println(formmode);
 
 		if ("individual".equals(formmode)) {
 
@@ -829,16 +807,8 @@ public class XBRLNavigationController {
 		}
 
 		else if ("corporate".equals(formmode)) {
-			// Logic to fetch corporate KYC data
 			List<Object[]> corporate = kyc_corporate_repo.Getlist();
 
-			// Iterating over the corporate list to print each object
-			for (Object[] row : corporate) {
-				// Using Arrays.toString to print the content of the Object[] array
-				System.out.println(Arrays.toString(row));
-			}
-
-			// Adding the list to the model
 			md.addAttribute("kycData", corporate);
 		}
 
@@ -860,44 +830,40 @@ public class XBRLNavigationController {
 			kyc_individual_service.verified(custid);
 		} else if ("download".equals(formmode)) {
 			System.out.println(custid);
-			File repfile = kyc_individual_service.GrtPdf(custid);
+			kyc_individual_service.GrtPdf(custid);
 		}
 
-		// Fetch user data regardless of the mode (view or modify)
 		List<KYC_I> user_data = kyc_repo.GetUser(custid);
 
-		// Add data to the model to populate the form
 		model.addAttribute("user_data", user_data);
 		model.addAttribute("formmode", formmode);
 
-		return "kyc_individual"; // Return the appropriate view
+		return "kyc_individual";
 	}
 
 	@RequestMapping(value = "/kyc/corporate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String kyccorporate(@RequestParam(required = false) String formmode,
 			@RequestParam(required = false) String custid, @ModelAttribute Kyc_Corprate data, Model model)
 			throws FileNotFoundException, JRException, SQLException {
-		System.out.println(formmode);
+
 		if ("submit".equals(formmode)) {
 
 			Kyc_Corprate_service.updateKycData(custid, data);
 
 		} else if ("verified".equals(formmode)) {
-			System.out.println("inside else if");
+
 			Kyc_Corprate_service.verified(custid);
 		} else if ("download".equals(formmode)) {
 			System.out.println(custid);
-			File repfile = Kyc_Corprate_service.GrtPdf(custid);
+			Kyc_Corprate_service.GrtPdf(custid);
 		}
 
-		// Fetch user data regardless of the mode (view or modify)
 		List<Kyc_Corprate> user_data = kyc_corporate_repo.GetUser(custid);
-//		System.out.println(custid);
-		// Add data to the model to populate the form
+
 		model.addAttribute("user_data", user_data);
 		model.addAttribute("formmode", formmode);
 
-		return "kyc_corporate"; // Return the appropriate view
+		return "kyc_corporate";
 	}
 
 	@RequestMapping(value = "kyc/corporate/download", method = RequestMethod.GET)
@@ -907,13 +873,10 @@ public class XBRLNavigationController {
 
 			@RequestParam(required = false) String custid) throws IOException, SQLException {
 
-		try { // Log customer ID
-			System.out.println("Customer ID: " + custid);
+		try {
 
-			// Generate the PDF file
 			File repfile = Kyc_Corprate_service.GrtPdf(custid);
 
-			// Log file name for debugging
 			System.out.println("Generated file: " + repfile.getName());
 
 			HttpHeaders headers = new HttpHeaders();
@@ -937,13 +900,11 @@ public class XBRLNavigationController {
 
 			@RequestParam(required = false) String custid) throws IOException, SQLException {
 
-		try { // Log customer ID
+		try {
 			System.out.println("Customer ID: " + custid);
 
-			// Generate the PDF file
 			File repfile = kyc_individual_service.GrtPdf(custid);
 
-			// Log file name for debugging
 			System.out.println("Generated file: " + repfile.getName());
 
 			HttpHeaders headers = new HttpHeaders();

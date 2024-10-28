@@ -469,13 +469,13 @@ public class Kyc_Corprate {
 	@Column(name = "VERIFY_USER")
 	private String VerifyUser;
 	@Column(name = "ENTRY_TIME")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	private Date EntryTime;
 	@Column(name = "MODIFY_TIME")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	private Date ModifyTime;
 	@Column(name = "VERIFY_TIME")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	private Date VerifyTime;
 
 	public String getCompanyName() {

@@ -7,10 +7,14 @@ import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +40,17 @@ public class Kyc_Corprate_service {
 
 	@Autowired
 	private Kyc_Corprate_Repo Kyc_Corprate_Repo;
+	@Autowired
+	private HttpSession session;
 
 	public boolean updateKycData(String customerId, Kyc_Corprate data) {
 		// Find the existing KYC record
 		Optional<Kyc_Corprate> optionalKyc = Kyc_Corprate_Repo.findById(customerId);
+		String userId = (String) session.getAttribute("USERID");
+		LocalDateTime currentDateTime = LocalDateTime.now();
 
 		if (optionalKyc.isPresent()) {
 			Kyc_Corprate kycEntity = optionalKyc.get();
-			System.out.println("Inside Service after data check");
 
 			// Use reflection to update the entity fields
 			for (Field field : Kyc_Corprate.class.getDeclaredFields()) {
@@ -56,8 +63,12 @@ public class Kyc_Corprate_service {
 					// Only update if the value is not null
 					if (value != null) {
 						// Handle specific type conversions if necessary
-						if (field.getType() == Date.class && value instanceof String) {
-							// Example of converting String to Date
+						if (field.getType() == LocalDateTime.class && value instanceof String) {
+							// Example of converting String to LocalDateTime
+							DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+							value = LocalDateTime.parse((String) value, formatter);
+						} else if (field.getType() == Date.class && value instanceof String) {
+							// Example of converting String to Date (if you want to keep Date)
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 							value = sdf.parse((String) value);
 						}
@@ -70,27 +81,36 @@ public class Kyc_Corprate_service {
 					System.err.println("Date parsing error: " + e.getMessage());
 				}
 			}
+
+			// Set metadata fields
 			kycEntity.setModifyFlg('Y');
 			kycEntity.setEntityFlg('N');
+			kycEntity.setModifyUser(userId);
+			kycEntity.setModifyTime(Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant()));
 
 			// Save the updated entity to the database
 			Kyc_Corprate_Repo.save(kycEntity);
 			return true;
 		} else {
+
 			return false;
 		}
 	}
 
 	public Boolean verified(String customerId) {
-		System.out.println("inside the croporate Sevice");
+
 		Optional<Kyc_Corprate> optionalKyc = Kyc_Corprate_Repo.findById(customerId);
+		String userId = (String) session.getAttribute("USERID");
+		LocalDateTime currentDateTime = LocalDateTime.now();
 		if (optionalKyc.isPresent()) {
 
 			Kyc_Corprate kycEntity = optionalKyc.get();
 
-			System.out.println(kycEntity);
 			kycEntity.setModifyFlg('N');
 			kycEntity.setEntityFlg('Y');
+			kycEntity.setVerifyUser(userId);
+			kycEntity.setVerifyTime(Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant()));
+
 			Kyc_Corprate_Repo.save(kycEntity);
 			return true;
 		}
@@ -120,7 +140,6 @@ public class Kyc_Corprate_service {
 
 			map.put("Customer_ID", Cust_Id);
 			/* map.put("IMAGE_DIR", "/static/jasper/"); */// or wherever the image is located
-			System.out.println(Cust_Id);
 
 			System.out.println("Generating PDF");
 			JasperPrint jp = JasperFillManager.fillReport(jr, map, srcdataSource.getConnection());

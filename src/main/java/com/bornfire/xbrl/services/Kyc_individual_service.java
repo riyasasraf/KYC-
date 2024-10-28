@@ -9,10 +9,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +41,16 @@ public class Kyc_individual_service {
 
 	@Autowired
 	private Kyc_Repo kyc_repo;
+	@Autowired
+	private HttpSession session;
 
 	public boolean updateKycData(String customerId, KYC_I data) {
 		// Find the existing KYC record
 		Optional<KYC_I> optionalKyc = kyc_repo.findById(customerId);
-
+		String userId = (String) session.getAttribute("USERID");
+		LocalDateTime currentDateTime = LocalDateTime.now();
 		if (optionalKyc.isPresent()) {
 			KYC_I kycEntity = optionalKyc.get();
-			System.out.println("Inside Service after data check");
 
 			// Use reflection to update the entity fields
 			for (Field field : KYC_I.class.getDeclaredFields()) {
@@ -74,7 +79,8 @@ public class Kyc_individual_service {
 			}
 			kycEntity.setModifyFlg('Y');
 			kycEntity.setEntityFlg('N');
-
+			kycEntity.setModifyUser(userId);
+			kycEntity.setModifyTime(Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant()));
 			// Save the updated entity to the database
 			kyc_repo.save(kycEntity);
 			return true;
@@ -85,13 +91,16 @@ public class Kyc_individual_service {
 
 	public Boolean verified(String customerId) {
 		Optional<KYC_I> optionalKyc = kyc_repo.findById(customerId);
+		String userId = (String) session.getAttribute("USERID");
+		LocalDateTime currentDateTime = LocalDateTime.now();
 		if (optionalKyc.isPresent()) {
 
 			KYC_I kycEntity = optionalKyc.get();
 
-			System.out.println(kycEntity);
 			kycEntity.setModifyFlg('N');
 			kycEntity.setEntityFlg('Y');
+			kycEntity.setVerifyUser(userId);
+			kycEntity.setVerifyTime(Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant()));
 			kyc_repo.save(kycEntity);
 			return true;
 		}
@@ -121,7 +130,6 @@ public class Kyc_individual_service {
 
 			map.put("Customer_ID", Cust_Id);
 			/* map.put("IMAGE_DIR", "/static/jasper/"); */// or wherever the image is located
-			System.out.println(Cust_Id);
 
 			System.out.println("Generating PDF");
 			JasperPrint jp = JasperFillManager.fillReport(jr, map, srcdataSource.getConnection());

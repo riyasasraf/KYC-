@@ -218,6 +218,8 @@ public class XBRLWebSecurity extends WebSecurityConfigurerAdapter {
 				user.setUser_locked_flg("N");
 				userProfileRep.save(user);
 				
+				
+				
 				loginServices.SessionLogging("LOGIN","M1",request.getSession().getId(),user.getUserid(),request.getRemoteAddr(),
 						"ACTIVE");
 			
