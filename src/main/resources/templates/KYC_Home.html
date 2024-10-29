@@ -107,7 +107,6 @@ input[type="number"] {
 		console.log(custid);
 		console.log(action);
 
-	
 		var baseUrl = `http://localhost:8086/BRF/kyc/${type}`;
 		var url;
 
@@ -123,6 +122,17 @@ input[type="number"] {
 		if (url) {
 			window.location.href = url;
 		}
+	}
+
+	// Function to redirect to the Home page
+	function goHome() {
+		// Redirect to the home page (adjust the URL as needed)
+		window.location.href = '/BRF/'; // Replace with your actual home page URL
+	}
+
+	// Function to go back to the previous page
+	function goBack() {
+		window.history.back();
 	}
 </script>
 
@@ -248,6 +258,14 @@ input[type="number"] {
 
 				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 			</div>
+			<div class="card-footer text-center">
+				<button type="button" class="btn btn-xs btn-primary"
+					onclick="goHome();" id="btnUpload">Home</button>
+				<button type="reset" class="btn btn-xs btn-primary" id="btnClear"
+					onclick="goBack();">Back</button>
+			</div>
+
+
 		</div>
 	</div>
 </body>

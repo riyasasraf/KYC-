@@ -169,6 +169,17 @@ input[type="number"] {
 		}
 	}
 
+	// Function to redirect to the Home page
+	function goHome() {
+		// Redirect to the home page (adjust the URL as needed)
+		window.location.href = '/BRF/kyc'; // Replace with your actual home page URL
+	}
+
+	// Function to go back to the previous page
+	function goBack() {
+		window.history.back();
+	}
+
 	/* 	// Initial check to disable or enable on page load
 	 document.addEventListener('DOMContentLoaded', function() {
 	 toggleInputBasedOnRadio('Occupation_Business', 'Business_activity');
@@ -2422,6 +2433,16 @@ input[type="number"] {
 							</div>
 						</fieldset>
 					</form>
+
+					<div class="card-footer text-center">
+						<button type="button" class="btn btn-xs btn-primary"
+							onclick="goHome();" id="btnUpload">Home</button>
+						<button type="reset" class="btn btn-xs btn-primary" id="btnClear"
+							onclick="goBack();">Back</button>
+					</div>
+
+
+
 				</div>
 			</div>
 		</div>

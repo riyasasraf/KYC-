@@ -194,7 +194,16 @@ event.preventDefault();
 	});
 	
 
-	
+	// Function to redirect to the Home page
+	function goHome() {
+		// Redirect to the home page (adjust the URL as needed)
+		window.location.href = '/BRF/kyc'; // Replace with your actual home page URL
+	}
+
+	// Function to go back to the previous page
+	function goBack() {
+		window.history.back();
+	}
 	
  
 </script>
@@ -324,16 +333,7 @@ event.preventDefault();
 
 								<!-- ----r3---------- -->
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-1">
-										<label for="Country_of_current_residency"
-											title="Country of Current Residency">Curr. Residency</label>
-									</div>
-									<div class="col-sm-2">
-										<input type="text" name="countryOfCurrentResidency"
-											id="Country_of_current_residency"
-											class="form-control form-control-sm bg-white border border-dark"
-											th:value="${user_data.countryOfCurrentResidency}" />
-									</div>
+
 									<div class="col-sm-1">
 										<label for="Occupation" title="Occupation">Occupation</label>
 									</div>
@@ -368,10 +368,6 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.annualIncome}" />
 									</div>
-								</div>
-
-								<!-- ----r4---------- -->
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="Source_of_funds" title="Source of Funds">Source
 											of Funds</label>
@@ -381,6 +377,11 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.sourceOfFunds}" />
 									</div>
+								</div>
+
+								<!-- ----r4---------- -->
+								<div class="row formline" style="padding: 2px 0px 0px 0px;">
+
 									<div class="col-sm-1">
 										<label for="Purpose_of_account_opening"
 											title="Purpose of Account">Purpose of Acc.</label>
@@ -415,10 +416,6 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											disabled th:value="${user_data.taxIdNumber}" />
 									</div>
-								</div>
-
-								<!-- ----r5---------- -->
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="Country_of_citizenship"
 											title="Country of Citizenship">Country of Cit.</label>
@@ -435,6 +432,11 @@ event.preventDefault();
 											th:checked="${user_data.countryOfCitizenship == 'Non-Resident'}" />
 										<label for="Country_of_citizenship_non_resident">Non-Resident</label>
 									</div>
+								</div>
+
+								<!-- ----r5---------- -->
+								<div class="row formline" style="padding: 2px 0px 0px 0px;">
+
 									<div class="col-sm-1">
 										<label for="Country_of_citizenship_others"
 											title="Other Citizenship">Other</label>
@@ -444,6 +446,16 @@ event.preventDefault();
 											id="Country_of_citizenship_others"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.countryOfCitizenshipOthers}" />
+									</div>
+									<div class="col-sm-1">
+										<label for="Country_of_current_residency"
+											title="Country of Current Residency">Curr. Residency</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="countryOfCurrentResidency"
+											id="Country_of_current_residency"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.countryOfCurrentResidency}" />
 									</div>
 								</div>
 
@@ -1130,28 +1142,27 @@ event.preventDefault();
 									</div>
 								</div>
 
-
-
 								<hr>
 
 								<h6>Linked Accounts</h6>
 								<!-- Linked Account Header -->
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<p class="col-sm-2">Columns</p>
-									<div class="col-sm-1"></div>
+									<p class="col-sm-1">Columns</p>
+
 									<p class="col-sm-2">Linked Account 1</p>
 									<p class="col-sm-2">Linked Account 2</p>
 									<p class="col-sm-2">Linked Account 3</p>
 									<p class="col-sm-2">Linked Account 4</p>
+									<p class="col-sm-2">Linked Account 5</p>
 								</div>
 
 								<!-- Linked Account Fields -->
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label for="linked_account1_name"
 											title="Linked Account 1 Name">Name</label>
 									</div>
-									<div class="col-sm-1"></div>
+
 									<div class="col-sm-2">
 										<input type="text" name="linkedAccount1Name"
 											id="linked_account1_name"
@@ -1176,14 +1187,19 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.linkedAccount4Name}" />
 									</div>
+									<div class="col-sm-2">
+										<input type="text" name="linkedAccount5Name"
+											id="linked_account5_name"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label for="linked_account1_number"
 											title="Linked Account 1 Number">Number</label>
 									</div>
-									<div class="col-sm-1"></div>
+
 									<div class="col-sm-2">
 										<input type="text" name="linkedAccount1Number"
 											id="linked_account1_number"
@@ -1208,14 +1224,19 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.linkedAccount4Number}" />
 									</div>
+									<div class="col-sm-2">
+										<input type="text" name="linkedAccount5Number"
+											id="linked_account5_number"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label for="linked_account1_type"
 											title="Linked Account 1 Type">Type</label>
 									</div>
-									<div class="col-sm-1"></div>
+
 									<div class="col-sm-2">
 										<input type="text" name="linkedAccount1Type"
 											id="linked_account1_type"
@@ -1240,14 +1261,19 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.linkedAccount4Type}" />
 									</div>
+									<div class="col-sm-2">
+										<input type="text" name="linkedAccount5Type"
+											id="linked_account5_type"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label for="linked_account1_opening_date"
 											title="Linked Account 1 Opening Date">Opening Date</label>
 									</div>
-									<div class="col-sm-1"></div>
+
 									<div class="col-sm-2">
 										<input type="date" name="linkedAccount1OpeningDate"
 											id="linked_account1_opening_date"
@@ -1272,14 +1298,19 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${#dates.format(user_data.linkedAccount4OpeningDate, 'yyyy-MM-dd')}" />
 									</div>
+									<div class="col-sm-2">
+										<input type="date" name="linkedAccount5OpeningDate"
+											id="linked_account5_opening_date"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label for="linked_account1_currency"
 											title="Linked Account 1 Currency">Currency</label>
 									</div>
-									<div class="col-sm-1"></div>
+
 									<div class="col-sm-2">
 										<input type="text" name="linkedAccount1Currency"
 											id="linked_account1_currency"
@@ -1304,14 +1335,18 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.linkedAccount4Currency}" />
 									</div>
+									<div class="col-sm-2">
+										<input type="text" name="linkedAccount5Currency"
+											id="linked_account5_currency"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label for="linked_account1_status"
 											title="Linked Account 1 Status">Status</label>
 									</div>
-									<div class="col-sm-1"></div>
 									<div class="col-sm-2">
 										<input type="text" name="linkedAccount1Status"
 											id="linked_account1_status"
@@ -1336,58 +1371,60 @@ event.preventDefault();
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.linkedAccount4Status}" />
 									</div>
+									<div class="col-sm-2">
+										<input type="text" name="linkedAccount5Status"
+											id="linked_account5_status"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
 								</div>
-
-
-
-
 								<hr>
 								<h6>Account and Transaction Details</h6>
+
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
-										<label for="account_satisfactory" title="Account Satisfactory">
-											Account is satisfactory? </label>
+										<label for="account_satisfactory" title="Account Satisfactory">Account
+											is satisfactory?</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
 											<input type="radio" id="account_satisfactory_yes"
-												name="Account_satisfactory" value="Yes"
+												name="accountSatisfactory" value="Yes"
 												th:checked="${user_data.accountSatisfactory == 'Yes'}" /> <label
 												for="account_satisfactory_yes">Yes</label> <input
 												type="radio" id="account_satisfactory_no"
-												name="Account_satisfactory" value="No"
+												name="accountSatisfactory" value="No"
 												th:checked="${user_data.accountSatisfactory == 'No'}" /> <label
 												for="account_satisfactory_no">No</label>
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<label for="high_value_transactions"
-											title="High Value Transactions Observed"> High Value
-											transactions observed </label>
+											title="High Value Transactions Observed">High Value
+											transactions observed</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
 											<input type="radio" id="high_value_transactions_yes"
-												name="High_value_transactions_observed" value="Yes"
+												name="highValueTransactionsObserved" value="Yes"
 												th:checked="${user_data.highValueTransactionsObserved == 'Yes'}" />
 											<label for="high_value_transactions_yes">Yes</label> <input
 												type="radio" id="high_value_transactions_no"
-												name="High_value_transactions_observed" value="No"
+												name="highValueTransactionsObserved" value="No"
 												th:checked="${user_data.highValueTransactionsObserved == 'No'}" />
 											<label for="high_value_transactions_no">No</label>
 										</div>
 									</div>
 									<div class="col-sm-2">
-										<label for="suspicion_observed" title="Suspicion Observed">
-											If any suspicion is observed </label>
+										<label for="suspicion_observed" title="Suspicion Observed">If
+											any suspicion is observed</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
 											<input type="radio" id="suspicion_observed_yes"
-												name="Suspicion_observed" value="Yes"
+												name="suspicionObserved" value="Yes"
 												th:checked="${user_data.suspicionObserved == 'Yes'}" /> <label
 												for="suspicion_observed_yes">Yes</label> <input type="radio"
-												id="suspicion_observed_no" name="Suspicion_observed"
+												id="suspicion_observed_no" name="suspicionObserved"
 												value="No"
 												th:checked="${user_data.suspicionObserved == 'No'}" /> <label
 												for="suspicion_observed_no">No</label>
@@ -1395,11 +1432,10 @@ event.preventDefault();
 									</div>
 									<div class="col-sm-1">
 										<label for="suspicion_observed_details"
-											title="Suspicion Observed Details"> If yes, specify-
-										</label>
+											title="Suspicion Observed Details">If yes, specify:</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="Suspicion_observed_details"
+										<input type="text" name="suspicionObservedDetails"
 											th:value="${user_data.suspicionObservedDetails}"
 											id="suspicion_observed_details"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1409,29 +1445,29 @@ event.preventDefault();
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
 										<label for="high_value_details_1"
-											title="High Value Transactions Details 1"> High Value
-											transactions Details </label>
+											title="High Value Transactions Details">High Value
+											transactions Details</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="High_value_transactions_details1"
+										<input type="text" name="highValueTransactionsDetails1"
 											th:value="${user_data.highValueTransactionsDetails1}"
 											id="high_value_details_1"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="High_value_transactions_details2"
+										<input type="text" name="highValueTransactionsDetails2"
 											th:value="${user_data.highValueTransactionsDetails2}"
 											id="high_value_details_2"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="High_value_transactions_details3"
+										<input type="text" name="highValueTransactionsDetails3"
 											th:value="${user_data.highValueTransactionsDetails3}"
 											id="high_value_details_3"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="High_value_transactions_details4"
+										<input type="text" name="highValueTransactionsDetails4"
 											th:value="${user_data.highValueTransactionsDetails4}"
 											id="high_value_details_4"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1441,173 +1477,175 @@ event.preventDefault();
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
 										<label for="branch_satisfied"
-											title="Branch Satisfied with Transactions"> Branch is
-											satisfied </label>
+											title="Branch Satisfied with Transactions">Branch is
+											satisfied</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
 											<input type="radio" id="branch_satisfied_yes"
-												name="Branch_satisfied_with_transactions" value="Yes"
+												name="branchSatisfiedWithTransactions" value="Yes"
 												th:checked="${user_data.branchSatisfiedWithTransactions == 'Yes'}" />
 											<label for="branch_satisfied_yes">Yes</label> <input
 												type="radio" id="branch_satisfied_no"
-												name="Branch_satisfied_with_transactions" value="No"
+												name="branchSatisfiedWithTransactions" value="No"
 												th:checked="${user_data.branchSatisfiedWithTransactions == 'No'}" />
 											<label for="branch_satisfied_no">No</label>
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<label for="transaction_commensurate"
-											title="Transaction Commensurate"> Nature/Volume of
-											customer profile </label>
+											title="Transaction Commensurate">Nature/Volume of
+											customer profile</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
 											<input type="radio" id="transaction_commensurate_yes"
-												name="Transaction_commensurate" value="Yes"
+												name="transactionCommensurate" value="Yes"
 												th:checked="${user_data.transactionCommensurate == 'Yes'}" />
 											<label for="transaction_commensurate_yes">Yes</label> <input
 												type="radio" id="transaction_commensurate_no"
-												name="Transaction_commensurate" value="No"
+												name="transactionCommensurate" value="No"
 												th:checked="${user_data.transactionCommensurate == 'No'}" />
 											<label for="transaction_commensurate_no">No</label>
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<label for="supporting_documents"
-											title="Supporting Document Obtained"> Transactions
-											supporting document </label>
+											title="Supporting Document Obtained">Transactions
+											supporting document</label>
 									</div>
 									<div class="col-sm-2">
 										<div>
-											<input type="radio" id="Supporting_document_obtained_yes"
-												name="Supporting_document_obtained" value="Yes"
+											<input type="radio" id="supporting_document_obtained_yes"
+												name="supportingDocumentObtained" value="Yes"
 												th:checked="${user_data.supportingDocumentObtained == 'Yes'}" />
-											<label for="Supporting_document_obtained_yes">Yes</label> <input
-												type="radio" id="Supporting_document_obtained_no"
-												name="Supporting_document_obtained" value="No"
+											<label for="supporting_document_obtained_yes">Yes</label> <input
+												type="radio" id="supporting_document_obtained_no"
+												name="supportingDocumentObtained" value="No"
 												th:checked="${user_data.supportingDocumentObtained == 'No'}" />
-											<label for="Supporting_document_obtained_no">No</label>
+											<label for="supporting_document_obtained_no">No</label>
 										</div>
 									</div>
 								</div>
-
-
 								<hr>
 								<p>Turnover and Transaction Info</p>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
-										<label for="current_turnover" title="Current Turnover"
+										<label for="currentTurnover" title="Current Turnover"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Curr Turnover </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="number" name="Current_turnover"
-											id="current_turnover"
+										<input type="number" name="currentTurnover"
+											id="currentTurnover"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.currentTurnover}" />
 									</div>
+
 									<div class="col-sm-1">
-										<label for="expected_turnover" title="Expected Turnover"
+										<label for="expectedTurnover" title="Expected Turnover"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Expe Turnover </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="number" name="Expected_turnover"
+										<input type="number" name="expectedTurnover"
 											th:value="${user_data.expectedTurnover}"
-											id="expected_turnover"
+											id="expectedTurnover"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 									<div class="col-sm-1">
-										<label for="transaction_frequency"
-											title="Transaction Frequency"
+										<label for="debitFrequency" title="Transaction Frequency"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Debit </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="number" name="transaction_frequency"
-											th:value="${user_data.debit}" id="transaction_frequency"
+										<input type="number" name="debitFrequency"
+											th:value="${user_data.debit}" id="debitFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 									<div class="col-sm-1">
-										<label for="known_countries_credit"
-											title="Known Countries of Transaction 1"
+										<label for="creditFrequency"
+											title="Known Countries of Transaction"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Credit </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="number" name="known_countries_credit"
-											th:value="${user_data.credit}" id="known_countries_credit"
+										<input type="number" name="creditFrequency"
+											th:value="${user_data.credit}" id="creditFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
-										<label for="transaction_frequency_2"
+										<label for="transactionFrequency"
 											title="Transaction Frequency"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Frequency </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="Transaction_frequency"
+										<input type="text" name="transactionFrequency"
 											th:value="${user_data.transactionFrequency}"
-											id="transaction_frequency_2"
+											id="transactionFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 									<div class="col-sm-1">
-										<label for="transaction_volume" title="Transaction Volume"
+										<label for="transactionVolume" title="Transaction Volume"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Volume </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="number" name="Expected_transaction_volume"
+										<input type="number" name="expectedTransactionVolume"
 											th:value="${user_data.expectedTransactionVolume}"
-											id="transaction_volume"
+											id="transactionVolume"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 									<div class="col-sm-1">
-										<label for="Expected_transaction_types"
-											title="Expected_transaction_types"
+										<label for="transactionTypes"
+											title="Expected Transaction Types"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Type of transactions </label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="Expected_transaction_types"
+										<input type="text" name="expectedTransactionTypes"
 											th:value="${user_data.expectedTransactionTypes}"
-											id="Expected_transaction_types"
+											id="transactionTypes"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
 
-								<p>Known country with customer conduct transactions:</p>
+								<p>Known countries where the customer conducts transactions:</p>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1" align="right">1.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Known_countries_of_transaction_1"
-											id="known_country_1"
+										<input type="text" name="knownCountriesOfTransaction1"
+											id="knownCountry1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.knownCountriesOfTransaction1}" />
 									</div>
 									<div class="col-sm-1" align="right">2.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Known_countries_of_transaction_2"
-											id="known_country_2"
+										<input type="text" name="knownCountriesOfTransaction2"
+											id="knownCountry2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.knownCountriesOfTransaction2}" />
 									</div>
 									<div class="col-sm-1" align="right">3.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Known_countries_of_transaction_3"
-											id="known_country_3"
+										<input type="text" name="knownCountriesOfTransaction3"
+											id="knownCountry3"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.knownCountriesOfTransaction3}" />
 									</div>
 									<div class="col-sm-1" align="right">4.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Known_countries_of_transaction_4"
-											id="known_country_4"
+										<input type="text" name="knownCountriesOfTransaction4"
+											id="knownCountry4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.knownCountriesOfTransaction4}" />
 									</div>
@@ -1618,31 +1656,31 @@ event.preventDefault();
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1" align="right">1.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Other_expected_countries_1"
-											th:value="${user_data.otherExpectedCountries1}"
-											id="expected_country_1"
-											class="form-control form-control-sm bg-white border border-dark" />
+										<input type="text" name="otherExpectedCountries1"
+											id="expectedCountry1"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.otherExpectedCountries1}" />
 									</div>
 									<div class="col-sm-1" align="right">2.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Other_expected_countries_2"
-											th:value="${user_data.otherExpectedCountries2}"
-											id="expected_country_2"
-											class="form-control form-control-sm bg-white border border-dark" />
+										<input type="text" name="otherExpectedCountries2"
+											id="expectedCountry2"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.otherExpectedCountries2}" />
 									</div>
 									<div class="col-sm-1" align="right">3.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Other_expected_countries_3"
-											th:value="${user_data.otherExpectedCountries3}"
-											id="expected_country_3"
-											class="form-control form-control-sm bg-white border border-dark" />
+										<input type="text" name="otherExpectedCountries3"
+											id="expectedCountry3"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.otherExpectedCountries3}" />
 									</div>
 									<div class="col-sm-1" align="right">4.</div>
 									<div class="col-sm-2">
-										<input type="text" name="Other_expected_countries_4"
-											th:value="${user_data.otherExpectedCountries4}"
-											id="expected_country_4"
-											class="form-control form-control-sm bg-white border border-dark" />
+										<input type="text" name="otherExpectedCountries4"
+											id="expectedCountry4"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.otherExpectedCountries4}" />
 									</div>
 								</div>
 
@@ -1652,7 +1690,7 @@ event.preventDefault();
 								<p>C. Sanctions Screening & Due Diligence – Primary Account
 									Holder</p>
 								<p>If any positive match, please mention the sanctions list
-									as below</p>
+									as below:</p>
 
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 
@@ -1660,100 +1698,433 @@ event.preventDefault();
 										style="display: flex; justify-content: space-between;">
 										<div align="right">UAE</div>
 										<div>
-											<input type="checkbox" name="Uae" id="sanctions_uae_primary"
+											<input type="checkbox" name="uae" id="sanctions_uae_primary"
 												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" th:value="${user_data.uae}" />
-										</div>
-										<div align="right">UN</div>
-										<div>
-											<input type="checkbox" name="Un" id="sanctions_un_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" th:value="${user_data.un}" />
-										</div>
-										<div align="right">OFAC</div>
-										<div>
-											<input type="checkbox" name="Ofac"
-												id="sanctions_ofac_primary" value="No"
-												class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" th:value="${user_data.ofac}"/>
-										</div>
-										<div align="right">HMT</div>
-										<div>
-											<input type="checkbox" name="Hmt" id="sanctions_hmt_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" th:value="${user_data.hmt}"/>
-										</div>
-										<div align="right">EU</div>
-										<div>
-											<input type="checkbox" name="Eu" id="sanctions_eu_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" th:value="${user_data.eu}"/>
-										</div>
-										<div align="right">Others</div>
-										<div>
-											<input type="text" name="Others"
-												id="sanctions_others_primary"
-												class="form-control form-control-sm bg-white border border-dark" th:value="${user_data.others}" />
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
+												th:value="${user_data.uae}" />
 										</div>
 
+										<div align="right">UN</div>
+										<div>
+											<input type="checkbox" name="un" id="sanctions_un_primary"
+												value="No" class="form-check-input custom-checkbox"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
+												th:value="${user_data.un}" />
+										</div>
+
+										<div align="right">OFAC</div>
+										<div>
+											<input type="checkbox" name="ofac"
+												id="sanctions_ofac_primary" value="No"
+												class="form-check-input custom-checkbox"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
+												th:value="${user_data.ofac}" />
+										</div>
+
+										<div align="right">HMT</div>
+										<div>
+											<input type="checkbox" name="hmt" id="sanctions_hmt_primary"
+												value="No" class="form-check-input custom-checkbox"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
+												th:value="${user_data.hmt}" />
+										</div>
+
+										<div align="right">EU</div>
+										<div>
+											<input type="checkbox" name="eu" id="sanctions_eu_primary"
+												value="No" class="form-check-input custom-checkbox"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
+												th:value="${user_data.eu}" />
+										</div>
+
+										<div align="right">Others</div>
+										<div>
+											<input type="text" name="others"
+												id="sanctions_others_primary"
+												class="form-control form-control-sm bg-white border border-dark"
+												th:value="${user_data.others}" />
+										</div>
 									</div>
+
 									<div class="col-sm-1">CBUAE BBL</div>
 									<div class="col-sm-1">
-										<input type="radio" id="bbl_yes_primary" name="Cbu_check_done"
-											value="yes" /> <label for="bbl_yes_primary">Yes</label> <input
-											type="radio" id="bbl_no_primary" name="Cbu_check_done"
-											value="no" /> <label for="bbl_no_primary">No</label>
+										<input type="radio" id="bbl_yes_primary" name="cbuCheckDone"
+											value="Yes" th:checked="${user_data.cbuCheckDone == 'Yes'}" />
+										<label for="bbl_yes_primary">Yes</label> <input type="radio"
+											id="bbl_no_primary" name="cbuCheckDone" value="No"
+											th:checked="${user_data.cbuCheckDone == 'No'}" /> <label
+											for="bbl_no_primary">No</label>
 									</div>
 
 									<div class="col-sm-1">Google Search</div>
 									<div class="col-sm-1">
 										<input type="radio" id="google_yes_primary"
-											name="Google_media_search" value="yes" /> <label
+											name="googleMediaSearch" value="Yes"
+											th:checked="${user_data.googleMediaSearch == 'Yes'}" /> <label
 											for="google_yes_primary">Yes</label> <input type="radio"
-											id="google_no_primary" name="Google_media_search" value="no" />
-										<label for="google_no_primary">No</label>
+											id="google_no_primary" name="googleMediaSearch" value="No"
+											th:checked="${user_data.googleMediaSearch == 'No'}" /> <label
+											for="google_no_primary">No</label>
 									</div>
+
+
 									<div class="col-sm-2">Suspicion Observed</div>
 									<div class="col-sm-1">
-										<input type="radio" id="denylist_yes_primary"
-											name="Internal_deny_list_screening" value="yes" /> <label
-											for="denylist_yes_primary">Yes</label> <input type="radio"
-											id="denylist_no_primary" name="Internal_deny_list_screening"
-											value="no" /> <label for="denylist_no_primary">No</label>
-											<input type="radio"
-											id="denylist_no_primary" name="Internal_deny_list_screening"
-											value="no" /> <label for="denylist_no_primary">NA</label>
-											
+										<input type="text" name="suspicionObserved"
+											id="sanctions_others_primary"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.suspicionObserved1}" />
 									</div>
-
 								</div>
-								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<div class="col-sm-1">Suspicion Details</div>
 									<div class="col-sm-2">
-										<input type="text" name="adverse_info_details_primary"
+										<input type="text" name="adverseInfoDetailsPrimary"
 											id="adverse_info_details_primary"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.supportingDocumentObtained2}" />
+									</div>
+
+									<div class="col-sm-2">Document to Discount Red Flag</div>
+									<div class="col-sm-2">
+										<input type="text" name="supportingDocumentObtained"
+											id="provide_reason_primary"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.reasonForRedFlag1}" />
+									</div>
+								</div>
+								<hr>
+
+								<p>Sanctions Screening & Due Diligence – Joint Account
+									Holder 1, 2, 3.</p>
+								<p>If any positive match, please mention the sanctions list
+									as below:</p>
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-5"
+										style="display: flex; justify-content: space-between;">
+										<div align="right">UAE</div>
+										<div>
+											<input type="checkbox" name="jointUae"
+												id="sanctions_uae_primary"
+												class="form-check-input custom-checkbox"
+												th:checked="${user_data.jointUae == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+										</div>
+
+										<div align="right">UN</div>
+										<div>
+											<input type="checkbox" name="jointUn"
+												id="sanctions_un_primary"
+												class="form-check-input custom-checkbox"
+												th:checked="${user_data.jointUn == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+										</div>
+
+										<div align="right">OFAC</div>
+										<div>
+											<input type="checkbox" name="jointOfac"
+												id="sanctions_ofac_primary"
+												class="form-check-input custom-checkbox"
+												th:checked="${user_data.jointOfac == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+										</div>
+
+										<div align="right">HMT</div>
+										<div>
+											<input type="checkbox" name="jointHmt"
+												id="sanctions_hmt_primary"
+												class="form-check-input custom-checkbox"
+												th:checked="${user_data.jointHmt == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+										</div>
+
+										<div align="right">EU</div>
+										<div>
+											<input type="checkbox" name="jointEu"
+												id="sanctions_eu_primary"
+												class="form-check-input custom-checkbox"
+												th:checked="${user_data.jointEu == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+										</div>
+
+										<div align="right">Others</div>
+										<div>
+											<input type="text" name="jointOthers"
+												id="sanctions_others_primary"
+												class="form-control form-control-sm bg-white border border-dark"
+												th:value="${user_data.jointOthers}" />
+										</div>
+									</div>
+
+									<div class="col-sm-1">CBUAE BBL</div>
+									<div class="col-sm-1">
+										<input type="radio" id="bbl_yes_primary"
+											name="jointCbuCheckDone" value="Yes"
+											th:checked="${user_data.jointCbuCheckDone == 'Yes'}" /> <label
+											for="bbl_yes_primary">Yes</label> <input type="radio"
+											id="bbl_no_primary" name="jointCbuCheckDone" value="No"
+											th:checked="${user_data.jointCbuCheckDone == 'No'}" /> <label
+											for="bbl_no_primary">No</label>
+									</div>
+
+									<div class="col-sm-1">Google Search</div>
+									<div class="col-sm-1">
+										<input type="radio" id="google_yes_primary"
+											name="jointGoogleMediaSearch" value="Yes"
+											th:checked="${user_data.jointGoogleMediaSearch == 'Yes'}" />
+										<label for="google_yes_primary">Yes</label> <input
+											type="radio" id="google_no_primary"
+											name="jointGoogleMediaSearch" value="No"
+											th:checked="${user_data.jointGoogleMediaSearch == 'No'}" />
+										<label for="google_no_primary">No</label>
+									</div>
+
+									<div class="col-sm-2">Suspicion Observed</div>
+									<div class="col-sm-1">
+										<input type="text" name="jointSuspicionObserved"
+											id="suspicion_observed_primary"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.jointSuspicionObserved}" />
+									</div>
+								</div>
+
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-1">Suspicion Details</div>
+									<div class="col-sm-2">
+										<input type="text" name="jointSuspicionObservedDetails"
+											id="adverse_info_details_joint"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 									<div class="col-sm-2">Document to Discount Red Flag</div>
 									<div class="col-sm-2">
-										<input type="text" name="Supporting_document_obtained_2"
-											id="provide_reason_primary"
+										<input type="text" name="jointSupportingDocumentObtained"
+											th:value="${user_data.jointSupportingDocumentObtained}"
+											id="provide_reason_joint"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+								</div>
+
+								<hr>
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<!-- Customer PEP Status -->
+									<div class="col-sm-1">Whether customer PEP</div>
+									<div class="col-sm-1">
+										<input type="radio" id="pep_yes" name="isPep" value="yes"
+											th:checked="${user_data.isPep == 'yes'}" /> <label
+											for="pep_yes">Yes</label> <input type="radio" id="pep_no"
+											name="isPep" value="no"
+											th:checked="${user_data.isPep == 'no'}" /> <label
+											for="pep_no">No</label> <input type="radio" id="pep_na"
+											name="isPep" value="na"
+											th:checked="${user_data.isPep == 'na'}" /> <label
+											for="pep_na">NA</label>
+									</div>
+
+									<!-- Senior Management Approval -->
+									<div class="col-sm-1">Senior Approval</div>
+									<div class="col-sm-1">
+										<input type="radio" id="approval_yes"
+											name="seniorManagementApproval" value="yes"
+											th:checked="${user_data.seniorManagementApproval == 'yes'}" />
+										<label for="approval_yes">Yes</label> <input type="radio"
+											id="approval_no" name="seniorManagementApproval" value="no"
+											th:checked="${user_data.seniorManagementApproval == 'no'}" />
+										<label for="approval_no">No</label> <input type="radio"
+											id="approval_na" name="seniorManagementApproval" value="na"
+											th:checked="${user_data.seniorManagementApproval == 'na'}" />
+										<label for="approval_na">NA</label>
+									</div>
+
+									<!-- Foreign Currency Request -->
+									<div class="col-sm-1">Requesting Foreign</div>
+									<div class="col-sm-1">
+										<input type="radio" id="request_foreign_yes"
+											name="foreignCurrencyRequest" value="yes"
+											th:checked="${user_data.foreignCurrencyRequest == 'yes'}" />
+										<label for="request_foreign_yes">Yes</label> <input
+											type="radio" id="request_foreign_no"
+											name="foreignCurrencyRequest" value="no"
+											th:checked="${user_data.foreignCurrencyRequest == 'no'}" />
+										<label for="request_foreign_no">No</label> <input type="radio"
+											id="request_foreign_na" name="foreignCurrencyRequest"
+											value="na"
+											th:checked="${user_data.foreignCurrencyRequest == 'na'}" />
+										<label for="request_foreign_na">NA</label>
+									</div>
+
+
+									<!-- Customer Risk -->
+									<div class="col-sm-1">Customer Risk</div>
+									<div class="col-sm-2">
+										<input type="radio" id="risk_high" name="customerRisk"
+											value="high" th:checked="${user_data.customerRisk == 'high'}" />
+										<label for="risk_high">High</label> <input type="radio"
+											id="risk_medium" name="customerRisk" value="medium"
+											th:checked="${user_data.customerRisk == 'medium'}" /> <label
+											for="risk_medium">Medium</label> <input type="radio"
+											id="risk_low" name="customerRisk" value="low"
+											th:checked="${user_data.customerRisk == 'low'}" /> <label
+											for="risk_low">Low</label>
+									</div>
+
+									<!-- Senior Management Approval for Foreign Currency -->
+									<div class="col-sm-1">Senior Approval FC</div>
+									<div class="col-sm-2">
+										<input type="radio" id="seniorApprovalYes"
+											name="seniorManagementApprovalFc" value="yes"
+											th:checked="${user_data.seniorManagementApprovalFc == 'yes'}" />
+										<label for="seniorApprovalYes">Yes</label> <input type="radio"
+											id="seniorApprovalNo" name="seniorManagementApprovalFc"
+											value="no"
+											th:checked="${user_data.seniorManagementApprovalFc == 'no'}" />
+										<label for="seniorApprovalNo">No</label> <input type="radio"
+											id="seniorApprovalNa" name="seniorManagementApprovalFc"
+											value="na"
+											th:checked="${user_data.seniorManagementApprovalFc == 'na'}" />
+										<label for="seniorApprovalNa">NA</label>
+									</div>
+								</div>
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<!-- Reason for Categorizing Customer -->
+									<div class="col-sm-2">Reason for Categorizing Customer</div>
+									<div class="col-sm-2">
+										<input type="text" name="highRiskReason" id="highRiskReason"
+											th:value="${user_data.highRiskReason}"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+									<!-- Due Diligence -->
+									<div class="col-sm-1">Due Diligence</div>
+									<div class="col-sm-2">
+										<input type="text" name="furtherDueDiligence"
+											id="furtherDueDiligence"
+											th:value="${user_data.furtherDueDiligence}"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+									<!-- Observations of Bank -->
+									<div class="col-sm-1">Observations of Bank</div>
+									<div class="col-sm-2">
+										<input type="text" name="observationsOfBankOfficial"
+											id="observationsOfBankOfficial"
+											th:value="${user_data.observationsOfBankOfficial}"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+								</div>
+								<hr>
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-5">Account Opening Officer</div>
+								</div>
+
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-1">
+										<label for="signaturePrimary">Signature:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="accountOpeningOfficerSignature"
+											id="signaturePrimary"
+											th:value="${user_data.accountOpeningOfficerSignature}"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+									<div class="col-sm-1">
+										<label for="namePrimary">Name:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="accountOpeningOfficerName"
+											th:value="${user_data.accountOpeningOfficerName}"
+											id="namePrimary"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+									<div class="col-sm-1">
+										<label for="designationPrimary">Designation:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="accountOpeningOfficerDesignation"
+											th:value="${user_data.accountOpeningOfficerDesignation}"
+											id="designationPrimary"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+									<div class="col-sm-1">
+										<label for="datePrimary">Date:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="date" name="accountOpeningOfficerDate"
+											th:value="${user_data.accountOpeningOfficerDate}"
+											id="datePrimary"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+								</div>
+								<hr>
+
+
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-5">Branch Official</div>
+								</div>
+
+
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-1">
+										<label for="signature_branch">Signature:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="Branch_official_signature"
+											th:value="${user_data.branchOfficialSignature}"
+											id="signature_branch"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+									<div class="col-sm-1">
+										<label for="name_branch">Name:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="Branch_official_name"
+											th:value="${user_data.branchOfficialName}" id="name_branch"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+									<div class="col-sm-1">
+										<label for="designation_branch">Designation:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="Branch_official_designation"
+											th:value="${user_data.branchOfficialDesignation}"
+											id="designation_branch"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+									<div class="col-sm-1">
+										<label for="date_branch">Date:</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="date" name="Branch_official_Date"
+											th:value="${user_data.branchOfficialDate}" id="date_branch"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
 
 
-								<button type="button" class="btn btn-xs btn-primary"
-									th:if="${formmode == 'modify'}" form="individual_form"
-									id="btnSubmit" onclick="submitform();">Submit</button>
+
 							</div>
+
+
+							<button type="button" class="btn btn-xs btn-primary"
+								th:if="${formmode == 'modify'}" form="individual_form"
+								id="btnSubmit" onclick="submitform();">Submit</button>
+
 						</fieldset>
 					</form>
+					<div class="card-footer text-center">
+						<button type="button" class="btn btn-xs btn-primary"
+							onclick="goHome();" id="btnUpload">Home</button>
+						<button type="reset" class="btn btn-xs btn-primary" id="btnClear"
+							onclick="goBack();">Back</button>
+					</div>
+
+
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 
