@@ -251,7 +251,8 @@ event.preventDefault();
 						th:each="user_data: ${user_data}">
 						<fieldset th:disabled="${formmode != 'modify'}">
 							<div class="card-body">
-								<h6>Customer Information</h6>
+								<h5>KNOW YOUR CUSTOMER DETAILS</h5>
+								<h6>Primary Account Holder</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
@@ -462,7 +463,7 @@ event.preventDefault();
 								<hr>
 
 								<!-- Primary Address Section -->
-								<h6>Primary Address</h6>
+								<h6>ADDRESS INFORMATION (Primary Account Holder)</h6>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<!-- First Row -->
 									<div class="col-sm-1">
@@ -598,7 +599,7 @@ event.preventDefault();
 
 								<hr>
 
-								<h6>Joint Holder 1 Information</h6>
+								<h6>JOINT ACCOUNT HOLDERS 1</h6>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<!-- First Row -->
 									<div class="col-sm-1">
@@ -755,7 +756,7 @@ event.preventDefault();
 								</div>
 
 								<hr>
-								<h6>Joint Holder 2 Information</h6>
+								<h6>JOINT ACCOUNT HOLDERS 2</h6>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<!-- First Row -->
 									<div class="col-sm-1">
@@ -915,13 +916,12 @@ event.preventDefault();
 								</div>
 
 								<hr>
-								<h6>Nationality and Documents</h6>
+
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<p class="col-sm-3">Account Holder</p>
-									<p class="col-sm-3">Primary Account Holder</p>
-									<p class="col-sm-3">Joint Account Holder 1</p>
-									<p class="col-sm-3">Joint Account Holder 2</p>
+									<b class="col-sm-3">Account Holder</b> <b class="col-sm-3">Primary
+										Account Holder</b> <b class="col-sm-3">Joint Account Holder 1</b>
+									<b class="col-sm-3">Joint Account Holder 2</b>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
@@ -1144,7 +1144,7 @@ event.preventDefault();
 
 								<hr>
 
-								<h6>Linked Accounts</h6>
+								<h6>1. LIST OF ALL OTHER LINKED ACCOUNTS / CUSTOMER ID</h6>
 								<!-- Linked Account Header -->
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<p class="col-sm-1">Columns</p>
@@ -1378,12 +1378,13 @@ event.preventDefault();
 									</div>
 								</div>
 								<hr>
-								<h6>Account and Transaction Details</h6>
+								<h6>A. Branch official observations during review of
+									existing relationship</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
-										<label for="account_satisfactory" title="Account Satisfactory">Account
-											is satisfactory?</label>
+										<label for="account_satisfactory" title="Account Satisfactory">conduct
+											Acct. is satisfactory?</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
@@ -1397,23 +1398,7 @@ event.preventDefault();
 												for="account_satisfactory_no">No</label>
 										</div>
 									</div>
-									<div class="col-sm-2">
-										<label for="high_value_transactions"
-											title="High Value Transactions Observed">High Value
-											transactions observed</label>
-									</div>
-									<div class="col-sm-1">
-										<div>
-											<input type="radio" id="high_value_transactions_yes"
-												name="highValueTransactionsObserved" value="Yes"
-												th:checked="${user_data.highValueTransactionsObserved == 'Yes'}" />
-											<label for="high_value_transactions_yes">Yes</label> <input
-												type="radio" id="high_value_transactions_no"
-												name="highValueTransactionsObserved" value="No"
-												th:checked="${user_data.highValueTransactionsObserved == 'No'}" />
-											<label for="high_value_transactions_no">No</label>
-										</div>
-									</div>
+
 									<div class="col-sm-2">
 										<label for="suspicion_observed" title="Suspicion Observed">If
 											any suspicion is observed</label>
@@ -1440,13 +1425,43 @@ event.preventDefault();
 											id="suspicion_observed_details"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+									<div class="col-sm-2">
+										<label for="supporting_documents"
+											title="Supporting Document Obtained">Transactions
+											supporting document</label>
+									</div>
+									<div class="col-sm-1">
+										<div>
+											<input type="radio" id="supporting_document_obtained_yes"
+												name="supportingDocumentObtained" value="Yes"
+												th:checked="${user_data.supportingDocumentObtained == 'Yes'}" />
+											<label for="supporting_document_obtained_yes">Yes</label> <input
+												type="radio" id="supporting_document_obtained_no"
+												name="supportingDocumentObtained" value="No"
+												th:checked="${user_data.supportingDocumentObtained == 'No'}" />
+											<label for="supporting_document_obtained_no">No</label>
+										</div>
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
 										<label for="high_value_details_1"
 											title="High Value Transactions Details">High Value
-											transactions Details</label>
+											transactions observerd if yes -Specify</label>
+									</div>
+
+									<div class="col-sm-1">
+										<div>
+											<input type="radio" id="high_value_transactions_yes"
+												name="highValueTransactionsObserved" value="Yes"
+												th:checked="${user_data.highValueTransactionsObserved == 'Yes'}" />
+											<label for="high_value_transactions_yes">Yes</label> <input
+												type="radio" id="high_value_transactions_no"
+												name="highValueTransactionsObserved" value="No"
+												th:checked="${user_data.highValueTransactionsObserved == 'No'}" />
+											<label for="high_value_transactions_no">No</label>
+										</div>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="highValueTransactionsDetails1"
@@ -1509,26 +1524,12 @@ event.preventDefault();
 											<label for="transaction_commensurate_no">No</label>
 										</div>
 									</div>
-									<div class="col-sm-2">
-										<label for="supporting_documents"
-											title="Supporting Document Obtained">Transactions
-											supporting document</label>
-									</div>
-									<div class="col-sm-2">
-										<div>
-											<input type="radio" id="supporting_document_obtained_yes"
-												name="supportingDocumentObtained" value="Yes"
-												th:checked="${user_data.supportingDocumentObtained == 'Yes'}" />
-											<label for="supporting_document_obtained_yes">Yes</label> <input
-												type="radio" id="supporting_document_obtained_no"
-												name="supportingDocumentObtained" value="No"
-												th:checked="${user_data.supportingDocumentObtained == 'No'}" />
-											<label for="supporting_document_obtained_no">No</label>
-										</div>
-									</div>
+
 								</div>
 								<hr>
-								<p>Turnover and Transaction Info</p>
+
+
+								<h6>B. Details of Transaction in the account</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
@@ -1554,13 +1555,14 @@ event.preventDefault();
 											id="expectedTurnover"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+									<div class="col-sm-2">Anticipated expected transactions</div>
 
 									<div class="col-sm-1">
 										<label for="debitFrequency" title="Transaction Frequency"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Debit </label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="number" name="debitFrequency"
 											th:value="${user_data.debit}" id="debitFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1572,7 +1574,7 @@ event.preventDefault();
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Credit </label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="number" name="creditFrequency"
 											th:value="${user_data.credit}" id="creditFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1580,30 +1582,6 @@ event.preventDefault();
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-1">
-										<label for="transactionFrequency"
-											title="Transaction Frequency"
-											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
-											Frequency </label>
-									</div>
-									<div class="col-sm-2">
-										<input type="text" name="transactionFrequency"
-											th:value="${user_data.transactionFrequency}"
-											id="transactionFrequency"
-											class="form-control form-control-sm bg-white border border-dark" />
-									</div>
-
-									<div class="col-sm-1">
-										<label for="transactionVolume" title="Transaction Volume"
-											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
-											Volume </label>
-									</div>
-									<div class="col-sm-2">
-										<input type="number" name="expectedTransactionVolume"
-											th:value="${user_data.expectedTransactionVolume}"
-											id="transactionVolume"
-											class="form-control form-control-sm bg-white border border-dark" />
-									</div>
 
 									<div class="col-sm-1">
 										<label for="transactionTypes"
@@ -1617,6 +1595,34 @@ event.preventDefault();
 											id="transactionTypes"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
+									<div class="col-sm-2">Expected volume of transactions</div>
+									<div class="col-sm-1">
+										<label for="transactionFrequency"
+											title="Transaction Frequency"
+											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+											Frequency </label>
+									</div>
+									<div class="col-sm-1">
+										<input type="text" name="transactionFrequency"
+											th:value="${user_data.transactionFrequency}"
+											id="transactionFrequency"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+									<div class="col-sm-1">
+										<label for="transactionVolume" title="Transaction Volume"
+											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+											Volume </label>
+									</div>
+									<div class="col-sm-1">
+										<input type="number" name="expectedTransactionVolume"
+											th:value="${user_data.expectedTransactionVolume}"
+											id="transactionVolume"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
+
 								</div>
 
 								<p>Known countries where the customer conducts transactions:</p>
@@ -1687,8 +1693,8 @@ event.preventDefault();
 
 								<hr>
 
-								<p>C. Sanctions Screening & Due Diligence – Primary Account
-									Holder</p>
+								<h6>C. Sanctions screening & Due Diligence – Primary
+									Account Holder</h6>
 								<p>If any positive match, please mention the sanctions list
 									as below:</p>
 
@@ -1766,18 +1772,27 @@ event.preventDefault();
 											th:checked="${user_data.googleMediaSearch == 'No'}" /> <label
 											for="google_no_primary">No</label>
 									</div>
-
-
-									<div class="col-sm-2">Suspicion Observed</div>
+									<div class="col-sm-1">Deny list name</div>
 									<div class="col-sm-1">
+										<input type="radio" id="denylist_yes" name="denylist"
+											value="Yes" /> <label for="denylist_yes">Yes</label> <input
+											type="radio" id="denylist_no" name="denylist" value="No" />
+										<label for="denylist_no">No</label>
+									</div>
+
+
+								</div>
+
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+
+
+									<div class="col-sm-1">Suspicion Observed</div>
+									<div class="col-sm-2">
 										<input type="text" name="suspicionObserved1"
 											id="sanctions_others_primary"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.suspicionObserved1}" />
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<div class="col-sm-1">Suspicion Details</div>
 									<div class="col-sm-2">
 										<input type="text" name="adverseInfoDetailsPrimary"
@@ -1879,17 +1894,24 @@ event.preventDefault();
 											th:checked="${user_data.jointGoogleMediaSearch == 'No'}" />
 										<label for="google_no_primary">No</label>
 									</div>
-
-									<div class="col-sm-2">Suspicion Observed</div>
+									<div class="col-sm-1">Deny list name</div>
 									<div class="col-sm-1">
+										<input type="radio" id="jointdenylist_yes" name="denylist"
+											value="Yes" /> <label for="jointdenylist_yes">Yes</label> <input
+											type="radio" id="jointdenylist_no" name="denylist" value="No" />
+										<label for="jointdenylist_no">No</label>
+									</div>
+
+								</div>
+
+								<div class="row formline" style="padding: 15px 0px 2px 0px;">
+									<div class="col-sm-1">Suspicion Observed</div>
+									<div class="col-sm-2">
 										<input type="text" name="jointSuspicionObserved"
 											id="suspicion_observed_primary"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.jointSuspicionObserved}" />
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<div class="col-sm-1">Suspicion Details</div>
 									<div class="col-sm-2">
 										<input type="text" name="jointSuspicionObservedDetails"
