@@ -43,36 +43,48 @@
 
 <style>
 body {
-	font-size: 12px;
+	font-size: 0.75rem;
+	/* 12px in rem based on the default browser font size (16px) */
 }
 
 .container-manager {
-	width: 90.5%;
-	padding-left: 128px;
+	width: 90%;
+	padding-left: 8rem; /* Replace with rem to scale based on font size */
 	margin-right: 0;
 	margin-left: 8.5%;
-	margin-top: 80px;
-	margin-top: 80px;
-	padding-bottom: 40px;
+	margin-top: 5rem; /* Adjust based on visual need */
+	padding-bottom: 2.5rem;
 }
 
 .custom-checkbox {
-	width: 20px; /* Adjust width */
-	height: 20px; /* Adjust height */
-	/* Optional: add some margin */
+	width: 1.25em; /* About 20px if base font-size is 16px */
+	height: 1.25em;
 	margin: 0;
-	/* Optional: increase hit area */
 	cursor: pointer;
 }
 
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
-	{
-	-webkit-appearance: none;
-	margin: 0;
+input[type="number"] {
+	-moz-appearance: textfield;
+	min-width: 3rem; /* Prevents collapsing on small screens */
 }
 
-input[type="number"] {
-	-moz-appearance: textfield; /* Firefox */
+@media ( max-width : 768px) {
+	.container-manager {
+		padding-left: 2rem;
+		margin-left: 5%;
+		width: 95%;
+	}
+	body {
+		font-size: 0.7rem; /* Slightly smaller for small screens */
+	}
+}
+
+.label-container {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+	display: block;
 }
 </style>
 <script type="text/javascript">
@@ -166,7 +178,7 @@ event.preventDefault();
         const custid = getQueryParam('custid'); // Get custid from URL
         if (custid) {
             // Redirect to the same page with updated formmode
-            window.location.href = `/BRF/kyc/individual?custid=${custid}&formmode=${mode}`;
+            window.location.href = `./individual?custid=${custid}&formmode=${mode}`;
         } else {
             console.error("Customer ID not found in URL.");
         }
@@ -204,7 +216,7 @@ event.preventDefault();
 	function goBack() {
 		window.history.back();
 	}
-	
+
  
 </script>
 
@@ -254,10 +266,12 @@ event.preventDefault();
 								<h5>KNOW YOUR CUSTOMER DETAILS</h5>
 								<h6>Primary Account Holder</h6>
 
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
+								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
-										<label for="Customer_id" title="Customer ID">Customer
-											ID</label>
+										<div class="label-container">
+											<label for="Customer_id" title="Customer ID">Customer
+												ID</label>
+										</div>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="customerId" id="Customer_id"
@@ -265,8 +279,10 @@ event.preventDefault();
 											th:value="${user_data.customerId}" disabled="disabled" />
 									</div>
 									<div class="col-sm-1">
-										<label for="Account_type" title="Account Type">Acct
-											Type</label>
+										<div class="label-container">
+											<label for="Account_type" title="Account Type">Acct
+												Type</label>
+										</div>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="accountType" id="Account_type"
@@ -274,7 +290,9 @@ event.preventDefault();
 											th:value="${user_data.accountType}" />
 									</div>
 									<div class="col-sm-1">
-										<label for="Name" title="Name (As per Passport)">Name</label>
+										<div class="label-container">
+											<label for="Name" title="Name (As per Passport)">Name</label>
+										</div>
 									</div>
 									<div class="col-sm-2 d-flex align-items-center">
 										<input type="text" name="name" id="Name"
@@ -282,8 +300,10 @@ event.preventDefault();
 											th:value="${user_data.name}" />
 									</div>
 									<div class="col-sm-1">
-										<label for="Account_number" title="Account Number">Account
-											No</label>
+										<div class="label-container">
+											<label for="Account_number" title="Account Number">Account
+												No</label>
+										</div>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="accountNumber" id="Account_number"
@@ -291,6 +311,10 @@ event.preventDefault();
 											th:value="${user_data.accountNumber}" />
 									</div>
 								</div>
+
+
+
+
 
 								<!-- ----r2----- -->
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
@@ -419,7 +443,7 @@ event.preventDefault();
 									</div>
 									<div class="col-sm-1">
 										<label for="Country_of_citizenship"
-											title="Country of Citizenship">Country of Cit.</label>
+											title="Country of Citizenship">Citizenship</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="radio" id="Country_of_citizenship_resident"
@@ -450,7 +474,8 @@ event.preventDefault();
 									</div>
 									<div class="col-sm-1">
 										<label for="Country_of_current_residency"
-											title="Country of Current Residency">Curr. Residency</label>
+											title="Country of Current Residency">Country of
+											residency</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="countryOfCurrentResidency"
@@ -516,8 +541,8 @@ event.preventDefault();
 											th:value="${user_data.mobileNumber}" />
 									</div>
 									<div class="col-sm-1">
-										<label for="phone_number1" title="Phone Number 1">Phone
-											No 1</label>
+										<label for="phone_number1" title="Phone Number 1">Telephone
+											1</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="primaryTelephone" id="phone_number1"
@@ -525,8 +550,8 @@ event.preventDefault();
 											th:value="${user_data.primaryTelephone}" />
 									</div>
 									<div class="col-sm-1">
-										<label for="phone_number2" title="Phone Number 2">Phone
-											No 2</label>
+										<label for="phone_number2" title="Phone Number 2">Telephone
+											2</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="secondaryTelephone"
@@ -1384,7 +1409,7 @@ event.preventDefault();
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
 										<label for="account_satisfactory" title="Account Satisfactory">conduct
-											Acct. is satisfactory?</label>
+											of the Account is satisfactory?</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
@@ -1492,8 +1517,8 @@ event.preventDefault();
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
 										<label for="branch_satisfied"
-											title="Branch Satisfied with Transactions">Branch is
-											satisfied</label>
+											title="Branch Satisfied with Transactions">branch is
+											satisfied with transactions </label>
 									</div>
 									<div class="col-sm-1">
 										<div>
@@ -1509,8 +1534,8 @@ event.preventDefault();
 									</div>
 									<div class="col-sm-2">
 										<label for="transaction_commensurate"
-											title="Transaction Commensurate">Nature/Volume of
-											customer profile</label>
+											title="Transaction Commensurate">commensurate with
+											nature/Volume</label>
 									</div>
 									<div class="col-sm-1">
 										<div>
@@ -1532,12 +1557,14 @@ event.preventDefault();
 								<h6>B. Details of Transaction in the account</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
+									<div class="col-sm-2 ">Current and expected turnover in
+										account</div>
 									<div class="col-sm-1">
 										<label for="currentTurnover" title="Current Turnover"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Curr Turnover </label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="number" name="currentTurnover"
 											id="currentTurnover"
 											class="form-control form-control-sm bg-white border border-dark"
@@ -1549,7 +1576,7 @@ event.preventDefault();
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Expe Turnover </label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="number" name="expectedTurnover"
 											th:value="${user_data.expectedTurnover}"
 											id="expectedTurnover"
@@ -1581,21 +1608,22 @@ event.preventDefault();
 									</div>
 								</div>
 
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 
+								<div class="row formline" style="padding: 2px 0px 0px 0px;">
+									<div class="col-sm-2"></div>
 									<div class="col-sm-1">
 										<label for="transactionTypes"
 											title="Expected Transaction Types"
 											style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
 											Type of transactions </label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="expectedTransactionTypes"
 											th:value="${user_data.expectedTransactionTypes}"
 											id="transactionTypes"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
-
+									<div class="col-sm-2"></div>
 									<div class="col-sm-2">Expected volume of transactions</div>
 									<div class="col-sm-1">
 										<label for="transactionFrequency"
@@ -1659,6 +1687,7 @@ event.preventDefault();
 
 								<p>Known or expected countries related to transactional
 									activity (other than mentioned above):</p>
+
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1" align="right">1.</div>
 									<div class="col-sm-2">
@@ -1690,7 +1719,6 @@ event.preventDefault();
 									</div>
 								</div>
 
-
 								<hr>
 
 								<h6>C. Sanctions screening & Due Diligence – Primary
@@ -1702,46 +1730,44 @@ event.preventDefault();
 
 									<div class="col-sm-5"
 										style="display: flex; justify-content: space-between;">
-										<div align="right">UAE</div>
-										<div>
-											<input type="checkbox" name="uae" id="sanctions_uae_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:value="${user_data.uae}" />
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="uaeCheck"
+												name="uae" value="Yes"
+												th:checked="${user_data.uae == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="uaeCheck">UAE</label>
 										</div>
 
-										<div align="right">UN</div>
-										<div>
-											<input type="checkbox" name="un" id="sanctions_un_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:value="${user_data.un}" />
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="unCheck"
+												name="un" value="Yes" th:checked="${user_data.un == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="unCheck">UN</label>
 										</div>
 
-										<div align="right">OFAC</div>
-										<div>
-											<input type="checkbox" name="ofac"
-												id="sanctions_ofac_primary" value="No"
-												class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:value="${user_data.ofac}" />
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox"
+												id="ofacCheck" name="ofac" value="Yes"
+												th:checked="${user_data.ofac == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="ofacCheck">OFAC</label>
 										</div>
 
-										<div align="right">HMT</div>
-										<div>
-											<input type="checkbox" name="hmt" id="sanctions_hmt_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:value="${user_data.hmt}" />
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="hmtCheck"
+												name="hmt" value="Yes"
+												th:checked="${user_data.hmt == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="hmtCheck">HMT</label>
 										</div>
 
-										<div align="right">EU</div>
-										<div>
-											<input type="checkbox" name="eu" id="sanctions_eu_primary"
-												value="No" class="form-check-input custom-checkbox"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:value="${user_data.eu}" />
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="euCheck"
+												name="eu" value="Yes" th:checked="${user_data.eu == 'Yes'}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="euCheck">EU</label>
 										</div>
+
 
 										<div align="right">Others</div>
 										<div>
@@ -1750,9 +1776,11 @@ event.preventDefault();
 												class="form-control form-control-sm bg-white border border-dark"
 												th:value="${user_data.others}" />
 										</div>
+
+
 									</div>
 
-									<div class="col-sm-1">CBUAE BBL</div>
+									<div class="col-sm-1">CBUAE BBL check</div>
 									<div class="col-sm-1">
 										<input type="radio" id="bbl_yes_primary" name="cbuCheckDone"
 											value="Yes" th:checked="${user_data.cbuCheckDone == 'Yes'}" />
@@ -1762,7 +1790,7 @@ event.preventDefault();
 											for="bbl_no_primary">No</label>
 									</div>
 
-									<div class="col-sm-1">Google Search</div>
+									<div class="col-sm-1">Google open Search</div>
 									<div class="col-sm-1">
 										<input type="radio" id="google_yes_primary"
 											name="googleMediaSearch" value="Yes"
@@ -1772,7 +1800,7 @@ event.preventDefault();
 											th:checked="${user_data.googleMediaSearch == 'No'}" /> <label
 											for="google_no_primary">No</label>
 									</div>
-									<div class="col-sm-1">Deny list name</div>
+									<div class="col-sm-1">Deny list screening</div>
 									<div class="col-sm-1">
 										<input type="radio" id="denylist_yes" name="denylist"
 											value="Yes" /> <label for="denylist_yes">Yes</label> <input
@@ -1786,22 +1814,29 @@ event.preventDefault();
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 
 
-									<div class="col-sm-1">Suspicion Observed</div>
-									<div class="col-sm-2">
+									<div class="col-sm-2">Specify Suspicion Observed</div>
+									<div class="col-sm-1">
 										<input type="text" name="suspicionObserved1"
 											id="sanctions_others_primary"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.suspicionObserved1}" />
 									</div>
-									<div class="col-sm-1">Suspicion Details</div>
-									<div class="col-sm-2">
-										<input type="text" name="adverseInfoDetailsPrimary"
-											id="adverse_info_details_primary"
+									<div class="col-sm-3">branch has obtained the supporting
+										document to discount the red flag</div>
+									<div class="col-sm-1">
+										<input type="radio" id="adverse_info_details_primary_yes"
+											name="denylist" value="Yes" /> <label
+											for="adverse_info_details_primary_yes">Yes</label> <input
+											type="radio" id="adverse_info_details_primary_no"
+											name="denylist" value="No" /> <label for="denylist_no">No</label>
+									</div>
+									<div class="col-sm-1">
+										<input type="text" name="adverseInfoDetailsPrimary" id=""
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.supportingDocumentObtained2}" />
 									</div>
 
-									<div class="col-sm-2">Document to Discount Red Flag</div>
+									<div class="col-sm-2">If no provide the reason</div>
 									<div class="col-sm-2">
 										<input type="text" name="reasonForRedFlag1"
 											id="provide_reason_primary"
@@ -1818,114 +1853,125 @@ event.preventDefault();
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<div class="col-sm-5"
 										style="display: flex; justify-content: space-between;">
-										<div align="right">UAE</div>
-										<div>
-											<input type="checkbox" name="jointUae"
-												id="sanctions_uae_primary"
-												class="form-check-input custom-checkbox"
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="jointUae"
+												name="jointUae" value="Yes"
 												th:checked="${user_data.jointUae == 'Yes'}"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="jointUae">UAE</label>
 										</div>
 
-										<div align="right">UN</div>
-										<div>
-											<input type="checkbox" name="jointUn"
-												id="sanctions_un_primary"
-												class="form-check-input custom-checkbox"
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="jointUn"
+												name="jointUn" value="Yes"
 												th:checked="${user_data.jointUn == 'Yes'}"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="jointUn">UN</label>
 										</div>
 
-										<div align="right">OFAC</div>
-										<div>
-											<input type="checkbox" name="jointOfac"
-												id="sanctions_ofac_primary"
-												class="form-check-input custom-checkbox"
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox"
+												id="jointOfac" name="jointOfac" value="Yes"
 												th:checked="${user_data.jointOfac == 'Yes'}"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="jointOfac">OFAC</label>
 										</div>
 
-										<div align="right">HMT</div>
-										<div>
-											<input type="checkbox" name="jointHmt"
-												id="sanctions_hmt_primary"
-												class="form-check-input custom-checkbox"
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="jointHmt"
+												name="jointHmt" value="Yes"
 												th:checked="${user_data.jointHmt == 'Yes'}"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="jointHmt">HMT</label>
 										</div>
 
-										<div align="right">EU</div>
-										<div>
-											<input type="checkbox" name="jointEu"
-												id="sanctions_eu_primary"
-												class="form-check-input custom-checkbox"
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="jointEu"
+												name="jointEu" value="Yes"
 												th:checked="${user_data.jointEu == 'Yes'}"
-												onchange="this.value = this.checked ? 'Yes' : 'No';" />
+												onchange="this.value = this.checked ? 'Yes' : 'No';">
+											<label class="form-check-label" for="jointEu">EU</label>
 										</div>
 
 										<div align="right">Others</div>
 										<div>
-											<input type="text" name="jointOthers"
-												id="sanctions_others_primary"
+											<input type="text" name="jointOthers" id="jointOthers"
 												class="form-control form-control-sm bg-white border border-dark"
 												th:value="${user_data.jointOthers}" />
 										</div>
 									</div>
 
-									<div class="col-sm-1">CBUAE BBL</div>
+									<div class="col-sm-1">CBUAE BBL check</div>
 									<div class="col-sm-1">
-										<input type="radio" id="bbl_yes_primary"
+										<input type="radio" id="jointCbuCheckDone_yes"
 											name="jointCbuCheckDone" value="Yes"
 											th:checked="${user_data.jointCbuCheckDone == 'Yes'}" /> <label
-											for="bbl_yes_primary">Yes</label> <input type="radio"
-											id="bbl_no_primary" name="jointCbuCheckDone" value="No"
+											for="jointCbuCheckDone_yes">Yes</label> <input type="radio"
+											id="jointCbuCheckDone_no" name="jointCbuCheckDone" value="No"
 											th:checked="${user_data.jointCbuCheckDone == 'No'}" /> <label
-											for="bbl_no_primary">No</label>
+											for="jointCbuCheckDone_no">No</label>
 									</div>
 
-									<div class="col-sm-1">Google Search</div>
+									<div class="col-sm-1">Google open Search</div>
 									<div class="col-sm-1">
-										<input type="radio" id="google_yes_primary"
+										<input type="radio" id="jointGoogleMediaSearch_yes"
 											name="jointGoogleMediaSearch" value="Yes"
 											th:checked="${user_data.jointGoogleMediaSearch == 'Yes'}" />
-										<label for="google_yes_primary">Yes</label> <input
-											type="radio" id="google_no_primary"
+										<label for="jointGoogleMediaSearch_yes">Yes</label> <input
+											type="radio" id="jointGoogleMediaSearch_no"
 											name="jointGoogleMediaSearch" value="No"
 											th:checked="${user_data.jointGoogleMediaSearch == 'No'}" />
-										<label for="google_no_primary">No</label>
-									</div>
-									<div class="col-sm-1">Deny list name</div>
-									<div class="col-sm-1">
-										<input type="radio" id="jointdenylist_yes" name="denylist"
-											value="Yes" /> <label for="jointdenylist_yes">Yes</label> <input
-											type="radio" id="jointdenylist_no" name="denylist" value="No" />
-										<label for="jointdenylist_no">No</label>
+										<label for="jointGoogleMediaSearch_no">No</label>
 									</div>
 
+									<div class="col-sm-1">Deny list screening</div>
+									<div class="col-sm-1">
+										<input type="radio" id="jointDenyList_yes"
+											name="jointDenyList" value="Yes" /> <label
+											for="jointDenyList_yes">Yes</label> <input type="radio"
+											id="jointDenyList_no" name="jointDenyList" value="No" /> <label
+											for="jointDenyList_no">No</label>
+									</div>
 								</div>
 
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
-									<div class="col-sm-1">Suspicion Observed</div>
-									<div class="col-sm-2">
+									<div class="col-sm-2">Specify Suspicion Observed</div>
+									<div class="col-sm-1">
 										<input type="text" name="jointSuspicionObserved"
-											id="suspicion_observed_primary"
+											id="jointSuspicionObserved"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.jointSuspicionObserved}" />
 									</div>
-									<div class="col-sm-1">Suspicion Details</div>
-									<div class="col-sm-2">
-										<input type="text" name="jointSuspicionObservedDetails"
-											id="adverse_info_details_joint"
+
+									<div class="col-sm-3">branch has obtained the supporting
+										document to discount the red flag</div>
+									<div class="col-sm-1">
+										<input type="radio" id="jointSupportingDocumentObtained_yes"
+											name="jointSupportingDocumentObtained" value="Yes"
+											th:checked="${user_data.jointSupportingDocumentObtained == 'Yes'}" />
+										<label for="jointSupportingDocumentObtained_yes">Yes</label> <input
+											type="radio" id="jointSupportingDocumentObtained_no"
+											name="jointSupportingDocumentObtained" value="No"
+											th:checked="${user_data.jointSupportingDocumentObtained == 'No'}" />
+										<label for="jointSupportingDocumentObtained_no">No</label>
+									</div>
+
+									<div class="col-sm-1">
+										<input type="text" name="jointSupportingDocumentDetails"
+											id="jointSupportingDocumentDetails"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
-									<div class="col-sm-2">Document to Discount Red Flag</div>
+
+									<div class="col-sm-2">If no provide the reason</div>
 									<div class="col-sm-2">
-										<input type="text" name="jointSupportingDocumentObtained"
-											th:value="${user_data.jointSupportingDocumentObtained}"
-											id="provide_reason_joint"
-											class="form-control form-control-sm bg-white border border-dark" />
+										<input type="text" name="reasonForRedFlag1"
+											id="reasonForRedFlag1"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.reasonForRedFlag1}" />
 									</div>
 								</div>
+
+
 
 								<hr>
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
@@ -1944,7 +1990,7 @@ event.preventDefault();
 									</div>
 
 									<!-- Senior Management Approval -->
-									<div class="col-sm-1">Senior Approval</div>
+									<div class="col-sm-1">Senior approval</div>
 									<div class="col-sm-1">
 										<input type="radio" id="approval_yes"
 											name="seniorManagementApproval" value="yes"
@@ -1975,22 +2021,6 @@ event.preventDefault();
 										<label for="request_foreign_na">NA</label>
 									</div>
 
-
-									<!-- Customer Risk -->
-									<div class="col-sm-1">Customer Risk</div>
-									<div class="col-sm-2">
-										<input type="radio" id="risk_high" name="customerRisk"
-											value="high" th:checked="${user_data.customerRisk == 'high'}" />
-										<label for="risk_high">High</label> <input type="radio"
-											id="risk_medium" name="customerRisk" value="medium"
-											th:checked="${user_data.customerRisk == 'medium'}" /> <label
-											for="risk_medium">Medium</label> <input type="radio"
-											id="risk_low" name="customerRisk" value="low"
-											th:checked="${user_data.customerRisk == 'low'}" /> <label
-											for="risk_low">Low</label>
-									</div>
-
-									<!-- Senior Management Approval for Foreign Currency -->
 									<div class="col-sm-1">Senior Approval FC</div>
 									<div class="col-sm-2">
 										<input type="radio" id="seniorApprovalYes"
@@ -2006,6 +2036,22 @@ event.preventDefault();
 											th:checked="${user_data.seniorManagementApprovalFc == 'na'}" />
 										<label for="seniorApprovalNa">NA</label>
 									</div>
+									<!-- Customer Risk -->
+									<div class="col-sm-1">Customer Risk</div>
+									<div class="col-sm-2">
+										<input type="radio" id="risk_high" name="customerRisk"
+											value="high" th:checked="${user_data.customerRisk == 'high'}" />
+										<label for="risk_high">High</label> <input type="radio"
+											id="risk_medium" name="customerRisk" value="medium"
+											th:checked="${user_data.customerRisk == 'medium'}" /> <label
+											for="risk_medium">Medium</label> <input type="radio"
+											id="risk_low" name="customerRisk" value="low"
+											th:checked="${user_data.customerRisk == 'low'}" /> <label
+											for="risk_low">Low</label>
+									</div>
+
+									<!-- Senior Management Approval for Foreign Currency -->
+
 								</div>
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<!-- Reason for Categorizing Customer -->
