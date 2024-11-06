@@ -86,6 +86,14 @@ input[type="number"] {
 	width: 100%;
 	display: block;
 }
+
+.radio-group {
+	display: flex;
+	gap: 3px; /* Space between each radio and label */
+	flex-wrap: nowrap; /* Prevents wrapping to the next line */
+}
+
+
 </style>
 <script type="text/javascript">
 	function submitform() {
@@ -461,7 +469,7 @@ event.preventDefault();
 
 								<!-- ----r5---------- -->
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-	
+
 									<div class="col-sm-1">
 										<label for="Country_of_citizenship_others"
 											title="Other Citizenship">Other</label>
@@ -1977,21 +1985,24 @@ event.preventDefault();
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<!-- Customer PEP Status -->
 									<div class="col-sm-1">Whether customer PEP</div>
-									<div class="col-sm-1">
-										<input type="radio" id="pep_yes" name="isPep" value="yes"
-											th:checked="${user_data.isPep == 'yes'}" /> <label
-											for="pep_yes">Yes</label> <input type="radio" id="pep_no"
-											name="isPep" value="no"
-											th:checked="${user_data.isPep == 'no'}" /> <label
-											for="pep_no">No</label> <input type="radio" id="pep_na"
-											name="isPep" value="na"
-											th:checked="${user_data.isPep == 'na'}" /> <label
-											for="pep_na">NA</label>
+									<div class="col-sm-1 ">
+										<div class="radio-group">
+											<input type="radio" id="pep_yes" name="isPep" value="yes"
+												th:checked="${user_data.isPep == 'yes'}" /> <label
+												for="pep_yes">Yes</label> <input type="radio" id="pep_no"
+												name="isPep" value="no"
+												th:checked="${user_data.isPep == 'no'}" /> <label
+												for="pep_no">No</label> <input type="radio" id="pep_na"
+												name="isPep" value="na"
+												th:checked="${user_data.isPep == 'na'}" /> <label
+												for="pep_na">NA</label>
+										</div>
 									</div>
+
 
 									<!-- Senior Management Approval -->
 									<div class="col-sm-1">Senior approval</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1 radio-group ">
 										<input type="radio" id="approval_yes"
 											name="seniorManagementApproval" value="yes"
 											th:checked="${user_data.seniorManagementApproval == 'yes'}" />
@@ -2006,7 +2017,7 @@ event.preventDefault();
 
 									<!-- Foreign Currency Request -->
 									<div class="col-sm-1">Requesting Foreign</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1 radio-group" >
 										<input type="radio" id="request_foreign_yes"
 											name="foreignCurrencyRequest" value="yes"
 											th:checked="${user_data.foreignCurrencyRequest == 'yes'}" />
@@ -2022,7 +2033,7 @@ event.preventDefault();
 									</div>
 
 									<div class="col-sm-1">Senior Approval FC</div>
-									<div class="col-sm-2">
+									<div class="col-sm-2 radio-group">
 										<input type="radio" id="seniorApprovalYes"
 											name="seniorManagementApprovalFc" value="yes"
 											th:checked="${user_data.seniorManagementApprovalFc == 'yes'}" />
@@ -2038,7 +2049,7 @@ event.preventDefault();
 									</div>
 									<!-- Customer Risk -->
 									<div class="col-sm-1">Customer Risk</div>
-									<div class="col-sm-2">
+									<div class="col-sm-2 radio-group">
 										<input type="radio" id="risk_high" name="customerRisk"
 											value="high" th:checked="${user_data.customerRisk == 'high'}" />
 										<label for="risk_high">High</label> <input type="radio"
@@ -2056,7 +2067,7 @@ event.preventDefault();
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<!-- Reason for Categorizing Customer -->
 									<div class="col-sm-2">Reason for Categorizing Customer</div>
-									<div class="col-sm-2">
+									<div class="col-sm-2 radio-group">
 										<input type="text" name="highRiskReason" id="highRiskReason"
 											th:value="${user_data.highRiskReason}"
 											class="form-control form-control-sm bg-white border border-dark" />
