@@ -53,6 +53,7 @@
 
 body {
 	white-space: nowrap;
+	font-size: 0.75rem;
 }
 
 .custom-checkbox {
@@ -91,6 +92,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 input[type="number"] {
 	-moz-appearance: textfield; /* Firefox */
 }
+
+
 </style>
 <script type="text/javascript">
 	function submitForm(mode) {
@@ -175,7 +178,7 @@ input[type="number"] {
 
 
 
-				<div class="table-responsive" th:if="${formmode == 'individual'}">
+				<div class="table table-responsive table-sm" th:if="${formmode == 'individual'}">
 					<table class="table table-bordered  table-hover table-sm"
 						id="usertable">
 						<thead>
@@ -196,11 +199,11 @@ input[type="number"] {
 								<td th:text="${row[3]}"></td>
 								<td th:text="${#dates.format(row[4], 'dd-MM-yyyy')}"></td>
 
-								<td align="center" width="100px">
+								<td align="center" width="100px" style="padding: 2px;">
 									<div class="dropdown">
-										<button class="btn btn-primary dropdown-toggle" type="button"
+										<button class="btn btn-primary btn-very-sm" type="button"
 											id="dropdownMenuButton" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false">Action</button>
+											aria-haspopup="true" aria-expanded="false" >Action</button>
 										<div class="dropdown-menu"
 											aria-labelledby="dropdownMenuButton">
 											<a class="dropdown-item" th:attr="data-custid=${row[0]}"

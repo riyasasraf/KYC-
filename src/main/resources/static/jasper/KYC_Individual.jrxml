@@ -11,7 +11,7 @@
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BRFDEMO.jrdax"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Dubai.jrdax"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="Customer_ID" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{Customer_ID}]]></defaultValueExpression>
@@ -698,6 +698,10 @@
 	<field name="REASON_FOR_RED_FLAG_2" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="REASON_FOR_RED_FLAG_2"/>
 		<property name="com.jaspersoft.studio.field.label" value="REASON_FOR_RED_FLAG_2"/>
+	</field>
+	<field name="REPORT_DATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="REPORT_DATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="REPORT_DATE"/>
 	</field>
 	<title>
 		<band height="2100" splitType="Immediate">
@@ -1564,7 +1568,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.text.DecimalFormat("##,##,###").format($F{ANNUAL_INCOME})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,###").format($F{ANNUAL_INCOME} != null ? $F{ANNUAL_INCOME} : 0)]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="90" y="502" width="120" height="20" uuid="885329ec-13b9-4f80-9940-b13c4038d0c3">
@@ -3452,7 +3456,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.text.DecimalFormat("##,##,###").format($F{EXPECTED_TURNOVER})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,###").format($F{EXPECTED_TURNOVER} != null ? $F{EXPECTED_TURNOVER} : 0)]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="140" y="842" width="70" height="20" uuid="c39e40d5-b93b-45d8-9704-50c34c132f3b">
@@ -3503,7 +3507,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.text.DecimalFormat("##,##,###").format($F{CURRENT_TURNOVER})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,###").format($F{CURRENT_TURNOVER} != null ? $F{CURRENT_TURNOVER} : 0)]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1342" width="555" height="20" uuid="4d4f2989-f0aa-4178-9983-098209c9cc0f">
