@@ -158,7 +158,7 @@ input[type="number"] {
 							style="width: 50%; display: flex; align-items: center; justify-content: center;">
 							<button type="button" class="btn"
 								th:classappend="${formmode == 'individual'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
-								id="individual" onclick="submitForm(this.id)">KYC
+								id="individual" onclick="submitForm(this.id)">CDD
 								Individual</button>
 						</div>
 
@@ -166,7 +166,7 @@ input[type="number"] {
 							style="width: 50%; display: flex; align-items: center; justify-content: center;">
 							<button type="button" class="btn"
 								th:classappend="${formmode == 'corporate'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
-								id="corporate" onclick="submitForm(this.id)">KYC
+								id="corporate" onclick="submitForm(this.id)">CDD
 								Corporate</button>
 						</div>
 
@@ -205,13 +205,16 @@ input[type="number"] {
 											aria-labelledby="dropdownMenuButton">
 											<a class="dropdown-item" th:attr="data-custid=${row[0]}"
 												onclick="navigateToForm(this,'view','individual')">View</a>
-											<a class="dropdown-item" th:if="${row[5].toString() == 'Y'}"
+											<!-- Safely check if row[5] is 'Y' only if it's not null -->
+											<a class="dropdown-item"
+												th:if="${row[5] != null and row[5] == 'Y'}"
 												th:attr="data-custid=${row[0]}"
 												onclick="navigateToForm(this,'verify','individual')">Verify</a>
 										</div>
 									</div>
 								</td>
 							</tr>
+
 						</tbody>
 					</table>
 				</div>
