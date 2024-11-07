@@ -92,8 +92,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 input[type="number"] {
 	-moz-appearance: textfield; /* Firefox */
 }
-
-
 </style>
 <script type="text/javascript">
 	function submitForm(mode) {
@@ -107,14 +105,13 @@ input[type="number"] {
 		}
 
 	}
-
 	function navigateToForm(element, action, type) {
 		// Get the customer ID from the clicked element
 		var custid = element.getAttribute('data-custid');
 		console.log(custid);
 		console.log(action);
 
-		var baseUrl = `./kyc/${type}`;
+		var baseUrl = `/BRF/kyc/${type}`; // Corrected the base URL
 		var url;
 
 		if (action === 'view') {
@@ -130,10 +127,8 @@ input[type="number"] {
 			window.location.href = url;
 		}
 	}
-
 	// Function to redirect to the Home page
-	function goHome() {
-		// Redirect to the home page (adjust the URL as needed)
+	function goHome() {		// Redirect to the home page (adjust the URL as needed)
 		window.location.href = '/BRF/'; // Replace with your actual home page URL
 	}
 
@@ -178,7 +173,8 @@ input[type="number"] {
 
 
 
-				<div class="table table-responsive table-sm" th:if="${formmode == 'individual'}">
+				<div class="table table-responsive table-sm"
+					th:if="${formmode == 'individual'}">
 					<table class="table table-bordered  table-hover table-sm"
 						id="usertable">
 						<thead>
@@ -188,18 +184,21 @@ input[type="number"] {
 								<th>Account Number</th>
 								<th>Account Type</th>
 								<th>Account Opening Date</th>
-								<th>Action</th>
+								<!-- <th>Action</th>
+ -->
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="row : ${reportlist}">
+							<tr th:each="row : ${reportlist} "
+								th:attr="data-custid=${row[0]}"
+								onclick="navigateToForm(this,'view','individual')">
 								<td th:text="${row[0]}"></td>
 								<td th:text="${row[1]}"></td>
 								<td th:text="${row[2]}"></td>
 								<td th:text="${row[3]}"></td>
 								<td th:text="${#dates.format(row[4], 'dd-MM-yyyy')}"></td>
 
-								<td align="center" width="100px" style="padding: 2px;">
+								<!-- <td align="center" width="100px" style="padding: 2px;">
 									<div class="dropdown">
 										<button class="btn btn-primary btn-very-sm" type="button"
 											id="dropdownMenuButton" data-toggle="dropdown"
@@ -208,14 +207,14 @@ input[type="number"] {
 											aria-labelledby="dropdownMenuButton">
 											<a class="dropdown-item" th:attr="data-custid=${row[0]}"
 												onclick="navigateToForm(this,'view','individual')">View</a>
-											<!-- Safely check if row[5] is 'Y' only if it's not null -->
+											Safely check if row[5] is 'Y' only if it's not null
 											<a class="dropdown-item"
 												th:if="${row[5] != null and row[5] == 'Y'}"
 												th:attr="data-custid=${row[0]}"
 												onclick="navigateToForm(this,'verify','individual')">Verify</a>
 										</div>
 									</div>
-								</td>
+								</td> -->
 							</tr>
 
 						</tbody>

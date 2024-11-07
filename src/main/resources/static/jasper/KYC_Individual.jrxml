@@ -1690,7 +1690,7 @@ if Yes, please provide the current residency information
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="160" y="0" width="340" height="42" uuid="b487c5fa-0098-4a81-9dd2-6c016dbc5db6"/>
+				<reportElement x="0" y="0" width="554" height="42" uuid="b487c5fa-0098-4a81-9dd2-6c016dbc5db6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[ CDD/ECDD - Individual "Due Diligence Form"
 (For high risk customers, please complete ECDD section also)]]></text>
@@ -2755,7 +2755,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["If yes, please specify-              " + $F{SUSPICION_OBSERVED_DETAILS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["If yes, please specify-              " + $F{SUSPICION_OBSERVED_DETAILS}  != null ? $F{SUSPICION_OBSERVED_DETAILS} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="1302" width="280" height="10" uuid="98ad42d0-9191-4c29-b985-1d88c4abb347">
@@ -2768,7 +2768,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["3. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_3}  != null ? $F{KNOWN_COUNTRIES_OF_TRANSACTION_3} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1082" width="140" height="40" uuid="5ca715b9-4ef0-4838-8770-25d70eb0120d">
@@ -2900,7 +2900,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["1. " + $F{HIGH_VALUE_TRANSACTIONS_DETAILS1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["1. " + ( $F{HIGH_VALUE_TRANSACTIONS_DETAILS1} != null ? $F{HIGH_VALUE_TRANSACTIONS_DETAILS1} : " " )]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="180" y="1382" width="94" height="20" uuid="901e5cd4-9459-4ae3-8af7-cdfbe007577a">
@@ -3144,7 +3144,8 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- \n" +$F{SUPPORTING_DOCUMENT_OBTAINED_2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- \n" +$F{SUPPORTING_DOCUMENT_OBTAINED_2}
+  != null ? $F{SUPPORTING_DOCUMENT_OBTAINED_2} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1382" width="86" height="20" uuid="6d4263e0-c131-4497-9c56-89254314e793">
@@ -3196,7 +3197,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["4. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["4. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_4}  != null ? $F{KNOWN_COUNTRIES_OF_TRANSACTION_4} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="345" y="1142" width="105" height="20" uuid="10595a0b-49e0-4302-b6f5-830ccd67802e">
@@ -3248,7 +3249,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["4. "+ $F{HIGH_VALUE_TRANSACTIONS_DETAILS2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["4. " + ( $F{HIGH_VALUE_TRANSACTIONS_DETAILS4} != null ? $F{HIGH_VALUE_TRANSACTIONS_DETAILS4} : "" )]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="274" y="1592" width="94" height="20" uuid="aa050826-0419-40fb-b882-91b40a241d89">
@@ -3313,7 +3314,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others         "+ $F{OTHERS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others         "+ $F{OTHERS}    != null ?  $F{OTHERS}   : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="280" y="1002" width="135" height="20" uuid="c1249d37-96d7-45d9-8d4d-b3122fd18278">
@@ -3352,7 +3353,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["1. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["1. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_1}  != null ? $F{KNOWN_COUNTRIES_OF_TRANSACTION_1} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1592" width="86" height="20" uuid="b59fa736-834f-41f4-819a-83f5e2441ff9">
@@ -3378,7 +3379,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2. " +$F{KNOWN_COUNTRIES_OF_TRANSACTION_2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2. "+$F{KNOWN_COUNTRIES_OF_TRANSACTION_2}  != null ? $F{KNOWN_COUNTRIES_OF_TRANSACTION_2} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="462" y="882" width="93" height="20" uuid="1050f713-0cd8-40af-9dd4-22398a93b2e7">
@@ -3417,7 +3418,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["3. "+$F{OTHER_EXPECTED_COUNTRIES_3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3. "+$F{OTHER_EXPECTED_COUNTRIES_3}   != null ? $F{OTHER_EXPECTED_COUNTRIES_3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="462" y="902" width="93" height="20" uuid="4baff46d-5886-4695-bae9-3325c92a2e35">
@@ -3481,7 +3482,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["3. "+ $F{HIGH_VALUE_TRANSACTIONS_DETAILS4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3. " + ( $F{HIGH_VALUE_TRANSACTIONS_DETAILS3} != null ? $F{HIGH_VALUE_TRANSACTIONS_DETAILS3} : "" )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="86" y="902" width="94" height="20" uuid="2138a377-4bd3-4707-9437-a6bbc032229c">
@@ -3559,7 +3560,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["4. "+$F{OTHER_EXPECTED_COUNTRIES_4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["4. "+$F{OTHER_EXPECTED_COUNTRIES_4}   != null ? $F{OTHER_EXPECTED_COUNTRIES_4} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="450" y="1142" width="105" height="20" uuid="87c86497-7be5-4785-8e15-d6c9d9666650">
@@ -3626,7 +3627,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2. " +$F{OTHER_EXPECTED_COUNTRIES_2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2. "+$F{OTHER_EXPECTED_COUNTRIES_2}   != null ? $F{OTHER_EXPECTED_COUNTRIES_2} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1572" width="555" height="20" uuid="55b4f134-29cd-4895-91bb-09dfbe2e9c61">
@@ -3743,7 +3744,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2." + $F{HIGH_VALUE_TRANSACTIONS_DETAILS2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2. " + ( $F{HIGH_VALUE_TRANSACTIONS_DETAILS2} != null ? $F{HIGH_VALUE_TRANSACTIONS_DETAILS2} : " " )]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="280" y="842" width="70" height="20" uuid="4cbf24e3-4efc-40c5-b8c8-7b9fec7f3f0a">
@@ -3872,7 +3873,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["1. "+$F{OTHER_EXPECTED_COUNTRIES_1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["1. "+$F{OTHER_EXPECTED_COUNTRIES_1}   != null ? $F{OTHER_EXPECTED_COUNTRIES_1} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="490" y="842" width="65" height="20" uuid="bd1123b1-e2c5-444b-8d68-366b4be04e54">
@@ -4102,7 +4103,8 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Signature : "+$F{ACCOUNT_OPENING_OFFICER_SIGNATURE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Signature : "+$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} 
+  != null ? $F{ACCOUNT_OPENING_OFFICER_SIGNATURE} : "" ]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="140" y="1692" width="415" height="20" uuid="1648fd6c-c623-4a8c-b2d8-ab2756df57f1">
@@ -4329,7 +4331,9 @@ If any suspicion is observed
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Reason for categorizing customer risk as High risk. (only for High risk customer) Analysis of underline ML/TF risk.\n" +$F{HIGH_RISK_REASON}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reason for categorizing customer risk as High risk. (only for High risk customer) Analysis of underline ML/TF risk.\n" +$F{HIGH_RISK_REASON}
+  != null ? $F{HIGH_RISK_REASON} : "" 
+]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="140" y="1672" width="415" height="20" uuid="71a6fd5d-8b41-4d62-b2d7-48aa49134193">
@@ -4355,7 +4359,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Name : " +$F{BRANCH_OFFICIAL_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Name : " +$F{BRANCH_OFFICIAL_NAME}   != null ? $F{BRANCH_OFFICIAL_NAME} : "" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="280" y="1942" width="275" height="10" uuid="2bfac378-7e67-4d18-939a-e2aa2868be5b">
@@ -4381,7 +4385,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Designation:"+$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Designation:"+$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}   != null ? $F{ACCOUNT_OPENING_OFFICER_DESIGNATION} : "" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="350" y="1802" width="70" height="20" uuid="7023a640-f256-4439-94d0-229f726b559d">
@@ -4429,7 +4433,8 @@ If any suspicion is observed
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Further, Due Diligence done by the Branch for account being categorized as high risk. ( provide the supporting document and information) (only for High risk customer) \n"
-+$F{FURTHER_DUE_DILIGENCE}]]></textFieldExpression>
++$F{FURTHER_DUE_DILIGENCE}  != null ? $F{FURTHER_DUE_DILIGENCE} : "" 
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="1982" width="280" height="10" uuid="74e8d123-189b-46e4-9c43-1585ccc599ff">
@@ -4504,7 +4509,8 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Name : "+$F{ACCOUNT_OPENING_OFFICER_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Name : "+$F{ACCOUNT_OPENING_OFFICER_NAME} 
+  != null ? $F{ACCOUNT_OPENING_OFFICER_NAME} : "" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1712" width="260" height="50" uuid="e35b395f-72a5-425c-8f38-7ee7de34a111">
@@ -4565,7 +4571,8 @@ If any suspicion is observed
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Observations of Bank official (List any adverse features if any found post CDD/ECDD) \n"
-+$F{OBSERVATIONS_OF_BANK_OFFICIAL}]]></textFieldExpression>
++$F{OBSERVATIONS_OF_BANK_OFFICIAL} 
+  != null ? $F{OBSERVATIONS_OF_BANK_OFFICIAL} : "" ]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="1952" width="280" height="10" uuid="deeffc63-a4bc-48bc-8588-2d2a7434eef0">
@@ -4578,7 +4585,8 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Signature : " +$F{ACCOUNT_OPENING_OFFICER_SIGNATURE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Signature : " +$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} 
++$F{ACCOUNT_OPENING_OFFICER_SIGNATURE}  != null ? $F{ACCOUNT_OPENING_OFFICER_SIGNATURE} : "" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1942" width="280" height="10" uuid="f943f68b-db0c-46b6-a6f5-944efefdc094">
@@ -4604,7 +4612,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Designation:"+$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Designation:"+$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}   != null ? $F{ACCOUNT_OPENING_OFFICER_DESIGNATION} : "" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="350" y="1772" width="70" height="10" uuid="1bc23686-5773-405f-bc2d-96de594b075d">
@@ -4643,27 +4651,6 @@ If any suspicion is observed
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<imageExpression><![CDATA["Business".equals($F{OCCUPATION}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="390" y="386" width="10" height="8" uuid="90f8a4d2-70d8-4ee9-a96b-72b0e38a7657">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
-				</reportElement>
-				<imageExpression><![CDATA["yes".equals($F{RESIDENTIAL_STATUS_CHANGED}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="384" y="545" width="10" height="8" uuid="19ba7d2a-e543-438e-8cba-be0c2f568311">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
-				</reportElement>
-				<imageExpression><![CDATA["yes".equals($F{JOINT_HOLDER1_RESIDENTIAL_STATUS_CHANGED}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="380" y="708" width="10" height="8" uuid="7ce6b3c3-9e36-4608-80f1-2e1ee777531a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
-				</reportElement>
-				<imageExpression><![CDATA["yes".equals($F{JOINT_HOLDER2_RESIDENTIAL_STATUS_CHANGED}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="180" y="788" width="10" height="8" uuid="8debe219-4882-41d6-aa2b-4ce7b5e4a280">
@@ -5286,105 +5273,105 @@ If any suspicion is observed
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Yes".equals($F{IS_PEP}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["Yes".equals($F{IS_PEP}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="389" y="1773" width="10" height="8" uuid="6b8421ba-caa2-493a-8cc5-6337f652bba3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Yes".equals($F{SENIOR_MANAGEMENT_APPROVAL}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["Yes".equals($F{SENIOR_MANAGEMENT_APPROVAL}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="389" y="1783" width="10" height="8" uuid="deb20317-ec70-47fc-ac9c-a9c88b47828e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Yes".equals($F{FOREIGN_CURRENCY_REQUEST}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["Yes".equals($F{FOREIGN_CURRENCY_REQUEST}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="389" y="1793" width="10" height="8" uuid="874a8bfe-5594-40bf-856d-29e719c77281">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Yes".equals($F{SENIOR_MANAGEMENT_APPROVAL_FC}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["Yes".equals($F{SENIOR_MANAGEMENT_APPROVAL_FC}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="389" y="1808" width="10" height="8" uuid="bd051a48-fbec-4d0a-9dad-7a6ea6c8edf5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Yes".equals($F{CUSTOMER_RISK}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["Yes".equals($F{CUSTOMER_RISK}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="456" y="1793" width="10" height="8" uuid="dd5ac01d-2432-47c9-ad46-1957ac9f8a88">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["No".equals($F{SENIOR_MANAGEMENT_APPROVAL_FC}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["No".equals($F{SENIOR_MANAGEMENT_APPROVAL_FC}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="456" y="1773" width="10" height="8" uuid="5a115234-3035-40b1-97ce-b9a076ac29fe">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["No".equals($F{SENIOR_MANAGEMENT_APPROVAL}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["No".equals($F{SENIOR_MANAGEMENT_APPROVAL}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="456" y="1808" width="10" height="8" uuid="cf84d0d0-d60d-4ea3-a269-d1ea3ba75d87">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["No".equals($F{CUSTOMER_RISK}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["No".equals($F{CUSTOMER_RISK}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="456" y="1763" width="10" height="8" uuid="aed9e48d-bb70-42a7-9dd8-f35f8087e4a5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["No".equals($F{IS_PEP}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["No".equals($F{IS_PEP}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="456" y="1783" width="10" height="8" uuid="33abd2e0-de7a-4462-a80e-d90de173a889">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["No".equals($F{FOREIGN_CURRENCY_REQUEST}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["No".equals($F{FOREIGN_CURRENCY_REQUEST}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="520" y="1773" width="10" height="8" uuid="4fac56cc-a617-4c46-af6e-4e5e1438af8e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["NA".equals($F{SENIOR_MANAGEMENT_APPROVAL}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["NA".equals($F{SENIOR_MANAGEMENT_APPROVAL}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="520" y="1793" width="10" height="8" uuid="4f594bda-cc2a-46d9-87ab-e22e7e5e8fb7">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["NA".equals($F{SENIOR_MANAGEMENT_APPROVAL_FC}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["NA".equals($F{SENIOR_MANAGEMENT_APPROVAL_FC}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="520" y="1763" width="10" height="8" uuid="35207147-8b46-460c-99aa-25bb81f8905f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["NA".equals($F{IS_PEP}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["NA".equals($F{IS_PEP}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="520" y="1808" width="10" height="8" uuid="ff166841-81cc-4cab-af36-2dc44aee39ad">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["NA".equals($F{CUSTOMER_RISK}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["NA".equals($F{CUSTOMER_RISK}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="520" y="1783" width="10" height="8" uuid="4ed46181-618e-4157-9a9a-41346512dc3c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["NA".equals($F{FOREIGN_CURRENCY_REQUEST}) ? "http://localhost:8086/BRF/images/checkbox.png" : null]]></imageExpression>
+				<imageExpression><![CDATA["NA".equals($F{FOREIGN_CURRENCY_REQUEST}) ? "http://localhost:8086/BRF/images/checkbox.png" :  "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="140" y="1480" width="415" height="22" uuid="dbec60ec-2a29-4680-a716-7394014bd3b8">
