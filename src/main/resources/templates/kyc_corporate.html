@@ -72,7 +72,7 @@ input {
 	margin-top: 80px;
 	margin-top: 80px;
 	padding-bottom: 40px;
-}	
+}
 
 .custom-checkbox {
 	width: 13px; /* Adjust width */
@@ -1884,7 +1884,7 @@ input[type="number"] {
 											title="Branch has completed company site visit and report attached">Company
 											Site Visit</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="radio" id="siteVisitCompletedYes"
 											name="SiteVisitCompleted" value="Yes"
 											th:checked="${user_data.SiteVisitCompleted == 'Yes'}" /> <label
@@ -1900,7 +1900,7 @@ input[type="number"] {
 											title="Adverse noted during site visit">Adverse on
 											Site Visit</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="radio" id="adverseObservationsSiteVisitYes"
 											name="AdverseObservationsSiteVisit" value="Yes"
 											th:checked="${user_data.AdverseObservationsSiteVisit == 'Yes'}" />
@@ -1911,7 +1911,7 @@ input[type="number"] {
 										<label for="adverseObservationsSiteVisitNo">No</label>
 									</div>
 
-									<div class="col-sm-2">
+									<div class="col-sm-1	">
 										<label for="adverseDetails1"
 											title="Details of adverse observations during site visit">Adverse
 											Details</label>
@@ -1928,9 +1928,6 @@ input[type="number"] {
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.AdverseObservationDetails2}" />
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
 										<label for="customer_is_pep" title="Customer is PEP">Customer
 											is PEP</label>
@@ -1947,12 +1944,16 @@ input[type="number"] {
 											th:checked="${user_data.CustomerIsPep == 'NA'}" /> <label
 											for="customer_is_pep_na">NA</label>
 									</div>
+								</div>
+
+								<div class="row formline" style="padding: 2px 0;">
+
 
 									<div class="col-sm-1">
 										<label for="senior_management_approval"
 											title="Senior management approval">Senior Approval</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1 radio-group">
 										<input type="radio" id="senior_management_approval_yes"
 											name="SeniorManagementApproval" value="Yes"
 											th:checked="${user_data.SeniorManagementApproval == 'Yes'}" />
@@ -1972,7 +1973,7 @@ input[type="number"] {
 											title="Customer requesting Foreign Currency">Foreign
 											Currency</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1 radio-group">
 										<input type="radio" id="foreign_currency_yes"
 											name="RequestingForeignCurrency" value="Yes"
 											th:checked="${user_data.RequestingForeignCurrency == 'Yes'}" />
@@ -1992,7 +1993,7 @@ input[type="number"] {
 											title="Senior management approval for currency">Senior
 											Approval</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1 radio-group">
 										<input type="radio"
 											id="senior_management_approval_currency_yes"
 											name="SeniorManagementApprovalCurrency" value="Yes"
@@ -2010,15 +2011,12 @@ input[type="number"] {
 											th:checked="${user_data.SeniorManagementApprovalCurrency == 'NA'}" />
 										<label for="senior_management_approval_currency_na">NA</label>
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 0px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="cash_intensive"
 											title="customer into cash intensive business">Cash
 											intensive</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1 radio-group">
 										<input type="radio" id="cash_intensive_yes"
 											th:value="${user_data.IsCashIntensiveBusiness}"
 											name="IsCashIntensiveBusiness" value="Yes" /> <label
@@ -2029,10 +2027,13 @@ input[type="number"] {
 											name="IsCashIntensiveBusiness" value="NA" /> <label
 											for="cash_intensive_na">NA</label>
 									</div>
+								</div>
 
-									<div class="col-sm-9"
-										style="display: flex; justify-content: space-between;">
+								<div class="row formline" style="padding: 0px 0px 0px 0px;">
 
+
+
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="CashIntensiveBusinessDetail" id="general_trading"
@@ -2041,7 +2042,8 @@ input[type="number"] {
 											<label class="form-check" for="uaeCheck"> General
 												Trading </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="supermarkets"
@@ -2049,7 +2051,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Supermarkets </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="restaurants"
@@ -2057,7 +2060,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Restaurants </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail"
@@ -2067,7 +2071,8 @@ input[type="number"] {
 											<label class="form-check"> Convenience/Retail Stores
 											</label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="fuel_station"
@@ -2075,15 +2080,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Fuel Station </label>
 										</div>
-
 									</div>
-								</div>
-
-
-								<div class="row formline" style="padding: 0px 0px 0px 0px;">
-									<div class="col-sm-3"></div>
-									<div class="col-sm-9"
-										style="display: flex; justify-content: space-between;">
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="tour_operators"
@@ -2091,7 +2089,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Tour Operators </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="car_dealer"
@@ -2099,7 +2098,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Car Dealer </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="jewelry_trading"
@@ -2107,7 +2107,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Jewelry Trading </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail" id="exchange_houses"
@@ -2115,7 +2116,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check"> Exchange Houses </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="CashIntensiveBusinessDetail"
@@ -2126,6 +2128,7 @@ input[type="number"] {
 												Activity </label>
 										</div>
 									</div>
+
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
@@ -2268,8 +2271,8 @@ input[type="number"] {
 
 								<h6>Customer dealing activity</h6>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-9"
-										style="display: flex; justify-content: space-between;">
+									<div class="col-sm-1">
+
 
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
@@ -2278,7 +2281,8 @@ input[type="number"] {
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label"> Real Estate Agent </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="DealerOfMetals" id="dealerOfMetals"
@@ -2287,7 +2291,8 @@ input[type="number"] {
 											<label class="form-check-label"> Dealer of Precious
 												Metals & Gemstones </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="Auditor" id="auditor"
@@ -2296,7 +2301,8 @@ input[type="number"] {
 											<label class="form-check-label"> Auditor and
 												Corporate Service Provider </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="LegalConsultant" id="legalConsultant"
@@ -2305,7 +2311,8 @@ input[type="number"] {
 											<label class="form-check-label"> Legal Consulting
 												Company </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="No"
 												name="DealsDualGoods" id="dealsDualGoods"
@@ -2314,9 +2321,8 @@ input[type="number"] {
 											<label class="form-check-label"> Dual Use Goods as
 												per EOCN List </label>
 										</div>
-
-
 									</div>
+
 
 									<div class="col-sm-1">
 										<label for="supportingDocument1" title="Supporting document-1">Support
@@ -2328,9 +2334,6 @@ input[type="number"] {
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.TransOnInterrelated1}" />
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 12px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="supportingDocument2" title="Supporting document-2">Support
 											document 2</label>
@@ -2341,11 +2344,15 @@ input[type="number"] {
 											th:value="${user_data.TransOnInterrelated2}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+								</div>
+
+								<div class="row formline" style="padding: 12px 0px 0px 0px;">
+
 									<div class="col-sm-1">
 										<label for="customerRisk" title="Customer Risk">Customer
 											Risk</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1 radio-group">
 										<div>
 											<input type="radio" id="customerRiskHigh" name="customerRisk"
 												value="High"

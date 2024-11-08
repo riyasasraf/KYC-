@@ -2745,7 +2745,7 @@ if Yes, please provide the current residency information
 				<text><![CDATA[EU]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1062" width="275" height="20" uuid="567737f7-e53a-4789-b128-aae2f1dd9e44">
+				<reportElement x="280" y="1062" width="88" height="20" uuid="567737f7-e53a-4789-b128-aae2f1dd9e44">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -2755,15 +2755,16 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["If yes, please specify-              " + $F{SUSPICION_OBSERVED_DETAILS}  != null ? $F{SUSPICION_OBSERVED_DETAILS} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["If yes, please specify-              "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="1302" width="280" height="10" uuid="98ad42d0-9191-4c29-b985-1d88c4abb347">
+				<reportElement x="20" y="1302" width="260" height="10" uuid="98ad42d0-9191-4c29-b985-1d88c4abb347">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
@@ -3140,12 +3141,12 @@ if Yes, please provide the current residency information
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- \n" +$F{SUPPORTING_DOCUMENT_OBTAINED_2}
-  != null ? $F{SUPPORTING_DOCUMENT_OBTAINED_2} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- " ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1382" width="86" height="20" uuid="6d4263e0-c131-4497-9c56-89254314e793">
@@ -3187,12 +3188,13 @@ if Yes, please provide the current residency information
 				<text><![CDATA[Please specify in details - Material adverse or Non Material adverse  information]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1302" width="275" height="10" uuid="436e6ea8-07d7-4940-8c9d-df204830f71f">
+				<reportElement x="300" y="1302" width="255" height="10" uuid="436e6ea8-07d7-4940-8c9d-df204830f71f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
@@ -3306,7 +3308,7 @@ if Yes, please provide the current residency information
 			<textField>
 				<reportElement x="462" y="1382" width="93" height="20" uuid="2af3084c-9bdb-4133-bd5d-0982c19ec0a6">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="false"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
@@ -3314,7 +3316,8 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others         "+ $F{OTHERS}    != null ?  $F{OTHERS}   : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others " + ($F{OTHERS} != null ? $F{OTHERS} : "")
+]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="280" y="1002" width="135" height="20" uuid="c1249d37-96d7-45d9-8d4d-b3122fd18278">
@@ -3343,12 +3346,13 @@ if Yes, please provide the current residency information
 				<text><![CDATA[CBUAE BBL check done]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="1292" width="280" height="10" uuid="e63582f6-c844-4a37-8dd6-1705aef351bf">
+				<reportElement x="20" y="1292" width="260" height="10" uuid="e63582f6-c844-4a37-8dd6-1705aef351bf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
@@ -3369,12 +3373,13 @@ if Yes, please provide the current residency information
 				<text><![CDATA[UAE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1292" width="275" height="10" uuid="b0b2c17d-ccff-406d-bd14-92cb02965466">
+				<reportElement x="300" y="1292" width="255" height="10" uuid="b0b2c17d-ccff-406d-bd14-92cb02965466">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
@@ -3410,7 +3415,7 @@ if Yes, please provide the current residency information
 			<textField>
 				<reportElement x="280" y="1322" width="140" height="20" uuid="bb09c1a4-8a8e-4215-9fee-31696276b788">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="false"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
@@ -3418,7 +3423,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["3. "+$F{OTHER_EXPECTED_COUNTRIES_3}   != null ? $F{OTHER_EXPECTED_COUNTRIES_3} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3. "+($F{OTHER_EXPECTED_COUNTRIES_3}   != null ? $F{OTHER_EXPECTED_COUNTRIES_3} : "")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="462" y="902" width="93" height="20" uuid="4baff46d-5886-4695-bae9-3325c92a2e35">
@@ -3552,7 +3557,7 @@ if Yes, please provide the current residency information
 			<textField>
 				<reportElement x="420" y="1322" width="135" height="20" uuid="069b5fbe-8b7d-4a24-a233-87def40f1a46">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="false"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
@@ -3560,7 +3565,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["4. "+$F{OTHER_EXPECTED_COUNTRIES_4}   != null ? $F{OTHER_EXPECTED_COUNTRIES_4} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["4. "+($F{OTHER_EXPECTED_COUNTRIES_4}   != null ? $F{OTHER_EXPECTED_COUNTRIES_4} : "")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="450" y="1142" width="105" height="20" uuid="87c86497-7be5-4785-8e15-d6c9d9666650">
@@ -3619,7 +3624,7 @@ If any suspicion is observed
 			<textField>
 				<reportElement x="140" y="1322" width="140" height="20" uuid="b80bc7cb-5a79-4baa-ad6b-ae5aaa767f4f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="false"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
@@ -3627,7 +3632,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2. "+$F{OTHER_EXPECTED_COUNTRIES_2}   != null ? $F{OTHER_EXPECTED_COUNTRIES_2} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2. "+($F{OTHER_EXPECTED_COUNTRIES_2}   != null ? $F{OTHER_EXPECTED_COUNTRIES_2} : "")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1572" width="555" height="20" uuid="55b4f134-29cd-4895-91bb-09dfbe2e9c61">
@@ -3671,7 +3676,7 @@ If any suspicion is observed
 			<textField>
 				<reportElement x="462" y="1592" width="93" height="20" uuid="9deba829-61b8-4187-8ccc-e2ae5a39fd6f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="false"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
@@ -3679,7 +3684,8 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others         "+ $F{JOINT_OTHERS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others         "+ ($F{JOINT_OTHERS} != null ? $F{JOINT_OTHERS} : "")
+]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1222" width="345" height="20" uuid="f3d855cc-5fdf-4f3a-a65c-7cebfa0bd413">
@@ -3865,7 +3871,7 @@ If any suspicion is observed
 			<textField>
 				<reportElement x="0" y="1322" width="140" height="20" uuid="874fe639-2516-4970-9c39-f1456ebc6f85">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="false"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
@@ -3873,7 +3879,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["1. "+$F{OTHER_EXPECTED_COUNTRIES_1}   != null ? $F{OTHER_EXPECTED_COUNTRIES_1} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA["1. "+($F{OTHER_EXPECTED_COUNTRIES_1}   == null ?"": $F{OTHER_EXPECTED_COUNTRIES_1} )]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="490" y="842" width="65" height="20" uuid="bd1123b1-e2c5-444b-8d68-366b4be04e54">
@@ -4093,18 +4099,20 @@ If any suspicion is observed
 				<text><![CDATA[NA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1952" width="275" height="10" uuid="3aefc4d5-25d0-4912-a5b3-22c3e0187872">
+				<reportElement x="280" y="1940" width="60" height="10" uuid="3aefc4d5-25d0-4912-a5b3-22c3e0187872">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Signature : "+$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} 
-  != null ? $F{ACCOUNT_OPENING_OFFICER_SIGNATURE} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Signature : "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="140" y="1692" width="415" height="20" uuid="1648fd6c-c623-4a8c-b2d8-ab2756df57f1">
@@ -4190,11 +4198,12 @@ If any suspicion is observed
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- \n"  + $F{JOINT_SUSPICION_OBSERVED}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1792" width="350" height="10" uuid="84e4e871-4b00-4ad4-ab70-d8e6ecf1c817">
@@ -4293,17 +4302,20 @@ If any suspicion is observed
 				<text><![CDATA[No]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1982" width="275" height="10" uuid="363177f7-0f2a-4319-ac0a-746490bb0eec">
+				<reportElement x="280" y="1970" width="60" height="10" uuid="363177f7-0f2a-4319-ac0a-746490bb0eec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Date:" +new SimpleDateFormat("dd-MM-yyyy").format($F{BRANCH_OFFICIAL_DATE})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Date:" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1762" width="350" height="10" uuid="2f9c784a-b0e0-4bfe-9958-78ac6664cd11">
@@ -4321,7 +4333,7 @@ If any suspicion is observed
 				<text><![CDATA[Whether customer is PEP                                                                                                  ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="1822" width="555" height="40" uuid="c0bb341a-f425-493c-ac7b-f5f4bf6e415f">
+				<reportElement x="0" y="1822" width="555" height="18" uuid="c0bb341a-f425-493c-ac7b-f5f4bf6e415f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -4331,9 +4343,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Reason for categorizing customer risk as High risk. (only for High risk customer) Analysis of underline ML/TF risk.\n" +$F{HIGH_RISK_REASON}
-  != null ? $F{HIGH_RISK_REASON} : "" 
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reason for categorizing customer risk as High risk. (only for High risk customer) Analysis of underline ML/TF risk." ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="140" y="1672" width="415" height="20" uuid="71a6fd5d-8b41-4d62-b2d7-48aa49134193">
@@ -4349,20 +4359,23 @@ If any suspicion is observed
 				<text><![CDATA[Please specify in details - Material adverse or Non Material adverse  information]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1962" width="275" height="10" uuid="f2cc7573-d36c-4d8f-89c1-14844996ea8d">
+				<reportElement x="280" y="1950" width="60" height="10" uuid="f2cc7573-d36c-4d8f-89c1-14844996ea8d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Name : " +$F{BRANCH_OFFICIAL_NAME}   != null ? $F{BRANCH_OFFICIAL_NAME} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Name : "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="280" y="1942" width="275" height="10" uuid="2bfac378-7e67-4d18-939a-e2aa2868be5b">
+				<reportElement x="280" y="1930" width="275" height="10" uuid="2bfac378-7e67-4d18-939a-e2aa2868be5b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -4375,17 +4388,20 @@ If any suspicion is observed
 				<text><![CDATA[Branch official ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="1972" width="275" height="10" uuid="6c15a545-9099-492f-aa09-f12b0dd0f4f8">
+				<reportElement x="280" y="1960" width="60" height="10" uuid="6c15a545-9099-492f-aa09-f12b0dd0f4f8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Designation:"+$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}   != null ? $F{ACCOUNT_OPENING_OFFICER_DESIGNATION} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Designation:"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="350" y="1802" width="70" height="20" uuid="7023a640-f256-4439-94d0-229f726b559d">
@@ -4402,7 +4418,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Yes]]></text>
+				<text><![CDATA[High]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="350" y="1782" width="70" height="10" uuid="a7d053a5-27d5-4ee5-a54a-89540cefa855">
@@ -4422,32 +4438,35 @@ If any suspicion is observed
 				<text><![CDATA[Yes]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="1862" width="555" height="40" uuid="ddfe7e10-6e91-4107-ab55-92291825ab00">
+				<reportElement x="0" y="1862" width="555" height="18" uuid="ddfe7e10-6e91-4107-ab55-92291825ab00">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Further, Due Diligence done by the Branch for account being categorized as high risk. ( provide the supporting document and information) (only for High risk customer) \n"
-+$F{FURTHER_DUE_DILIGENCE}  != null ? $F{FURTHER_DUE_DILIGENCE} : "" 
+				<textFieldExpression><![CDATA["Further, Due Diligence done by the Branch for account being categorized as high risk. ( provide the supporting document and information) (only for High risk customer) "
 ]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="1982" width="280" height="10" uuid="74e8d123-189b-46e4-9c43-1585ccc599ff">
+				<reportElement x="0" y="1970" width="70" height="10" uuid="74e8d123-189b-46e4-9c43-1585ccc599ff">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Date:" +new SimpleDateFormat("dd-MM-yyyy").format($F{ACCOUNT_OPENING_OFFICER_DATE})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Date:" ]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="420" y="1782" width="70" height="10" uuid="2f5b3fa5-0f28-4547-8cbc-36937bf3c300">
@@ -4496,21 +4515,23 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[NA]]></text>
+				<text><![CDATA[Low]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="1962" width="280" height="10" uuid="f8cb383a-0f11-48d0-a1a9-87e9b5417836">
+				<reportElement x="0" y="1950" width="70" height="10" uuid="f8cb383a-0f11-48d0-a1a9-87e9b5417836">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Name : "+$F{ACCOUNT_OPENING_OFFICER_NAME} 
-  != null ? $F{ACCOUNT_OPENING_OFFICER_NAME} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Name : "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1712" width="260" height="50" uuid="e35b395f-72a5-425c-8f38-7ee7de34a111">
@@ -4540,7 +4561,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[No]]></text>
+				<text><![CDATA[Medium]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="490" y="1772" width="65" height="10" uuid="850c0b3f-457f-43f8-96ba-f37db61313f3">
@@ -4560,7 +4581,7 @@ If any suspicion is observed
 				<text><![CDATA[NA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="1902" width="555" height="40" uuid="2b53acca-e001-43d0-acb6-815e799f64e3">
+				<reportElement x="0" y="1902" width="555" height="28" uuid="2b53acca-e001-43d0-acb6-815e799f64e3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -4570,26 +4591,27 @@ If any suspicion is observed
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Observations of Bank official (List any adverse features if any found post CDD/ECDD) \n"
-+$F{OBSERVATIONS_OF_BANK_OFFICIAL} 
-  != null ? $F{OBSERVATIONS_OF_BANK_OFFICIAL} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Observations of Bank official (List any adverse features if any found post CDD/ECDD) "
+]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="1952" width="280" height="10" uuid="deeffc63-a4bc-48bc-8588-2d2a7434eef0">
+				<reportElement x="0" y="1940" width="70" height="10" uuid="deeffc63-a4bc-48bc-8588-2d2a7434eef0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Signature : " +$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} 
-+$F{ACCOUNT_OPENING_OFFICER_SIGNATURE}  != null ? $F{ACCOUNT_OPENING_OFFICER_SIGNATURE} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Signature : " ]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="1942" width="280" height="10" uuid="f943f68b-db0c-46b6-a6f5-944efefdc094">
+				<reportElement x="0" y="1930" width="280" height="10" uuid="f943f68b-db0c-46b6-a6f5-944efefdc094">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -4602,17 +4624,20 @@ If any suspicion is observed
 				<text><![CDATA[Account opening officer/ Branch official]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="1972" width="280" height="10" uuid="d26d82ec-e47f-4634-8703-61a30ced42c3">
+				<reportElement x="0" y="1960" width="70" height="10" uuid="d26d82ec-e47f-4634-8703-61a30ced42c3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Designation:"+$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}   != null ? $F{ACCOUNT_OPENING_OFFICER_DESIGNATION} : "" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Designation:"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="350" y="1772" width="70" height="10" uuid="1bc23686-5773-405f-bc2d-96de594b075d">
@@ -5456,14 +5481,188 @@ If any suspicion is observed
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{REASON_FOR_RED_FLAG_2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{JOINT_SUSPICION_OBSERVED}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="260" y="1530" width="295" height="22" uuid="b6445e11-9766-439b-a0f4-2f31e9d88cf0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUPPORTING_DOCUMENT_OBTAINED_2}
+  != null ? $F{SUPPORTING_DOCUMENT_OBTAINED_2} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1880" width="555" height="22" uuid="6c68f106-94f4-4e9f-937b-dbc70e6577a1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FURTHER_DUE_DILIGENCE}  != null ? $F{FURTHER_DUE_DILIGENCE} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1840" width="555" height="22" uuid="f268717a-e744-4493-9927-0caa309d1276">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HIGH_RISK_REASON}
+  != null ? $F{HIGH_RISK_REASON} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="1940" width="210" height="10" uuid="e204308d-c2a3-419b-a94e-e428c0766893">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} +$F{ACCOUNT_OPENING_OFFICER_SIGNATURE}  != null ?$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="1950" width="210" height="10" uuid="ed874d99-50f0-4d21-85a0-77c47a8bafc4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_OPENING_OFFICER_NAME} 
+  != null ? $F{ACCOUNT_OPENING_OFFICER_NAME} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="1960" width="210" height="10" uuid="d63f7f43-5b06-4ca5-85c2-37552d52231f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}   != null ? $F{ACCOUNT_OPENING_OFFICER_DESIGNATION} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="1970" width="210" height="10" uuid="7aefc90c-fc22-4e35-a571-29e7db923f99">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{ACCOUNT_OPENING_OFFICER_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="1940" width="215" height="10" uuid="a2938071-8c54-41d1-bdf7-7d2507100042">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_OPENING_OFFICER_SIGNATURE} 
+  != null ? $F{ACCOUNT_OPENING_OFFICER_SIGNATURE} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="1950" width="215" height="10" uuid="f7280f83-aced-435c-a458-2b762ab831d8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BRANCH_OFFICIAL_NAME}   != null ? $F{BRANCH_OFFICIAL_NAME} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="1960" width="215" height="10" uuid="8d624dbf-6897-4c91-a8eb-9cf648e2189b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_OPENING_OFFICER_DESIGNATION}   != null ? $F{ACCOUNT_OPENING_OFFICER_DESIGNATION} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="1970" width="215" height="10" uuid="694e4bcc-73be-47c6-a2e2-833f2914b712">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{BRANCH_OFFICIAL_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="1062" width="187" height="20" uuid="4140f418-ebbf-4a53-ae19-91fd3ef73e42">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -5473,8 +5672,66 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{REASON_FOR_RED_FLAG_1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[ $F{SUSPICION_OBSERVED_DETAILS}  != null ? $F{SUSPICION_OBSERVED_DETAILS} : ""]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="1292" width="20" height="10" uuid="b75af89d-a899-4fc7-82f8-5487b1c20d1e">
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph firstLineIndent="5"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1302" width="20" height="10" uuid="6671862d-0c62-42e4-8ae5-06a8f8e88ce3">
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph firstLineIndent="5"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="1292" width="20" height="10" uuid="90a9caa8-11da-4e0e-a51f-b9a04c6ad62e">
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph firstLineIndent="5"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="1302" width="20" height="10" uuid="8a87a74f-c5c2-4d29-9858-6dc5b732781d">
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph firstLineIndent="5"/>
+				</textElement>
+				<text><![CDATA[4.]]></text>
+			</staticText>
 		</band>
 	</title>
 </jasperReport>

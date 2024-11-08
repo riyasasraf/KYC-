@@ -128,7 +128,7 @@ input[type="number"] {
 		}
 	}
 	// Function to redirect to the Home page
-	function goHome() {		// Redirect to the home page (adjust the URL as needed)
+	function goHome() { // Redirect to the home page (adjust the URL as needed)
 		window.location.href = '/BRF/'; // Replace with your actual home page URL
 	}
 
@@ -234,18 +234,20 @@ input[type="number"] {
 								<th>Company Name</th>
 								<th>Account Number</th>
 								<th>Trade License Number</th>
-								<th>Action</th>
+
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="row : ${kycData}">
+							<tr th:each="row : ${kycData}"
+								onclick="navigateToForm(this,'view','corporate')"
+								th:attr="data-custid=${row[0]}">
 								<td th:text="${row[0]}"></td>
 								<td th:text="${row[1]}"></td>
 								<td th:text="${row[2]}"></td>
 								<td th:text="${row[3]}"></td>
 
 
-								<td align="center" width="100px">
+								<!-- <td align="center" width="100px">
 									<div class="dropdown">
 										<button class="btn btn-primary dropdown-toggle" type="button"
 											id="dropdownMenuButton" data-toggle="dropdown"
@@ -259,7 +261,7 @@ input[type="number"] {
 												onclick="navigateToForm(this,'verify','corporate')">Verify</a>
 										</div>
 									</div>
-								</td>
+								</td> -->
 							</tr>
 						</tbody>
 					</table>
