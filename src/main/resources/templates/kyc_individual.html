@@ -244,6 +244,23 @@ event.preventDefault();
 	function goBack() {
 		window.history.back();
 	}
+    // Run the code when the page is loaded
+window.onload = function() {
+    // Get all elements with the data-modifyflg attribute
+    var elements = document.querySelectorAll('[data-modifyflg]');
+    
+    // Loop through the elements
+    elements.forEach(function(element) {
+        // Get the value of the data-modifyflg attribute
+        var data = element.getAttribute("data-modifyflg");
+
+        // If data-modifyflg is not "Y", set the display property to "block"
+        if (data !== "Y") {
+            element.style.display = "none";
+        }
+    });
+};
+
 
  
 </script>
@@ -278,8 +295,8 @@ event.preventDefault();
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
 									th:each="user_data: ${user_data}">
-									<a class="dropdown-item" th:if="${user_data.modifyFlg == 'Y'}"
-										onclick="verify()" th:attr="data-modifyflg= ${user_data.modifyFlg}">Verify</a> <a
+									<a class="dropdown-item" onclick="verify()"
+										th:data-modifyflg="${user_data.modifyFlg}"> Verify </a> <a
 										class="dropdown-item" onclick="setFormMode('modify')">Modify</a>
 									<a class="dropdown-item" onclick="downloadFn('download')">Download</a>
 								</div>

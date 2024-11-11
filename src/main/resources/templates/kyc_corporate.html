@@ -273,7 +273,7 @@ input[type="number"] {
 						<fieldset th:disabled="${formmode != 'modify'}">
 							<div class="card-body">
 
-								<h6>Customer Information</h6>
+								<h6>KNOW YOUR CUSTOMER DETAILS</h6>
 
 								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
@@ -402,7 +402,8 @@ input[type="number"] {
 								</div>
 
 								<hr>
-								<h6>Documents For Account Opening:</h6>
+								<h6>A. Valid document of Entity obtained as per account
+									opening checklist.</h6>
 
 								<div class="row formline" style="padding: 2px 15px;">
 
@@ -457,7 +458,7 @@ input[type="number"] {
 									</div>
 								</div>
 
-								<h6>Valid Customer Business Address Proof:</h6>
+								<h6>Latest validcustomer business address proof obtained.</h6>
 								<div class="row formline" style="padding: 2px 15px;">
 
 
@@ -523,7 +524,8 @@ input[type="number"] {
 									</div>
 								</div>
 
-								<h6>Customer Source of Funds:</h6>
+								<h6>Proof for customer Source of funds and Source of wealth
+									obtained</h6>
 								<div class="row formline" style="padding: 2px 15px;">
 
 									<div class="form-check col-sm-2">
@@ -581,7 +583,7 @@ input[type="number"] {
 
 
 
-								<h6>Related Party Details</h6>
+								<h6>B. Related Party details -</h6>
 
 								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1"></div>
@@ -902,7 +904,7 @@ input[type="number"] {
 
 
 								<hr>
-								<h6>Other Linked Relationship Details</h6>
+								<h6>Other Linked relationship details</h6>
 
 								<!-- Account Number or Customer ID Section -->
 								<div class="row formline" style="padding: 2px 0;">
@@ -985,8 +987,8 @@ input[type="number"] {
 								</div>
 
 								<hr>
-								<h6>Branch Official Observations during review of existing
-									relationship</h6>
+								<h6>C. Branch official observations during review of
+									existing relationship</h6>
 
 								<div class="row formline" style="padding: 2px 0;">
 									<!-- Account Satisfactory Section -->
@@ -1158,7 +1160,7 @@ input[type="number"] {
 
 								<hr>
 
-								<h6>Details of Transaction in Account</h6>
+								<h6>D. Details of Transaction in the account (AED)</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">Current and expected turnover in
@@ -1248,8 +1250,9 @@ input[type="number"] {
 
 								<hr>
 
+								<p>Known or expected counterparties with whom the customer
+									conducts transactions</p>
 
-								<h6>Transaction counterparties for the customer:</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
@@ -1344,9 +1347,7 @@ input[type="number"] {
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-6">
-										<h6>Transactions through third-party intermediaries:</h6>
-									</div>
+
 
 								</div>
 								<p>Whether customer is engaged with third party
@@ -1376,13 +1377,14 @@ input[type="number"] {
 								</div>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<h6 class="col-sm-6">Expected countries related to
-										transactional activity</h6>
+
 								</div>
 								<p>Whether customer is operating business from High-risk
 									jurisdiction? Yes / No, if Yes, please mention the country Name
 
 								</p>
+								<p>Known or expected countries related to transactional
+									activity (other than mentioned above)</p>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
@@ -1418,7 +1420,7 @@ input[type="number"] {
 								<hr>
 
 
-								<h6>Sanctions Screening & Due Diligence - Entity</h6>
+								<h6>E. Sanctions screening & Due Diligence - Entity</h6>
 								<div class="row formline" style="padding: 2px 0">
 
 									<div class="col-sm-1">
@@ -1556,7 +1558,7 @@ input[type="number"] {
 										<label for="RedFlagSupportingDocsObtained"
 											title="Supporting Documents">Supporting Documents</label>
 									</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1 radio-group">
 										<input type="radio" id="RedFlagSupportingDocsObtainedYes"
 											th:checked="${user_data.RedFlagSupportingDocsObtained == 'Yes'}"
 											name="RedFlagSupportingDocsObtained" value="Yes" /> <label
@@ -1564,7 +1566,11 @@ input[type="number"] {
 											type="radio" id="RedFlagSupportingDocsObtainedNo"
 											th:checked="${user_data.RedFlagSupportingDocsObtained == 'No'}"
 											name="RedFlagSupportingDocsObtained" value="No" /> <label
-											for="RedFlagSupportingDocsObtainedNo">No</label>
+											for="RedFlagSupportingDocsObtainedNo">No</label> <input
+											type="radio" id="RedFlagSupportingDocsObtainedNA"
+											th:checked="${user_data.RedFlagSupportingDocsObtained == 'NA'}"
+											name="RedFlagSupportingDocsObtained" value="NA" /> <label
+											for="RedFlagSupportingDocsObtainedNA">NA</label>
 									</div>
 
 									<div class="col-sm-1">
@@ -1687,7 +1693,7 @@ input[type="number"] {
 										<label for="UboSuspicionObserved" title="Suspicion observed">Suspicion
 											Observed</label>
 									</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1 ">
 										<input type="radio" id="UboSuspicionObservedYes1"
 											th:checked="${user_data.UboSuspicionObserved == 'Yes'}"
 											name="UboSuspicionObserved" value="Yes" /> <label
@@ -1713,7 +1719,7 @@ input[type="number"] {
 										<label for="UboRedFlagSupportingDocsObtained1"
 											title="Supporting Documents">Supporting Documents</label>
 									</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1 radio-group">
 										<input type="radio" id="UboRedFlagSupportingDocsObtainedYes1"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'Yes'}"
 											name="UboRedFlagSupportingDocsObtained" value="Yes" /> <label
@@ -1721,7 +1727,11 @@ input[type="number"] {
 											type="radio" id="UboRedFlagSupportingDocsObtainedNo1"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'No'}"
 											name="UboRedFlagSupportingDocsObtained" value="No" /> <label
-											for="UboRedFlagSupportingDocsObtainedNo1">No</label>
+											for="UboRedFlagSupportingDocsObtainedNo1">No</label> <input
+											type="radio" id="UboRedFlagSupportingDocsObtainedNA1"
+											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'NA'}"
+											name="UboRedFlagSupportingDocsObtained" value="NA" /> <label
+											for="UboRedFlagSupportingDocsObtainedNA1">NA</label>
 									</div>
 
 									<div class="col-sm-1">
@@ -1740,7 +1750,8 @@ input[type="number"] {
 
 
 								<hr>
-								<h6>Sanctions Screening & Due Diligence - Counter Parties</h6>
+								<h6>Sanctions screening & Due Diligence- Counterparties
+									(Buyers and Suppliers)</h6>
 								<div class="row formline" style="padding: 2px 0;">
 
 									<div class="col-sm-1">
@@ -1875,7 +1886,7 @@ input[type="number"] {
 										<label for="UboRedFlagSupportingDocsObtained2"
 											title="Supporting Documents">Supporting Documents</label>
 									</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1 radio-group">
 										<input type="radio" id="UboRedFlagSupportingDocsObtainedYes2"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'Yes'}"
 											name="UboRedFlagSupportingDocsObtained" value="Yes" /> <label
@@ -1883,7 +1894,11 @@ input[type="number"] {
 											type="radio" id="UboRedFlagSupportingDocsObtainedNo2"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'No'}"
 											name="UboRedFlagSupportingDocsObtained" value="No" /> <label
-											for="UboRedFlagSupportingDocsObtainedNo2">No</label>
+											for="UboRedFlagSupportingDocsObtainedNo2">No</label> <input
+											type="radio" id="UboRedFlagSupportingDocsObtainedNA2"
+											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'NA'}"
+											name="UboRedFlagSupportingDocsObtained" value="NA" /> <label
+											for="UboRedFlagSupportingDocsObtainedNA2">NA</label>
 									</div>
 
 									<div class="col-sm-1">
@@ -1901,7 +1916,7 @@ input[type="number"] {
 
 
 								<hr>
-								<h6>Enhance Due Diligence</h6>
+								<h6>F. Enhance Due Diligence</h6>
 								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
 										<label for="siteVisitCompletedYes"
@@ -2293,7 +2308,8 @@ input[type="number"] {
 
 								<hr>
 
-								<h6>Customer dealing activity</h6>
+								<h6>Does customer fall under the DNFBPs ?, if yes, please
+									provide following information</h6>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 
@@ -2369,6 +2385,9 @@ input[type="number"] {
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
+
+								For checking details please refer to this link
+								https://www.uaeiec.gov.ae/en-us/control-list-good
 
 								<div class="row formline" style="padding: 12px 0px 0px 0px;">
 
