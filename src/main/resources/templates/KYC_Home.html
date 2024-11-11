@@ -136,6 +136,22 @@ input[type="number"] {
 	function goBack() {
 		window.history.back();
 	}
+
+	function filterTable(columnIndex, filterValue) {
+		const table = document.getElementById("usertable");
+		const rows = table.getElementsByTagName("tbody")[0]
+				.getElementsByTagName("tr");
+
+		for (let i = 0; i < rows.length; i++) {
+			const cell = rows[i].getElementsByTagName("td")[columnIndex];
+			if (cell) {
+				const cellText = cell.textContent || cell.innerText;
+				// Display row if it matches the filter value, hide if it doesn't
+				rows[i].style.display = cellText.toLowerCase().includes(
+						filterValue.toLowerCase()) ? "" : "none";
+			}
+		}
+	}
 </script>
 
 
@@ -147,7 +163,7 @@ input[type="number"] {
 		<div class="card">
 			<div class="card-header">
 				<h4>KYC</h4>
-			</div>
+					</div>
 			<div class="card-body">
 				<form id="kycForm" action="kyc" method="post">
 					<div class="button_container card-title">
@@ -186,6 +202,22 @@ input[type="number"] {
 								<th>Account Opening Date</th>
 								<!-- <th>Action</th>
  -->
+							</tr>
+							<tr>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by ID" oninput="filterTable(0, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by Name"
+									oninput="filterTable(1, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by Account Number"
+									oninput="filterTable(2, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by Account Type"
+									oninput="filterTable(3, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by Opening Date"
+									oninput="filterTable(4, this.value)"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -235,6 +267,19 @@ input[type="number"] {
 								<th>Account Number</th>
 								<th>Trade License Number</th>
 
+							</tr>
+							<tr>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by ID" oninput="filterTable(0, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by Name"
+									oninput="filterTable(1, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by Account"
+									oninput="filterTable(2, this.value)"></th>
+								<th><input type="text" class="form-control form-control-sm"
+									placeholder="Filter by License"
+									oninput="filterTable(3, this.value)"></th>
 							</tr>
 						</thead>
 						<tbody>

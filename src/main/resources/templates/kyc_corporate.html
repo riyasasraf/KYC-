@@ -1042,8 +1042,8 @@ input[type="number"] {
 
 									<!-- Suspicion Details Section -->
 									<div class="col-sm-1">
-										<label for="CSuspisionDetail" title="Remarks">Suspicion
-											Details:</label>
+										<label for="CSuspisionDetail" title="Remarks">If yes,
+											please specify</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="CSuspisionDetail"
@@ -1051,8 +1051,26 @@ input[type="number"] {
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.CSuspisionDetail}" />
 									</div>
-
+									<div class="col-sm-1">
+										<label for="TransactionsCommensurate"
+											title="Transactions commensurate with business profile">Tran
+											commensurate:</label>
+									</div>
+									<div class="col-sm-1">
+										<input type="radio" id="TransactionsCommensurateYes"
+											name="TransactionsCommensurate" value="Yes"
+											th:checked="${user_data.TransactionsCommensurate == 'Yes'}" />
+										<label for="TransactionsCommensurateYes">Yes</label> <input
+											type="radio" id="TransactionsCommensurateNo"
+											name="TransactionsCommensurate" value="No"
+											th:checked="${user_data.TransactionsCommensurate == 'No'}" />
+										<label for="TransactionsCommensurateNo">No</label>
+									</div>
 									<!-- High Value Transactions Section -->
+
+								</div>
+
+								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
 										<label for="CHighvalueTransaction"
 											title="High Value Transaction">High Value Trans:</label>
@@ -1067,13 +1085,11 @@ input[type="number"] {
 											th:checked="${user_data.CHighvalueTransaction == 'No'}" /> <label
 											for="CHighvalueTransactionNo">No</label>
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 2px 0;">
 									<!-- Transaction Details Section -->
 									<div class="col-sm-1">
 										<label for="TransactionDetails1"
-											title="High Value transactions">Transactions:</label>
+											title="High Value transactions">If yes,provide
+											transactions </label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="TransactionDetails1"
@@ -1099,21 +1115,7 @@ input[type="number"] {
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.TransactionDetails4}" />
 									</div>
-									<div class="col-sm-1">
-										<label for="TransactionsCommensurate"
-											title="Transactions commensurate with business profile">Tran
-											commensurate:</label>
-									</div>
-									<div class="col-sm-1">
-										<input type="radio" id="TransactionsCommensurateYes"
-											name="TransactionsCommensurate" value="Yes"
-											th:checked="${user_data.TransactionsCommensurate == 'Yes'}" />
-										<label for="TransactionsCommensurateYes">Yes</label> <input
-											type="radio" id="TransactionsCommensurateNo"
-											name="TransactionsCommensurate" value="No"
-											th:checked="${user_data.TransactionsCommensurate == 'No'}" />
-										<label for="TransactionsCommensurateNo">No</label>
-									</div>
+
 								</div>
 
 								<div class="row formline" style="padding: 2px 0;">
@@ -1159,11 +1161,13 @@ input[type="number"] {
 								<h6>Details of Transaction in Account</h6>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
+									<div class="col-sm-2">Current and expected turnover in
+										account</div>
 									<div class="col-sm-1">
-										<label for="CurrentTurnover" title="Current turnover">Current
+										<label for="CurrentTurnover" title="Current turnover">Curr
 											turnover</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="CurrentTurnover" id="CurrentTurnover"
 											th:value="${user_data.CurrentTurnover}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1173,18 +1177,20 @@ input[type="number"] {
 										<label for="ExpectedTurnover" title="Expected turnover">Expt
 											turnover</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="ExpectedTurnover"
 											id="ExpectedTurnover"
 											th:value="${user_data.ExpectedTurnover}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 
+									<div class="col-sm-2">Anticipated expected transactions</div>
+
 									<div class="col-sm-1">
 										<label for="ExpectedDebitTransactions"
 											title="Tran Expected debit">Tran Expt debit</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="ExpectedDebitTransactions"
 											id="ExpectedDebitTransactions"
 											th:value="${user_data.ExpectedDebitTransactions}"
@@ -1195,7 +1201,7 @@ input[type="number"] {
 										<label for="ExpectedCreditTransactions"
 											title="Tran Expected credit">Tran Expt credit</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="ExpectedCreditTransactions"
 											id="ExpectedCreditTransactions"
 											th:value="${user_data.ExpectedCreditTransactions}"
@@ -1209,19 +1215,19 @@ input[type="number"] {
 											title="Expected type of transactions">Expt type of
 											tran</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="ExpectedTransactionType"
 											id="ExpectedTransactionType"
 											th:value="${user_data.ExpectedTransactionType}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+									<div class="col-sm-2">Expected volume of transactions</div>
 
 									<div class="col-sm-1">
 										<label for="ExpectedTransactionFrequency"
-											title="Expected volume of transactions (frequency)">Expt
-											freq of tran</label>
+											title="Expected volume of transactions (frequency)">Frequency</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="ExpectedTransactionFrequency"
 											id="ExpectedTransactionFrequency"
 											th:value="${user_data.FrequencyOfTransactions}"
@@ -1230,10 +1236,9 @@ input[type="number"] {
 
 									<div class="col-sm-1">
 										<label for="ExpectedTransactionVolume"
-											title="Expected volume of transactions">Expt vol of
-											tran</label>
+											title="Expected volume of transactions">Volume</label>
 									</div>
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<input type="text" name="ExpectedTransactionVolume"
 											id="ExpectedTransactionVolume"
 											th:value="${user_data.ExpectedTransactionVolume}"
@@ -1342,7 +1347,11 @@ input[type="number"] {
 									<div class="col-sm-6">
 										<h6>Transactions through third-party intermediaries:</h6>
 									</div>
+
 								</div>
+								<p>Whether customer is engaged with third party
+									intermediaries with whom the customer conducts transactions. If
+									yes please provide information</p>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
@@ -1370,6 +1379,10 @@ input[type="number"] {
 									<h6 class="col-sm-6">Expected countries related to
 										transactional activity</h6>
 								</div>
+								<p>Whether customer is operating business from High-risk
+									jurisdiction? Yes / No, if Yes, please mention the country Name
+
+								</p>
 
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-2">
@@ -1407,9 +1420,8 @@ input[type="number"] {
 
 								<h6>Sanctions Screening & Due Diligence - Entity</h6>
 								<div class="row formline" style="padding: 2px 0">
-									<div class="col-sm-5"
-										style="display: flex; justify-content: space-between;">
 
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input " type="checkbox" value="Yes"
 												name="SanctionsUaeMatch" id="UAE"
@@ -1417,13 +1429,16 @@ input[type="number"] {
 												th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UAE </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsUnMatch" id="UN"
 												th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
 										</div>
+									</div>
+									<div class="col-sm-1">
 
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
@@ -1433,7 +1448,8 @@ input[type="number"] {
 											<label class="form-check-label" for="uaeCheck"> OFAC
 											</label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsHmtMatch" id="HMT"
@@ -1441,7 +1457,8 @@ input[type="number"] {
 												th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> HMT </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsEuMatch" id="EU"
@@ -1449,14 +1466,16 @@ input[type="number"] {
 												th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> EU </label>
 										</div>
-
-										<div align="right">Others</div>
-										<div>
-											<input type="text" name="SanctionsOthersMatch"
-												th:value="${user_data.SanctionsOthersMatch}" id="Others"
-												class="form-control form-control-sm bg-white border border-dark" />
-										</div>
 									</div>
+									<div class="col-sm-1">
+										<div align="right">Others</div>
+									</div>
+									<div class="col-sm-1">
+										<input type="text" name="SanctionsOthersMatch"
+											th:value="${user_data.SanctionsOthersMatch}" id="Others"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
 
 									<div class="col-sm-1">
 										<label for="CbuaeBblCheckDone" title="CBUAE BBL check done">CBUAE
@@ -1488,6 +1507,10 @@ input[type="number"] {
 											for="GoogleMediaSearchDoneNo">No</label>
 									</div>
 
+
+								</div>
+
+								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="InternalDenyListNameScreening"
 											title="Internal deny list screening">Internal Deny
@@ -1503,9 +1526,6 @@ input[type="number"] {
 											name="InternalDenyListNameScreening" value="No" /> <label
 											for="InternalDenyListNameScreeningNo">No</label>
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="SuspicionObserved" title="Suspicion observed">Suspicion
 											Observed</label>
@@ -1522,8 +1542,8 @@ input[type="number"] {
 									</div>
 
 									<div class="col-sm-1">
-										<label for="SuspicionDetails" title="Suspicious details">Suspicion
-											Details</label>
+										<label for="SuspicionDetails" title="Suspicious details">
+											If yes, specify:</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="SuspicionDetails"
@@ -1555,8 +1575,7 @@ input[type="number"] {
 									<div class="col-sm-2">
 										<input type="text" name="RedFlagDetails" id="RedFlagDetails"
 											th:value="${user_data.RedFlagDetails}"
-											class="form-control form-control-sm bg-white border border-dark"
-											style="margin-left: 20px" />
+											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
 
@@ -1565,56 +1584,55 @@ input[type="number"] {
 								<h6>Sanctions screening & Due Diligence -
 									UBO/Signatories/POA/Directors</h6>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-									<div class="col-sm-5"
-										style="display: flex; justify-content: space-between;">
-										<div class="form-check">
-											<input class="form-check-input " type="checkbox" value="Yes"
-												name="SanctionsUaeMatch" id="UAE"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
-											<label class="form-check-label" for="uaeCheck"> UAE </label>
-										</div>
 
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsUnMatch" id="UN"
-												th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
-											<label class="form-check-label" for="uaeCheck"> UN </label>
-										</div>
 
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsOfacMatch" id="OFAC"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsOfacMatch == 'Yes'}">
-											<label class="form-check-label" for="uaeCheck"> OFAC
-											</label>
-										</div>
-
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsHmtMatch" id="HMT"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
-											<label class="form-check-label" for="uaeCheck"> HMT </label>
-										</div>
-
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsEuMatch" id="EU"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
-											<label class="form-check-label" for="uaeCheck"> EU </label>
-										</div>
-
-										<div align="right">Others</div>
-										<div>
-											<input type="text" name="UboSanctionsOthersMatch"
-												th:value="${user_data.UboSanctionsOthersMatch}"
-												id="sanctions_others_ubo"
-												class="form-control form-control-sm bg-white border border-dark" />
-										</div>
+									<div class="form-check col-sm-1">
+										<input class="form-check-input " type="checkbox" value="Yes"
+											name="SanctionsUaeMatch" id="UAE"
+											onchange="this.value = this.checked ? 'Yes' : 'No';"
+											th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
+										<label class="form-check-label" for="uaeCheck"> UAE </label>
 									</div>
+
+									<div class="form-check col-sm-1">
+										<input class="form-check-input" type="checkbox" value="Yes"
+											name="SanctionsUnMatch" id="UN"
+											th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
+										<label class="form-check-label" for="uaeCheck"> UN </label>
+									</div>
+
+									<div class="form-check col-sm-1">
+										<input class="form-check-input" type="checkbox" value="Yes"
+											name="SanctionsOfacMatch" id="OFAC"
+											onchange="this.value = this.checked ? 'Yes' : 'No';"
+											th:checked="${user_data.SanctionsOfacMatch == 'Yes'}">
+										<label class="form-check-label" for="uaeCheck"> OFAC </label>
+									</div>
+
+									<div class="form-check col-sm-1">
+										<input class="form-check-input" type="checkbox" value="Yes"
+											name="SanctionsHmtMatch" id="HMT"
+											onchange="this.value = this.checked ? 'Yes' : 'No';"
+											th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
+										<label class="form-check-label" for="uaeCheck"> HMT </label>
+									</div>
+
+									<div class="form-check col-sm-1">
+										<input class="form-check-input" type="checkbox" value="Yes"
+											name="SanctionsEuMatch" id="EU"
+											onchange="this.value = this.checked ? 'Yes' : 'No';"
+											th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
+										<label class="form-check-label" for="uaeCheck"> EU </label>
+									</div>
+
+									<div align="right" class="col-sm-1">Others</div>
+									<div class="col-sm-1">
+										<input type="text" name="UboSanctionsOthersMatch"
+											th:value="${user_data.UboSanctionsOthersMatch}"
+											id="sanctions_others_ubo"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
 
 									<div class="col-sm-1">
 										<label for="UboCbuaeBblCheckDone" title="CBUAE BBL check done">CBUAE
@@ -1646,6 +1664,10 @@ input[type="number"] {
 											for="UboGoogleMediaSearchDoneNo">No</label>
 									</div>
 
+
+								</div>
+
+								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="UboInternalDenyListScreening"
 											title="Internal deny list screening">Internal deny
@@ -1661,9 +1683,6 @@ input[type="number"] {
 											name="UboInternalDenyListScreening" value="No" /> <label
 											for="UboInternalDenyListScreeningNo">No</label>
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
 										<label for="UboSuspicionObserved" title="Suspicion observed">Suspicion
 											Observed</label>
@@ -1680,8 +1699,8 @@ input[type="number"] {
 									</div>
 
 									<div class="col-sm-1">
-										<label for="UboSuspicionDetails1" title="Suspicious details">Suspicion
-											Details</label>
+										<label for="UboSuspicionDetails1" title="Suspicious details">
+											If yes, specify:</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="UboSuspicionDetails"
@@ -1714,8 +1733,7 @@ input[type="number"] {
 										<input type="text" name="UboRedFlagDetails"
 											id="UboRedFlagDetails1"
 											th:value="${user_data.UboRedFlagDetails}"
-											class="form-control form-control-sm bg-white border border-dark"
-											style="margin-left: 20px" />
+											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
 
@@ -1724,8 +1742,8 @@ input[type="number"] {
 								<hr>
 								<h6>Sanctions Screening & Due Diligence - Counter Parties</h6>
 								<div class="row formline" style="padding: 2px 0;">
-									<div class="col-sm-5"
-										style="display: flex; justify-content: space-between;">
+
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input " type="checkbox" value="Yes"
 												name="SanctionsUaeMatch" id="UAE"
@@ -1733,14 +1751,16 @@ input[type="number"] {
 												th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UAE </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsUnMatch" id="UN"
 												th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsOfacMatch" id="OFAC"
@@ -1749,7 +1769,8 @@ input[type="number"] {
 											<label class="form-check-label" for="uaeCheck"> OFAC
 											</label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsHmtMatch" id="HMT"
@@ -1757,7 +1778,8 @@ input[type="number"] {
 												th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> HMT </label>
 										</div>
-
+									</div>
+									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
 												name="SanctionsEuMatch" id="EU"
@@ -1765,16 +1787,18 @@ input[type="number"] {
 												th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> EU </label>
 										</div>
-
-
-										<div align="right">Others</div>
-										<div>
-											<input type="text" name="sanctions_others_cp"
-												id="sanctions_others_cp"
-												th:value="${user_data.CounterpartySanctionsOthersMatch}"
-												class="form-control form-control-sm bg-white border border-dark" />
-										</div>
 									</div>
+
+									<div class="col-sm-1">
+										<div align="right">Others</div>
+									</div>
+									<div class="col-sm-1">
+										<input type="text" name="sanctions_others_cp"
+											id="sanctions_others_cp"
+											th:value="${user_data.CounterpartySanctionsOthersMatch}"
+											class="form-control form-control-sm bg-white border border-dark" />
+									</div>
+
 
 									<div class="col-sm-1">
 										<label for="cbuae_bbl_check_cp" title="CBUAE BBL check done">CBUAE
@@ -1803,6 +1827,10 @@ input[type="number"] {
 											value="No" /> <label for="google_media_search_no">No</label>
 									</div>
 
+
+								</div>
+
+								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
 										<label for="internal_deny_list_cp"
 											title="Internal deny list screening">Internal deny
@@ -1816,9 +1844,6 @@ input[type="number"] {
 											id="internal_deny_list_no" name="InternalDenyList" value="No" />
 										<label for="internal_deny_list_no">No</label>
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 2px 0;">
 									<div class="col-sm-1">
 										<label for="CounterpartySuspicionObserved"
 											title="Suspicion observed">Suspicion Observed</label>
@@ -1836,8 +1861,8 @@ input[type="number"] {
 									</div>
 
 									<div class="col-sm-1">
-										<label for="UboSuspicionDetails2" title="Suspicious details">Suspicion
-											Details</label>
+										<label for="UboSuspicionDetails2" title="Suspicious details">
+											If yes, specify:</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="UboSuspicionDetails"
@@ -1870,8 +1895,7 @@ input[type="number"] {
 										<input type="text" name="UboRedFlagDetails"
 											id="UboRedFlagDetails2"
 											th:value="${user_data.UboRedFlagDetails}"
-											class="form-control form-control-sm bg-white border border-dark"
-											style="margin-left: 20px" />
+											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
 
@@ -1913,8 +1937,8 @@ input[type="number"] {
 
 									<div class="col-sm-1	">
 										<label for="adverseDetails1"
-											title="Details of adverse observations during site visit">Adverse
-											Details</label>
+											title="Details of adverse observations during site visit">if
+											yes,provide information</label>
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="AdverseObservationDetails1"
@@ -1928,6 +1952,11 @@ input[type="number"] {
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.AdverseObservationDetails2}" />
 									</div>
+
+								</div>
+
+								<div class="row formline" style="padding: 2px 0;">
+
 									<div class="col-sm-1">
 										<label for="customer_is_pep" title="Customer is PEP">Customer
 											is PEP</label>
@@ -1944,11 +1973,6 @@ input[type="number"] {
 											th:checked="${user_data.CustomerIsPep == 'NA'}" /> <label
 											for="customer_is_pep_na">NA</label>
 									</div>
-								</div>
-
-								<div class="row formline" style="padding: 2px 0;">
-
-
 									<div class="col-sm-1">
 										<label for="senior_management_approval"
 											title="Senior management approval">Senior Approval</label>
