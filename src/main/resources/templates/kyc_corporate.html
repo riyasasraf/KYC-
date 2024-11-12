@@ -494,7 +494,7 @@ input[type="number"] {
 
 									<div class="form-check col-sm-2">
 										<input class="form-check-input" type="checkbox" value="No"
-											name="OfficeSharingAgreement" id="officeSharingNoc"
+											name="CoWorkingAgreement" id="officeSharingNoc"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.CoWorkingAgreement}"
 											th:checked="${user_data.CoWorkingAgreement == 'Yes'}">
@@ -915,31 +915,31 @@ input[type="number"] {
 									</div>
 									<!-- Input Fields for Account Number or Customer ID -->
 									<div class="col-sm-2">
-										<input type="text" name="accountNumberOrCustomerID1"
+										<input type="text" name="LinkedAccountNumber1"
 											id="accountNumberOrCustomerID1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedAccountNumber1}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="accountNumberOrCustomerID2"
+										<input type="text" name="LinkedAccountNumber2"
 											id="accountNumberOrCustomerID2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedAccountNumber2}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="accountNumberOrCustomerID3"
+										<input type="text" name="LinkedAccountNumber3"
 											id="accountNumberOrCustomerID3"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedAccountNumber3}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="accountNumberOrCustomerID4"
+										<input type="text" name="LinkedAccountNumber4"
 											id="accountNumberOrCustomerID4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedAccountNumber4}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="accountNumberOrCustomerID5"
+										<input type="text" name="LinkedAccountNumber5"
 											id="accountNumberOrCustomerID5"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedAccountNumber5}" />
@@ -955,31 +955,31 @@ input[type="number"] {
 									</div>
 									<!-- Input Fields for Relationship with Bank in Years -->
 									<div class="col-sm-2">
-										<input type="text" name="relationshipWithBankYears1"
+										<input type="text" name="LinkedRelationshipDurationYears1"
 											id="relationshipWithBankYears1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears1}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="relationshipWithBankYears2"
+										<input type="text" name="LinkedRelationshipDurationYears2"
 											id="relationshipWithBankYears2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears2}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="relationshipWithBankYears3"
+										<input type="text" name="LinkedRelationshipDurationYears3"
 											id="relationshipWithBankYears3"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears3}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="relationshipWithBankYears4"
+										<input type="text" name="LinkedRelationshipDurationYears4"
 											id="relationshipWithBankYears4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears4}" />
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="relationshipWithBankYears5"
+										<input type="text" name="LinkedRelationshipDurationYears5"
 											id="relationshipWithBankYears5"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears5}" />
@@ -1171,9 +1171,10 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<input type="text" name="CurrentTurnover" id="CurrentTurnover"
-											th:value="${user_data.CurrentTurnover}"
+											th:value="${#numbers.formatDecimal(user_data.CurrentTurnover, 2, 2 )}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 
 									<div class="col-sm-1">
 										<label for="ExpectedTurnover" title="Expected turnover">Expt
@@ -1182,7 +1183,7 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<input type="text" name="ExpectedTurnover"
 											id="ExpectedTurnover"
-											th:value="${user_data.ExpectedTurnover}"
+											th:value="${#numbers.formatDecimal(user_data.ExpectedTurnover, 2, 2)}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 
@@ -1195,7 +1196,7 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<input type="text" name="ExpectedDebitTransactions"
 											id="ExpectedDebitTransactions"
-											th:value="${user_data.ExpectedDebitTransactions}"
+											th:value="${#numbers.formatDecimal(user_data.ExpectedDebitTransactions, 2, 2)}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 
@@ -1206,7 +1207,7 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<input type="text" name="ExpectedCreditTransactions"
 											id="ExpectedCreditTransactions"
-											th:value="${user_data.ExpectedCreditTransactions}"
+											th:value="${#numbers.formatDecimal(user_data.ExpectedCreditTransactions, 2, 2)}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
@@ -1230,7 +1231,7 @@ input[type="number"] {
 											title="Expected volume of transactions (frequency)">Frequency</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="ExpectedTransactionFrequency"
+										<input type="text" name="FrequencyOfTransactions"
 											id="ExpectedTransactionFrequency"
 											th:value="${user_data.FrequencyOfTransactions}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1346,10 +1347,6 @@ input[type="number"] {
 									</div>
 								</div>
 
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
-
-
-								</div>
 								<p>Whether customer is engaged with third party
 									intermediaries with whom the customer conducts transactions. If
 									yes please provide information</p>
@@ -1376,9 +1373,7 @@ input[type="number"] {
 									</div>
 								</div>
 
-								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 
-								</div>
 								<p>Whether customer is operating business from High-risk
 									jurisdiction? Yes / No, if Yes, please mention the country Name
 
@@ -1594,40 +1589,40 @@ input[type="number"] {
 
 									<div class="form-check col-sm-1">
 										<input class="form-check-input " type="checkbox" value="Yes"
-											name="SanctionsUaeMatch" id="UAE"
+											name="UboSanctionsUaeMatch" id="UBOUAE"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
-											th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
+											th:checked="${user_data.UboSanctionsUaeMatch == 'Yes'}">
 										<label class="form-check-label" for="uaeCheck"> UAE </label>
 									</div>
 
 									<div class="form-check col-sm-1">
 										<input class="form-check-input" type="checkbox" value="Yes"
-											name="SanctionsUnMatch" id="UN"
-											th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
+											name="UboSanctionsUnMatch" id="UBOUN"
+											th:checked="${user_data.UboSanctionsUnMatch == 'Yes'}">
 										<label class="form-check-label" for="uaeCheck"> UN </label>
 									</div>
 
 									<div class="form-check col-sm-1">
 										<input class="form-check-input" type="checkbox" value="Yes"
-											name="SanctionsOfacMatch" id="OFAC"
+											name="UboSanctionsOfacMatch" id="UBOOFAC"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
-											th:checked="${user_data.SanctionsOfacMatch == 'Yes'}">
+											th:checked="${user_data.UboSanctionsOfacMatch == 'Yes'}">
 										<label class="form-check-label" for="uaeCheck"> OFAC </label>
 									</div>
 
 									<div class="form-check col-sm-1">
 										<input class="form-check-input" type="checkbox" value="Yes"
-											name="SanctionsHmtMatch" id="HMT"
+											name="UboSanctionsHmtMatch" id="UBOHMT"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
-											th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
+											th:checked="${user_data.UboSanctionsHmtMatch == 'Yes'}">
 										<label class="form-check-label" for="uaeCheck"> HMT </label>
 									</div>
 
 									<div class="form-check col-sm-1">
 										<input class="form-check-input" type="checkbox" value="Yes"
-											name="SanctionsEuMatch" id="EU"
+											name="UboSanctionsEuMatch" id="UBOEU"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
-											th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
+											th:checked="${user_data.UboSanctionsEuMatch == 'Yes'}">
 										<label class="form-check-label" for="uaeCheck"> EU </label>
 									</div>
 
@@ -1681,7 +1676,7 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<input type="radio" id="UboInternalDenyListScreeningYes"
-											th:checked="${user_data.UboInternalDenyListScreening == 'Yes'}"
+											th:checked="${user_data.UboInternalDenyListScreening== 'Yes'}"
 											name="UboInternalDenyListScreening" value="Yes" /> <label
 											for="UboInternalDenyListScreeningYes">Yes</label> <input
 											type="radio" id="UboInternalDenyListScreeningNo"
@@ -1722,17 +1717,19 @@ input[type="number"] {
 									<div class="col-sm-1 radio-group">
 										<input type="radio" id="UboRedFlagSupportingDocsObtainedYes1"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'Yes'}"
-											name="UboRedFlagSupportingDocsObtained" value="Yes" /> <label
-											for="UboRedFlagSupportingDocsObtainedYes1">Yes</label> <input
-											type="radio" id="UboRedFlagSupportingDocsObtainedNo1"
+											name="CounterpartyRedFlagSupportingDocsObtained1" value="Yes" />
+										<label for="UboRedFlagSupportingDocsObtainedYes1">Yes</label>
+
+										<input type="radio" id="UboRedFlagSupportingDocsObtainedNo1"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'No'}"
-											name="UboRedFlagSupportingDocsObtained" value="No" /> <label
-											for="UboRedFlagSupportingDocsObtainedNo1">No</label> <input
+											name="CounterpartyRedFlagSupportingDocsObtained1" value="No" />
+										<label for="UboRedFlagSupportingDocsObtainedNo1">No</label> <input
 											type="radio" id="UboRedFlagSupportingDocsObtainedNA1"
 											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'NA'}"
-											name="UboRedFlagSupportingDocsObtained" value="NA" /> <label
-											for="UboRedFlagSupportingDocsObtainedNA1">NA</label>
+											name="CounterpartyRedFlagSupportingDocsObtained1" value="NA" />
+										<label for="UboRedFlagSupportingDocsObtainedNA1">NA</label>
 									</div>
+
 
 									<div class="col-sm-1">
 										<label for="UboRedFlagDetails1"
@@ -1757,26 +1754,27 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input " type="checkbox" value="Yes"
-												name="SanctionsUaeMatch" id="UAE"
+												name="CounterpartySanctionsUaeMatch" id="CounterpartiesUAE"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
+												th:checked="${user_data.CounterpartySanctionsUaeMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UAE </label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsUnMatch" id="UN"
-												th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
+												name="CounterpartySanctionsUnMatch" id="CounterpartiesUN"
+												th:checked="${user_data.CounterpartySanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsOfacMatch" id="OFAC"
+												name="CounterpartySanctionsOfacMatch"
+												id="CounterpartiesOFAC"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsOfacMatch == 'Yes'}">
+												th:checked="${user_data.CounterpartySanctionsOfacMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> OFAC
 											</label>
 										</div>
@@ -1784,18 +1782,18 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsHmtMatch" id="HMT"
+												name="CounterpartySanctionsHmtMatch" id="CounterpartiesHMT"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
+												th:checked="${user_data.CounterpartySanctionsHmtMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> HMT </label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value="Yes"
-												name="SanctionsEuMatch" id="EU"
+												name="CounterpartySanctionsEuMatch" id="CounterpartiesEU"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
+												th:checked="${user_data.CounterpartySanctionsEuMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> EU </label>
 										</div>
 									</div>
@@ -1804,7 +1802,7 @@ input[type="number"] {
 										<div align="right">Others</div>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="sanctions_others_cp"
+										<input type="text" name="CounterpartySanctionsOthersMatch"
 											id="sanctions_others_cp"
 											th:value="${user_data.CounterpartySanctionsOthersMatch}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1818,10 +1816,10 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<input type="radio" id="transaction_commensurate_yes"
 											th:value="${user_data.CounterpartyCbuaeBblCheckDone}"
-											name="Transaction_commensurate" value="Yes" /> <label
+											name="CounterpartyCbuaeBblCheckDone" value="Yes" /> <label
 											for="transaction_commensurate_yes">Yes</label> <input
 											type="radio" id="transaction_commensurate_no"
-											name="Transaction_commensurate" value="No" /> <label
+											name="CounterpartyCbuaeBblCheckDone" value="No" /> <label
 											for="transaction_commensurate_no">No</label>
 									</div>
 
@@ -1832,10 +1830,11 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<input type="radio" id="google_media_search_yes"
 											th:value="${user_data.CounterpartyGoogleMediaSearchDone}"
-											name="GoogleMediaSearch" value="Yes" /> <label
+											name="CounterpartyGoogleMediaSearchDone" value="Yes" /> <label
 											for="google_media_search_yes">Yes</label> <input type="radio"
-											id="google_media_search_no" name="GoogleMediaSearch"
-											value="No" /> <label for="google_media_search_no">No</label>
+											id="google_media_search_no"
+											name="CounterpartyGoogleMediaSearchDone" value="No" /> <label
+											for="google_media_search_no">No</label>
 									</div>
 
 
@@ -1850,24 +1849,25 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<input type="radio" id="internal_deny_list_yes"
 											th:value="${user_data.CounterpartyInternalDenyListScreening}"
-											name="InternalDenyList" value="Yes" /> <label
-											for="internal_deny_list_yes">Yes</label> <input type="radio"
-											id="internal_deny_list_no" name="InternalDenyList" value="No" />
-										<label for="internal_deny_list_no">No</label>
+											name="CounterpartyInternalDenyListScreening" value="Yes" />
+										<label for="internal_deny_list_yes">Yes</label> <input
+											type="radio" id="internal_deny_list_no"
+											name="CounterpartyInternalDenyListScreening" value="No" /> <label
+											for="internal_deny_list_no">No</label>
 									</div>
 									<div class="col-sm-1">
 										<label for="CounterpartySuspicionObserved"
 											title="Suspicion observed">Suspicion Observed</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="radio" id="UboSuspicionObservedYes2"
+										<input type="radio" id="CounterpartiesSuspicionObservedYes2"
 											th:value="${user_data.CounterpartySuspicionObserved}"
-											th:checked="${user_data.UboSuspicionObserved == 'Yes'}"
-											name="UboSuspicionObserved" value="Yes" /> <label
+											th:checked="${user_data.CounterpartySuspicionObserved == 'Yes'}"
+											name="CounterpartySuspicionObserved" value="Yes" /> <label
 											for="UboSuspicionObservedYes2">Yes</label> <input
-											type="radio" id="UboSuspicionObservedNo2"
-											th:checked="${user_data.UboSuspicionObserved == 'No'}"
-											name="UboSuspicionObserved" value="No" /> <label
+											type="radio" id="CounterpartiesSuspicionObservedNo2"
+											th:checked="${user_data.CounterpartySuspicionObserved == 'No'}"
+											name="CounterpartySuspicionObserved" value="No" /> <label
 											for="UboSuspicionObservedNo2">No</label>
 									</div>
 
@@ -1876,9 +1876,9 @@ input[type="number"] {
 											If yes, specify:</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="UboSuspicionDetails"
+										<input type="text" name="CounterpartySuspicionDetails"
 											id="UboSuspicionDetails2"
-											th:value="${user_data.UboSuspicionDetails}"
+											th:value="${user_data.CounterpartySuspicionDetails}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 
@@ -1888,28 +1888,28 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1 radio-group">
 										<input type="radio" id="UboRedFlagSupportingDocsObtainedYes2"
-											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'Yes'}"
-											name="UboRedFlagSupportingDocsObtained" value="Yes" /> <label
-											for="UboRedFlagSupportingDocsObtainedYes2">Yes</label> <input
-											type="radio" id="UboRedFlagSupportingDocsObtainedNo2"
-											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'No'}"
-											name="UboRedFlagSupportingDocsObtained" value="No" /> <label
-											for="UboRedFlagSupportingDocsObtainedNo2">No</label> <input
-											type="radio" id="UboRedFlagSupportingDocsObtainedNA2"
-											th:checked="${user_data.UboRedFlagSupportingDocsObtained == 'NA'}"
-											name="UboRedFlagSupportingDocsObtained" value="NA" /> <label
-											for="UboRedFlagSupportingDocsObtainedNA2">NA</label>
-									</div>
+											th:checked="${user_data.CounterpartyRedFlagSupportingDocsObtained == 'Yes'}"
+											name="CounterpartyRedFlagSupportingDocsObtained2" value="Yes" />
+										<label for="UboRedFlagSupportingDocsObtainedYes2">Yes</label>
 
+										<input type="radio" id="UboRedFlagSupportingDocsObtainedNo2"
+											th:checked="${user_data.CounterpartyRedFlagSupportingDocsObtained == 'No'}"
+											name="CounterpartyRedFlagSupportingDocsObtained2" value="No" />
+										<label for="UboRedFlagSupportingDocsObtainedNo2">No</label> <input
+											type="radio" id="UboRedFlagSupportingDocsObtainedNA2"
+											th:checked="${user_data.CounterpartyRedFlagSupportingDocsObtained == 'NA'}"
+											name="CounterpartyRedFlagSupportingDocsObtained2" value="NA" />
+										<label for="UboRedFlagSupportingDocsObtainedNA2">NA</label>
+									</div>
 									<div class="col-sm-1">
 										<label for="UboRedFlagDetails2"
 											title="Supporting Document Details">Support Doc
 											Detail</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="UboRedFlagDetails"
+										<input type="text" name="CounterpartyRedFlagDetails"
 											id="UboRedFlagDetails2"
-											th:value="${user_data.UboRedFlagDetails}"
+											th:value="${user_data.CounterpartyRedFlagDetails}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 								</div>
