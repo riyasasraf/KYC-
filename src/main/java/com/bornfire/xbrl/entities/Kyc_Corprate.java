@@ -475,1833 +475,1383 @@ public class Kyc_Corprate {
 
 	private Date ModifyTime;
 	@Column(name = "VERIFY_TIME")
-
 	private Date VerifyTime;
-
+	@Column(name = "CUSTOMER_OPERATING_BUSINESS")
+	private String CustomerOperatingBussiness;
 	public String getCompanyName() {
 		return CompanyName;
 	}
-
 	public void setCompanyName(String companyName) {
 		CompanyName = companyName;
 	}
-
 	public String getCustomerId() {
 		return CustomerId;
 	}
-
 	public void setCustomerId(String customerId) {
 		CustomerId = customerId;
 	}
-
 	public String getAccountNumber() {
 		return AccountNumber;
 	}
-
 	public void setAccountNumber(String accountNumber) {
 		AccountNumber = accountNumber;
 	}
-
 	public String getLegalStatus() {
 		return LegalStatus;
 	}
-
 	public void setLegalStatus(String legalStatus) {
 		LegalStatus = legalStatus;
 	}
-
 	public String getTradeLicenseNumber() {
 		return TradeLicenseNumber;
 	}
-
 	public void setTradeLicenseNumber(String tradeLicenseNumber) {
 		TradeLicenseNumber = tradeLicenseNumber;
 	}
-
 	public Date getTradeLicenseIssueDate() {
 		return TradeLicenseIssueDate;
 	}
-
 	public void setTradeLicenseIssueDate(Date tradeLicenseIssueDate) {
 		TradeLicenseIssueDate = tradeLicenseIssueDate;
 	}
-
 	public Date getTradeLicenseExpiryDate() {
 		return TradeLicenseExpiryDate;
 	}
-
 	public void setTradeLicenseExpiryDate(Date tradeLicenseExpiryDate) {
 		TradeLicenseExpiryDate = tradeLicenseExpiryDate;
 	}
-
 	public String getCountryOfEstablishment() {
 		return CountryOfEstablishment;
 	}
-
 	public void setCountryOfEstablishment(String countryOfEstablishment) {
 		CountryOfEstablishment = countryOfEstablishment;
 	}
-
 	public String getCountryOfOperation() {
 		return CountryOfOperation;
 	}
-
 	public void setCountryOfOperation(String countryOfOperation) {
 		CountryOfOperation = countryOfOperation;
 	}
-
 	public String getBusinessActivity() {
 		return BusinessActivity;
 	}
-
 	public void setBusinessActivity(String businessActivity) {
 		BusinessActivity = businessActivity;
 	}
-
 	public String getProductsServices() {
 		return ProductsServices;
 	}
-
 	public void setProductsServices(String productsServices) {
 		ProductsServices = productsServices;
 	}
-
 	public String getTradeLicense() {
 		return TradeLicense;
 	}
-
 	public void setTradeLicense(String tradeLicense) {
 		TradeLicense = tradeLicense;
 	}
-
 	public String getMemorandumOfAssociation() {
 		return MemorandumOfAssociation;
 	}
-
 	public void setMemorandumOfAssociation(String memorandumOfAssociation) {
 		MemorandumOfAssociation = memorandumOfAssociation;
 	}
-
 	public String getShareCertificate() {
 		return ShareCertificate;
 	}
-
 	public void setShareCertificate(String shareCertificate) {
 		ShareCertificate = shareCertificate;
 	}
-
 	public String getCertificateOfIncorporation() {
 		return CertificateOfIncorporation;
 	}
-
 	public void setCertificateOfIncorporation(String certificateOfIncorporation) {
 		CertificateOfIncorporation = certificateOfIncorporation;
 	}
-
 	public String getOtherDocuments() {
 		return OtherDocuments;
 	}
-
 	public void setOtherDocuments(String otherDocuments) {
 		OtherDocuments = otherDocuments;
 	}
-
 	public String getGovernmentTenancyDocument() {
 		return GovernmentTenancyDocument;
 	}
-
 	public void setGovernmentTenancyDocument(String governmentTenancyDocument) {
 		GovernmentTenancyDocument = governmentTenancyDocument;
 	}
-
 	public String getUtilityBill() {
 		return UtilityBill;
 	}
-
 	public void setUtilityBill(String utilityBill) {
 		UtilityBill = utilityBill;
 	}
-
 	public String getFlexiDeskAgreement() {
 		return FlexiDeskAgreement;
 	}
-
 	public void setFlexiDeskAgreement(String flexiDeskAgreement) {
 		FlexiDeskAgreement = flexiDeskAgreement;
 	}
-
 	public String getCoWorkingAgreement() {
 		return CoWorkingAgreement;
 	}
-
 	public void setCoWorkingAgreement(String coWorkingAgreement) {
 		CoWorkingAgreement = coWorkingAgreement;
 	}
-
 	public String getOfficeSharingAgreement() {
 		return OfficeSharingAgreement;
 	}
-
 	public void setOfficeSharingAgreement(String officeSharingAgreement) {
 		OfficeSharingAgreement = officeSharingAgreement;
 	}
-
 	public String getOtherAddressProof() {
 		return OtherAddressProof;
 	}
-
 	public void setOtherAddressProof(String otherAddressProof) {
 		OtherAddressProof = otherAddressProof;
 	}
-
 	public String getOtherBusinessProof() {
 		return OtherBusinessProof;
 	}
-
 	public void setOtherBusinessProof(String otherBusinessProof) {
 		OtherBusinessProof = otherBusinessProof;
 	}
-
 	public String getBankAccountStatement() {
 		return BankAccountStatement;
 	}
-
 	public void setBankAccountStatement(String bankAccountStatement) {
 		BankAccountStatement = bankAccountStatement;
 	}
-
 	public String getAuditedCompanyFinancials() {
 		return AuditedCompanyFinancials;
 	}
-
 	public void setAuditedCompanyFinancials(String auditedCompanyFinancials) {
 		AuditedCompanyFinancials = auditedCompanyFinancials;
 	}
-
 	public String getPersonalBankAccountStatement() {
 		return PersonalBankAccountStatement;
 	}
-
 	public void setPersonalBankAccountStatement(String personalBankAccountStatement) {
 		PersonalBankAccountStatement = personalBankAccountStatement;
 	}
-
 	public String getOtherEquivalentDocuments() {
 		return OtherEquivalentDocuments;
 	}
-
 	public void setOtherEquivalentDocuments(String otherEquivalentDocuments) {
 		OtherEquivalentDocuments = otherEquivalentDocuments;
 	}
-
 	public String getUboDirPoa1Name() {
 		return UboDirPoa1Name;
 	}
-
 	public void setUboDirPoa1Name(String uboDirPoa1Name) {
 		UboDirPoa1Name = uboDirPoa1Name;
 	}
-
 	public String getUboDirPoa1Nationality() {
 		return UboDirPoa1Nationality;
 	}
-
 	public void setUboDirPoa1Nationality(String uboDirPoa1Nationality) {
 		UboDirPoa1Nationality = uboDirPoa1Nationality;
 	}
-
 	public Double getUboDirPoa1ShareholdingPercent() {
 		return UboDirPoa1ShareholdingPercent;
 	}
-
 	public void setUboDirPoa1ShareholdingPercent(Double uboDirPoa1ShareholdingPercent) {
 		UboDirPoa1ShareholdingPercent = uboDirPoa1ShareholdingPercent;
 	}
-
 	public String getUboDirPoa1Passport() {
 		return UboDirPoa1Passport;
 	}
-
 	public void setUboDirPoa1Passport(String uboDirPoa1Passport) {
 		UboDirPoa1Passport = uboDirPoa1Passport;
 	}
-
 	public String getUboDirPoa1VisaEid() {
 		return UboDirPoa1VisaEid;
 	}
-
 	public void setUboDirPoa1VisaEid(String uboDirPoa1VisaEid) {
 		UboDirPoa1VisaEid = uboDirPoa1VisaEid;
 	}
-
 	public String getUboDirPoa1ResidenceAddress() {
 		return UboDirPoa1ResidenceAddress;
 	}
-
 	public void setUboDirPoa1ResidenceAddress(String uboDirPoa1ResidenceAddress) {
 		UboDirPoa1ResidenceAddress = uboDirPoa1ResidenceAddress;
 	}
-
 	public String getUboDirPoa1ProofSourceOfIncome() {
 		return UboDirPoa1ProofSourceOfIncome;
 	}
-
 	public void setUboDirPoa1ProofSourceOfIncome(String uboDirPoa1ProofSourceOfIncome) {
 		UboDirPoa1ProofSourceOfIncome = uboDirPoa1ProofSourceOfIncome;
 	}
-
 	public String getUboDirPoa2Name() {
 		return UboDirPoa2Name;
 	}
-
 	public void setUboDirPoa2Name(String uboDirPoa2Name) {
 		UboDirPoa2Name = uboDirPoa2Name;
 	}
-
 	public String getUboDirPoa2Nationality() {
 		return UboDirPoa2Nationality;
 	}
-
 	public void setUboDirPoa2Nationality(String uboDirPoa2Nationality) {
 		UboDirPoa2Nationality = uboDirPoa2Nationality;
 	}
-
 	public Double getUboDirPoa2ShareholdingPercent() {
 		return UboDirPoa2ShareholdingPercent;
 	}
-
 	public void setUboDirPoa2ShareholdingPercent(Double uboDirPoa2ShareholdingPercent) {
 		UboDirPoa2ShareholdingPercent = uboDirPoa2ShareholdingPercent;
 	}
-
 	public String getUboDirPoa2Passport() {
 		return UboDirPoa2Passport;
 	}
-
 	public void setUboDirPoa2Passport(String uboDirPoa2Passport) {
 		UboDirPoa2Passport = uboDirPoa2Passport;
 	}
-
 	public String getUboDirPoa2VisaEid() {
 		return UboDirPoa2VisaEid;
 	}
-
 	public void setUboDirPoa2VisaEid(String uboDirPoa2VisaEid) {
 		UboDirPoa2VisaEid = uboDirPoa2VisaEid;
 	}
-
 	public String getUboDirPoa2ResidenceAddress() {
 		return UboDirPoa2ResidenceAddress;
 	}
-
 	public void setUboDirPoa2ResidenceAddress(String uboDirPoa2ResidenceAddress) {
 		UboDirPoa2ResidenceAddress = uboDirPoa2ResidenceAddress;
 	}
-
 	public String getUboDirPoa2ProofSourceOfIncome() {
 		return UboDirPoa2ProofSourceOfIncome;
 	}
-
 	public void setUboDirPoa2ProofSourceOfIncome(String uboDirPoa2ProofSourceOfIncome) {
 		UboDirPoa2ProofSourceOfIncome = uboDirPoa2ProofSourceOfIncome;
 	}
-
 	public String getUboDirPoa3Name() {
 		return UboDirPoa3Name;
 	}
-
 	public void setUboDirPoa3Name(String uboDirPoa3Name) {
 		UboDirPoa3Name = uboDirPoa3Name;
 	}
-
 	public String getUboDirPoa3Nationality() {
 		return UboDirPoa3Nationality;
 	}
-
 	public void setUboDirPoa3Nationality(String uboDirPoa3Nationality) {
 		UboDirPoa3Nationality = uboDirPoa3Nationality;
 	}
-
 	public Double getUboDirPoa3ShareholdingPercent() {
 		return UboDirPoa3ShareholdingPercent;
 	}
-
 	public void setUboDirPoa3ShareholdingPercent(Double uboDirPoa3ShareholdingPercent) {
 		UboDirPoa3ShareholdingPercent = uboDirPoa3ShareholdingPercent;
 	}
-
 	public String getUboDirPoa3Passport() {
 		return UboDirPoa3Passport;
 	}
-
 	public void setUboDirPoa3Passport(String uboDirPoa3Passport) {
 		UboDirPoa3Passport = uboDirPoa3Passport;
 	}
-
 	public String getUboDirPoa3VisaEid() {
 		return UboDirPoa3VisaEid;
 	}
-
 	public void setUboDirPoa3VisaEid(String uboDirPoa3VisaEid) {
 		UboDirPoa3VisaEid = uboDirPoa3VisaEid;
 	}
-
 	public String getUboDirPoa3ResidenceAddress() {
 		return UboDirPoa3ResidenceAddress;
 	}
-
 	public void setUboDirPoa3ResidenceAddress(String uboDirPoa3ResidenceAddress) {
 		UboDirPoa3ResidenceAddress = uboDirPoa3ResidenceAddress;
 	}
-
 	public String getUboDirPoa3ProofSourceOfIncome() {
 		return UboDirPoa3ProofSourceOfIncome;
 	}
-
 	public void setUboDirPoa3ProofSourceOfIncome(String uboDirPoa3ProofSourceOfIncome) {
 		UboDirPoa3ProofSourceOfIncome = uboDirPoa3ProofSourceOfIncome;
 	}
-
 	public String getUboDirPoa4Name() {
 		return UboDirPoa4Name;
 	}
-
 	public void setUboDirPoa4Name(String uboDirPoa4Name) {
 		UboDirPoa4Name = uboDirPoa4Name;
 	}
-
 	public String getUboDirPoa4Nationality() {
 		return UboDirPoa4Nationality;
 	}
-
 	public void setUboDirPoa4Nationality(String uboDirPoa4Nationality) {
 		UboDirPoa4Nationality = uboDirPoa4Nationality;
 	}
-
 	public Double getUboDirPoa4ShareholdingPercent() {
 		return UboDirPoa4ShareholdingPercent;
 	}
-
 	public void setUboDirPoa4ShareholdingPercent(Double uboDirPoa4ShareholdingPercent) {
 		UboDirPoa4ShareholdingPercent = uboDirPoa4ShareholdingPercent;
 	}
-
 	public String getUboDirPoa4Passport() {
 		return UboDirPoa4Passport;
 	}
-
 	public void setUboDirPoa4Passport(String uboDirPoa4Passport) {
 		UboDirPoa4Passport = uboDirPoa4Passport;
 	}
-
 	public String getUboDirPoa4VisaEid() {
 		return UboDirPoa4VisaEid;
 	}
-
 	public void setUboDirPoa4VisaEid(String uboDirPoa4VisaEid) {
 		UboDirPoa4VisaEid = uboDirPoa4VisaEid;
 	}
-
 	public String getUboDirPoa4ResidenceAddress() {
 		return UboDirPoa4ResidenceAddress;
 	}
-
 	public void setUboDirPoa4ResidenceAddress(String uboDirPoa4ResidenceAddress) {
 		UboDirPoa4ResidenceAddress = uboDirPoa4ResidenceAddress;
 	}
-
 	public String getUboDirPoa4ProofSourceOfIncome() {
 		return UboDirPoa4ProofSourceOfIncome;
 	}
-
 	public void setUboDirPoa4ProofSourceOfIncome(String uboDirPoa4ProofSourceOfIncome) {
 		UboDirPoa4ProofSourceOfIncome = uboDirPoa4ProofSourceOfIncome;
 	}
-
 	public String getLinkedAccountNumber1() {
 		return LinkedAccountNumber1;
 	}
-
 	public void setLinkedAccountNumber1(String linkedAccountNumber1) {
 		LinkedAccountNumber1 = linkedAccountNumber1;
 	}
-
 	public Double getLinkedRelationshipDurationYears1() {
 		return LinkedRelationshipDurationYears1;
 	}
-
 	public void setLinkedRelationshipDurationYears1(Double linkedRelationshipDurationYears1) {
 		LinkedRelationshipDurationYears1 = linkedRelationshipDurationYears1;
 	}
-
 	public String getLinkedAccountNumber2() {
 		return LinkedAccountNumber2;
 	}
-
 	public void setLinkedAccountNumber2(String linkedAccountNumber2) {
 		LinkedAccountNumber2 = linkedAccountNumber2;
 	}
-
 	public Double getLinkedRelationshipDurationYears2() {
 		return LinkedRelationshipDurationYears2;
 	}
-
 	public void setLinkedRelationshipDurationYears2(Double linkedRelationshipDurationYears2) {
 		LinkedRelationshipDurationYears2 = linkedRelationshipDurationYears2;
 	}
-
 	public String getLinkedAccountNumber3() {
 		return LinkedAccountNumber3;
 	}
-
 	public void setLinkedAccountNumber3(String linkedAccountNumber3) {
 		LinkedAccountNumber3 = linkedAccountNumber3;
 	}
-
 	public Double getLinkedRelationshipDurationYears3() {
 		return LinkedRelationshipDurationYears3;
 	}
-
 	public void setLinkedRelationshipDurationYears3(Double linkedRelationshipDurationYears3) {
 		LinkedRelationshipDurationYears3 = linkedRelationshipDurationYears3;
 	}
-
 	public String getLinkedAccountNumber4() {
 		return LinkedAccountNumber4;
 	}
-
 	public void setLinkedAccountNumber4(String linkedAccountNumber4) {
 		LinkedAccountNumber4 = linkedAccountNumber4;
 	}
-
 	public Double getLinkedRelationshipDurationYears4() {
 		return LinkedRelationshipDurationYears4;
 	}
-
 	public void setLinkedRelationshipDurationYears4(Double linkedRelationshipDurationYears4) {
 		LinkedRelationshipDurationYears4 = linkedRelationshipDurationYears4;
 	}
-
 	public String getLinkedAccountNumber5() {
 		return LinkedAccountNumber5;
 	}
-
 	public void setLinkedAccountNumber5(String linkedAccountNumber5) {
 		LinkedAccountNumber5 = linkedAccountNumber5;
 	}
-
 	public Double getLinkedRelationshipDurationYears5() {
 		return LinkedRelationshipDurationYears5;
 	}
-
 	public void setLinkedRelationshipDurationYears5(Double linkedRelationshipDurationYears5) {
 		LinkedRelationshipDurationYears5 = linkedRelationshipDurationYears5;
 	}
-
 	public String getConductOfAccountSatisfactory() {
 		return ConductOfAccountSatisfactory;
 	}
-
 	public void setConductOfAccountSatisfactory(String conductOfAccountSatisfactory) {
 		ConductOfAccountSatisfactory = conductOfAccountSatisfactory;
 	}
-
 	public String getHighValueTransactionsObserved() {
 		return HighValueTransactionsObserved;
 	}
-
 	public void setHighValueTransactionsObserved(String highValueTransactionsObserved) {
 		HighValueTransactionsObserved = highValueTransactionsObserved;
 	}
-
 	public String getHighValueTransactionsDetails() {
 		return HighValueTransactionsDetails;
 	}
-
 	public void setHighValueTransactionsDetails(String highValueTransactionsDetails) {
 		HighValueTransactionsDetails = highValueTransactionsDetails;
 	}
-
 	public Double getCurrentTurnover() {
 		return CurrentTurnover;
 	}
-
 	public void setCurrentTurnover(Double currentTurnover) {
 		CurrentTurnover = currentTurnover;
 	}
-
 	public Double getExpectedTurnover() {
 		return ExpectedTurnover;
 	}
-
 	public void setExpectedTurnover(Double expectedTurnover) {
 		ExpectedTurnover = expectedTurnover;
 	}
-
 	public Double getExpectedDebitTransactions() {
 		return ExpectedDebitTransactions;
 	}
-
 	public void setExpectedDebitTransactions(Double expectedDebitTransactions) {
 		ExpectedDebitTransactions = expectedDebitTransactions;
 	}
-
 	public Double getExpectedCreditTransactions() {
 		return ExpectedCreditTransactions;
 	}
-
 	public void setExpectedCreditTransactions(Double expectedCreditTransactions) {
 		ExpectedCreditTransactions = expectedCreditTransactions;
 	}
-
 	public String getExpectedTransactionType() {
 		return ExpectedTransactionType;
 	}
-
 	public void setExpectedTransactionType(String expectedTransactionType) {
 		ExpectedTransactionType = expectedTransactionType;
 	}
-
 	public Double getExpectedTransactionVolume() {
 		return ExpectedTransactionVolume;
 	}
-
 	public void setExpectedTransactionVolume(Double expectedTransactionVolume) {
 		ExpectedTransactionVolume = expectedTransactionVolume;
 	}
-
 	public String getFrequencyOfTransactions() {
 		return FrequencyOfTransactions;
 	}
-
 	public void setFrequencyOfTransactions(String frequencyOfTransactions) {
 		FrequencyOfTransactions = frequencyOfTransactions;
 	}
-
 	public String getSanctionsMatchUae() {
 		return SanctionsMatchUae;
 	}
-
 	public void setSanctionsMatchUae(String sanctionsMatchUae) {
 		SanctionsMatchUae = sanctionsMatchUae;
 	}
-
 	public String getSanctionsMatchUn() {
 		return SanctionsMatchUn;
 	}
-
 	public void setSanctionsMatchUn(String sanctionsMatchUn) {
 		SanctionsMatchUn = sanctionsMatchUn;
 	}
-
 	public String getSanctionsMatchOfac() {
 		return SanctionsMatchOfac;
 	}
-
 	public void setSanctionsMatchOfac(String sanctionsMatchOfac) {
 		SanctionsMatchOfac = sanctionsMatchOfac;
 	}
-
 	public String getSanctionsMatchHmt() {
 		return SanctionsMatchHmt;
 	}
-
 	public void setSanctionsMatchHmt(String sanctionsMatchHmt) {
 		SanctionsMatchHmt = sanctionsMatchHmt;
 	}
-
 	public String getSanctionsMatchEu() {
 		return SanctionsMatchEu;
 	}
-
 	public void setSanctionsMatchEu(String sanctionsMatchEu) {
 		SanctionsMatchEu = sanctionsMatchEu;
 	}
-
 	public Double getCounterpartySrNo1() {
 		return CounterpartySrNo1;
 	}
-
 	public void setCounterpartySrNo1(Double counterpartySrNo1) {
 		CounterpartySrNo1 = counterpartySrNo1;
 	}
-
 	public String getCounterpartyName1() {
 		return CounterpartyName1;
 	}
-
 	public void setCounterpartyName1(String counterpartyName1) {
 		CounterpartyName1 = counterpartyName1;
 	}
-
 	public String getCounterpartyCountry1() {
 		return CounterpartyCountry1;
 	}
-
 	public void setCounterpartyCountry1(String counterpartyCountry1) {
 		CounterpartyCountry1 = counterpartyCountry1;
 	}
-
 	public String getCounterpartyProductsServices1() {
 		return CounterpartyProductsServices1;
 	}
-
 	public void setCounterpartyProductsServices1(String counterpartyProductsServices1) {
 		CounterpartyProductsServices1 = counterpartyProductsServices1;
 	}
-
 	public Double getCounterpartySrNo2() {
 		return CounterpartySrNo2;
 	}
-
 	public void setCounterpartySrNo2(Double counterpartySrNo2) {
 		CounterpartySrNo2 = counterpartySrNo2;
 	}
-
 	public String getCounterpartyName2() {
 		return CounterpartyName2;
 	}
-
 	public void setCounterpartyName2(String counterpartyName2) {
 		CounterpartyName2 = counterpartyName2;
 	}
-
 	public String getCounterpartyCountry2() {
 		return CounterpartyCountry2;
 	}
-
 	public void setCounterpartyCountry2(String counterpartyCountry2) {
 		CounterpartyCountry2 = counterpartyCountry2;
 	}
-
 	public String getCounterpartyProductsServices2() {
 		return CounterpartyProductsServices2;
 	}
-
 	public void setCounterpartyProductsServices2(String counterpartyProductsServices2) {
 		CounterpartyProductsServices2 = counterpartyProductsServices2;
 	}
-
 	public Double getCounterpartySrNo3() {
 		return CounterpartySrNo3;
 	}
-
 	public void setCounterpartySrNo3(Double counterpartySrNo3) {
 		CounterpartySrNo3 = counterpartySrNo3;
 	}
-
 	public String getCounterpartyName3() {
 		return CounterpartyName3;
 	}
-
 	public void setCounterpartyName3(String counterpartyName3) {
 		CounterpartyName3 = counterpartyName3;
 	}
-
 	public String getCounterpartyCountry3() {
 		return CounterpartyCountry3;
 	}
-
 	public void setCounterpartyCountry3(String counterpartyCountry3) {
 		CounterpartyCountry3 = counterpartyCountry3;
 	}
-
 	public String getCounterpartyProductsServices3() {
 		return CounterpartyProductsServices3;
 	}
-
 	public void setCounterpartyProductsServices3(String counterpartyProductsServices3) {
 		CounterpartyProductsServices3 = counterpartyProductsServices3;
 	}
-
 	public Double getCounterpartySrNo4() {
 		return CounterpartySrNo4;
 	}
-
 	public void setCounterpartySrNo4(Double counterpartySrNo4) {
 		CounterpartySrNo4 = counterpartySrNo4;
 	}
-
 	public String getCounterpartyName4() {
 		return CounterpartyName4;
 	}
-
 	public void setCounterpartyName4(String counterpartyName4) {
 		CounterpartyName4 = counterpartyName4;
 	}
-
 	public String getCounterpartyCountry4() {
 		return CounterpartyCountry4;
 	}
-
 	public void setCounterpartyCountry4(String counterpartyCountry4) {
 		CounterpartyCountry4 = counterpartyCountry4;
 	}
-
 	public String getCounterpartyProductsServices4() {
 		return CounterpartyProductsServices4;
 	}
-
 	public void setCounterpartyProductsServices4(String counterpartyProductsServices4) {
 		CounterpartyProductsServices4 = counterpartyProductsServices4;
 	}
-
 	public Double getIntermediarySrNo1() {
 		return IntermediarySrNo1;
 	}
-
 	public void setIntermediarySrNo1(Double intermediarySrNo1) {
 		IntermediarySrNo1 = intermediarySrNo1;
 	}
-
 	public String getIntermediaryName1() {
 		return IntermediaryName1;
 	}
-
 	public void setIntermediaryName1(String intermediaryName1) {
 		IntermediaryName1 = intermediaryName1;
 	}
-
 	public String getIntermediaryCountry1() {
 		return IntermediaryCountry1;
 	}
-
 	public void setIntermediaryCountry1(String intermediaryCountry1) {
 		IntermediaryCountry1 = intermediaryCountry1;
 	}
-
 	public String getIntermediaryName2() {
 		return IntermediaryName2;
 	}
-
 	public void setIntermediaryName2(String intermediaryName2) {
 		IntermediaryName2 = intermediaryName2;
 	}
-
 	public String getIntermediaryCountry2() {
 		return IntermediaryCountry2;
 	}
-
 	public void setIntermediaryCountry2(String intermediaryCountry2) {
 		IntermediaryCountry2 = intermediaryCountry2;
 	}
-
 	public String getIntermediaryName3() {
 		return IntermediaryName3;
 	}
-
 	public void setIntermediaryName3(String intermediaryName3) {
 		IntermediaryName3 = intermediaryName3;
 	}
-
 	public String getIntermediaryCountry3() {
 		return IntermediaryCountry3;
 	}
-
 	public void setIntermediaryCountry3(String intermediaryCountry3) {
 		IntermediaryCountry3 = intermediaryCountry3;
 	}
-
 	public String getIntermediaryName4() {
 		return IntermediaryName4;
 	}
-
 	public void setIntermediaryName4(String intermediaryName4) {
 		IntermediaryName4 = intermediaryName4;
 	}
-
 	public String getIntermediaryCountry4() {
 		return IntermediaryCountry4;
 	}
-
 	public void setIntermediaryCountry4(String intermediaryCountry4) {
 		IntermediaryCountry4 = intermediaryCountry4;
 	}
-
 	public String getOperatingInHighRiskJurisdiction() {
 		return OperatingInHighRiskJurisdiction;
 	}
-
 	public void setOperatingInHighRiskJurisdiction(String operatingInHighRiskJurisdiction) {
 		OperatingInHighRiskJurisdiction = operatingInHighRiskJurisdiction;
 	}
-
 	public String getHighRiskJurisdictionCountry() {
 		return HighRiskJurisdictionCountry;
 	}
-
 	public void setHighRiskJurisdictionCountry(String highRiskJurisdictionCountry) {
 		HighRiskJurisdictionCountry = highRiskJurisdictionCountry;
 	}
-
 	public String getTransactionCountry1() {
 		return TransactionCountry1;
 	}
-
 	public void setTransactionCountry1(String transactionCountry1) {
 		TransactionCountry1 = transactionCountry1;
 	}
-
 	public String getTransactionCountry2() {
 		return TransactionCountry2;
 	}
-
 	public void setTransactionCountry2(String transactionCountry2) {
 		TransactionCountry2 = transactionCountry2;
 	}
-
 	public String getTransactionCountry3() {
 		return TransactionCountry3;
 	}
-
 	public void setTransactionCountry3(String transactionCountry3) {
 		TransactionCountry3 = transactionCountry3;
 	}
-
 	public String getTransactionCountry4() {
 		return TransactionCountry4;
 	}
-
 	public void setTransactionCountry4(String transactionCountry4) {
 		TransactionCountry4 = transactionCountry4;
 	}
-
 	public String getSanctionsUaeMatch() {
 		return SanctionsUaeMatch;
 	}
-
 	public void setSanctionsUaeMatch(String sanctionsUaeMatch) {
 		SanctionsUaeMatch = sanctionsUaeMatch;
 	}
-
 	public String getSanctionsUnMatch() {
 		return SanctionsUnMatch;
 	}
-
 	public void setSanctionsUnMatch(String sanctionsUnMatch) {
 		SanctionsUnMatch = sanctionsUnMatch;
 	}
-
 	public String getSanctionsOfacMatch() {
 		return SanctionsOfacMatch;
 	}
-
 	public void setSanctionsOfacMatch(String sanctionsOfacMatch) {
 		SanctionsOfacMatch = sanctionsOfacMatch;
 	}
-
 	public String getSanctionsHmtMatch() {
 		return SanctionsHmtMatch;
 	}
-
 	public void setSanctionsHmtMatch(String sanctionsHmtMatch) {
 		SanctionsHmtMatch = sanctionsHmtMatch;
 	}
-
 	public String getSanctionsEuMatch() {
 		return SanctionsEuMatch;
 	}
-
 	public void setSanctionsEuMatch(String sanctionsEuMatch) {
 		SanctionsEuMatch = sanctionsEuMatch;
 	}
-
 	public String getSanctionsOthersMatch() {
 		return SanctionsOthersMatch;
 	}
-
 	public void setSanctionsOthersMatch(String sanctionsOthersMatch) {
 		SanctionsOthersMatch = sanctionsOthersMatch;
 	}
-
 	public String getCbuaeBblCheckDone() {
 		return CbuaeBblCheckDone;
 	}
-
 	public void setCbuaeBblCheckDone(String cbuaeBblCheckDone) {
 		CbuaeBblCheckDone = cbuaeBblCheckDone;
 	}
-
 	public String getGoogleMediaSearchDone() {
 		return GoogleMediaSearchDone;
 	}
-
 	public void setGoogleMediaSearchDone(String googleMediaSearchDone) {
 		GoogleMediaSearchDone = googleMediaSearchDone;
 	}
-
 	public String getInternalDenyListNameScreening() {
 		return InternalDenyListNameScreening;
 	}
-
 	public void setInternalDenyListNameScreening(String internalDenyListNameScreening) {
 		InternalDenyListNameScreening = internalDenyListNameScreening;
 	}
-
 	public String getSuspicionObserved() {
 		return SuspicionObserved;
 	}
-
 	public void setSuspicionObserved(String suspicionObserved) {
 		SuspicionObserved = suspicionObserved;
 	}
-
 	public String getSuspicionDetails() {
 		return SuspicionDetails;
 	}
-
 	public void setSuspicionDetails(String suspicionDetails) {
 		SuspicionDetails = suspicionDetails;
 	}
-
 	public String getRedFlagSupportingDocsObtained() {
 		return RedFlagSupportingDocsObtained;
 	}
-
 	public void setRedFlagSupportingDocsObtained(String redFlagSupportingDocsObtained) {
 		RedFlagSupportingDocsObtained = redFlagSupportingDocsObtained;
 	}
-
 	public String getRedFlagDetails() {
 		return RedFlagDetails;
 	}
-
 	public void setRedFlagDetails(String redFlagDetails) {
 		RedFlagDetails = redFlagDetails;
 	}
-
 	public String getUboSanctionsUaeMatch() {
 		return UboSanctionsUaeMatch;
 	}
-
 	public void setUboSanctionsUaeMatch(String uboSanctionsUaeMatch) {
 		UboSanctionsUaeMatch = uboSanctionsUaeMatch;
 	}
-
 	public String getUboSanctionsUnMatch() {
 		return UboSanctionsUnMatch;
 	}
-
 	public void setUboSanctionsUnMatch(String uboSanctionsUnMatch) {
 		UboSanctionsUnMatch = uboSanctionsUnMatch;
 	}
-
 	public String getUboSanctionsOfacMatch() {
 		return UboSanctionsOfacMatch;
 	}
-
 	public void setUboSanctionsOfacMatch(String uboSanctionsOfacMatch) {
 		UboSanctionsOfacMatch = uboSanctionsOfacMatch;
 	}
-
 	public String getUboSanctionsHmtMatch() {
 		return UboSanctionsHmtMatch;
 	}
-
 	public void setUboSanctionsHmtMatch(String uboSanctionsHmtMatch) {
 		UboSanctionsHmtMatch = uboSanctionsHmtMatch;
 	}
-
 	public String getUboSanctionsEuMatch() {
 		return UboSanctionsEuMatch;
 	}
-
 	public void setUboSanctionsEuMatch(String uboSanctionsEuMatch) {
 		UboSanctionsEuMatch = uboSanctionsEuMatch;
 	}
-
 	public String getUboSanctionsOthersMatch() {
 		return UboSanctionsOthersMatch;
 	}
-
 	public void setUboSanctionsOthersMatch(String uboSanctionsOthersMatch) {
 		UboSanctionsOthersMatch = uboSanctionsOthersMatch;
 	}
-
 	public String getUboCbuaeBblCheckDone() {
 		return UboCbuaeBblCheckDone;
 	}
-
 	public void setUboCbuaeBblCheckDone(String uboCbuaeBblCheckDone) {
 		UboCbuaeBblCheckDone = uboCbuaeBblCheckDone;
 	}
-
 	public String getUboGoogleMediaSearchDone() {
 		return UboGoogleMediaSearchDone;
 	}
-
 	public void setUboGoogleMediaSearchDone(String uboGoogleMediaSearchDone) {
 		UboGoogleMediaSearchDone = uboGoogleMediaSearchDone;
 	}
-
 	public String getUboInternalDenyListScreening() {
 		return UboInternalDenyListScreening;
 	}
-
 	public void setUboInternalDenyListScreening(String uboInternalDenyListScreening) {
 		UboInternalDenyListScreening = uboInternalDenyListScreening;
 	}
-
 	public String getUboSuspicionObserved() {
 		return UboSuspicionObserved;
 	}
-
 	public void setUboSuspicionObserved(String uboSuspicionObserved) {
 		UboSuspicionObserved = uboSuspicionObserved;
 	}
-
 	public String getUboSuspicionDetails() {
 		return UboSuspicionDetails;
 	}
-
 	public void setUboSuspicionDetails(String uboSuspicionDetails) {
 		UboSuspicionDetails = uboSuspicionDetails;
 	}
-
 	public String getUboRedFlagSupportingDocsObtained() {
 		return UboRedFlagSupportingDocsObtained;
 	}
-
 	public void setUboRedFlagSupportingDocsObtained(String uboRedFlagSupportingDocsObtained) {
 		UboRedFlagSupportingDocsObtained = uboRedFlagSupportingDocsObtained;
 	}
-
 	public String getUboRedFlagDetails() {
 		return UboRedFlagDetails;
 	}
-
 	public void setUboRedFlagDetails(String uboRedFlagDetails) {
 		UboRedFlagDetails = uboRedFlagDetails;
 	}
-
 	public String getCounterpartySanctionsUaeMatch() {
 		return CounterpartySanctionsUaeMatch;
 	}
-
 	public void setCounterpartySanctionsUaeMatch(String counterpartySanctionsUaeMatch) {
 		CounterpartySanctionsUaeMatch = counterpartySanctionsUaeMatch;
 	}
-
 	public String getCounterpartySanctionsUnMatch() {
 		return CounterpartySanctionsUnMatch;
 	}
-
 	public void setCounterpartySanctionsUnMatch(String counterpartySanctionsUnMatch) {
 		CounterpartySanctionsUnMatch = counterpartySanctionsUnMatch;
 	}
-
 	public String getCounterpartySanctionsOfacMatch() {
 		return CounterpartySanctionsOfacMatch;
 	}
-
 	public void setCounterpartySanctionsOfacMatch(String counterpartySanctionsOfacMatch) {
 		CounterpartySanctionsOfacMatch = counterpartySanctionsOfacMatch;
 	}
-
 	public String getCounterpartySanctionsHmtMatch() {
 		return CounterpartySanctionsHmtMatch;
 	}
-
 	public void setCounterpartySanctionsHmtMatch(String counterpartySanctionsHmtMatch) {
 		CounterpartySanctionsHmtMatch = counterpartySanctionsHmtMatch;
 	}
-
 	public String getCounterpartySanctionsEuMatch() {
 		return CounterpartySanctionsEuMatch;
 	}
-
 	public void setCounterpartySanctionsEuMatch(String counterpartySanctionsEuMatch) {
 		CounterpartySanctionsEuMatch = counterpartySanctionsEuMatch;
 	}
-
 	public String getCounterpartySanctionsOthersMatch() {
 		return CounterpartySanctionsOthersMatch;
 	}
-
 	public void setCounterpartySanctionsOthersMatch(String counterpartySanctionsOthersMatch) {
 		CounterpartySanctionsOthersMatch = counterpartySanctionsOthersMatch;
 	}
-
 	public String getCounterpartyCbuaeBblCheckDone() {
 		return CounterpartyCbuaeBblCheckDone;
 	}
-
 	public void setCounterpartyCbuaeBblCheckDone(String counterpartyCbuaeBblCheckDone) {
 		CounterpartyCbuaeBblCheckDone = counterpartyCbuaeBblCheckDone;
 	}
-
 	public String getCounterpartyGoogleMediaSearchDone() {
 		return CounterpartyGoogleMediaSearchDone;
 	}
-
 	public void setCounterpartyGoogleMediaSearchDone(String counterpartyGoogleMediaSearchDone) {
 		CounterpartyGoogleMediaSearchDone = counterpartyGoogleMediaSearchDone;
 	}
-
 	public String getCounterpartyInternalDenyListScreening() {
 		return CounterpartyInternalDenyListScreening;
 	}
-
 	public void setCounterpartyInternalDenyListScreening(String counterpartyInternalDenyListScreening) {
 		CounterpartyInternalDenyListScreening = counterpartyInternalDenyListScreening;
 	}
-
 	public String getCounterpartySuspicionObserved() {
 		return CounterpartySuspicionObserved;
 	}
-
 	public void setCounterpartySuspicionObserved(String counterpartySuspicionObserved) {
 		CounterpartySuspicionObserved = counterpartySuspicionObserved;
 	}
-
 	public String getCounterpartySuspicionDetails() {
 		return CounterpartySuspicionDetails;
 	}
-
 	public void setCounterpartySuspicionDetails(String counterpartySuspicionDetails) {
 		CounterpartySuspicionDetails = counterpartySuspicionDetails;
 	}
-
 	public String getCounterpartyRedFlagSupportingDocsObtained() {
 		return CounterpartyRedFlagSupportingDocsObtained;
 	}
-
 	public void setCounterpartyRedFlagSupportingDocsObtained(String counterpartyRedFlagSupportingDocsObtained) {
 		CounterpartyRedFlagSupportingDocsObtained = counterpartyRedFlagSupportingDocsObtained;
 	}
-
 	public String getCounterpartyRedFlagDetails() {
 		return CounterpartyRedFlagDetails;
 	}
-
 	public void setCounterpartyRedFlagDetails(String counterpartyRedFlagDetails) {
 		CounterpartyRedFlagDetails = counterpartyRedFlagDetails;
 	}
-
 	public String getSiteVisitCompleted() {
 		return SiteVisitCompleted;
 	}
-
 	public void setSiteVisitCompleted(String siteVisitCompleted) {
 		SiteVisitCompleted = siteVisitCompleted;
 	}
-
 	public String getSiteVisitReportAttached() {
 		return SiteVisitReportAttached;
 	}
-
 	public void setSiteVisitReportAttached(String siteVisitReportAttached) {
 		SiteVisitReportAttached = siteVisitReportAttached;
 	}
-
 	public String getAdverseObservationsSiteVisit() {
 		return AdverseObservationsSiteVisit;
 	}
-
 	public void setAdverseObservationsSiteVisit(String adverseObservationsSiteVisit) {
 		AdverseObservationsSiteVisit = adverseObservationsSiteVisit;
 	}
-
 	public String getAdverseObservationDetails1() {
 		return AdverseObservationDetails1;
 	}
-
 	public void setAdverseObservationDetails1(String adverseObservationDetails1) {
 		AdverseObservationDetails1 = adverseObservationDetails1;
 	}
-
 	public String getAdverseObservationDetails2() {
 		return AdverseObservationDetails2;
 	}
-
 	public void setAdverseObservationDetails2(String adverseObservationDetails2) {
 		AdverseObservationDetails2 = adverseObservationDetails2;
 	}
-
 	public String getAdverseObservationDetails3() {
 		return AdverseObservationDetails3;
 	}
-
 	public void setAdverseObservationDetails3(String adverseObservationDetails3) {
 		AdverseObservationDetails3 = adverseObservationDetails3;
 	}
-
 	public String getHighRiskIndividualPoa() {
 		return HighRiskIndividualPoa;
 	}
-
 	public void setHighRiskIndividualPoa(String highRiskIndividualPoa) {
 		HighRiskIndividualPoa = highRiskIndividualPoa;
 	}
-
 	public String getHighRiskIndividualPoaDetails() {
 		return HighRiskIndividualPoaDetails;
 	}
-
 	public void setHighRiskIndividualPoaDetails(String highRiskIndividualPoaDetails) {
 		HighRiskIndividualPoaDetails = highRiskIndividualPoaDetails;
 	}
-
 	public String getHighRiskIndividualRelativePoa() {
 		return HighRiskIndividualRelativePoa;
 	}
-
 	public void setHighRiskIndividualRelativePoa(String highRiskIndividualRelativePoa) {
 		HighRiskIndividualRelativePoa = highRiskIndividualRelativePoa;
 	}
-
 	public String getHighRiskIndividualRelativePoaDetails() {
 		return HighRiskIndividualRelativePoaDetails;
 	}
-
 	public void setHighRiskIndividualRelativePoaDetails(String highRiskIndividualRelativePoaDetails) {
 		HighRiskIndividualRelativePoaDetails = highRiskIndividualRelativePoaDetails;
 	}
-
 	public String getHighRiskDomesticIndividualPoa() {
 		return HighRiskDomesticIndividualPoa;
 	}
-
 	public void setHighRiskDomesticIndividualPoa(String highRiskDomesticIndividualPoa) {
 		HighRiskDomesticIndividualPoa = highRiskDomesticIndividualPoa;
 	}
-
 	public String getHighRiskDomesticIndividualPoaDetails() {
 		return HighRiskDomesticIndividualPoaDetails;
 	}
-
 	public void setHighRiskDomesticIndividualPoaDetails(String highRiskDomesticIndividualPoaDetails) {
 		HighRiskDomesticIndividualPoaDetails = highRiskDomesticIndividualPoaDetails;
 	}
-
 	public String getHighRiskIndividualEntityPoa() {
 		return HighRiskIndividualEntityPoa;
 	}
-
 	public void setHighRiskIndividualEntityPoa(String highRiskIndividualEntityPoa) {
 		HighRiskIndividualEntityPoa = highRiskIndividualEntityPoa;
 	}
-
 	public String getHighRiskIndividualEntityPoaDetails() {
 		return HighRiskIndividualEntityPoaDetails;
 	}
-
 	public void setHighRiskIndividualEntityPoaDetails(String highRiskIndividualEntityPoaDetails) {
 		HighRiskIndividualEntityPoaDetails = highRiskIndividualEntityPoaDetails;
 	}
-
 	public String getAuditedFinancialStatement() {
 		return AuditedFinancialStatement;
 	}
-
 	public void setAuditedFinancialStatement(String auditedFinancialStatement) {
 		AuditedFinancialStatement = auditedFinancialStatement;
 	}
-
 	public String getTransactionDetails1() {
 		return TransactionDetails1;
 	}
-
 	public void setTransactionDetails1(String transactionDetails1) {
 		TransactionDetails1 = transactionDetails1;
 	}
-
 	public String getTransactionDetails2() {
 		return TransactionDetails2;
 	}
-
 	public void setTransactionDetails2(String transactionDetails2) {
 		TransactionDetails2 = transactionDetails2;
 	}
-
 	public String getTransactionDetails3() {
 		return TransactionDetails3;
 	}
-
 	public void setTransactionDetails3(String transactionDetails3) {
 		TransactionDetails3 = transactionDetails3;
 	}
-
 	public String getTransactionDetails4() {
 		return TransactionDetails4;
 	}
-
 	public void setTransactionDetails4(String transactionDetails4) {
 		TransactionDetails4 = transactionDetails4;
 	}
-
 	public String getTransactionsCommensurate() {
 		return TransactionsCommensurate;
 	}
-
 	public void setTransactionsCommensurate(String transactionsCommensurate) {
 		TransactionsCommensurate = transactionsCommensurate;
 	}
-
 	public String getBranchSatisfied() {
 		return BranchSatisfied;
 	}
-
 	public void setBranchSatisfied(String branchSatisfied) {
 		BranchSatisfied = branchSatisfied;
 	}
-
 	public String getSupportingDocumentObtained() {
 		return SupportingDocumentObtained;
 	}
-
 	public void setSupportingDocumentObtained(String supportingDocumentObtained) {
 		SupportingDocumentObtained = supportingDocumentObtained;
 	}
-
 	public String getCustomerIsPep() {
 		return CustomerIsPep;
 	}
-
 	public void setCustomerIsPep(String customerIsPep) {
 		CustomerIsPep = customerIsPep;
 	}
-
 	public String getSeniorManagementApproval() {
 		return SeniorManagementApproval;
 	}
-
 	public void setSeniorManagementApproval(String seniorManagementApproval) {
 		SeniorManagementApproval = seniorManagementApproval;
 	}
-
 	public String getRequestingForeignCurrency() {
 		return RequestingForeignCurrency;
 	}
-
 	public void setRequestingForeignCurrency(String requestingForeignCurrency) {
 		RequestingForeignCurrency = requestingForeignCurrency;
 	}
-
 	public String getSeniorManagementApprovalCurrency() {
 		return SeniorManagementApprovalCurrency;
 	}
-
 	public void setSeniorManagementApprovalCurrency(String seniorManagementApprovalCurrency) {
 		SeniorManagementApprovalCurrency = seniorManagementApprovalCurrency;
 	}
-
 	public String getCashIntensiveBusinessDetail() {
 		return CashIntensiveBusinessDetail;
 	}
-
 	public void setCashIntensiveBusinessDetail(String cashIntensiveBusinessDetail) {
 		CashIntensiveBusinessDetail = cashIntensiveBusinessDetail;
 	}
-
 	public String getBusinessActivity1() {
 		return BusinessActivity1;
 	}
-
 	public void setBusinessActivity1(String businessActivity1) {
 		BusinessActivity1 = businessActivity1;
 	}
-
 	public String getBusinessActivity2() {
 		return BusinessActivity2;
 	}
-
 	public void setBusinessActivity2(String businessActivity2) {
 		BusinessActivity2 = businessActivity2;
 	}
-
 	public String getProductsOffered1() {
 		return ProductsOffered1;
 	}
-
 	public void setProductsOffered1(String productsOffered1) {
 		ProductsOffered1 = productsOffered1;
 	}
-
 	public String getProductsOffered2() {
 		return ProductsOffered2;
 	}
-
 	public void setProductsOffered2(String productsOffered2) {
 		ProductsOffered2 = productsOffered2;
 	}
-
 	public Double getVolumeDeposit1() {
 		return VolumeDeposit1;
 	}
-
 	public void setVolumeDeposit1(Double volumeDeposit1) {
 		VolumeDeposit1 = volumeDeposit1;
 	}
-
 	public Double getVolumeDeposit2() {
 		return VolumeDeposit2;
 	}
-
 	public void setVolumeDeposit2(Double volumeDeposit2) {
 		VolumeDeposit2 = volumeDeposit2;
 	}
-
 	public Double getVolumeWithdraw1() {
 		return VolumeWithdraw1;
 	}
-
 	public void setVolumeWithdraw1(Double volumeWithdraw1) {
 		VolumeWithdraw1 = volumeWithdraw1;
 	}
-
 	public Double getVolumeWithdraw2() {
 		return VolumeWithdraw2;
 	}
-
 	public void setVolumeWithdraw2(Double volumeWithdraw2) {
 		VolumeWithdraw2 = volumeWithdraw2;
 	}
-
 	public Double getNumberDeposit1() {
 		return NumberDeposit1;
 	}
-
 	public void setNumberDeposit1(Double numberDeposit1) {
 		NumberDeposit1 = numberDeposit1;
 	}
-
 	public Double getNumberDeposit2() {
 		return NumberDeposit2;
 	}
-
 	public void setNumberDeposit2(Double numberDeposit2) {
 		NumberDeposit2 = numberDeposit2;
 	}
-
 	public Double getNumberWithdraw1() {
 		return NumberWithdraw1;
 	}
-
 	public void setNumberWithdraw1(Double numberWithdraw1) {
 		NumberWithdraw1 = numberWithdraw1;
 	}
-
 	public Double getNumberWithdraw2() {
 		return NumberWithdraw2;
 	}
-
 	public void setNumberWithdraw2(Double numberWithdraw2) {
 		NumberWithdraw2 = numberWithdraw2;
 	}
-
 	public Double getTurnoverDeposit1() {
 		return TurnoverDeposit1;
 	}
-
 	public void setTurnoverDeposit1(Double turnoverDeposit1) {
 		TurnoverDeposit1 = turnoverDeposit1;
 	}
-
 	public Double getTurnoverDeposit2() {
 		return TurnoverDeposit2;
 	}
-
 	public void setTurnoverDeposit2(Double turnoverDeposit2) {
 		TurnoverDeposit2 = turnoverDeposit2;
 	}
-
 	public Double getTurnoverWithdraw1() {
 		return TurnoverWithdraw1;
 	}
-
 	public void setTurnoverWithdraw1(Double turnoverWithdraw1) {
 		TurnoverWithdraw1 = turnoverWithdraw1;
 	}
-
 	public Double getTurnoverWithdraw2() {
 		return TurnoverWithdraw2;
 	}
-
 	public void setTurnoverWithdraw2(Double turnoverWithdraw2) {
 		TurnoverWithdraw2 = turnoverWithdraw2;
 	}
-
 	public String getBrokerOrAgent() {
 		return BrokerOrAgent;
 	}
-
 	public void setBrokerOrAgent(String brokerOrAgent) {
 		BrokerOrAgent = brokerOrAgent;
 	}
-
 	public String getDealerOfMetals() {
 		return DealerOfMetals;
 	}
-
 	public void setDealerOfMetals(String dealerOfMetals) {
 		DealerOfMetals = dealerOfMetals;
 	}
-
 	public String getAuditor() {
 		return Auditor;
 	}
-
 	public void setAuditor(String auditor) {
 		Auditor = auditor;
 	}
-
 	public String getLegalConsultant() {
 		return LegalConsultant;
 	}
-
 	public void setLegalConsultant(String legalConsultant) {
 		LegalConsultant = legalConsultant;
 	}
-
 	public String getDealsDualGoods() {
 		return DealsDualGoods;
 	}
-
 	public void setDealsDualGoods(String dealsDualGoods) {
 		DealsDualGoods = dealsDualGoods;
 	}
-
 	public String getTransOnInterrelated1() {
 		return TransOnInterrelated1;
 	}
-
 	public void setTransOnInterrelated1(String transOnInterrelated1) {
 		TransOnInterrelated1 = transOnInterrelated1;
 	}
-
 	public String getTransOnInterrelated2() {
 		return TransOnInterrelated2;
 	}
-
 	public void setTransOnInterrelated2(String transOnInterrelated2) {
 		TransOnInterrelated2 = transOnInterrelated2;
 	}
-
 	public String getCustomerRisk() {
 		return CustomerRisk;
 	}
-
 	public void setCustomerRisk(String customerRisk) {
 		CustomerRisk = customerRisk;
 	}
-
 	public String getReasonForRisk() {
 		return ReasonForRisk;
 	}
-
 	public void setReasonForRisk(String reasonForRisk) {
 		ReasonForRisk = reasonForRisk;
 	}
-
 	public String getDueDiligence() {
 		return DueDiligence;
 	}
-
 	public void setDueDiligence(String dueDiligence) {
 		DueDiligence = dueDiligence;
 	}
-
 	public String getBankOfficialsObservation() {
 		return BankOfficialsObservation;
 	}
-
 	public void setBankOfficialsObservation(String bankOfficialsObservation) {
 		BankOfficialsObservation = bankOfficialsObservation;
 	}
-
 	public String getBranchHeadObservation() {
 		return BranchHeadObservation;
 	}
-
 	public void setBranchHeadObservation(String branchHeadObservation) {
 		BranchHeadObservation = branchHeadObservation;
 	}
-
 	public String getCSuspissionobserved() {
 		return CSuspissionobserved;
 	}
-
 	public void setCSuspissionobserved(String cSuspissionobserved) {
 		CSuspissionobserved = cSuspissionobserved;
 	}
-
 	public String getCSuspisionDetail() {
 		return CSuspisionDetail;
 	}
-
 	public void setCSuspisionDetail(String cSuspisionDetail) {
 		CSuspisionDetail = cSuspisionDetail;
 	}
-
 	public String getCHighvalueTransaction() {
 		return CHighvalueTransaction;
 	}
-
 	public void setCHighvalueTransaction(String cHighvalueTransaction) {
 		CHighvalueTransaction = cHighvalueTransaction;
 	}
-
 	public String getIsCashIntensiveBusiness() {
 		return IsCashIntensiveBusiness;
 	}
-
 	public void setIsCashIntensiveBusiness(String isCashIntensiveBusiness) {
 		IsCashIntensiveBusiness = isCashIntensiveBusiness;
 	}
-
 	public String getAccountOpeningOfficerSignature() {
 		return AccountOpeningOfficerSignature;
 	}
-
 	public void setAccountOpeningOfficerSignature(String accountOpeningOfficerSignature) {
 		AccountOpeningOfficerSignature = accountOpeningOfficerSignature;
 	}
-
 	public String getAccountOpeningOfficerName() {
 		return AccountOpeningOfficerName;
 	}
-
 	public void setAccountOpeningOfficerName(String accountOpeningOfficerName) {
 		AccountOpeningOfficerName = accountOpeningOfficerName;
 	}
-
 	public String getAccountOpeningOfficerDesignation() {
 		return AccountOpeningOfficerDesignation;
 	}
-
 	public void setAccountOpeningOfficerDesignation(String accountOpeningOfficerDesignation) {
 		AccountOpeningOfficerDesignation = accountOpeningOfficerDesignation;
 	}
-
 	public Date getAccountOpeningOfficerDate() {
 		return AccountOpeningOfficerDate;
 	}
-
 	public void setAccountOpeningOfficerDate(Date accountOpeningOfficerDate) {
 		AccountOpeningOfficerDate = accountOpeningOfficerDate;
 	}
-
 	public String getAccountOpeningOfficerPlace() {
 		return AccountOpeningOfficerPlace;
 	}
-
 	public void setAccountOpeningOfficerPlace(String accountOpeningOfficerPlace) {
 		AccountOpeningOfficerPlace = accountOpeningOfficerPlace;
 	}
-
 	public String getBranchOfficialSignature() {
 		return BranchOfficialSignature;
 	}
-
 	public void setBranchOfficialSignature(String branchOfficialSignature) {
 		BranchOfficialSignature = branchOfficialSignature;
 	}
-
 	public String getBranchOfficialName() {
 		return BranchOfficialName;
 	}
-
 	public void setBranchOfficialName(String branchOfficialName) {
 		BranchOfficialName = branchOfficialName;
 	}
-
 	public String getBranchOfficialDesignation() {
 		return BranchOfficialDesignation;
 	}
-
 	public void setBranchOfficialDesignation(String branchOfficialDesignation) {
 		BranchOfficialDesignation = branchOfficialDesignation;
 	}
-
 	public Date getBranchOfficialDate() {
 		return BranchOfficialDate;
 	}
-
 	public void setBranchOfficialDate(Date branchOfficialDate) {
 		BranchOfficialDate = branchOfficialDate;
 	}
-
 	public String getBranchOfficialPlace() {
 		return BranchOfficialPlace;
 	}
-
 	public void setBranchOfficialPlace(String branchOfficialPlace) {
 		BranchOfficialPlace = branchOfficialPlace;
 	}
-
 	public Character getEntityFlg() {
 		return EntityFlg;
 	}
-
 	public void setEntityFlg(Character entityFlg) {
 		EntityFlg = entityFlg;
 	}
-
 	public Character getModifyFlg() {
 		return ModifyFlg;
 	}
-
 	public void setModifyFlg(Character modifyFlg) {
 		ModifyFlg = modifyFlg;
 	}
-
 	public Character getDelFlg() {
 		return DelFlg;
 	}
-
 	public void setDelFlg(Character delFlg) {
 		DelFlg = delFlg;
 	}
-
 	public String getEntryUser() {
 		return EntryUser;
 	}
-
 	public void setEntryUser(String entryUser) {
 		EntryUser = entryUser;
 	}
-
 	public String getModifyUser() {
 		return ModifyUser;
 	}
-
 	public void setModifyUser(String modifyUser) {
 		ModifyUser = modifyUser;
 	}
-
 	public String getVerifyUser() {
 		return VerifyUser;
 	}
-
 	public void setVerifyUser(String verifyUser) {
 		VerifyUser = verifyUser;
 	}
-
 	public Date getEntryTime() {
 		return EntryTime;
 	}
-
 	public void setEntryTime(Date entryTime) {
 		EntryTime = entryTime;
 	}
-
 	public Date getModifyTime() {
 		return ModifyTime;
 	}
-
 	public void setModifyTime(Date modifyTime) {
 		ModifyTime = modifyTime;
 	}
-
 	public Date getVerifyTime() {
 		return VerifyTime;
 	}
-
 	public void setVerifyTime(Date verifyTime) {
 		VerifyTime = verifyTime;
 	}
-
+	public String getCustomerOperatingBussiness() {
+		return CustomerOperatingBussiness;
+	}
+	public void setCustomerOperatingBussiness(String customerOperatingBussiness) {
+		CustomerOperatingBussiness = customerOperatingBussiness;
+	}
 	public Kyc_Corprate(String companyName, String customerId, String accountNumber, String legalStatus,
 			String tradeLicenseNumber, Date tradeLicenseIssueDate, Date tradeLicenseExpiryDate,
 			String countryOfEstablishment, String countryOfOperation, String businessActivity, String productsServices,
@@ -2376,7 +1926,7 @@ public class Kyc_Corprate {
 			String branchOfficialSignature, String branchOfficialName, String branchOfficialDesignation,
 			Date branchOfficialDate, String branchOfficialPlace, Character entityFlg, Character modifyFlg,
 			Character delFlg, String entryUser, String modifyUser, String verifyUser, Date entryTime, Date modifyTime,
-			Date verifyTime) {
+			Date verifyTime, String customerOperatingBussiness) {
 		super();
 		CompanyName = companyName;
 		CustomerId = customerId;
@@ -2606,13 +2156,12 @@ public class Kyc_Corprate {
 		EntryTime = entryTime;
 		ModifyTime = modifyTime;
 		VerifyTime = verifyTime;
+		CustomerOperatingBussiness = customerOperatingBussiness;
 	}
-
 	public Kyc_Corprate() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
 	public String toString() {
 		return "Kyc_Corprate [CompanyName=" + CompanyName + ", CustomerId=" + CustomerId + ", AccountNumber="
@@ -2745,172 +2294,10 @@ public class Kyc_Corprate {
 				+ BranchOfficialDate + ", BranchOfficialPlace=" + BranchOfficialPlace + ", EntityFlg=" + EntityFlg
 				+ ", ModifyFlg=" + ModifyFlg + ", DelFlg=" + DelFlg + ", EntryUser=" + EntryUser + ", ModifyUser="
 				+ ModifyUser + ", VerifyUser=" + VerifyUser + ", EntryTime=" + EntryTime + ", ModifyTime=" + ModifyTime
-				+ ", VerifyTime=" + VerifyTime + ", getCompanyName()=" + getCompanyName() + ", getCustomerId()="
-				+ getCustomerId() + ", getAccountNumber()=" + getAccountNumber() + ", getLegalStatus()="
-				+ getLegalStatus() + ", getTradeLicenseNumber()=" + getTradeLicenseNumber()
-				+ ", getTradeLicenseIssueDate()=" + getTradeLicenseIssueDate() + ", getTradeLicenseExpiryDate()="
-				+ getTradeLicenseExpiryDate() + ", getCountryOfEstablishment()=" + getCountryOfEstablishment()
-				+ ", getCountryOfOperation()=" + getCountryOfOperation() + ", getBusinessActivity()="
-				+ getBusinessActivity() + ", getProductsServices()=" + getProductsServices() + ", getTradeLicense()="
-				+ getTradeLicense() + ", getMemorandumOfAssociation()=" + getMemorandumOfAssociation()
-				+ ", getShareCertificate()=" + getShareCertificate() + ", getCertificateOfIncorporation()="
-				+ getCertificateOfIncorporation() + ", getOtherDocuments()=" + getOtherDocuments()
-				+ ", getGovernmentTenancyDocument()=" + getGovernmentTenancyDocument() + ", getUtilityBill()="
-				+ getUtilityBill() + ", getFlexiDeskAgreement()=" + getFlexiDeskAgreement()
-				+ ", getCoWorkingAgreement()=" + getCoWorkingAgreement() + ", getOfficeSharingAgreement()="
-				+ getOfficeSharingAgreement() + ", getOtherAddressProof()=" + getOtherAddressProof()
-				+ ", getOtherBusinessProof()=" + getOtherBusinessProof() + ", getBankAccountStatement()="
-				+ getBankAccountStatement() + ", getAuditedCompanyFinancials()=" + getAuditedCompanyFinancials()
-				+ ", getPersonalBankAccountStatement()=" + getPersonalBankAccountStatement()
-				+ ", getOtherEquivalentDocuments()=" + getOtherEquivalentDocuments() + ", getUboDirPoa1Name()="
-				+ getUboDirPoa1Name() + ", getUboDirPoa1Nationality()=" + getUboDirPoa1Nationality()
-				+ ", getUboDirPoa1ShareholdingPercent()=" + getUboDirPoa1ShareholdingPercent()
-				+ ", getUboDirPoa1Passport()=" + getUboDirPoa1Passport() + ", getUboDirPoa1VisaEid()="
-				+ getUboDirPoa1VisaEid() + ", getUboDirPoa1ResidenceAddress()=" + getUboDirPoa1ResidenceAddress()
-				+ ", getUboDirPoa1ProofSourceOfIncome()=" + getUboDirPoa1ProofSourceOfIncome()
-				+ ", getUboDirPoa2Name()=" + getUboDirPoa2Name() + ", getUboDirPoa2Nationality()="
-				+ getUboDirPoa2Nationality() + ", getUboDirPoa2ShareholdingPercent()="
-				+ getUboDirPoa2ShareholdingPercent() + ", getUboDirPoa2Passport()=" + getUboDirPoa2Passport()
-				+ ", getUboDirPoa2VisaEid()=" + getUboDirPoa2VisaEid() + ", getUboDirPoa2ResidenceAddress()="
-				+ getUboDirPoa2ResidenceAddress() + ", getUboDirPoa2ProofSourceOfIncome()="
-				+ getUboDirPoa2ProofSourceOfIncome() + ", getUboDirPoa3Name()=" + getUboDirPoa3Name()
-				+ ", getUboDirPoa3Nationality()=" + getUboDirPoa3Nationality() + ", getUboDirPoa3ShareholdingPercent()="
-				+ getUboDirPoa3ShareholdingPercent() + ", getUboDirPoa3Passport()=" + getUboDirPoa3Passport()
-				+ ", getUboDirPoa3VisaEid()=" + getUboDirPoa3VisaEid() + ", getUboDirPoa3ResidenceAddress()="
-				+ getUboDirPoa3ResidenceAddress() + ", getUboDirPoa3ProofSourceOfIncome()="
-				+ getUboDirPoa3ProofSourceOfIncome() + ", getUboDirPoa4Name()=" + getUboDirPoa4Name()
-				+ ", getUboDirPoa4Nationality()=" + getUboDirPoa4Nationality() + ", getUboDirPoa4ShareholdingPercent()="
-				+ getUboDirPoa4ShareholdingPercent() + ", getUboDirPoa4Passport()=" + getUboDirPoa4Passport()
-				+ ", getUboDirPoa4VisaEid()=" + getUboDirPoa4VisaEid() + ", getUboDirPoa4ResidenceAddress()="
-				+ getUboDirPoa4ResidenceAddress() + ", getUboDirPoa4ProofSourceOfIncome()="
-				+ getUboDirPoa4ProofSourceOfIncome() + ", getLinkedAccountNumber1()=" + getLinkedAccountNumber1()
-				+ ", getLinkedRelationshipDurationYears1()=" + getLinkedRelationshipDurationYears1()
-				+ ", getLinkedAccountNumber2()=" + getLinkedAccountNumber2()
-				+ ", getLinkedRelationshipDurationYears2()=" + getLinkedRelationshipDurationYears2()
-				+ ", getLinkedAccountNumber3()=" + getLinkedAccountNumber3()
-				+ ", getLinkedRelationshipDurationYears3()=" + getLinkedRelationshipDurationYears3()
-				+ ", getLinkedAccountNumber4()=" + getLinkedAccountNumber4()
-				+ ", getLinkedRelationshipDurationYears4()=" + getLinkedRelationshipDurationYears4()
-				+ ", getLinkedAccountNumber5()=" + getLinkedAccountNumber5()
-				+ ", getLinkedRelationshipDurationYears5()=" + getLinkedRelationshipDurationYears5()
-				+ ", getConductOfAccountSatisfactory()=" + getConductOfAccountSatisfactory()
-				+ ", getHighValueTransactionsObserved()=" + getHighValueTransactionsObserved()
-				+ ", getHighValueTransactionsDetails()=" + getHighValueTransactionsDetails() + ", getCurrentTurnover()="
-				+ getCurrentTurnover() + ", getExpectedTurnover()=" + getExpectedTurnover()
-				+ ", getExpectedDebitTransactions()=" + getExpectedDebitTransactions()
-				+ ", getExpectedCreditTransactions()=" + getExpectedCreditTransactions()
-				+ ", getExpectedTransactionType()=" + getExpectedTransactionType() + ", getExpectedTransactionVolume()="
-				+ getExpectedTransactionVolume() + ", getFrequencyOfTransactions()=" + getFrequencyOfTransactions()
-				+ ", getSanctionsMatchUae()=" + getSanctionsMatchUae() + ", getSanctionsMatchUn()="
-				+ getSanctionsMatchUn() + ", getSanctionsMatchOfac()=" + getSanctionsMatchOfac()
-				+ ", getSanctionsMatchHmt()=" + getSanctionsMatchHmt() + ", getSanctionsMatchEu()="
-				+ getSanctionsMatchEu() + ", getCounterpartySrNo1()=" + getCounterpartySrNo1()
-				+ ", getCounterpartyName1()=" + getCounterpartyName1() + ", getCounterpartyCountry1()="
-				+ getCounterpartyCountry1() + ", getCounterpartyProductsServices1()="
-				+ getCounterpartyProductsServices1() + ", getCounterpartySrNo2()=" + getCounterpartySrNo2()
-				+ ", getCounterpartyName2()=" + getCounterpartyName2() + ", getCounterpartyCountry2()="
-				+ getCounterpartyCountry2() + ", getCounterpartyProductsServices2()="
-				+ getCounterpartyProductsServices2() + ", getCounterpartySrNo3()=" + getCounterpartySrNo3()
-				+ ", getCounterpartyName3()=" + getCounterpartyName3() + ", getCounterpartyCountry3()="
-				+ getCounterpartyCountry3() + ", getCounterpartyProductsServices3()="
-				+ getCounterpartyProductsServices3() + ", getCounterpartySrNo4()=" + getCounterpartySrNo4()
-				+ ", getCounterpartyName4()=" + getCounterpartyName4() + ", getCounterpartyCountry4()="
-				+ getCounterpartyCountry4() + ", getCounterpartyProductsServices4()="
-				+ getCounterpartyProductsServices4() + ", getIntermediarySrNo1()=" + getIntermediarySrNo1()
-				+ ", getIntermediaryName1()=" + getIntermediaryName1() + ", getIntermediaryCountry1()="
-				+ getIntermediaryCountry1() + ", getIntermediaryName2()=" + getIntermediaryName2()
-				+ ", getIntermediaryCountry2()=" + getIntermediaryCountry2() + ", getIntermediaryName3()="
-				+ getIntermediaryName3() + ", getIntermediaryCountry3()=" + getIntermediaryCountry3()
-				+ ", getIntermediaryName4()=" + getIntermediaryName4() + ", getIntermediaryCountry4()="
-				+ getIntermediaryCountry4() + ", getOperatingInHighRiskJurisdiction()="
-				+ getOperatingInHighRiskJurisdiction() + ", getHighRiskJurisdictionCountry()="
-				+ getHighRiskJurisdictionCountry() + ", getTransactionCountry1()=" + getTransactionCountry1()
-				+ ", getTransactionCountry2()=" + getTransactionCountry2() + ", getTransactionCountry3()="
-				+ getTransactionCountry3() + ", getTransactionCountry4()=" + getTransactionCountry4()
-				+ ", getSanctionsUaeMatch()=" + getSanctionsUaeMatch() + ", getSanctionsUnMatch()="
-				+ getSanctionsUnMatch() + ", getSanctionsOfacMatch()=" + getSanctionsOfacMatch()
-				+ ", getSanctionsHmtMatch()=" + getSanctionsHmtMatch() + ", getSanctionsEuMatch()="
-				+ getSanctionsEuMatch() + ", getSanctionsOthersMatch()=" + getSanctionsOthersMatch()
-				+ ", getCbuaeBblCheckDone()=" + getCbuaeBblCheckDone() + ", getGoogleMediaSearchDone()="
-				+ getGoogleMediaSearchDone() + ", getInternalDenyListNameScreening()="
-				+ getInternalDenyListNameScreening() + ", getSuspicionObserved()=" + getSuspicionObserved()
-				+ ", getSuspicionDetails()=" + getSuspicionDetails() + ", getRedFlagSupportingDocsObtained()="
-				+ getRedFlagSupportingDocsObtained() + ", getRedFlagDetails()=" + getRedFlagDetails()
-				+ ", getUboSanctionsUaeMatch()=" + getUboSanctionsUaeMatch() + ", getUboSanctionsUnMatch()="
-				+ getUboSanctionsUnMatch() + ", getUboSanctionsOfacMatch()=" + getUboSanctionsOfacMatch()
-				+ ", getUboSanctionsHmtMatch()=" + getUboSanctionsHmtMatch() + ", getUboSanctionsEuMatch()="
-				+ getUboSanctionsEuMatch() + ", getUboSanctionsOthersMatch()=" + getUboSanctionsOthersMatch()
-				+ ", getUboCbuaeBblCheckDone()=" + getUboCbuaeBblCheckDone() + ", getUboGoogleMediaSearchDone()="
-				+ getUboGoogleMediaSearchDone() + ", getUboInternalDenyListScreening()="
-				+ getUboInternalDenyListScreening() + ", getUboSuspicionObserved()=" + getUboSuspicionObserved()
-				+ ", getUboSuspicionDetails()=" + getUboSuspicionDetails() + ", getUboRedFlagSupportingDocsObtained()="
-				+ getUboRedFlagSupportingDocsObtained() + ", getUboRedFlagDetails()=" + getUboRedFlagDetails()
-				+ ", getCounterpartySanctionsUaeMatch()=" + getCounterpartySanctionsUaeMatch()
-				+ ", getCounterpartySanctionsUnMatch()=" + getCounterpartySanctionsUnMatch()
-				+ ", getCounterpartySanctionsOfacMatch()=" + getCounterpartySanctionsOfacMatch()
-				+ ", getCounterpartySanctionsHmtMatch()=" + getCounterpartySanctionsHmtMatch()
-				+ ", getCounterpartySanctionsEuMatch()=" + getCounterpartySanctionsEuMatch()
-				+ ", getCounterpartySanctionsOthersMatch()=" + getCounterpartySanctionsOthersMatch()
-				+ ", getCounterpartyCbuaeBblCheckDone()=" + getCounterpartyCbuaeBblCheckDone()
-				+ ", getCounterpartyGoogleMediaSearchDone()=" + getCounterpartyGoogleMediaSearchDone()
-				+ ", getCounterpartyInternalDenyListScreening()=" + getCounterpartyInternalDenyListScreening()
-				+ ", getCounterpartySuspicionObserved()=" + getCounterpartySuspicionObserved()
-				+ ", getCounterpartySuspicionDetails()=" + getCounterpartySuspicionDetails()
-				+ ", getCounterpartyRedFlagSupportingDocsObtained()=" + getCounterpartyRedFlagSupportingDocsObtained()
-				+ ", getCounterpartyRedFlagDetails()=" + getCounterpartyRedFlagDetails() + ", getSiteVisitCompleted()="
-				+ getSiteVisitCompleted() + ", getSiteVisitReportAttached()=" + getSiteVisitReportAttached()
-				+ ", getAdverseObservationsSiteVisit()=" + getAdverseObservationsSiteVisit()
-				+ ", getAdverseObservationDetails1()=" + getAdverseObservationDetails1()
-				+ ", getAdverseObservationDetails2()=" + getAdverseObservationDetails2()
-				+ ", getAdverseObservationDetails3()=" + getAdverseObservationDetails3()
-				+ ", getHighRiskIndividualPoa()=" + getHighRiskIndividualPoa() + ", getHighRiskIndividualPoaDetails()="
-				+ getHighRiskIndividualPoaDetails() + ", getHighRiskIndividualRelativePoa()="
-				+ getHighRiskIndividualRelativePoa() + ", getHighRiskIndividualRelativePoaDetails()="
-				+ getHighRiskIndividualRelativePoaDetails() + ", getHighRiskDomesticIndividualPoa()="
-				+ getHighRiskDomesticIndividualPoa() + ", getHighRiskDomesticIndividualPoaDetails()="
-				+ getHighRiskDomesticIndividualPoaDetails() + ", getHighRiskIndividualEntityPoa()="
-				+ getHighRiskIndividualEntityPoa() + ", getHighRiskIndividualEntityPoaDetails()="
-				+ getHighRiskIndividualEntityPoaDetails() + ", getAuditedFinancialStatement()="
-				+ getAuditedFinancialStatement() + ", getTransactionDetails1()=" + getTransactionDetails1()
-				+ ", getTransactionDetails2()=" + getTransactionDetails2() + ", getTransactionDetails3()="
-				+ getTransactionDetails3() + ", getTransactionDetails4()=" + getTransactionDetails4()
-				+ ", getTransactionsCommensurate()=" + getTransactionsCommensurate() + ", getBranchSatisfied()="
-				+ getBranchSatisfied() + ", getSupportingDocumentObtained()=" + getSupportingDocumentObtained()
-				+ ", getCustomerIsPep()=" + getCustomerIsPep() + ", getSeniorManagementApproval()="
-				+ getSeniorManagementApproval() + ", getRequestingForeignCurrency()=" + getRequestingForeignCurrency()
-				+ ", getSeniorManagementApprovalCurrency()=" + getSeniorManagementApprovalCurrency()
-				+ ", getCashIntensiveBusinessDetail()=" + getCashIntensiveBusinessDetail() + ", getBusinessActivity1()="
-				+ getBusinessActivity1() + ", getBusinessActivity2()=" + getBusinessActivity2()
-				+ ", getProductsOffered1()=" + getProductsOffered1() + ", getProductsOffered2()="
-				+ getProductsOffered2() + ", getVolumeDeposit1()=" + getVolumeDeposit1() + ", getVolumeDeposit2()="
-				+ getVolumeDeposit2() + ", getVolumeWithdraw1()=" + getVolumeWithdraw1() + ", getVolumeWithdraw2()="
-				+ getVolumeWithdraw2() + ", getNumberDeposit1()=" + getNumberDeposit1() + ", getNumberDeposit2()="
-				+ getNumberDeposit2() + ", getNumberWithdraw1()=" + getNumberWithdraw1() + ", getNumberWithdraw2()="
-				+ getNumberWithdraw2() + ", getTurnoverDeposit1()=" + getTurnoverDeposit1() + ", getTurnoverDeposit2()="
-				+ getTurnoverDeposit2() + ", getTurnoverWithdraw1()=" + getTurnoverWithdraw1()
-				+ ", getTurnoverWithdraw2()=" + getTurnoverWithdraw2() + ", getBrokerOrAgent()=" + getBrokerOrAgent()
-				+ ", getDealerOfMetals()=" + getDealerOfMetals() + ", getAuditor()=" + getAuditor()
-				+ ", getLegalConsultant()=" + getLegalConsultant() + ", getDealsDualGoods()=" + getDealsDualGoods()
-				+ ", getTransOnInterrelated1()=" + getTransOnInterrelated1() + ", getTransOnInterrelated2()="
-				+ getTransOnInterrelated2() + ", getCustomerRisk()=" + getCustomerRisk() + ", getReasonForRisk()="
-				+ getReasonForRisk() + ", getDueDiligence()=" + getDueDiligence() + ", getBankOfficialsObservation()="
-				+ getBankOfficialsObservation() + ", getBranchHeadObservation()=" + getBranchHeadObservation()
-				+ ", getCSuspissionobserved()=" + getCSuspissionobserved() + ", getCSuspisionDetail()="
-				+ getCSuspisionDetail() + ", getCHighvalueTransaction()=" + getCHighvalueTransaction()
-				+ ", getIsCashIntensiveBusiness()=" + getIsCashIntensiveBusiness()
-				+ ", getAccountOpeningOfficerSignature()=" + getAccountOpeningOfficerSignature()
-				+ ", getAccountOpeningOfficerName()=" + getAccountOpeningOfficerName()
-				+ ", getAccountOpeningOfficerDesignation()=" + getAccountOpeningOfficerDesignation()
-				+ ", getAccountOpeningOfficerDate()=" + getAccountOpeningOfficerDate()
-				+ ", getAccountOpeningOfficerPlace()=" + getAccountOpeningOfficerPlace()
-				+ ", getBranchOfficialSignature()=" + getBranchOfficialSignature() + ", getBranchOfficialName()="
-				+ getBranchOfficialName() + ", getBranchOfficialDesignation()=" + getBranchOfficialDesignation()
-				+ ", getBranchOfficialDate()=" + getBranchOfficialDate() + ", getBranchOfficialPlace()="
-				+ getBranchOfficialPlace() + ", getEntityFlg()=" + getEntityFlg() + ", getModifyFlg()=" + getModifyFlg()
-				+ ", getDelFlg()=" + getDelFlg() + ", getEntryUser()=" + getEntryUser() + ", getModifyUser()="
-				+ getModifyUser() + ", getVerifyUser()=" + getVerifyUser() + ", getEntryTime()=" + getEntryTime()
-				+ ", getModifyTime()=" + getModifyTime() + ", getVerifyTime()=" + getVerifyTime() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", VerifyTime=" + VerifyTime + ", CustomerOperatingBussiness=" + CustomerOperatingBussiness + "]";
 	}
-
+	
+	
+	
+	
 }

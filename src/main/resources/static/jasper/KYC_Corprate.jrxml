@@ -5,7 +5,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Dubai.jrdax"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="Customer_ID" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$F{CUSTOMER_ID}]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[$P{Customer_ID}]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT * 
@@ -923,6 +923,26 @@ FROM kyc_corp where CUSTOMER_ID = $P{Customer_ID}]]>
 		<property name="com.jaspersoft.studio.field.name" value="VERIFY_TIME"/>
 		<property name="com.jaspersoft.studio.field.label" value="VERIFY_TIME"/>
 	</field>
+	<field name="CUSTOMER_THIRD_PARTY_ENGAGEMENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CUSTOMER_THIRD_PARTY_ENGAGEMENT"/>
+		<property name="com.jaspersoft.studio.field.label" value="CUSTOMER_THIRD_PARTY_ENGAGEMENT"/>
+	</field>
+	<field name="INTERRELATED_ACCOUNTS_TRANSACTION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="INTERRELATED_ACCOUNTS_TRANSACTION"/>
+		<property name="com.jaspersoft.studio.field.label" value="INTERRELATED_ACCOUNTS_TRANSACTION"/>
+	</field>
+	<field name="INTERRELATED_TRANSACTION_DOCUMENTATION_OBTAINED_1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="INTERRELATED_TRANSACTION_DOCUMENTATION_OBTAINED_1"/>
+		<property name="com.jaspersoft.studio.field.label" value="INTERRELATED_TRANSACTION_DOCUMENTATION_OBTAINED_1"/>
+	</field>
+	<field name="INTERRELATED_TRANSACTION_DOCUMENTATION_OBTAINED_2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="INTERRELATED_TRANSACTION_DOCUMENTATION_OBTAINED_2"/>
+		<property name="com.jaspersoft.studio.field.label" value="INTERRELATED_TRANSACTION_DOCUMENTATION_OBTAINED_2"/>
+	</field>
+	<field name="CUSTOMER_OPERATING_BUSINESS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CUSTOMER_OPERATING_BUSINESS"/>
+		<property name="com.jaspersoft.studio.field.label" value="CUSTOMER_OPERATING_BUSINESS"/>
+	</field>
 	<title>
 		<band height="2370" splitType="Immediate">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -1283,7 +1303,7 @@ FROM kyc_corp where CUSTOMER_ID = $P{Customer_ID}]]>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["If Other ( please specify): \n"+$F{OTHER_DOCUMENTS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["If Other ( please specify):     " +$F{OTHER_DOCUMENTS}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="230" width="554" height="12" uuid="3bc25fd8-8d3c-458b-87ca-16ca9d2c516e">
@@ -2205,7 +2225,7 @@ FROM kyc_corp where CUSTOMER_ID = $P{Customer_ID}]]>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["1.   " +($F{LINKED_ACCOUNT_NUMBER_1} != null ? $F{LINKED_ACCOUNT_NUMBER_1}:"")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["1. " +($F{LINKED_ACCOUNT_NUMBER_1} != null ? $F{LINKED_ACCOUNT_NUMBER_1}:"")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="280" y="521" width="274" height="12" uuid="a67e30ef-e25a-488e-b040-e2bf946649c8">
@@ -3003,7 +3023,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COUNTERPARTY_SR_NO_2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{COUNTERPARTY_NAME_2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="967" width="80" height="18" uuid="a12381df-2641-4918-840e-287d4fdea94a">
@@ -3051,7 +3071,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COUNTERPARTY_SR_NO_3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{COUNTERPARTY_NAME_3}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="985" width="80" height="18" uuid="ab96b80c-aee7-40e8-8717-34f70a28f66c">
@@ -3099,7 +3119,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COUNTERPARTY_SR_NO_4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{COUNTERPARTY_NAME_4}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1003" width="80" height="18" uuid="8edd0106-4888-4ae2-8080-84301319e724">
@@ -3125,8 +3145,8 @@ If yes, please specify
 				</textElement>
 				<textFieldExpression><![CDATA[$F{COUNTERPARTY_COUNTRY_4}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="1021" width="554" height="18" uuid="b7ebe4f4-e769-4984-a4e5-e5c6e14307b5">
+			<textField>
+				<reportElement x="0" y="1021" width="554" height="18" uuid="ab55758a-fc86-4f51-bc3f-b2aad55244f6">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -3135,8 +3155,8 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Whether customer is engaged with third party intermediaries with whom the customer conducts transactions. If yes please provide information ]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Whether customer is engaged with third party intermediaries with whom the customer conducts transactions. If yes please provide information " + $F{CUSTOMER_THIRD_PARTY_ENGAGEMENT}]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement x="310" y="1051" width="244" height="18" uuid="995ca440-9c31-4112-aead-0b2851835701">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
@@ -3209,8 +3229,8 @@ If yes, please specify
 				</textElement>
 				<text><![CDATA[Name of customer]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="0" y="1069" width="400" height="32" uuid="4c52dd94-c286-400c-8ca0-2e270601b356">
+			<textField>
+				<reportElement x="0" y="1069" width="400" height="32" uuid="74bc6ce9-c54d-4b62-9b35-e2dad0c0fbc6">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -3220,10 +3240,9 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Whether customer is operating business from High-risk jurisdiction? Yes / No, if Yes, please mention the country Name
-
-]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Whether customer is operating business from High-risk jurisdiction? Yes / No, if Yes, please mention the country Name \n" +
+$F{CUSTOMER_OPERATING_BUSINESS}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="0" y="1101" width="554" height="12" uuid="2c3d2949-8404-4253-b8ff-54a20f2c2400">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
@@ -3381,7 +3400,7 @@ If yes, please specify
 				<text><![CDATA[E.	Sanctions screening & Due Diligence - Entity]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="368" y="1173" width="94" height="20" uuid="e2823106-5510-44c4-b902-1a05f1671005">
+				<reportElement x="368" y="1173" width="67" height="20" uuid="e2823106-5510-44c4-b902-1a05f1671005">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -3405,7 +3424,7 @@ If yes, please specify
 				<textFieldExpression><![CDATA[$F{SUSPICION_DETAILS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="462" y="1173" width="93" height="20" uuid="53b03908-d478-4d01-a2b8-ae0d92489fdf">
+				<reportElement x="435" y="1173" width="120" height="20" uuid="53b03908-d478-4d01-a2b8-ae0d92489fdf">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -3414,7 +3433,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others     " + ($F{UBO_SANCTIONS_OTHERS_MATCH}!=null?$F{UBO_SANCTIONS_OTHERS_MATCH}:"")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others    " + ($F{SANCTIONS_OTHERS_MATCH}!=null?$F{SANCTIONS_OTHERS_MATCH}:"")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="274" y="1193" width="281" height="20" uuid="dc580b4d-b5c1-4f44-af65-04da2c7e04ad">
@@ -3573,7 +3592,7 @@ If yes, please specify
 				<text><![CDATA[OFAC]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="462" y="1383" width="93" height="20" uuid="a32ed370-9f41-445b-b3c1-1f715ec8036a">
+				<reportElement x="435" y="1383" width="120" height="20" uuid="a32ed370-9f41-445b-b3c1-1f715ec8036a">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -3582,7 +3601,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others    " + ($F{UBO_SANCTIONS_OTHERS_MATCH}!=null?$F{UBO_SANCTIONS_OTHERS_MATCH}:"")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others    " +( $F{UBO_SANCTIONS_OTHERS_MATCH}!=null? $F{UBO_SANCTIONS_OTHERS_MATCH}: " ")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1403" width="140" height="20" uuid="53f07b60-719c-4dcf-9d7a-9a2c95d9b92a">
@@ -3609,7 +3628,7 @@ If yes, please specify
 				<text><![CDATA[Internal Deny list name screening]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="368" y="1383" width="94" height="20" uuid="2b8614d7-cc79-4371-b4b8-bab22c7ab005">
+				<reportElement x="368" y="1383" width="67" height="20" uuid="2b8614d7-cc79-4371-b4b8-bab22c7ab005">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -3873,7 +3892,7 @@ If yes, please specify
 				<text><![CDATA[OFAC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="368" y="1593" width="94" height="20" uuid="f1916f03-ee38-4946-8915-9127147aec25">
+				<reportElement x="368" y="1593" width="67" height="20" uuid="f1916f03-ee38-4946-8915-9127147aec25">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -4017,7 +4036,7 @@ If yes, please specify
 				<textFieldExpression><![CDATA["Yes …/ No…./NA…. If no, please provide the reason for the same- \n" + ($F{COUNTERPARTY_RED_FLAG_DETAILS}!=null?$F{COUNTERPARTY_RED_FLAG_DETAILS}:"")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="462" y="1593" width="93" height="20" uuid="69613a86-ffe3-4454-9fe5-a457d7336865">
+				<reportElement x="435" y="1593" width="120" height="20" uuid="69613a86-ffe3-4454-9fe5-a457d7336865">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<box leftPadding="5">
@@ -5376,7 +5395,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{UBO_DIR_POA_1_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{UBO_DIR_POA_2_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="344" y="401" width="70" height="15" uuid="9786faf5-a24e-4850-876c-3254c9c7bd32">
@@ -5468,7 +5487,7 @@ If yes, please specify
 				<imageExpression><![CDATA["Yes".equals($F{SANCTIONS_HMT_MATCH}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="427" y="1179" width="10" height="8" uuid="900df55d-9516-46e9-81e0-4562b4818c1f">
+				<reportElement x="409" y="1179" width="10" height="8" uuid="900df55d-9516-46e9-81e0-4562b4818c1f">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<imageExpression><![CDATA["Yes".equals($F{SANCTIONS_EU_MATCH}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
@@ -5717,7 +5736,7 @@ If yes, please specify
 				<imageExpression><![CDATA["Yes".equals($F{UBO_SANCTIONS_HMT_MATCH}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="430" y="1389" width="10" height="8" uuid="caee4e13-68ad-42bb-b38f-babeee9b8f52">
+				<reportElement x="410" y="1389" width="10" height="8" uuid="caee4e13-68ad-42bb-b38f-babeee9b8f52">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<imageExpression><![CDATA["Yes".equals($F{UBO_SANCTIONS_EU_MATCH}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
@@ -5783,7 +5802,7 @@ If yes, please specify
 				<imageExpression><![CDATA["Yes".equals($F{COUNTERPARTY_SANCTIONS_HMT_MATCH}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="420" y="1599" width="10" height="8" uuid="92283489-6313-4b87-a8ab-86445dbf9ea5">
+				<reportElement x="409" y="1599" width="10" height="8" uuid="92283489-6313-4b87-a8ab-86445dbf9ea5">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
 				<imageExpression><![CDATA["Yes".equals($F{COUNTERPARTY_SANCTIONS_EU_MATCH}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
@@ -5888,7 +5907,7 @@ If yes, please specify
 				<reportElement x="245" y="747" width="10" height="8" uuid="e99235ef-5075-4bbc-a4d7-e88902317c9c">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Yes".equals($F{BRANCH_SATISFIED}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA["No".equals($F{BRANCH_SATISFIED}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="380" y="1834" width="10" height="8" uuid="96e29925-1156-4800-8dec-4a55b3c6d34a">
@@ -6274,7 +6293,9 @@ If yes, please specify
 				<reportElement x="65" y="1884" width="10" height="8" uuid="4dd38400-3773-45c8-94bb-cbf036a9a4d2">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["General".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("General Trading") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="160" y="1893" width="80" height="10" uuid="84fb1dd9-dc33-4d6a-bd46-fd13805d36d6">
@@ -6296,55 +6317,73 @@ If yes, please specify
 				<reportElement x="140" y="1884" width="10" height="8" uuid="f3ec1f66-303b-4138-ab79-6b30ed52b00f">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Supermarket".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Supermarkets") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="215" y="1884" width="10" height="8" uuid="0354c69b-60ae-4d71-a34e-fad6de5de997">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Restaurants".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Restaurants") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="347" y="1884" width="10" height="8" uuid="8a143cb2-d8d2-448c-aa6b-e984b72a854b">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Retail".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Convenience/Retail Stores") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="410" y="1884" width="10" height="8" uuid="fbe3290e-8b4d-4c94-aac5-50fcf460ea9f">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Fuel".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Fuel Station") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="492" y="1884" width="10" height="8" uuid="53929969-4740-4bda-b580-c49453eb3ad5">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Tour".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Tour Operators") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="65" y="1894" width="10" height="8" uuid="fab6e2cb-15bf-4c98-b4f7-36d63704a50e">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Jewel".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Jewelry Trading") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="150" y="1894" width="10" height="8" uuid="75096929-fd28-4281-8d6e-7c2b39fef478">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["ExchangeHouses".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Exchange Houses") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="215" y="1894" width="10" height="8" uuid="6b107f5f-91ee-471d-90b1-468caddd0aa2">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Car".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Car Dealer") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="405" y="1894" width="10" height="8" uuid="57d311f1-cb24-40a6-bbc1-d7a940e8a870">
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
-				<imageExpression><![CDATA["Others".equals($F{CASH_INTENSIVE_BUSINESS_DETAIL}) ? "http://localhost:8086/BRF/images/checkbox.png" : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{CASH_INTENSIVE_BUSINESS_DETAIL}.contains("Identified as tran Activity") 
+    ? "http://localhost:8086/BRF/images/checkbox.png" 
+    : "http://localhost:8086/BRF/images/checkbox2.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
