@@ -45,6 +45,7 @@ public class Kyc_Corprate_service {
 
 	public boolean updateKycData(String customerId, Kyc_Corprate data) {
 		// Find the existing KYC record
+		
 		Optional<Kyc_Corprate> optionalKyc = Kyc_Corprate_Repo.findById(customerId);
 		String userId = (String) session.getAttribute("USERID");
 		LocalDateTime currentDateTime = LocalDateTime.now();

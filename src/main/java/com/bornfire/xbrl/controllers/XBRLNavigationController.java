@@ -848,6 +848,7 @@ public class XBRLNavigationController {
 
 		if ("submit".equals(formmode)) {
 
+			System.out.println(data.getUboSanctionsUaeMatch());
 			Kyc_Corprate_service.updateKycData(custid, data);
 
 		} else if ("verified".equals(formmode)) {

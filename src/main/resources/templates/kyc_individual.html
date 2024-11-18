@@ -1902,7 +1902,7 @@ window.onload = function() {
 										style="display: flex; justify-content: space-between;">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" id="jointUae"
-												name="jointUae" value="Yes"
+												name="jointUae" th:value="${user_data.jointUae}"
 												th:checked="${user_data.jointUae == 'Yes'}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label" for="jointUae">UAE</label>

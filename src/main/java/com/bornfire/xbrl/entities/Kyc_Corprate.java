@@ -478,6 +478,7 @@ public class Kyc_Corprate {
 	private Date VerifyTime;
 	@Column(name = "CUSTOMER_OPERATING_BUSINESS")
 	private String CustomerOperatingBussiness;
+	
 	public String getCompanyName() {
 		return CompanyName;
 	}

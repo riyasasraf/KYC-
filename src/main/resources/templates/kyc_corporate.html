@@ -106,22 +106,31 @@ input[type="number"] {
 	function submitform() {
 
 		console.log("helow");
+		var formData = new FormData();
+		
+		var serializedData = $("#individual_form").serializeArray();
+	    serializedData.forEach(function(item) {
+	        formData.append(item.name, item.value);
+	    });
 
-		event.preventDefault();
-
+	    var uaeChecked = document.getElementById('UBOUAE').checked ? 'Yes' : 'No';
+	    formData.append('uae', uaeChecked);
+	    
 		const Customer_id = document.getElementById("customerID").value.trim();
 		console.log(Customer_id)
 		const url = `/BRF/kyc/corporate?formmode=submit&custid=${Customer_id}`;
-
+		
 		$.ajax({
 			url : url,
-			data : $("#individual_form").serialize(),
+			 data: formData,
 			type : 'POST',
+			processData: false,
+	        contentType: false,
 			success : function(data) {
 				$("#alertmsg").text(data);
 				$('#alert').modal("show");
 				console.log(data);
-				location.href = `/BRF/kyc/?formmode=corporate`
+				//location.href = `/BRF/kyc/?formmode=corporate`
 				//window.history.back();
 			}
 		});
@@ -227,6 +236,13 @@ input[type="number"] {
 	 toggleInputBasedOnRadio('joint_holder_2_residential_status_changed_y', ['joint_holder_2_new_country','joint_holder_2_new_city','joint_holder_2_new_po_box']);
 	 });
 	 */
+</script>
+
+<script>
+    function updateCheckboxValue(checkbox) {
+        checkbox.value = checkbox.checked ? 'Yes' : 'No';
+        console.log(`Checkbox value updated to: ${checkbox.value}`);
+    }
 </script>
 
 
@@ -409,7 +425,7 @@ input[type="number"] {
 
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="TradeLicense" id="tradeLicense"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.TradeLicense}"
@@ -418,7 +434,7 @@ input[type="number"] {
 											License </label>
 									</div>
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="MemorandumOfAssociation" id="memoOfAssociation"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.MemorandumOfAssociation}"
@@ -427,7 +443,7 @@ input[type="number"] {
 											Memorandum and article Of Association </label>
 									</div>
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="ShareCertificate" id="shareCertificate"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.ShareCertificate}"
@@ -437,7 +453,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="CertificateOfIncorporation"
 											id="certificateOfIncorporation"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
@@ -463,7 +479,7 @@ input[type="number"] {
 
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="GovernmentTenancyDocument" id="govtTenancyDoc"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.GovernmentTenancyDocument}"
@@ -473,7 +489,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="UtilityBill" id="utilityBill"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.UtilityBill}"
@@ -483,7 +499,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="FlexiDeskAgreement" id="flexiDeskAgreement"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.FlexiDeskAgreement}"
@@ -493,7 +509,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="CoWorkingAgreement" id="officeSharingNoc"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.CoWorkingAgreement}"
@@ -503,7 +519,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="CoWorkingFacility" id="coWorkingFacility"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.OfficeSharingAgreement}"
@@ -529,7 +545,7 @@ input[type="number"] {
 								<div class="row formline" style="padding: 2px 15px;">
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="OtherBusinessProof" id="otherBusinessProof"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.OtherBusinessProof}"
@@ -539,7 +555,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="BankAccountStatement" id="bankAccountStatement"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.BankAccountStatement}"
@@ -549,7 +565,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="AuditedCompanyFinancials" id="auditedCompanyFinancials"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.AuditedCompanyFinancials}"
@@ -559,7 +575,7 @@ input[type="number"] {
 									</div>
 
 									<div class="form-check col-sm-2">
-										<input class="form-check-input" type="checkbox" 
+										<input class="form-check-input" type="checkbox"
 											name="PersonalBankAccountStatement"
 											id="personalBankAccountStatement"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
@@ -1439,12 +1455,16 @@ input[type="number"] {
 
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input " type="checkbox"
-												name="SanctionsUaeMatch" id="UAE" value="Yes"
-												th:checked="${user_data.SanctionsUaeMatch == 'Yes'}"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
-												>
-											<label class="form-check-label" for="uaeCheck"> UAE </label>
+											<div class="form-check">
+
+
+												<input class="form-check-input" type="checkbox"
+													name="SanctionsUaeMatch" id="UAE"
+													onchange="this.value = this.checked ? 'Yes' : 'No';"
+													th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
+												<label class="form-check-label" for="uaeCheck"> UAE
+												</label>
+											</div>
 										</div>
 									</div>
 									<div class="col-sm-1">
@@ -1469,7 +1489,7 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" 
+											<input class="form-check-input" type="checkbox"
 												name="SanctionsHmtMatch" id="HMT" value="Yes"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
@@ -1608,17 +1628,25 @@ input[type="number"] {
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 
 									<div class="col-sm-1">
-										<div class="form-check ">
-											<input class="form-check-input " type="checkbox" value="Yes"
-												name="UboSanctionsUaeMatch" id="UBOUAE"
-												onchange="this.value = this.checked ? 'Yes' : 'No';"
+										<div class="form-check">
+											
+
+											<input class="form-check-input" type="checkbox" id="UBOUAE"
+												name="UboSanctionsUaeMatch"
 												th:checked="${user_data.UboSanctionsUaeMatch == 'Yes'}">
-											<label class="form-check-label" for="uaeCheck"> UAE </label>
+
+											<label class="form-check-label" for="UBOUAE">UAE</label>
+
 										</div>
 									</div>
+
+
+
+
+
 									<div class="col-sm-1">
 										<div class="form-check ">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox" 
 												name="UboSanctionsUnMatch" id="UBOUN"
 												th:checked="${user_data.UboSanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
