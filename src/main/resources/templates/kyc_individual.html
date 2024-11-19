@@ -1637,7 +1637,7 @@ window.onload = function() {
 											Debit </label>
 									</div>
 									<div class="col-sm-1">
-										<input type="number" name="debitFrequency"
+										<input type="number" name="debit"
 											th:value="${user_data.debit}" id="debitFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
@@ -1649,7 +1649,7 @@ window.onload = function() {
 											Credit </label>
 									</div>
 									<div class="col-sm-1">
-										<input type="number" name="creditFrequency"
+										<input type="number" name="credit"
 											th:value="${user_data.credit}" id="creditFrequency"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
@@ -1849,11 +1849,15 @@ window.onload = function() {
 									</div>
 									<div class="col-sm-1">Deny list screening</div>
 									<div class="col-sm-1">
-										<input type="radio" id="denylist_yes" name="denylist"
-											value="Yes" /> <label for="denylist_yes">Yes</label> <input
-											type="radio" id="denylist_no" name="denylist" value="No" />
-										<label for="denylist_no">No</label>
+										<input type="radio" id="denylistyes"
+											name="internalDenyListScreening" value="Yes"
+											th:checked="${user_data.internalDenyListScreening == 'Yes'}" />
+										<label for="denylistyes">Yes</label> <input type="radio"
+											id="denylistno" name="internalDenyListScreening" value="No"
+											th:checked="${user_data.internalDenyListScreening == 'No'}" />
+										<label for="denylistno">No</label>
 									</div>
+
 
 
 								</div>
@@ -1864,32 +1868,30 @@ window.onload = function() {
 									<div class="col-sm-2">Specify Suspicion Observed</div>
 									<div class="col-sm-1">
 										<input type="text" name="suspicionObserved1"
-											id="sanctions_others_primary"
+											id="suspicionObserved1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.suspicionObserved1}" />
 									</div>
 									<div class="col-sm-3">branch has obtained the supporting
 										document to discount the red flag</div>
 									<div class="col-sm-1">
-										<input type="radio" id="adverse_info_details_primary_yes"
-											name="denylist" value="Yes" /> <label
-											for="adverse_info_details_primary_yes">Yes</label> <input
-											type="radio" id="adverse_info_details_primary_no"
-											name="denylist" value="No" /> <label for="denylist_no">No</label>
+										<input type="radio" id="supportingDocumentObtained2Yes"
+											name="supportingDocumentObtained2" value="Yes"
+											th:checked="${user_data.supportingDocumentObtained2== 'Yes'}" />
+										<label for="supportingDocumentObtained2Yes">Yes</label> <input
+											type="radio" id="supportingDocumentObtained2No"
+											name="supportingDocumentObtained2" value="No"
+											th:checked="${user_data.supportingDocumentObtained2 == 'No'}" />
+										<label for="denylistno">No</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="adverseInfoDetailsPrimary" id=""
-											class="form-control form-control-sm bg-white border border-dark"
-											th:value="${user_data.supportingDocumentObtained2}" />
-									</div>
-
-									<div class="col-sm-2">If no provide the reason</div>
-									<div class="col-sm-2">
-										<input type="text" name="reasonForRedFlag1"
-											id="provide_reason_primary"
+										<input type="text" name="adverseInfoDetailsPrimary"
+											id="reasonForRedFlag1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.reasonForRedFlag1}" />
 									</div>
+
+
 								</div>
 								<hr>
 
@@ -1973,11 +1975,14 @@ window.onload = function() {
 
 									<div class="col-sm-1">Deny list screening</div>
 									<div class="col-sm-1">
-										<input type="radio" id="jointDenyList_yes"
-											name="jointDenyList" value="Yes" /> <label
-											for="jointDenyList_yes">Yes</label> <input type="radio"
-											id="jointDenyList_no" name="jointDenyList" value="No" /> <label
-											for="jointDenyList_no">No</label>
+										<input type="radio" id="jointdenylistyes"
+											name="jointInternalDenyListScreening" value="Yes"
+											th:checked="${user_data.jointInternalDenyListScreening == 'Yes'}" />
+										<label for="jointdenylistyes">Yes</label> <input type="radio"
+											id="jointdenylistno" name="jointInternalDenyListScreening"
+											value="No"
+											th:checked="${user_data.jointInternalDenyListScreening == 'No'}" />
+										<label for="jointdenylistno">No</label>
 									</div>
 								</div>
 
@@ -2009,13 +2014,6 @@ window.onload = function() {
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 
-									<div class="col-sm-2">If no provide the reason</div>
-									<div class="col-sm-2">
-										<input type="text" name="reasonForRedFlag1"
-											id="reasonForRedFlag1"
-											class="form-control form-control-sm bg-white border border-dark"
-											th:value="${user_data.reasonForRedFlag1}" />
-									</div>
 								</div>
 
 
@@ -2171,10 +2169,11 @@ window.onload = function() {
 									</div>
 									<div class="col-sm-2">
 										<input type="date" name="accountOpeningOfficerDate"
-											th:value="${user_data.accountOpeningOfficerDate}"
+											th:value="${#dates.format(user_data.accountOpeningOfficerDate, 'yyyy-MM-dd')}"
 											id="datePrimary"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 								</div>
 								<hr>
 
@@ -2189,7 +2188,7 @@ window.onload = function() {
 										<label for="signature_branch">Signature:</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="Branch_official_signature"
+										<input type="text" name="branchOfficialSignature"
 											th:value="${user_data.branchOfficialSignature}"
 											id="signature_branch"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -2198,7 +2197,7 @@ window.onload = function() {
 										<label for="name_branch">Name:</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="Branch_official_name"
+										<input type="text" name="branchOfficialName"
 											th:value="${user_data.branchOfficialName}" id="name_branch"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
@@ -2206,7 +2205,7 @@ window.onload = function() {
 										<label for="designation_branch">Designation:</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="text" name="Branch_official_designation"
+										<input type="text" name="branchOfficialDesignation"
 											th:value="${user_data.branchOfficialDesignation}"
 											id="designation_branch"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -2215,10 +2214,12 @@ window.onload = function() {
 										<label for="date_branch">Date:</label>
 									</div>
 									<div class="col-sm-2">
-										<input type="date" name="Branch_official_Date"
-											th:value="${user_data.branchOfficialDate}" id="date_branch"
+										<input type="date" name="branchOfficialDate"
+											th:value="${#dates.format(user_data.branchOfficialDate, 'yyyy-MM-dd')}"
+											id="date_branch"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
+
 								</div>
 
 
