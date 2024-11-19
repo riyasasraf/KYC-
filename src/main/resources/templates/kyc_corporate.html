@@ -103,39 +103,66 @@ input[type="number"] {
 }
 </style>
 <script type="text/javascript">
-	function submitform() {
 
-		console.log("helow");
-		var formData = new FormData();
-		
-		var serializedData = $("#individual_form").serializeArray();
-	    serializedData.forEach(function(item) {
-	        formData.append(item.name, item.value);
-	    });
 
-	    var uaeChecked = document.getElementById('UBOUAE').checked ? 'Yes' : 'No';
-	    formData.append('uae', uaeChecked);
-	    
-		const Customer_id = document.getElementById("customerID").value.trim();
-		console.log(Customer_id)
-		const url = `/BRF/kyc/corporate?formmode=submit&custid=${Customer_id}`;
-		
-		$.ajax({
-			url : url,
-			 data: formData,
-			type : 'POST',
-			processData: false,
-	        contentType: false,
-			success : function(data) {
-				$("#alertmsg").text(data);
-				$('#alert').modal("show");
-				console.log(data);
-				//location.href = `/BRF/kyc/?formmode=corporate`
-				//window.history.back();
-			}
-		});
 
-	}
+
+
+
+
+function submitForm() {
+    event.preventDefault();
+
+    const checkboxes = document.querySelectorAll('input[name="checkGroup"]:checked');
+
+    const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value).join('|');
+
+    document.getElementById('cashIntensiveBusinessDetail').value = selectedValues;
+
+
+    const customerID = document.getElementById("customerID").value.trim();
+    const url = `/BRF/kyc/corporate?formmode=submit&custid=${customerID}`;
+
+    const form = document.getElementById("individual_form");
+    const formData = new FormData(form);
+    
+    console.log(formData.get("CashIntensiveBusinessDetail"));
+    
+    const checkboxe = form.querySelectorAll('input[type="checkbox"]');
+    checkboxe.forEach(checkbox => {
+        formData.delete(checkbox.name);
+
+            formData.append(checkbox.name, checkbox.value);
+       
+    });
+     
+   console.log("Final FormData entries after joining:");
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+
+
+   $.ajax({
+        url: url,
+        data: formData,
+        processData: false, 
+        contentType: false, 
+        type: 'POST',
+        success: function(response) {
+            $("#alertmsg").text(response);
+            $('#alert').modal("show");
+            location.href = `/BRF/kyc/?formmode=corporate`
+        },
+        error: function(xhr, status, error) {
+        
+            console.error("Error occurred:", status, error);
+            alert("An error occurred while submitting the form. Please try again.");
+        }
+    }); 
+}
+
+
+
 
 	function verify() {
 		event.preventDefault();
@@ -239,10 +266,10 @@ input[type="number"] {
 </script>
 
 <script>
-    function updateCheckboxValue(checkbox) {
-        checkbox.value = checkbox.checked ? 'Yes' : 'No';
-        console.log(`Checkbox value updated to: ${checkbox.value}`);
-    }
+	function updateCheckboxValue(checkbox) {
+		checkbox.value = checkbox.checked ? 'Yes' : 'No';
+		console.log(`Checkbox value updated to: ${checkbox.value}`);
+	}
 </script>
 
 
@@ -369,6 +396,8 @@ input[type="number"] {
 									</div>
 
 									<div class="col-sm-1">
+
+
 										<label for="countryOfEstablishment"
 											title="Country of Establishment">Country of
 											Establishment</label>
@@ -520,7 +549,7 @@ input[type="number"] {
 
 									<div class="form-check col-sm-2">
 										<input class="form-check-input" type="checkbox"
-											name="CoWorkingFacility" id="coWorkingFacility"
+											name="OfficeSharingAgreement" id="coWorkingFacility"
 											onchange="this.value = this.checked ? 'Yes' : 'No';"
 											th:value="${user_data.OfficeSharingAgreement}"
 											th:checked="${user_data.OfficeSharingAgreement == 'Yes'}">
@@ -1461,6 +1490,7 @@ input[type="number"] {
 												<input class="form-check-input" type="checkbox"
 													name="SanctionsUaeMatch" id="UAE"
 													onchange="this.value = this.checked ? 'Yes' : 'No';"
+													th:value="${user_data.SanctionsUaeMatch}"
 													th:checked="${user_data.SanctionsUaeMatch == 'Yes'}">
 												<label class="form-check-label" for="uaeCheck"> UAE
 												</label>
@@ -1470,7 +1500,8 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												name="SanctionsUnMatch" id="UN" value="Yes"
+												name="SanctionsUnMatch" id="UN"
+												th:value="${user_data.SanctionsUnMatch}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.SanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
@@ -1480,7 +1511,8 @@ input[type="number"] {
 
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												name="SanctionsOfacMatch" id="OFAC" value="Yes"
+												name="SanctionsOfacMatch" id="OFAC"
+												th:value="${user_data.SanctionsOfacMatch}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.SanctionsOfacMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> OFAC
@@ -1490,7 +1522,8 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												name="SanctionsHmtMatch" id="HMT" value="Yes"
+												name="SanctionsHmtMatch" id="HMT"
+												th:value="${user_data.SanctionsHmtMatch}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.SanctionsHmtMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> HMT </label>
@@ -1499,7 +1532,8 @@ input[type="number"] {
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												name="SanctionsEuMatch" id="EU" value="Yes"
+												name="SanctionsEuMatch" id="EU"
+												th:value="${user_data.SanctionsEuMatch}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.SanctionsEuMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> EU </label>
@@ -1629,10 +1663,12 @@ input[type="number"] {
 
 									<div class="col-sm-1">
 										<div class="form-check">
-											
+
 
 											<input class="form-check-input" type="checkbox" id="UBOUAE"
 												name="UboSanctionsUaeMatch"
+												th:value="${user_data.UboSanctionsUaeMatch}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.UboSanctionsUaeMatch == 'Yes'}">
 
 											<label class="form-check-label" for="UBOUAE">UAE</label>
@@ -1646,15 +1682,18 @@ input[type="number"] {
 
 									<div class="col-sm-1">
 										<div class="form-check ">
-											<input class="form-check-input" type="checkbox" 
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.UboSanctionsUnMatch}"
 												name="UboSanctionsUnMatch" id="UBOUN"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.UboSanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check ">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.UboSanctionsOfacMatch}"
 												name="UboSanctionsOfacMatch" id="UBOOFAC"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.UboSanctionsOfacMatch == 'Yes'}">
@@ -1664,7 +1703,8 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check ">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.UboSanctionsHmtMatch}"
 												name="UboSanctionsHmtMatch" id="UBOHMT"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.UboSanctionsHmtMatch == 'Yes'}">
@@ -1673,7 +1713,8 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check ">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.UboSanctionsEuMatch}"
 												name="UboSanctionsEuMatch" id="UBOEU"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.UboSanctionsEuMatch == 'Yes'}">
@@ -1806,7 +1847,8 @@ input[type="number"] {
 
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input " type="checkbox" value="Yes"
+											<input class="form-check-input " type="checkbox"
+												th:value="${user_data.CounterpartySanctionsUaeMatch}"
 												name="CounterpartySanctionsUaeMatch" id="CounterpartiesUAE"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.CounterpartySanctionsUaeMatch == 'Yes'}">
@@ -1815,7 +1857,9 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.CounterpartySanctionsUnMatch}"
+												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												name="CounterpartySanctionsUnMatch" id="CounterpartiesUN"
 												th:checked="${user_data.CounterpartySanctionsUnMatch == 'Yes'}">
 											<label class="form-check-label" for="uaeCheck"> UN </label>
@@ -1823,8 +1867,9 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
 												name="CounterpartySanctionsOfacMatch"
+												th:value="${user_data.CounterpartySanctionsOfacMatch}"
 												id="CounterpartiesOFAC"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.CounterpartySanctionsOfacMatch == 'Yes'}">
@@ -1834,7 +1879,8 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.CounterpartySanctionsHmtMatch}"
 												name="CounterpartySanctionsHmtMatch" id="CounterpartiesHMT"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.CounterpartySanctionsHmtMatch == 'Yes'}">
@@ -1843,7 +1889,8 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="Yes"
+											<input class="form-check-input" type="checkbox"
+												th:value="${user_data.CounterpartySanctionsEuMatch}"
 												name="CounterpartySanctionsEuMatch" id="CounterpartiesEU"
 												onchange="this.value = this.checked ? 'Yes' : 'No';"
 												th:checked="${user_data.CounterpartySanctionsEuMatch == 'Yes'}">
@@ -1868,27 +1915,33 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<input type="radio" id="transaction_commensurate_yes"
-											th:value="${user_data.CounterpartyCbuaeBblCheckDone}"
-											name="CounterpartyCbuaeBblCheckDone" value="Yes" /> <label
-											for="transaction_commensurate_yes">Yes</label> <input
+											th:value="Yes" name="CounterpartyCbuaeBblCheckDone"
+											value="Yes"
+											th:checked="${user_data.CounterpartyCbuaeBblCheckDone == 'Yes'}" />
+										<label for="transaction_commensurate_yes">Yes</label> <input
 											type="radio" id="transaction_commensurate_no"
-											name="CounterpartyCbuaeBblCheckDone" value="No" /> <label
-											for="transaction_commensurate_no">No</label>
+											name="CounterpartyCbuaeBblCheckDone" value="No"
+											th:checked="${user_data.CounterpartyCbuaeBblCheckDone == 'No'}" />
+										<label for="transaction_commensurate_no">No</label>
 									</div>
 
 									<div class="col-sm-1">
 										<label for="google_media_search_cp"
 											title="Google open Media search">Google Media sch</label>
 									</div>
+
 									<div class="col-sm-1">
 										<input type="radio" id="google_media_search_yes"
-											th:value="${user_data.CounterpartyGoogleMediaSearchDone}"
-											name="CounterpartyGoogleMediaSearchDone" value="Yes" /> <label
-											for="google_media_search_yes">Yes</label> <input type="radio"
-											id="google_media_search_no"
-											name="CounterpartyGoogleMediaSearchDone" value="No" /> <label
-											for="google_media_search_no">No</label>
+											th:value="Yes" name="CounterpartyGoogleMediaSearchDone"
+											value="Yes"
+											th:checked="${user_data.CounterpartyGoogleMediaSearchDone == 'Yes'}" />
+										<label for="google_media_search_yes">Yes</label> <input
+											type="radio" id="google_media_search_no"
+											name="CounterpartyGoogleMediaSearchDone" value="No"
+											th:checked="${user_data.CounterpartyGoogleMediaSearchDone == 'No'}" />
+										<label for="google_media_search_no">No</label>
 									</div>
+
 
 
 								</div>
@@ -1901,13 +1954,15 @@ input[type="number"] {
 									</div>
 									<div class="col-sm-1">
 										<input type="radio" id="internal_deny_list_yes"
-											th:value="${user_data.CounterpartyInternalDenyListScreening}"
-											name="CounterpartyInternalDenyListScreening" value="Yes" />
+											name="CounterpartyInternalDenyListScreening" value="Yes"
+											th:checked="${user_data.CounterpartyInternalDenyListScreening == 'Yes'}" />
 										<label for="internal_deny_list_yes">Yes</label> <input
 											type="radio" id="internal_deny_list_no"
-											name="CounterpartyInternalDenyListScreening" value="No" /> <label
-											for="internal_deny_list_no">No</label>
+											name="CounterpartyInternalDenyListScreening" value="No"
+											th:checked="${user_data.CounterpartyInternalDenyListScreening == 'No'}" />
+										<label for="internal_deny_list_no">No</label>
 									</div>
+
 									<div class="col-sm-1">
 										<label for="CounterpartySuspicionObserved"
 											title="Suspicion observed">Suspicion Observed</label>
@@ -2128,113 +2183,100 @@ input[type="number"] {
 								<div class="row formline" style="padding: 0px 0px 0px 0px;">
 
 
-
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="General Trading" name="CashIntensiveBusinessDetail"
+												value="General Trading" name="checkGroup"
 												id="general_trading"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('General Trading')}"
-												onchange="this.value = this.checked ? 'General Trading' : '';">
-											<label class="form-check" for="uaeCheck"> General
-												Trading </label>
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('General Trading')}">
+											<label class="form-check" for="general_trading">General
+												Trading</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Supermarkets" name="CashIntensiveBusinessDetail"
-												id="supermarkets"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Supermarkets')}"
-												onchange="this.value = this.checked ? 'Supermarkets' : '';">
-											<label class="form-check"> Supermarkets </label>
+												value="Supermarkets" name="checkGroup" id="supermarkets"
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Supermarkets')}">
+											<label class="form-check" for="supermarkets">Supermarkets</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Restaurants" name="CashIntensiveBusinessDetail"
-												id="restaurants"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Restaurants')}"
-												onchange="this.value = this.checked ? 'Restaurants' : '';">
-											<label class="form-check"> Restaurants </label>
+												value="Restaurants" name="checkGroup" id="restaurants"
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Restaurants')}">
+											<label class="form-check" for="restaurants">Restaurants</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Convenience/Retail Stores"
-												name="CashIntensiveBusinessDetail"
+												value="Convenience/Retail Stores" name="checkGroup"
 												id="convenience_retail_stores"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Convenience/Retail Stores')}"
-												onchange="this.value = this.checked ? 'Convenience/Retail Stores' : '';">
-											<label class="form-check"> Convenience/Retail Stores
-											</label>
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Convenience/Retail Stores')}">
+											<label class="form-check" for="convenience_retail_stores">Convenience/Retail
+												Stores</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Fuel Station" name="CashIntensiveBusinessDetail"
-												id="fuel_station"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Fuel Station')}"
-												onchange="this.value = this.checked ? 'Fuel Station' : '';">
-											<label class="form-check"> Fuel Station </label>
+												value="Fuel Station" name="checkGroup" id="fuel_station"
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Fuel Station')}">
+											<label class="form-check" for="fuel_station">Fuel
+												Station</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Tour Operators" name="CashIntensiveBusinessDetail"
-												id="tour_operators"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Tour Operators')}"
-												onchange="this.value = this.checked ? 'Tour Operators' : '';">
-											<label class="form-check"> Tour Operators </label>
+												value="Tour Operators" name="checkGroup" id="tour_operators"
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Tour Operators')}">
+											<label class="form-check" for="tour_operators">Tour
+												Operators</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Car Dealer" name="CashIntensiveBusinessDetail"
-												id="car_dealer"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Car Dealer')}"
-												onchange="this.value = this.checked ? 'Car Dealer' : '';">
-											<label class="form-check"> Car Dealer </label>
+												value="Car Dealer" name="checkGroup" id="car_dealer"
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Car Dealer')}">
+											<label class="form-check" for="car_dealer">Car Dealer</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Jewelry Trading" name="CashIntensiveBusinessDetail"
+												value="Jewelry Trading" name="checkGroup"
 												id="jewelry_trading"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Jewelry Trading')}"
-												onchange="this.value = this.checked ? 'Jewelry Trading' : '';">
-											<label class="form-check"> Jewelry Trading </label>
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Jewelry Trading')}">
+											<label class="form-check" for="jewelry_trading">Jewelry
+												Trading</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Exchange Houses" name="CashIntensiveBusinessDetail"
+												value="Exchange Houses" name="checkGroup"
 												id="exchange_houses"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Exchange Houses')}"
-												onchange="this.value = this.checked ? 'Exchange Houses' : '';">
-											<label class="form-check"> Exchange Houses </label>
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Exchange Houses')}">
+											<label class="form-check" for="exchange_houses">Exchange
+												Houses</label>
 										</div>
 									</div>
 									<div class="col-sm-1">
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
-												value="Identified as tran
-												Activity"
-												name="CashIntensiveBusinessDetail"
+												value="Identified as tran Activity" name="checkGroup"
 												id="identified_as_tran_activity"
-												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Identified as tran Activity')}"
-												onchange="this.value = this.checked ? 'Identified as tran Activity' : '';">
-											<label class="form-check"> Identified as tran
-												Activity </label>
+												th:checked="${user_data.CashIntensiveBusinessDetail != null && user_data.CashIntensiveBusinessDetail.contains('Identified as tran Activity')}">
+											<label class="form-check" for="identified_as_tran_activity">Identified
+												as tran Activity</label>
 										</div>
 									</div>
+									<input type="hidden" id="cashIntensiveBusinessDetail"
+										name="CashIntensiveBusinessDetail">
 
 								</div>
 
@@ -2378,16 +2420,7 @@ input[type="number"] {
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<h6 class="col-sm-5">Does customer fall under the DNFBPs
 										?, if yes, please provide following information</h6>
-									<div class="col-sm-1">
-										<input type="radio" id="GoogleMediaSearchDoneYes"
-											th:checked="${user_data.GoogleMediaSearchDone == 'Yes'}"
-											name="GoogleMediaSearchDone" value="Yes" /> <label
-											for="GoogleMediaSearchDoneYes">Yes</label> <input
-											type="radio" id="GoogleMediaSearchDoneNo"
-											th:checked="${user_data.GoogleMediaSearchDone == 'No'}"
-											name="GoogleMediaSearchDone" value="No" /> <label
-											for="GoogleMediaSearchDoneNo">No</label>
-									</div>
+
 								</div>
 								<div class="row formline" style="padding: 2px 0px 0px 0px;">
 									<div class="col-sm-1">
@@ -2397,6 +2430,7 @@ input[type="number"] {
 											<input class="form-check-input" type="checkbox"
 												name="BrokerOrAgent" id="brokerOrAgent"
 												th:checked="${user_data.BrokerOrAgent == 'Yes'}"
+												th:value="${user_data.BrokerOrAgent}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label" for="brokerOrAgent">Real
 												Estate Agent</label>
@@ -2407,6 +2441,7 @@ input[type="number"] {
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
 												name="DealerOfMetals" id="dealerOfMetals"
+												th:value="${user_data.DealerOfMetals}"
 												th:checked="${user_data.DealerOfMetals == 'Yes'}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label" for="dealerOfMetals">
@@ -2419,6 +2454,7 @@ input[type="number"] {
 											<input class="form-check-input" type="checkbox"
 												name="Auditor" id="auditor"
 												th:checked="${user_data.Auditor == 'Yes'}"
+												th:value="${user_data.Auditor}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label" for="auditor">
 												Auditor and Corporate Service Provider </label>
@@ -2429,6 +2465,7 @@ input[type="number"] {
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox"
 												name="LegalConsultant" id="legalConsultant"
+												th:value="${user_data.LegalConsultant}"
 												th:checked="${user_data.LegalConsultant == 'Yes'}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label" for="legalConsultant">
@@ -2441,6 +2478,7 @@ input[type="number"] {
 											<input class="form-check-input" type="checkbox"
 												name="DealsDualGoods" id="dealsDualGoods"
 												th:checked="${user_data.DealsDualGoods == 'Yes'}"
+												th:value="${user_data.DealsDualGoods}"
 												onchange="this.value = this.checked ? 'Yes' : 'No';">
 											<label class="form-check-label" for="dealsDualGoods">
 												Dual Use Goods as per EOCN List </label>
@@ -2633,7 +2671,7 @@ input[type="number"] {
 								</div>
 								<button type="button" class="btn btn-xs btn-primary"
 									th:if="${formmode == 'modify'}" form="individual_form"
-									id="btnSubmit" onclick="submitform();">Submit</button>
+									id="btnSubmit" onclick="submitForm();">Submit</button>
 							</div>
 						</fieldset>
 					</form>
