@@ -97,9 +97,9 @@ input[type="number"] {
 function navigateToForm(element, action, type) {
     // Get the customer ID from the clicked element
     var custid = element.getAttribute('data-custid');
-    console.log(custid);
+  /*   console.log(custid);
     console.log(action);
-
+ */
     var baseUrl = `/BRF/kyc/${type}`; // Corrected the base URL
     var url;
 
@@ -118,26 +118,48 @@ function navigateToForm(element, action, type) {
 }
 
 function submitform() {
-    console.log("hello");
-
+	
     event.preventDefault();
 
-    const Customer_id = document.getElementById("Customer_id").value.trim();
-    console.log(Customer_id);
-    const url = `/BRF/kyc/individual?formmode=submit&custid=${Customer_id}`;
+    const form = document.getElementById("individual_form");
+    
+    const formData = new FormData(form);
 
-    $.ajax({
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        formData.delete(checkbox.name); 
+        
+   
+            formData.append(checkbox.name, checkbox.value); 
+      
+    });
+
+    const Customer_id = document.getElementById("Customer_id").value.trim();
+
+    const url = `/BRF/kyc/individual?formmode=submit&custid=${encodeURIComponent(Customer_id)}`;
+
+
+     $.ajax({
         url: url,
-        data: $("#individual_form").serialize(),
+        data: formData,
         type: 'POST',
+        processData: false, 
+        contentType: false,
         success: function(data) {
+        
             $("#alertmsg").text(data);
             $('#alert').modal("show");
-            console.log(data);
-    
-            location.href = `/BRF/kyc?formmode=individual`;
+           
+        	location.href = `/BRF/kyc/?formmode=individual`
+        },
+        error: function(error) {
+            // Handle errors
+            console.error("Error submitting form:", error);
+            $("#alertmsg").text("An error occurred while submitting the form.");
+            $('#alert').modal("show");
         }
-    });
+    });	
 }
 
 	
@@ -147,7 +169,7 @@ function submitform() {
 event.preventDefault();
  		
  		const Customer_id = document.getElementById("Customer_id").value.trim();
- 		console.log(Customer_id)
+ 		/* console.log(Customer_id) */
  		const url = `/BRF/kyc/individual?formmode=verified&custid=${Customer_id}`;
  		$.ajax({
  			url : url,
@@ -163,7 +185,7 @@ event.preventDefault();
 		event.preventDefault();
 		 		
 		 		const Customer_id = document.getElementById("Customer_id").value.trim();
-		 		console.log(Customer_id)
+		 	/* 	console.log(Customer_id) */
 		 		const url = `/BRF/kyc/individual/download?custid=${Customer_id}`;
 		 location.href = url;
 			}
@@ -1866,6 +1888,7 @@ window.onload = function() {
 
 
 									<div class="col-sm-2">Specify Suspicion Observed</div>
+
 									<div class="col-sm-1">
 										<input type="text" name="suspicionObserved1"
 											id="suspicionObserved1"
@@ -1885,7 +1908,7 @@ window.onload = function() {
 										<label for="denylistno">No</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="adverseInfoDetailsPrimary"
+										<input type="text" name="reasonForRedFlag1"
 											id="reasonForRedFlag1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.reasonForRedFlag1}" />
@@ -2011,6 +2034,7 @@ window.onload = function() {
 									<div class="col-sm-1">
 										<input type="text" name="jointSupportingDocumentDetails"
 											id="jointSupportingDocumentDetails"
+											th:value="${user_data.jointSupportingDocumentDetails }"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
 
@@ -2024,14 +2048,14 @@ window.onload = function() {
 									<div class="col-sm-1">Whether customer PEP</div>
 									<div class="col-sm-1 ">
 										<div class="radio-group">
-											<input type="radio" id="pep_yes" name="isPep" value="yes"
-												th:checked="${user_data.isPep == 'yes'}" /> <label
+											<input type="radio" id="pep_yes" name="isPep" value="Yes"
+												th:checked="${user_data.isPep == 'Yes'}" /> <label
 												for="pep_yes">Yes</label> <input type="radio" id="pep_no"
-												name="isPep" value="no"
-												th:checked="${user_data.isPep == 'no'}" /> <label
+												name="isPep" value="No"
+												th:checked="${user_data.isPep == 'No'}" /> <label
 												for="pep_no">No</label> <input type="radio" id="pep_na"
-												name="isPep" value="na"
-												th:checked="${user_data.isPep == 'na'}" /> <label
+												name="isPep" value="NA"
+												th:checked="${user_data.isPep == 'NA'}" /> <label
 												for="pep_na">NA</label>
 										</div>
 									</div>
@@ -2041,14 +2065,14 @@ window.onload = function() {
 									<div class="col-sm-1">Senior approval</div>
 									<div class="col-sm-1 radio-group ">
 										<input type="radio" id="approval_yes"
-											name="seniorManagementApproval" value="yes"
-											th:checked="${user_data.seniorManagementApproval == 'yes'}" />
+											name="seniorManagementApproval" value="Yes"
+											th:checked="${user_data.seniorManagementApproval == 'Yes'}" />
 										<label for="approval_yes">Yes</label> <input type="radio"
-											id="approval_no" name="seniorManagementApproval" value="no"
-											th:checked="${user_data.seniorManagementApproval == 'no'}" />
+											id="approval_no" name="seniorManagementApproval" value="No"
+											th:checked="${user_data.seniorManagementApproval == 'No'}" />
 										<label for="approval_no">No</label> <input type="radio"
-											id="approval_na" name="seniorManagementApproval" value="na"
-											th:checked="${user_data.seniorManagementApproval == 'na'}" />
+											id="approval_na" name="seniorManagementApproval" value="NA"
+											th:checked="${user_data.seniorManagementApproval == 'NA'}" />
 										<label for="approval_na">NA</label>
 									</div>
 
@@ -2056,45 +2080,45 @@ window.onload = function() {
 									<div class="col-sm-1">Requesting Foreign</div>
 									<div class="col-sm-1 radio-group">
 										<input type="radio" id="request_foreign_yes"
-											name="foreignCurrencyRequest" value="yes"
-											th:checked="${user_data.foreignCurrencyRequest == 'yes'}" />
+											name="foreignCurrencyRequest" value="Yes"
+											th:checked="${user_data.foreignCurrencyRequest == 'Yes'}" />
 										<label for="request_foreign_yes">Yes</label> <input
 											type="radio" id="request_foreign_no"
-											name="foreignCurrencyRequest" value="no"
-											th:checked="${user_data.foreignCurrencyRequest == 'no'}" />
+											name="foreignCurrencyRequest" value="No"
+											th:checked="${user_data.foreignCurrencyRequest == 'No'}" />
 										<label for="request_foreign_no">No</label> <input type="radio"
 											id="request_foreign_na" name="foreignCurrencyRequest"
-											value="na"
-											th:checked="${user_data.foreignCurrencyRequest == 'na'}" />
+											value="NA"
+											th:checked="${user_data.foreignCurrencyRequest == 'NA'}" />
 										<label for="request_foreign_na">NA</label>
 									</div>
 
 									<div class="col-sm-1">Senior Approval FC</div>
 									<div class="col-sm-2 radio-group">
 										<input type="radio" id="seniorApprovalYes"
-											name="seniorManagementApprovalFc" value="yes"
-											th:checked="${user_data.seniorManagementApprovalFc == 'yes'}" />
+											name="seniorManagementApprovalFc" value="Yes"
+											th:checked="${user_data.seniorManagementApprovalFc == 'Yes'}" />
 										<label for="seniorApprovalYes">Yes</label> <input type="radio"
 											id="seniorApprovalNo" name="seniorManagementApprovalFc"
-											value="no"
-											th:checked="${user_data.seniorManagementApprovalFc == 'no'}" />
+											value="No"
+											th:checked="${user_data.seniorManagementApprovalFc == 'No'}" />
 										<label for="seniorApprovalNo">No</label> <input type="radio"
 											id="seniorApprovalNa" name="seniorManagementApprovalFc"
-											value="na"
-											th:checked="${user_data.seniorManagementApprovalFc == 'na'}" />
+											value="NA"
+											th:checked="${user_data.seniorManagementApprovalFc == 'NA'}" />
 										<label for="seniorApprovalNa">NA</label>
 									</div>
 									<!-- Customer Risk -->
 									<div class="col-sm-1">Customer Risk</div>
 									<div class="col-sm-2 radio-group">
 										<input type="radio" id="risk_high" name="customerRisk"
-											value="high" th:checked="${user_data.customerRisk == 'high'}" />
+											value="High" th:checked="${user_data.customerRisk == 'High'}" />
 										<label for="risk_high">High</label> <input type="radio"
-											id="risk_medium" name="customerRisk" value="medium"
-											th:checked="${user_data.customerRisk == 'medium'}" /> <label
+											id="risk_medium" name="customerRisk" value="Medium"
+											th:checked="${user_data.customerRisk == 'Medium'}" /> <label
 											for="risk_medium">Medium</label> <input type="radio"
-											id="risk_low" name="customerRisk" value="low"
-											th:checked="${user_data.customerRisk == 'low'}" /> <label
+											id="risk_low" name="customerRisk" value="Low"
+											th:checked="${user_data.customerRisk == 'Low'}" /> <label
 											for="risk_low">Low</label>
 									</div>
 

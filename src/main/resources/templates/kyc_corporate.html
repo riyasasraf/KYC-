@@ -126,7 +126,6 @@ function submitForm() {
     const form = document.getElementById("individual_form");
     const formData = new FormData(form);
     
-    console.log(formData.get("CashIntensiveBusinessDetail"));
     
     const checkboxe = form.querySelectorAll('input[type="checkbox"]');
     checkboxe.forEach(checkbox => {
@@ -136,12 +135,12 @@ function submitForm() {
        
     });
      
-   console.log("Final FormData entries after joining:");
+/*    console.log("Final FormData entries after joining:");
     for (let [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
     }
 
-
+ */
    $.ajax({
         url: url,
         data: formData,
@@ -168,7 +167,7 @@ function submitForm() {
 		event.preventDefault();
 
 		const Customer_id = document.getElementById("customerID").value.trim();
-		console.log(Customer_id)
+	/* 	console.log(Customer_id) */
 		const url = `/BRF/kyc/corporate?formmode=verified&custid=${Customer_id}`;
 		$.ajax({
 			url : url,
@@ -184,7 +183,7 @@ function submitForm() {
 		event.preventDefault();
 
 		const Customer_id = document.getElementById("customerID").value.trim();
-		console.log(Customer_id)
+/* 		console.log(Customer_id) */
 		const url = `/BRF/kyc/corporate/download?custid=${Customer_id}`;
 		location.href = url;
 	}
@@ -263,14 +262,26 @@ function submitForm() {
 	 toggleInputBasedOnRadio('joint_holder_2_residential_status_changed_y', ['joint_holder_2_new_country','joint_holder_2_new_city','joint_holder_2_new_po_box']);
 	 });
 	 */
+	 
+	 window.onload = function() {
+		    // Get all elements with the data-modifyflg attribute
+		    var elements = document.querySelectorAll('[data-modifyflg]');
+		    
+		    // Loop through the elements
+		    elements.forEach(function(element) {
+		        // Get the value of the data-modifyflg attribute
+		        var data = element.getAttribute("data-modifyflg");
+
+		        // If data-modifyflg is not "Y", set the display property to "block"
+		        if (data !== "Y") {
+		            element.style.display = "none";
+		        }
+		    });
+		};
+	 
 </script>
 
-<script>
-	function updateCheckboxValue(checkbox) {
-		checkbox.value = checkbox.checked ? 'Yes' : 'No';
-		console.log(`Checkbox value updated to: ${checkbox.value}`);
-	}
-</script>
+
 
 
 <title>XBRL</title>
@@ -294,15 +305,18 @@ function submitForm() {
 
 							</div>
 
+
 							<div th:if="${formmode != 'verify'}" class="dropdown float-right">
 								<button class="btn btn-primary dropdown-toggle" type="button"
 									id="dropdownMenuButton" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false">
-									<span th:text="${formmode == 'verify' ? 'Verify' : 'Action'}">Action</span>
+									<span>Action</span>
 								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<!-- Modify Link -->
-									<a class="dropdown-item" onclick="setFormMode('modify')">Modify</a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+									th:each="user_data: ${user_data}">
+									<a class="dropdown-item" onclick="verify()"
+										th:data-modifyflg="${user_data.modifyFlg}"> Verify </a> <a
+										class="dropdown-item" onclick="setFormMode('modify')">Modify</a>
 									<a class="dropdown-item" onclick="downloadFn('download')">Download</a>
 								</div>
 							</div>
@@ -1439,6 +1453,12 @@ function submitForm() {
 											th:checked="${user_data.CustomerOperatingBussiness == 'No'}"
 											name="CustomerOperatingBussiness" value="No" /> <label
 											for="CustomerOperatingBussinessNo">No</label>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="OperatingInHighRiskJurisdiction"
+											id="OperatingInHighRiskJurisdiction"
+											class="form-control form-control-sm bg-white border border-dark"
+											th:value="${user_data.OperatingInHighRiskJurisdiction}" />
 									</div>
 								</div>
 

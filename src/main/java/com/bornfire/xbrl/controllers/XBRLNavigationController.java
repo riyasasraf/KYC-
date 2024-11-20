@@ -848,14 +848,14 @@ public class XBRLNavigationController {
 
 		if ("submit".equals(formmode)) {
 
-			System.out.println(data.getUboSanctionsUaeMatch());
+		
 			Kyc_Corprate_service.updateKycData(custid, data);
 
 		} else if ("verified".equals(formmode)) {
 
 			Kyc_Corprate_service.verified(custid);
 		} else if ("download".equals(formmode)) {
-			System.out.println(custid);
+	
 			Kyc_Corprate_service.GrtPdf(custid);
 		}
 

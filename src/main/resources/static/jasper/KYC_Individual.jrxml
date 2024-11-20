@@ -703,6 +703,10 @@
 		<property name="com.jaspersoft.studio.field.name" value="REPORT_DATE"/>
 		<property name="com.jaspersoft.studio.field.label" value="REPORT_DATE"/>
 	</field>
+	<field name="JOINT_SUPPORT_DOCUMENT_DETAILS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="JOINT_SUPPORT_DOCUMENT_DETAILS"/>
+		<property name="com.jaspersoft.studio.field.label" value="JOINT_SUPPORT_DOCUMENT_DETAILS"/>
+	</field>
 	<title>
 		<band height="2100" splitType="Immediate">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -951,8 +955,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{BUSINESS_ACTIVITY}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="190" y="542" width="365" height="20" uuid="6fa5ee37-8826-432c-9c88-197afb734a36">
+			<textField>
+				<reportElement x="190" y="542" width="365" height="20" uuid="c8bb5822-87f7-4edc-b91b-4299edea8fbc">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -962,10 +966,10 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<text><![CDATA[Yes or No, 
-if Yes, please provide the current residency information 
-]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Yes or No," +$F{JOINT_HOLDER1_RESIDENTIAL_STATUS_CHANGED} +
+" \n if Yes, please provide the current residency information "
+]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="0" y="522" width="90" height="20" uuid="a8579342-3885-42de-bd70-3f60bd86a59f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1674,8 +1678,8 @@ if Yes, please provide the current residency information
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CUSTOMER_ID}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="190" y="702" width="365" height="20" uuid="25e0cfc1-9c77-468c-a99e-de011a09de40">
+			<textField>
+				<reportElement x="190" y="702" width="365" height="20" uuid="af24fc7e-9831-4993-a46d-beeb633da52a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -1685,10 +1689,10 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<text><![CDATA[Yes or No, 
-if Yes, please provide the current residency information 
-]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Yes or No, " +$F{JOINT_HOLDER2_RESIDENTIAL_STATUS_CHANGED} +
+"\nif Yes, please provide the current residency information "
+]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="554" height="42" uuid="b487c5fa-0098-4a81-9dd2-6c016dbc5db6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -1980,8 +1984,8 @@ if Yes, please provide the current residency information
 				</textElement>
 				<text><![CDATA[Change of residential status after Opening account]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="190" y="382" width="365" height="20" uuid="d66babdd-08f4-4c8f-89d8-2905e82839ac">
+			<textField>
+				<reportElement x="190" y="382" width="365" height="20" uuid="7baab038-446a-4b24-bba1-7585629b4577">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
 				</reportElement>
@@ -1991,10 +1995,8 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<text><![CDATA[Yes or No, 
-if Yes, please provide the current residency information 
-]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Yes or No, " + $F{RESIDENTIAL_STATUS_CHANGED} +" \n if Yes, please provide the current residency information \n"]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement x="260" y="482" width="120" height="20" uuid="106dc7f9-de4b-4d1c-b34d-46132a946666">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -3146,7 +3148,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- " ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- \n" + $F{SUPPORTING_DOCUMENT_OBTAINED_2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1382" width="86" height="20" uuid="6d4263e0-c131-4497-9c56-89254314e793">
@@ -3316,8 +3318,7 @@ if Yes, please provide the current residency information
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others " + ($F{OTHERS} != null ? $F{OTHERS} : "")
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others " + ($F{OTHERS} != null ? $F{OTHERS} : "")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="280" y="1002" width="135" height="20" uuid="c1249d37-96d7-45d9-8d4d-b3122fd18278">
@@ -3684,8 +3685,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Others         "+ ($F{JOINT_OTHERS} != null ? $F{JOINT_OTHERS} : "")
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Others         "+ ($F{JOINT_OTHERS} != null ? $F{JOINT_OTHERS} : "")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1222" width="345" height="20" uuid="f3d855cc-5fdf-4f3a-a65c-7cebfa0bd413">
@@ -4203,7 +4203,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yes …/ No…./NA….If no, please provide the reason for the same- \n " +$F{JOINT_SUPPORTING_DOCUMENT_OBTAINED}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1792" width="350" height="10" uuid="84e4e871-4b00-4ad4-ab70-d8e6ecf1c817">
@@ -4315,7 +4315,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Date:" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Date:"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1762" width="350" height="10" uuid="2f9c784a-b0e0-4bfe-9958-78ac6664cd11">
@@ -4339,11 +4339,12 @@ If any suspicion is observed
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Reason for categorizing customer risk as High risk. (only for High risk customer) Analysis of underline ML/TF risk." ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reason for categorizing customer risk as High risk. (only for High risk customer) Analysis of underline ML/TF risk."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="140" y="1672" width="415" height="20" uuid="71a6fd5d-8b41-4d62-b2d7-48aa49134193">
@@ -4449,8 +4450,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Further, Due Diligence done by the Branch for account being categorized as high risk. ( provide the supporting document and information) (only for High risk customer) "
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Further, Due Diligence done by the Branch for account being categorized as high risk. ( provide the supporting document and information) (only for High risk customer) "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="1970" width="70" height="10" uuid="74e8d123-189b-46e4-9c43-1585ccc599ff">
@@ -4466,7 +4466,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Date:" ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Date:"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="420" y="1782" width="70" height="10" uuid="2f5b3fa5-0f28-4547-8cbc-36937bf3c300">
@@ -4591,8 +4591,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Observations of Bank official (List any adverse features if any found post CDD/ECDD) "
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Observations of Bank official (List any adverse features if any found post CDD/ECDD) \n"+$F{OBSERVATIONS_OF_BANK_OFFICIAL}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="1940" width="70" height="10" uuid="deeffc63-a4bc-48bc-8588-2d2a7434eef0">
@@ -4608,7 +4607,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Signature : " ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Signature : "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1930" width="280" height="10" uuid="f943f68b-db0c-46b6-a6f5-944efefdc094">
@@ -5486,7 +5485,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{JOINT_SUSPICION_OBSERVED}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{JOINT_SUPPORT_DOCUMENT_DETAILS}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="260" y="1530" width="295" height="22" uuid="b6445e11-9766-439b-a0f4-2f31e9d88cf0">
@@ -5500,8 +5499,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{SUPPORTING_DOCUMENT_OBTAINED_2}
-  != null ? $F{SUPPORTING_DOCUMENT_OBTAINED_2} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{REASON_FOR_RED_FLAG_1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="1880" width="555" height="22" uuid="6c68f106-94f4-4e9f-937b-dbc70e6577a1">
@@ -5524,6 +5522,7 @@ If any suspicion is observed
 				</reportElement>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
@@ -5672,7 +5671,7 @@ If any suspicion is observed
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[ $F{SUSPICION_OBSERVED_DETAILS}  != null ? $F{SUSPICION_OBSERVED_DETAILS} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{SUSPICION_OBSERVED_DETAILS}  != null ? $F{SUSPICION_OBSERVED_DETAILS} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1292" width="20" height="10" uuid="b75af89d-a899-4fc7-82f8-5487b1c20d1e">

@@ -3155,7 +3155,7 @@ If yes, please specify
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Whether customer is engaged with third party intermediaries with whom the customer conducts transactions. If yes please provide information " + $F{CUSTOMER_THIRD_PARTY_ENGAGEMENT}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Whether customer is engaged with third party intermediaries with whom the customer conducts transactions. If yes please provide information "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="1051" width="244" height="18" uuid="995ca440-9c31-4112-aead-0b2851835701">
@@ -5460,7 +5460,7 @@ $F{CUSTOMER_OPERATING_BUSINESS}]]></textFieldExpression>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{HIGH_RISK_JURISDICTION_COUNTRY}!=null?$F{HIGH_RISK_JURISDICTION_COUNTRY}:"") +"      "+ ($F{OPERATING_IN_HIGH_RISK_JURISDICTION}!=null?$F{OPERATING_IN_HIGH_RISK_JURISDICTION}:"")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{HIGH_RISK_JURISDICTION_COUNTRY}]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement x="50" y="1179" width="10" height="8" uuid="37c7f8bc-2a85-4936-b5c2-9841baea362c">

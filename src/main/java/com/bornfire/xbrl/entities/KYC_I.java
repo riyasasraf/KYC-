@@ -521,6 +521,9 @@ public class KYC_I {
 	@Column(name = "REASON_FOR_RED_FLAG_1")
 	private String reasonForRedFlag1;
 
+	@Column(name = "JOINT_SUPPORT_DOCUMENT_DETAILS")
+	private String jointSupportingDocumentDetails;
+
 	public String getCustomerId() {
 		return customerId;
 	}
@@ -1873,6 +1876,234 @@ public class KYC_I {
 		this.reasonForRedFlag1 = reasonForRedFlag1;
 	}
 
+	public String getJointSupportingDocumentDetails() {
+		return jointSupportingDocumentDetails;
+	}
+
+	public void setJointSupportingDocumentDetails(String jointSupportingDocumentDetails) {
+		this.jointSupportingDocumentDetails = jointSupportingDocumentDetails;
+	}
+
+	@Override
+	public String toString() {
+		return "KYC_I [customerId=" + customerId + ", accountType=" + accountType + ", name=" + name
+				+ ", accountNumber=" + accountNumber + ", dateOfBirth=" + dateOfBirth + ", placeOfBirth=" + placeOfBirth
+				+ ", nationality=" + nationality + ", accountOpeningDate=" + accountOpeningDate
+				+ ", countryOfCitizenship=" + countryOfCitizenship + ", countryOfCurrentResidency="
+				+ countryOfCurrentResidency + ", occupation=" + occupation + ", businessActivity=" + businessActivity
+				+ ", annualIncome=" + annualIncome + ", sourceOfFunds=" + sourceOfFunds + ", purposeOfAccountOpening="
+				+ purposeOfAccountOpening + ", taxRegistration=" + taxRegistration + ", taxIdNumber=" + taxIdNumber
+				+ ", primaryAddress=" + primaryAddress + ", primaryAddressCountry=" + primaryAddressCountry
+				+ ", primaryAddressCity=" + primaryAddressCity + ", primaryAddressPoBox=" + primaryAddressPoBox
+				+ ", mobileNumber=" + mobileNumber + ", primaryTelephone=" + primaryTelephone + ", secondaryTelephone="
+				+ secondaryTelephone + ", emailId=" + emailId + ", residentialStatusChanged=" + residentialStatusChanged
+				+ ", newCountryOfResidency=" + newCountryOfResidency + ", newCityOfResidency=" + newCityOfResidency
+				+ ", newPoBoxOfResidency=" + newPoBoxOfResidency + ", jointHolder1Name=" + jointHolder1Name
+				+ ", jointHolder1Address=" + jointHolder1Address + ", jointHolder1AddressCountry="
+				+ jointHolder1AddressCountry + ", jointHolder1AddressCity=" + jointHolder1AddressCity
+				+ ", jointHolder1AddressPoBox=" + jointHolder1AddressPoBox + ", jointHolder1Mobile="
+				+ jointHolder1Mobile + ", jointHolder1PrimaryTelephone=" + jointHolder1PrimaryTelephone
+				+ ", jointHolder1SecondaryTelephone=" + jointHolder1SecondaryTelephone + ", jointHolder1Email="
+				+ jointHolder1Email + ", jointHolder1ResidentialStatusChanged=" + jointHolder1ResidentialStatusChanged
+				+ ", jointHolder1NewCountryOfResidency=" + jointHolder1NewCountryOfResidency
+				+ ", jointHolder1NewCityOfResidency=" + jointHolder1NewCityOfResidency
+				+ ", jointHolder1NewPoBoxOfResidency=" + jointHolder1NewPoBoxOfResidency + ", jointHolder2Name="
+				+ jointHolder2Name + ", jointHolder2Address=" + jointHolder2Address + ", jointHolder2AddressCountry="
+				+ jointHolder2AddressCountry + ", jointHolder2AddressCity=" + jointHolder2AddressCity
+				+ ", jointHolder2AddressPoBox=" + jointHolder2AddressPoBox + ", jointHolder2Mobile="
+				+ jointHolder2Mobile + ", jointHolder2PrimaryTelephone=" + jointHolder2PrimaryTelephone
+				+ ", jointHolder2SecondaryTelephone=" + jointHolder2SecondaryTelephone + ", jointHolder2Email="
+				+ jointHolder2Email + ", jointHolder2ResidentialStatusChanged=" + jointHolder2ResidentialStatusChanged
+				+ ", jointHolder2NewCountryOfResidency=" + jointHolder2NewCountryOfResidency
+				+ ", jointHolder2NewCityOfResidency=" + jointHolder2NewCityOfResidency
+				+ ", jointHolder2NewPoBoxOfResidency=" + jointHolder2NewPoBoxOfResidency
+				+ ", primaryAccountHolderNationality=" + primaryAccountHolderNationality
+				+ ", jointAccountHolder1Nationality=" + jointAccountHolder1Nationality
+				+ ", jointAccountHolder2Nationality=" + jointAccountHolder2Nationality
+				+ ", primaryAccountHolderPassport=" + primaryAccountHolderPassport + ", jointAccountHolder1Passport="
+				+ jointAccountHolder1Passport + ", jointAccountHolder2Passport=" + jointAccountHolder2Passport
+				+ ", primaryAccountHolderVisaEid=" + primaryAccountHolderVisaEid + ", jointAccountHolder1VisaEid="
+				+ jointAccountHolder1VisaEid + ", jointAccountHolder2VisaEid=" + jointAccountHolder2VisaEid
+				+ ", primaryAccountHolderValidResidence=" + primaryAccountHolderValidResidence
+				+ ", jointAccountHolder1ValidResidence=" + jointAccountHolder1ValidResidence
+				+ ", jointAccountHolder2ValidResidence=" + jointAccountHolder2ValidResidence
+				+ ", primaryAccountHolderProofSourceIncome=" + primaryAccountHolderProofSourceIncome
+				+ ", jointAccountHolder1ProofSourceIncome=" + jointAccountHolder1ProofSourceIncome
+				+ ", jointAccountHolder2ProofSourceIncome=" + jointAccountHolder2ProofSourceIncome
+				+ ", linkedAccount1Name=" + linkedAccount1Name + ", linkedAccount1Number=" + linkedAccount1Number
+				+ ", linkedAccount1Type=" + linkedAccount1Type + ", linkedAccount1OpeningDate="
+				+ linkedAccount1OpeningDate + ", linkedAccount1Currency=" + linkedAccount1Currency
+				+ ", linkedAccount1Status=" + linkedAccount1Status + ", linkedAccount2Name=" + linkedAccount2Name
+				+ ", linkedAccount2Number=" + linkedAccount2Number + ", linkedAccount2Type=" + linkedAccount2Type
+				+ ", linkedAccount2OpeningDate=" + linkedAccount2OpeningDate + ", linkedAccount2Currency="
+				+ linkedAccount2Currency + ", linkedAccount2Status=" + linkedAccount2Status + ", linkedAccount3Name="
+				+ linkedAccount3Name + ", linkedAccount3Number=" + linkedAccount3Number + ", linkedAccount3Type="
+				+ linkedAccount3Type + ", linkedAccount3OpeningDate=" + linkedAccount3OpeningDate
+				+ ", linkedAccount3Currency=" + linkedAccount3Currency + ", linkedAccount3Status="
+				+ linkedAccount3Status + ", linkedAccount4Name=" + linkedAccount4Name + ", linkedAccount4Number="
+				+ linkedAccount4Number + ", linkedAccount4Type=" + linkedAccount4Type + ", linkedAccount4OpeningDate="
+				+ linkedAccount4OpeningDate + ", linkedAccount4Currency=" + linkedAccount4Currency
+				+ ", linkedAccount4Status=" + linkedAccount4Status + ", accountSatisfactory=" + accountSatisfactory
+				+ ", transactionCommensurate=" + transactionCommensurate + ", highValueTransactionsObserved="
+				+ highValueTransactionsObserved + ", highValueTransactionsDetails1=" + highValueTransactionsDetails1
+				+ ", highValueTransactionsDetails2=" + highValueTransactionsDetails2
+				+ ", highValueTransactionsDetails3=" + highValueTransactionsDetails3
+				+ ", highValueTransactionsDetails4=" + highValueTransactionsDetails4 + ", suspicionObserved="
+				+ suspicionObserved + ", suspicionObservedDetails=" + suspicionObservedDetails
+				+ ", branchSatisfiedWithTransactions=" + branchSatisfiedWithTransactions
+				+ ", supportingDocumentObtained=" + supportingDocumentObtained + ", currentTurnover=" + currentTurnover
+				+ ", expectedTurnover=" + expectedTurnover + ", expectedTransactionTypes=" + expectedTransactionTypes
+				+ ", expectedTransactionVolume=" + expectedTransactionVolume + ", transactionFrequency="
+				+ transactionFrequency + ", knownCountriesOfTransaction1=" + knownCountriesOfTransaction1
+				+ ", knownCountriesOfTransaction2=" + knownCountriesOfTransaction2 + ", knownCountriesOfTransaction3="
+				+ knownCountriesOfTransaction3 + ", knownCountriesOfTransaction4=" + knownCountriesOfTransaction4
+				+ ", otherExpectedCountries1=" + otherExpectedCountries1 + ", otherExpectedCountries2="
+				+ otherExpectedCountries2 + ", otherExpectedCountries3=" + otherExpectedCountries3
+				+ ", otherExpectedCountries4=" + otherExpectedCountries4 + ", uae=" + uae + ", un=" + un + ", ofac="
+				+ ofac + ", hmt=" + hmt + ", eu=" + eu + ", others=" + others + ", cbuCheckDone=" + cbuCheckDone
+				+ ", googleMediaSearch=" + googleMediaSearch + ", internalDenyListScreening="
+				+ internalDenyListScreening + ", supportingDocumentObtained2=" + supportingDocumentObtained2
+				+ ", jointUae=" + jointUae + ", jointUn=" + jointUn + ", jointOfac=" + jointOfac + ", jointHmt="
+				+ jointHmt + ", jointEu=" + jointEu + ", jointOthers=" + jointOthers + ", jointCbuCheckDone="
+				+ jointCbuCheckDone + ", jointGoogleMediaSearch=" + jointGoogleMediaSearch
+				+ ", jointInternalDenyListScreening=" + jointInternalDenyListScreening + ", jointSuspicionObserved="
+				+ jointSuspicionObserved + ", jointSupportingDocumentObtained=" + jointSupportingDocumentObtained
+				+ ", isPep=" + isPep + ", seniorManagementApproval=" + seniorManagementApproval
+				+ ", foreignCurrencyRequest=" + foreignCurrencyRequest + ", seniorManagementApprovalFc="
+				+ seniorManagementApprovalFc + ", customerRisk=" + customerRisk + ", highRiskReason=" + highRiskReason
+				+ ", furtherDueDiligence=" + furtherDueDiligence + ", observationsOfBankOfficial="
+				+ observationsOfBankOfficial + ", accountOpeningOfficerSignature=" + accountOpeningOfficerSignature
+				+ ", accountOpeningOfficerName=" + accountOpeningOfficerName + ", accountOpeningOfficerDesignation="
+				+ accountOpeningOfficerDesignation + ", accountOpeningOfficerDate=" + accountOpeningOfficerDate
+				+ ", branchOfficialSignature=" + branchOfficialSignature + ", branchOfficialName=" + branchOfficialName
+				+ ", branchOfficialDesignation=" + branchOfficialDesignation + ", branchOfficialDate="
+				+ branchOfficialDate + ", entityFlg=" + entityFlg + ", modifyFlg=" + modifyFlg + ", delFlg=" + delFlg
+				+ ", entryUser=" + entryUser + ", modifyUser=" + modifyUser + ", verifyUser=" + verifyUser
+				+ ", entryTime=" + entryTime + ", modifyTime=" + modifyTime + ", verifyTime=" + verifyTime + ", debit="
+				+ debit + ", credit=" + credit + ", suspicionObserved1=" + suspicionObserved1
+				+ ", countryOfCitizenshipOthers=" + countryOfCitizenshipOthers + ", reasonForRedFlag1="
+				+ reasonForRedFlag1 + ", jointSupportingDocumentDetails=" + jointSupportingDocumentDetails
+				+ ", getCustomerId()=" + getCustomerId() + ", getAccountType()=" + getAccountType() + ", getName()="
+				+ getName() + ", getAccountNumber()=" + getAccountNumber() + ", getDateOfBirth()=" + getDateOfBirth()
+				+ ", getPlaceOfBirth()=" + getPlaceOfBirth() + ", getNationality()=" + getNationality()
+				+ ", getAccountOpeningDate()=" + getAccountOpeningDate() + ", getCountryOfCitizenship()="
+				+ getCountryOfCitizenship() + ", getCountryOfCurrentResidency()=" + getCountryOfCurrentResidency()
+				+ ", getOccupation()=" + getOccupation() + ", getBusinessActivity()=" + getBusinessActivity()
+				+ ", getAnnualIncome()=" + getAnnualIncome() + ", getSourceOfFunds()=" + getSourceOfFunds()
+				+ ", getPurposeOfAccountOpening()=" + getPurposeOfAccountOpening() + ", getTaxRegistration()="
+				+ getTaxRegistration() + ", getTaxIdNumber()=" + getTaxIdNumber() + ", getPrimaryAddress()="
+				+ getPrimaryAddress() + ", getPrimaryAddressCountry()=" + getPrimaryAddressCountry()
+				+ ", getPrimaryAddressCity()=" + getPrimaryAddressCity() + ", getPrimaryAddressPoBox()="
+				+ getPrimaryAddressPoBox() + ", getMobileNumber()=" + getMobileNumber() + ", getPrimaryTelephone()="
+				+ getPrimaryTelephone() + ", getSecondaryTelephone()=" + getSecondaryTelephone() + ", getEmailId()="
+				+ getEmailId() + ", getResidentialStatusChanged()=" + getResidentialStatusChanged()
+				+ ", getNewCountryOfResidency()=" + getNewCountryOfResidency() + ", getNewCityOfResidency()="
+				+ getNewCityOfResidency() + ", getNewPoBoxOfResidency()=" + getNewPoBoxOfResidency()
+				+ ", getJointHolder1Name()=" + getJointHolder1Name() + ", getJointHolder1Address()="
+				+ getJointHolder1Address() + ", getJointHolder1AddressCountry()=" + getJointHolder1AddressCountry()
+				+ ", getJointHolder1AddressCity()=" + getJointHolder1AddressCity() + ", getJointHolder1AddressPoBox()="
+				+ getJointHolder1AddressPoBox() + ", getJointHolder1Mobile()=" + getJointHolder1Mobile()
+				+ ", getJointHolder1PrimaryTelephone()=" + getJointHolder1PrimaryTelephone()
+				+ ", getJointHolder1SecondaryTelephone()=" + getJointHolder1SecondaryTelephone()
+				+ ", getJointHolder1Email()=" + getJointHolder1Email() + ", getJointHolder1ResidentialStatusChanged()="
+				+ getJointHolder1ResidentialStatusChanged() + ", getJointHolder1NewCountryOfResidency()="
+				+ getJointHolder1NewCountryOfResidency() + ", getJointHolder1NewCityOfResidency()="
+				+ getJointHolder1NewCityOfResidency() + ", getJointHolder1NewPoBoxOfResidency()="
+				+ getJointHolder1NewPoBoxOfResidency() + ", getJointHolder2Name()=" + getJointHolder2Name()
+				+ ", getJointHolder2Address()=" + getJointHolder2Address() + ", getJointHolder2AddressCountry()="
+				+ getJointHolder2AddressCountry() + ", getJointHolder2AddressCity()=" + getJointHolder2AddressCity()
+				+ ", getJointHolder2AddressPoBox()=" + getJointHolder2AddressPoBox() + ", getJointHolder2Mobile()="
+				+ getJointHolder2Mobile() + ", getJointHolder2PrimaryTelephone()=" + getJointHolder2PrimaryTelephone()
+				+ ", getJointHolder2SecondaryTelephone()=" + getJointHolder2SecondaryTelephone()
+				+ ", getJointHolder2Email()=" + getJointHolder2Email() + ", getJointHolder2ResidentialStatusChanged()="
+				+ getJointHolder2ResidentialStatusChanged() + ", getJointHolder2NewCountryOfResidency()="
+				+ getJointHolder2NewCountryOfResidency() + ", getJointHolder2NewCityOfResidency()="
+				+ getJointHolder2NewCityOfResidency() + ", getJointHolder2NewPoBoxOfResidency()="
+				+ getJointHolder2NewPoBoxOfResidency() + ", getPrimaryAccountHolderNationality()="
+				+ getPrimaryAccountHolderNationality() + ", getJointAccountHolder1Nationality()="
+				+ getJointAccountHolder1Nationality() + ", getJointAccountHolder2Nationality()="
+				+ getJointAccountHolder2Nationality() + ", getPrimaryAccountHolderPassport()="
+				+ getPrimaryAccountHolderPassport() + ", getJointAccountHolder1Passport()="
+				+ getJointAccountHolder1Passport() + ", getJointAccountHolder2Passport()="
+				+ getJointAccountHolder2Passport() + ", getPrimaryAccountHolderVisaEid()="
+				+ getPrimaryAccountHolderVisaEid() + ", getJointAccountHolder1VisaEid()="
+				+ getJointAccountHolder1VisaEid() + ", getJointAccountHolder2VisaEid()="
+				+ getJointAccountHolder2VisaEid() + ", getPrimaryAccountHolderValidResidence()="
+				+ getPrimaryAccountHolderValidResidence() + ", getJointAccountHolder1ValidResidence()="
+				+ getJointAccountHolder1ValidResidence() + ", getJointAccountHolder2ValidResidence()="
+				+ getJointAccountHolder2ValidResidence() + ", getPrimaryAccountHolderProofSourceIncome()="
+				+ getPrimaryAccountHolderProofSourceIncome() + ", getJointAccountHolder1ProofSourceIncome()="
+				+ getJointAccountHolder1ProofSourceIncome() + ", getJointAccountHolder2ProofSourceIncome()="
+				+ getJointAccountHolder2ProofSourceIncome() + ", getLinkedAccount1Name()=" + getLinkedAccount1Name()
+				+ ", getLinkedAccount1Number()=" + getLinkedAccount1Number() + ", getLinkedAccount1Type()="
+				+ getLinkedAccount1Type() + ", getLinkedAccount1OpeningDate()=" + getLinkedAccount1OpeningDate()
+				+ ", getLinkedAccount1Currency()=" + getLinkedAccount1Currency() + ", getLinkedAccount1Status()="
+				+ getLinkedAccount1Status() + ", getLinkedAccount2Name()=" + getLinkedAccount2Name()
+				+ ", getLinkedAccount2Number()=" + getLinkedAccount2Number() + ", getLinkedAccount2Type()="
+				+ getLinkedAccount2Type() + ", getLinkedAccount2OpeningDate()=" + getLinkedAccount2OpeningDate()
+				+ ", getLinkedAccount2Currency()=" + getLinkedAccount2Currency() + ", getLinkedAccount2Status()="
+				+ getLinkedAccount2Status() + ", getLinkedAccount3Name()=" + getLinkedAccount3Name()
+				+ ", getLinkedAccount3Number()=" + getLinkedAccount3Number() + ", getLinkedAccount3Type()="
+				+ getLinkedAccount3Type() + ", getLinkedAccount3OpeningDate()=" + getLinkedAccount3OpeningDate()
+				+ ", getLinkedAccount3Currency()=" + getLinkedAccount3Currency() + ", getLinkedAccount3Status()="
+				+ getLinkedAccount3Status() + ", getLinkedAccount4Name()=" + getLinkedAccount4Name()
+				+ ", getLinkedAccount4Number()=" + getLinkedAccount4Number() + ", getLinkedAccount4Type()="
+				+ getLinkedAccount4Type() + ", getLinkedAccount4OpeningDate()=" + getLinkedAccount4OpeningDate()
+				+ ", getLinkedAccount4Currency()=" + getLinkedAccount4Currency() + ", getLinkedAccount4Status()="
+				+ getLinkedAccount4Status() + ", getAccountSatisfactory()=" + getAccountSatisfactory()
+				+ ", getTransactionCommensurate()=" + getTransactionCommensurate()
+				+ ", getHighValueTransactionsObserved()=" + getHighValueTransactionsObserved()
+				+ ", getHighValueTransactionsDetails1()=" + getHighValueTransactionsDetails1()
+				+ ", getHighValueTransactionsDetails2()=" + getHighValueTransactionsDetails2()
+				+ ", getHighValueTransactionsDetails3()=" + getHighValueTransactionsDetails3()
+				+ ", getHighValueTransactionsDetails4()=" + getHighValueTransactionsDetails4()
+				+ ", getSuspicionObserved()=" + getSuspicionObserved() + ", getSuspicionObservedDetails()="
+				+ getSuspicionObservedDetails() + ", getBranchSatisfiedWithTransactions()="
+				+ getBranchSatisfiedWithTransactions() + ", getSupportingDocumentObtained()="
+				+ getSupportingDocumentObtained() + ", getCurrentTurnover()=" + getCurrentTurnover()
+				+ ", getExpectedTurnover()=" + getExpectedTurnover() + ", getExpectedTransactionTypes()="
+				+ getExpectedTransactionTypes() + ", getExpectedTransactionVolume()=" + getExpectedTransactionVolume()
+				+ ", getTransactionFrequency()=" + getTransactionFrequency() + ", getKnownCountriesOfTransaction1()="
+				+ getKnownCountriesOfTransaction1() + ", getKnownCountriesOfTransaction2()="
+				+ getKnownCountriesOfTransaction2() + ", getKnownCountriesOfTransaction3()="
+				+ getKnownCountriesOfTransaction3() + ", getKnownCountriesOfTransaction4()="
+				+ getKnownCountriesOfTransaction4() + ", getOtherExpectedCountries1()=" + getOtherExpectedCountries1()
+				+ ", getOtherExpectedCountries2()=" + getOtherExpectedCountries2() + ", getOtherExpectedCountries3()="
+				+ getOtherExpectedCountries3() + ", getOtherExpectedCountries4()=" + getOtherExpectedCountries4()
+				+ ", getUae()=" + getUae() + ", getUn()=" + getUn() + ", getOfac()=" + getOfac() + ", getHmt()="
+				+ getHmt() + ", getEu()=" + getEu() + ", getOthers()=" + getOthers() + ", getCbuCheckDone()="
+				+ getCbuCheckDone() + ", getGoogleMediaSearch()=" + getGoogleMediaSearch()
+				+ ", getInternalDenyListScreening()=" + getInternalDenyListScreening()
+				+ ", getSupportingDocumentObtained2()=" + getSupportingDocumentObtained2() + ", getJointUae()="
+				+ getJointUae() + ", getJointUn()=" + getJointUn() + ", getJointOfac()=" + getJointOfac()
+				+ ", getJointHmt()=" + getJointHmt() + ", getJointEu()=" + getJointEu() + ", getJointOthers()="
+				+ getJointOthers() + ", getJointCbuCheckDone()=" + getJointCbuCheckDone()
+				+ ", getJointGoogleMediaSearch()=" + getJointGoogleMediaSearch()
+				+ ", getJointInternalDenyListScreening()=" + getJointInternalDenyListScreening()
+				+ ", getJointSuspicionObserved()=" + getJointSuspicionObserved()
+				+ ", getJointSupportingDocumentObtained()=" + getJointSupportingDocumentObtained() + ", getIsPep()="
+				+ getIsPep() + ", getSeniorManagementApproval()=" + getSeniorManagementApproval()
+				+ ", getForeignCurrencyRequest()=" + getForeignCurrencyRequest() + ", getSeniorManagementApprovalFc()="
+				+ getSeniorManagementApprovalFc() + ", getCustomerRisk()=" + getCustomerRisk()
+				+ ", getHighRiskReason()=" + getHighRiskReason() + ", getFurtherDueDiligence()="
+				+ getFurtherDueDiligence() + ", getObservationsOfBankOfficial()=" + getObservationsOfBankOfficial()
+				+ ", getAccountOpeningOfficerSignature()=" + getAccountOpeningOfficerSignature()
+				+ ", getAccountOpeningOfficerName()=" + getAccountOpeningOfficerName()
+				+ ", getAccountOpeningOfficerDesignation()=" + getAccountOpeningOfficerDesignation()
+				+ ", getAccountOpeningOfficerDate()=" + getAccountOpeningOfficerDate()
+				+ ", getBranchOfficialSignature()=" + getBranchOfficialSignature() + ", getBranchOfficialName()="
+				+ getBranchOfficialName() + ", getBranchOfficialDesignation()=" + getBranchOfficialDesignation()
+				+ ", getBranchOfficialDate()=" + getBranchOfficialDate() + ", getEntityFlg()=" + getEntityFlg()
+				+ ", getModifyFlg()=" + getModifyFlg() + ", getDelFlg()=" + getDelFlg() + ", getEntryUser()="
+				+ getEntryUser() + ", getModifyUser()=" + getModifyUser() + ", getVerifyUser()=" + getVerifyUser()
+				+ ", getEntryTime()=" + getEntryTime() + ", getModifyTime()=" + getModifyTime() + ", getVerifyTime()="
+				+ getVerifyTime() + ", getDebit()=" + getDebit() + ", getCredit()=" + getCredit()
+				+ ", getSuspicionObserved1()=" + getSuspicionObserved1() + ", getCountryOfCitizenshipOthers()="
+				+ getCountryOfCitizenshipOthers() + ", getReasonForRedFlag1()=" + getReasonForRedFlag1()
+				+ ", getJointSupportingDocumentDetails()=" + getJointSupportingDocumentDetails() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 	public KYC_I(String customerId, String accountType, String name, String accountNumber, Date dateOfBirth,
 			String placeOfBirth, String nationality, Date accountOpeningDate, String countryOfCitizenship,
 			String countryOfCurrentResidency, String occupation, String businessActivity, Double annualIncome,
@@ -1926,7 +2157,7 @@ public class KYC_I {
 			String branchOfficialName, String branchOfficialDesignation, Date branchOfficialDate, Character entityFlg,
 			Character modifyFlg, Character delFlg, String entryUser, String modifyUser, String verifyUser,
 			Date entryTime, Date modifyTime, Date verifyTime, String debit, String credit, String suspicionObserved1,
-			String countryOfCitizenshipOthers, String reasonForRedFlag1) {
+			String countryOfCitizenshipOthers, String reasonForRedFlag1, String jointSupportingDocumentDetails) {
 		super();
 		this.customerId = customerId;
 		this.accountType = accountType;
@@ -2097,6 +2328,7 @@ public class KYC_I {
 		this.suspicionObserved1 = suspicionObserved1;
 		this.countryOfCitizenshipOthers = countryOfCitizenshipOthers;
 		this.reasonForRedFlag1 = reasonForRedFlag1;
+		this.jointSupportingDocumentDetails = jointSupportingDocumentDetails;
 	}
 
 	public KYC_I() {
@@ -2104,223 +2336,8 @@ public class KYC_I {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public String toString() {
-		return "KYC_I [customerId=" + customerId + ", accountType=" + accountType + ", name=" + name
-				+ ", accountNumber=" + accountNumber + ", dateOfBirth=" + dateOfBirth + ", placeOfBirth=" + placeOfBirth
-				+ ", nationality=" + nationality + ", accountOpeningDate=" + accountOpeningDate
-				+ ", countryOfCitizenship=" + countryOfCitizenship + ", countryOfCurrentResidency="
-				+ countryOfCurrentResidency + ", occupation=" + occupation + ", businessActivity=" + businessActivity
-				+ ", annualIncome=" + annualIncome + ", sourceOfFunds=" + sourceOfFunds + ", purposeOfAccountOpening="
-				+ purposeOfAccountOpening + ", taxRegistration=" + taxRegistration + ", taxIdNumber=" + taxIdNumber
-				+ ", primaryAddress=" + primaryAddress + ", primaryAddressCountry=" + primaryAddressCountry
-				+ ", primaryAddressCity=" + primaryAddressCity + ", primaryAddressPoBox=" + primaryAddressPoBox
-				+ ", mobileNumber=" + mobileNumber + ", primaryTelephone=" + primaryTelephone + ", secondaryTelephone="
-				+ secondaryTelephone + ", emailId=" + emailId + ", residentialStatusChanged=" + residentialStatusChanged
-				+ ", newCountryOfResidency=" + newCountryOfResidency + ", newCityOfResidency=" + newCityOfResidency
-				+ ", newPoBoxOfResidency=" + newPoBoxOfResidency + ", jointHolder1Name=" + jointHolder1Name
-				+ ", jointHolder1Address=" + jointHolder1Address + ", jointHolder1AddressCountry="
-				+ jointHolder1AddressCountry + ", jointHolder1AddressCity=" + jointHolder1AddressCity
-				+ ", jointHolder1AddressPoBox=" + jointHolder1AddressPoBox + ", jointHolder1Mobile="
-				+ jointHolder1Mobile + ", jointHolder1PrimaryTelephone=" + jointHolder1PrimaryTelephone
-				+ ", jointHolder1SecondaryTelephone=" + jointHolder1SecondaryTelephone + ", jointHolder1Email="
-				+ jointHolder1Email + ", jointHolder1ResidentialStatusChanged=" + jointHolder1ResidentialStatusChanged
-				+ ", jointHolder1NewCountryOfResidency=" + jointHolder1NewCountryOfResidency
-				+ ", jointHolder1NewCityOfResidency=" + jointHolder1NewCityOfResidency
-				+ ", jointHolder1NewPoBoxOfResidency=" + jointHolder1NewPoBoxOfResidency + ", jointHolder2Name="
-				+ jointHolder2Name + ", jointHolder2Address=" + jointHolder2Address + ", jointHolder2AddressCountry="
-				+ jointHolder2AddressCountry + ", jointHolder2AddressCity=" + jointHolder2AddressCity
-				+ ", jointHolder2AddressPoBox=" + jointHolder2AddressPoBox + ", jointHolder2Mobile="
-				+ jointHolder2Mobile + ", jointHolder2PrimaryTelephone=" + jointHolder2PrimaryTelephone
-				+ ", jointHolder2SecondaryTelephone=" + jointHolder2SecondaryTelephone + ", jointHolder2Email="
-				+ jointHolder2Email + ", jointHolder2ResidentialStatusChanged=" + jointHolder2ResidentialStatusChanged
-				+ ", jointHolder2NewCountryOfResidency=" + jointHolder2NewCountryOfResidency
-				+ ", jointHolder2NewCityOfResidency=" + jointHolder2NewCityOfResidency
-				+ ", jointHolder2NewPoBoxOfResidency=" + jointHolder2NewPoBoxOfResidency
-				+ ", primaryAccountHolderNationality=" + primaryAccountHolderNationality
-				+ ", jointAccountHolder1Nationality=" + jointAccountHolder1Nationality
-				+ ", jointAccountHolder2Nationality=" + jointAccountHolder2Nationality
-				+ ", primaryAccountHolderPassport=" + primaryAccountHolderPassport + ", jointAccountHolder1Passport="
-				+ jointAccountHolder1Passport + ", jointAccountHolder2Passport=" + jointAccountHolder2Passport
-				+ ", primaryAccountHolderVisaEid=" + primaryAccountHolderVisaEid + ", jointAccountHolder1VisaEid="
-				+ jointAccountHolder1VisaEid + ", jointAccountHolder2VisaEid=" + jointAccountHolder2VisaEid
-				+ ", primaryAccountHolderValidResidence=" + primaryAccountHolderValidResidence
-				+ ", jointAccountHolder1ValidResidence=" + jointAccountHolder1ValidResidence
-				+ ", jointAccountHolder2ValidResidence=" + jointAccountHolder2ValidResidence
-				+ ", primaryAccountHolderProofSourceIncome=" + primaryAccountHolderProofSourceIncome
-				+ ", jointAccountHolder1ProofSourceIncome=" + jointAccountHolder1ProofSourceIncome
-				+ ", jointAccountHolder2ProofSourceIncome=" + jointAccountHolder2ProofSourceIncome
-				+ ", linkedAccount1Name=" + linkedAccount1Name + ", linkedAccount1Number=" + linkedAccount1Number
-				+ ", linkedAccount1Type=" + linkedAccount1Type + ", linkedAccount1OpeningDate="
-				+ linkedAccount1OpeningDate + ", linkedAccount1Currency=" + linkedAccount1Currency
-				+ ", linkedAccount1Status=" + linkedAccount1Status + ", linkedAccount2Name=" + linkedAccount2Name
-				+ ", linkedAccount2Number=" + linkedAccount2Number + ", linkedAccount2Type=" + linkedAccount2Type
-				+ ", linkedAccount2OpeningDate=" + linkedAccount2OpeningDate + ", linkedAccount2Currency="
-				+ linkedAccount2Currency + ", linkedAccount2Status=" + linkedAccount2Status + ", linkedAccount3Name="
-				+ linkedAccount3Name + ", linkedAccount3Number=" + linkedAccount3Number + ", linkedAccount3Type="
-				+ linkedAccount3Type + ", linkedAccount3OpeningDate=" + linkedAccount3OpeningDate
-				+ ", linkedAccount3Currency=" + linkedAccount3Currency + ", linkedAccount3Status="
-				+ linkedAccount3Status + ", linkedAccount4Name=" + linkedAccount4Name + ", linkedAccount4Number="
-				+ linkedAccount4Number + ", linkedAccount4Type=" + linkedAccount4Type + ", linkedAccount4OpeningDate="
-				+ linkedAccount4OpeningDate + ", linkedAccount4Currency=" + linkedAccount4Currency
-				+ ", linkedAccount4Status=" + linkedAccount4Status + ", accountSatisfactory=" + accountSatisfactory
-				+ ", transactionCommensurate=" + transactionCommensurate + ", highValueTransactionsObserved="
-				+ highValueTransactionsObserved + ", highValueTransactionsDetails1=" + highValueTransactionsDetails1
-				+ ", highValueTransactionsDetails2=" + highValueTransactionsDetails2
-				+ ", highValueTransactionsDetails3=" + highValueTransactionsDetails3
-				+ ", highValueTransactionsDetails4=" + highValueTransactionsDetails4 + ", suspicionObserved="
-				+ suspicionObserved + ", suspicionObservedDetails=" + suspicionObservedDetails
-				+ ", branchSatisfiedWithTransactions=" + branchSatisfiedWithTransactions
-				+ ", supportingDocumentObtained=" + supportingDocumentObtained + ", currentTurnover=" + currentTurnover
-				+ ", expectedTurnover=" + expectedTurnover + ", expectedTransactionTypes=" + expectedTransactionTypes
-				+ ", expectedTransactionVolume=" + expectedTransactionVolume + ", transactionFrequency="
-				+ transactionFrequency + ", knownCountriesOfTransaction1=" + knownCountriesOfTransaction1
-				+ ", knownCountriesOfTransaction2=" + knownCountriesOfTransaction2 + ", knownCountriesOfTransaction3="
-				+ knownCountriesOfTransaction3 + ", knownCountriesOfTransaction4=" + knownCountriesOfTransaction4
-				+ ", otherExpectedCountries1=" + otherExpectedCountries1 + ", otherExpectedCountries2="
-				+ otherExpectedCountries2 + ", otherExpectedCountries3=" + otherExpectedCountries3
-				+ ", otherExpectedCountries4=" + otherExpectedCountries4 + ", uae=" + uae + ", un=" + un + ", ofac="
-				+ ofac + ", hmt=" + hmt + ", eu=" + eu + ", others=" + others + ", cbuCheckDone=" + cbuCheckDone
-				+ ", googleMediaSearch=" + googleMediaSearch + ", internalDenyListScreening="
-				+ internalDenyListScreening + ", supportingDocumentObtained2=" + supportingDocumentObtained2
-				+ ", jointUae=" + jointUae + ", jointUn=" + jointUn + ", jointOfac=" + jointOfac + ", jointHmt="
-				+ jointHmt + ", jointEu=" + jointEu + ", jointOthers=" + jointOthers + ", jointCbuCheckDone="
-				+ jointCbuCheckDone + ", jointGoogleMediaSearch=" + jointGoogleMediaSearch
-				+ ", jointInternalDenyListScreening=" + jointInternalDenyListScreening + ", jointSuspicionObserved="
-				+ jointSuspicionObserved + ", jointSupportingDocumentObtained=" + jointSupportingDocumentObtained
-				+ ", isPep=" + isPep + ", seniorManagementApproval=" + seniorManagementApproval
-				+ ", foreignCurrencyRequest=" + foreignCurrencyRequest + ", seniorManagementApprovalFc="
-				+ seniorManagementApprovalFc + ", customerRisk=" + customerRisk + ", highRiskReason=" + highRiskReason
-				+ ", furtherDueDiligence=" + furtherDueDiligence + ", observationsOfBankOfficial="
-				+ observationsOfBankOfficial + ", accountOpeningOfficerSignature=" + accountOpeningOfficerSignature
-				+ ", accountOpeningOfficerName=" + accountOpeningOfficerName + ", accountOpeningOfficerDesignation="
-				+ accountOpeningOfficerDesignation + ", accountOpeningOfficerDate=" + accountOpeningOfficerDate
-				+ ", branchOfficialSignature=" + branchOfficialSignature + ", branchOfficialName=" + branchOfficialName
-				+ ", branchOfficialDesignation=" + branchOfficialDesignation + ", branchOfficialDate="
-				+ branchOfficialDate + ", entityFlg=" + entityFlg + ", modifyFlg=" + modifyFlg + ", delFlg=" + delFlg
-				+ ", entryUser=" + entryUser + ", modifyUser=" + modifyUser + ", verifyUser=" + verifyUser
-				+ ", entryTime=" + entryTime + ", modifyTime=" + modifyTime + ", verifyTime=" + verifyTime + ", debit="
-				+ debit + ", credit=" + credit + ", suspicionObserved1=" + suspicionObserved1
-				+ ", countryOfCitizenshipOthers=" + countryOfCitizenshipOthers + ", reasonForRedFlag1="
-				+ reasonForRedFlag1 + ", getCustomerId()=" + getCustomerId() + ", getAccountType()=" + getAccountType()
-				+ ", getName()=" + getName() + ", getAccountNumber()=" + getAccountNumber() + ", getDateOfBirth()="
-				+ getDateOfBirth() + ", getPlaceOfBirth()=" + getPlaceOfBirth() + ", getNationality()="
-				+ getNationality() + ", getAccountOpeningDate()=" + getAccountOpeningDate()
-				+ ", getCountryOfCitizenship()=" + getCountryOfCitizenship() + ", getCountryOfCurrentResidency()="
-				+ getCountryOfCurrentResidency() + ", getOccupation()=" + getOccupation() + ", getBusinessActivity()="
-				+ getBusinessActivity() + ", getAnnualIncome()=" + getAnnualIncome() + ", getSourceOfFunds()="
-				+ getSourceOfFunds() + ", getPurposeOfAccountOpening()=" + getPurposeOfAccountOpening()
-				+ ", getTaxRegistration()=" + getTaxRegistration() + ", getTaxIdNumber()=" + getTaxIdNumber()
-				+ ", getPrimaryAddress()=" + getPrimaryAddress() + ", getPrimaryAddressCountry()="
-				+ getPrimaryAddressCountry() + ", getPrimaryAddressCity()=" + getPrimaryAddressCity()
-				+ ", getPrimaryAddressPoBox()=" + getPrimaryAddressPoBox() + ", getMobileNumber()=" + getMobileNumber()
-				+ ", getPrimaryTelephone()=" + getPrimaryTelephone() + ", getSecondaryTelephone()="
-				+ getSecondaryTelephone() + ", getEmailId()=" + getEmailId() + ", getResidentialStatusChanged()="
-				+ getResidentialStatusChanged() + ", getNewCountryOfResidency()=" + getNewCountryOfResidency()
-				+ ", getNewCityOfResidency()=" + getNewCityOfResidency() + ", getNewPoBoxOfResidency()="
-				+ getNewPoBoxOfResidency() + ", getJointHolder1Name()=" + getJointHolder1Name()
-				+ ", getJointHolder1Address()=" + getJointHolder1Address() + ", getJointHolder1AddressCountry()="
-				+ getJointHolder1AddressCountry() + ", getJointHolder1AddressCity()=" + getJointHolder1AddressCity()
-				+ ", getJointHolder1AddressPoBox()=" + getJointHolder1AddressPoBox() + ", getJointHolder1Mobile()="
-				+ getJointHolder1Mobile() + ", getJointHolder1PrimaryTelephone()=" + getJointHolder1PrimaryTelephone()
-				+ ", getJointHolder1SecondaryTelephone()=" + getJointHolder1SecondaryTelephone()
-				+ ", getJointHolder1Email()=" + getJointHolder1Email() + ", getJointHolder1ResidentialStatusChanged()="
-				+ getJointHolder1ResidentialStatusChanged() + ", getJointHolder1NewCountryOfResidency()="
-				+ getJointHolder1NewCountryOfResidency() + ", getJointHolder1NewCityOfResidency()="
-				+ getJointHolder1NewCityOfResidency() + ", getJointHolder1NewPoBoxOfResidency()="
-				+ getJointHolder1NewPoBoxOfResidency() + ", getJointHolder2Name()=" + getJointHolder2Name()
-				+ ", getJointHolder2Address()=" + getJointHolder2Address() + ", getJointHolder2AddressCountry()="
-				+ getJointHolder2AddressCountry() + ", getJointHolder2AddressCity()=" + getJointHolder2AddressCity()
-				+ ", getJointHolder2AddressPoBox()=" + getJointHolder2AddressPoBox() + ", getJointHolder2Mobile()="
-				+ getJointHolder2Mobile() + ", getJointHolder2PrimaryTelephone()=" + getJointHolder2PrimaryTelephone()
-				+ ", getJointHolder2SecondaryTelephone()=" + getJointHolder2SecondaryTelephone()
-				+ ", getJointHolder2Email()=" + getJointHolder2Email() + ", getJointHolder2ResidentialStatusChanged()="
-				+ getJointHolder2ResidentialStatusChanged() + ", getJointHolder2NewCountryOfResidency()="
-				+ getJointHolder2NewCountryOfResidency() + ", getJointHolder2NewCityOfResidency()="
-				+ getJointHolder2NewCityOfResidency() + ", getJointHolder2NewPoBoxOfResidency()="
-				+ getJointHolder2NewPoBoxOfResidency() + ", getPrimaryAccountHolderNationality()="
-				+ getPrimaryAccountHolderNationality() + ", getJointAccountHolder1Nationality()="
-				+ getJointAccountHolder1Nationality() + ", getJointAccountHolder2Nationality()="
-				+ getJointAccountHolder2Nationality() + ", getPrimaryAccountHolderPassport()="
-				+ getPrimaryAccountHolderPassport() + ", getJointAccountHolder1Passport()="
-				+ getJointAccountHolder1Passport() + ", getJointAccountHolder2Passport()="
-				+ getJointAccountHolder2Passport() + ", getPrimaryAccountHolderVisaEid()="
-				+ getPrimaryAccountHolderVisaEid() + ", getJointAccountHolder1VisaEid()="
-				+ getJointAccountHolder1VisaEid() + ", getJointAccountHolder2VisaEid()="
-				+ getJointAccountHolder2VisaEid() + ", getPrimaryAccountHolderValidResidence()="
-				+ getPrimaryAccountHolderValidResidence() + ", getJointAccountHolder1ValidResidence()="
-				+ getJointAccountHolder1ValidResidence() + ", getJointAccountHolder2ValidResidence()="
-				+ getJointAccountHolder2ValidResidence() + ", getPrimaryAccountHolderProofSourceIncome()="
-				+ getPrimaryAccountHolderProofSourceIncome() + ", getJointAccountHolder1ProofSourceIncome()="
-				+ getJointAccountHolder1ProofSourceIncome() + ", getJointAccountHolder2ProofSourceIncome()="
-				+ getJointAccountHolder2ProofSourceIncome() + ", getLinkedAccount1Name()=" + getLinkedAccount1Name()
-				+ ", getLinkedAccount1Number()=" + getLinkedAccount1Number() + ", getLinkedAccount1Type()="
-				+ getLinkedAccount1Type() + ", getLinkedAccount1OpeningDate()=" + getLinkedAccount1OpeningDate()
-				+ ", getLinkedAccount1Currency()=" + getLinkedAccount1Currency() + ", getLinkedAccount1Status()="
-				+ getLinkedAccount1Status() + ", getLinkedAccount2Name()=" + getLinkedAccount2Name()
-				+ ", getLinkedAccount2Number()=" + getLinkedAccount2Number() + ", getLinkedAccount2Type()="
-				+ getLinkedAccount2Type() + ", getLinkedAccount2OpeningDate()=" + getLinkedAccount2OpeningDate()
-				+ ", getLinkedAccount2Currency()=" + getLinkedAccount2Currency() + ", getLinkedAccount2Status()="
-				+ getLinkedAccount2Status() + ", getLinkedAccount3Name()=" + getLinkedAccount3Name()
-				+ ", getLinkedAccount3Number()=" + getLinkedAccount3Number() + ", getLinkedAccount3Type()="
-				+ getLinkedAccount3Type() + ", getLinkedAccount3OpeningDate()=" + getLinkedAccount3OpeningDate()
-				+ ", getLinkedAccount3Currency()=" + getLinkedAccount3Currency() + ", getLinkedAccount3Status()="
-				+ getLinkedAccount3Status() + ", getLinkedAccount4Name()=" + getLinkedAccount4Name()
-				+ ", getLinkedAccount4Number()=" + getLinkedAccount4Number() + ", getLinkedAccount4Type()="
-				+ getLinkedAccount4Type() + ", getLinkedAccount4OpeningDate()=" + getLinkedAccount4OpeningDate()
-				+ ", getLinkedAccount4Currency()=" + getLinkedAccount4Currency() + ", getLinkedAccount4Status()="
-				+ getLinkedAccount4Status() + ", getAccountSatisfactory()=" + getAccountSatisfactory()
-				+ ", getTransactionCommensurate()=" + getTransactionCommensurate()
-				+ ", getHighValueTransactionsObserved()=" + getHighValueTransactionsObserved()
-				+ ", getHighValueTransactionsDetails1()=" + getHighValueTransactionsDetails1()
-				+ ", getHighValueTransactionsDetails2()=" + getHighValueTransactionsDetails2()
-				+ ", getHighValueTransactionsDetails3()=" + getHighValueTransactionsDetails3()
-				+ ", getHighValueTransactionsDetails4()=" + getHighValueTransactionsDetails4()
-				+ ", getSuspicionObserved()=" + getSuspicionObserved() + ", getSuspicionObservedDetails()="
-				+ getSuspicionObservedDetails() + ", getBranchSatisfiedWithTransactions()="
-				+ getBranchSatisfiedWithTransactions() + ", getSupportingDocumentObtained()="
-				+ getSupportingDocumentObtained() + ", getCurrentTurnover()=" + getCurrentTurnover()
-				+ ", getExpectedTurnover()=" + getExpectedTurnover() + ", getExpectedTransactionTypes()="
-				+ getExpectedTransactionTypes() + ", getExpectedTransactionVolume()=" + getExpectedTransactionVolume()
-				+ ", getTransactionFrequency()=" + getTransactionFrequency() + ", getKnownCountriesOfTransaction1()="
-				+ getKnownCountriesOfTransaction1() + ", getKnownCountriesOfTransaction2()="
-				+ getKnownCountriesOfTransaction2() + ", getKnownCountriesOfTransaction3()="
-				+ getKnownCountriesOfTransaction3() + ", getKnownCountriesOfTransaction4()="
-				+ getKnownCountriesOfTransaction4() + ", getOtherExpectedCountries1()=" + getOtherExpectedCountries1()
-				+ ", getOtherExpectedCountries2()=" + getOtherExpectedCountries2() + ", getOtherExpectedCountries3()="
-				+ getOtherExpectedCountries3() + ", getOtherExpectedCountries4()=" + getOtherExpectedCountries4()
-				+ ", getUae()=" + getUae() + ", getUn()=" + getUn() + ", getOfac()=" + getOfac() + ", getHmt()="
-				+ getHmt() + ", getEu()=" + getEu() + ", getOthers()=" + getOthers() + ", getCbuCheckDone()="
-				+ getCbuCheckDone() + ", getGoogleMediaSearch()=" + getGoogleMediaSearch()
-				+ ", getInternalDenyListScreening()=" + getInternalDenyListScreening()
-				+ ", getSupportingDocumentObtained2()=" + getSupportingDocumentObtained2() + ", getJointUae()="
-				+ getJointUae() + ", getJointUn()=" + getJointUn() + ", getJointOfac()=" + getJointOfac()
-				+ ", getJointHmt()=" + getJointHmt() + ", getJointEu()=" + getJointEu() + ", getJointOthers()="
-				+ getJointOthers() + ", getJointCbuCheckDone()=" + getJointCbuCheckDone()
-				+ ", getJointGoogleMediaSearch()=" + getJointGoogleMediaSearch()
-				+ ", getJointInternalDenyListScreening()=" + getJointInternalDenyListScreening()
-				+ ", getJointSuspicionObserved()=" + getJointSuspicionObserved()
-				+ ", getJointSupportingDocumentObtained()=" + getJointSupportingDocumentObtained() + ", getIsPep()="
-				+ getIsPep() + ", getSeniorManagementApproval()=" + getSeniorManagementApproval()
-				+ ", getForeignCurrencyRequest()=" + getForeignCurrencyRequest() + ", getSeniorManagementApprovalFc()="
-				+ getSeniorManagementApprovalFc() + ", getCustomerRisk()=" + getCustomerRisk()
-				+ ", getHighRiskReason()=" + getHighRiskReason() + ", getFurtherDueDiligence()="
-				+ getFurtherDueDiligence() + ", getObservationsOfBankOfficial()=" + getObservationsOfBankOfficial()
-				+ ", getAccountOpeningOfficerSignature()=" + getAccountOpeningOfficerSignature()
-				+ ", getAccountOpeningOfficerName()=" + getAccountOpeningOfficerName()
-				+ ", getAccountOpeningOfficerDesignation()=" + getAccountOpeningOfficerDesignation()
-				+ ", getAccountOpeningOfficerDate()=" + getAccountOpeningOfficerDate()
-				+ ", getBranchOfficialSignature()=" + getBranchOfficialSignature() + ", getBranchOfficialName()="
-				+ getBranchOfficialName() + ", getBranchOfficialDesignation()=" + getBranchOfficialDesignation()
-				+ ", getBranchOfficialDate()=" + getBranchOfficialDate() + ", getEntityFlg()=" + getEntityFlg()
-				+ ", getModifyFlg()=" + getModifyFlg() + ", getDelFlg()=" + getDelFlg() + ", getEntryUser()="
-				+ getEntryUser() + ", getModifyUser()=" + getModifyUser() + ", getVerifyUser()=" + getVerifyUser()
-				+ ", getEntryTime()=" + getEntryTime() + ", getModifyTime()=" + getModifyTime() + ", getVerifyTime()="
-				+ getVerifyTime() + ", getDebit()=" + getDebit() + ", getCredit()=" + getCredit()
-				+ ", getSuspicionObserved1()=" + getSuspicionObserved1() + ", getCountryOfCitizenshipOthers()="
-				+ getCountryOfCitizenshipOthers() + ", getReasonForRedFlag1()=" + getReasonForRedFlag1()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
-
+	
+	
+	
+	
 }
