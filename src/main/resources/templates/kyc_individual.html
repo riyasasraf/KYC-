@@ -43,40 +43,71 @@
 
 <style>
 body {
-	font-size: 0.75rem;
-	/* 12px in rem based on the default browser font size (16px) */
+	font-size: .7REM;
+}
+
+label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	max-width: 120%;
+}
+
+.label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	max-width: 120%;
+}
+
+.radio-group {
+	display: flex;
+	gap: 3px; /* Space between each radio and label */
+	flex-wrap: nowrap; /* Prevents wrapping to the next line */
+}
+
+input {
+	font-size: 0.7rem !important;
 }
 
 .container-manager {
-	width: 90%;
-	padding-left: 8rem; /* Replace with rem to scale based on font size */
+	width: 90.5%;
+	padding-left: 128px;
 	margin-right: 0;
 	margin-left: 8.5%;
-	margin-top: 5rem; /* Adjust based on visual need */
-	padding-bottom: 2.5rem;
+	margin-top: 80px;
+	margin-top: 80px;
+	padding-bottom: 40px;
 }
 
 .custom-checkbox {
-	width: 1.25em; /* About 20px if base font-size is 16px */
-	height: 1.25em;
+	width: 13px; /* Adjust width */
+	height: 13px; /* Adjust height */
+	/* Optional: add some margin */
 	margin: 0;
+	/* Optional: increase hit area */
 	cursor: pointer;
 }
 
-input[type="number"] {
-	-moz-appearance: textfield;
-	min-width: 3rem; /* Prevents collapsing on small screens */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
 }
 
-@media ( max-width : 768px) {
-	.container-manager {
-		padding-left: 2rem;
-		margin-left: 5%;
-		width: 95%;
-	}
-	body {
-		font-size: 0.7rem; /* Slightly smaller for small screens */
-	}
+input[type="number"] {
+	-moz-appearance: textfield; /* Firefox */
+}
+
+.label-truncate {
+	display: inline-block;
+	max-width: 100px; /* Adjust this width as needed */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
 }
 
 .label-container {
@@ -284,6 +315,35 @@ window.onload = function() {
 };
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Select last-child div elements and all label tags inside the form with ID 'individual_form'
+       const elements = document.querySelectorAll(
+        '#individual_form div:last-child, #individual_form label'
+    );
+
+    // Loop through each selected element and add/update a title attribute
+    elements.forEach(element => {
+        const titleContent = element.textContent.replace(/\s+/g, ' ').trim();	
+
+        // Add/update the title attribute only if there is meaningful content
+        if (titleContent) {
+            element.setAttribute('title', titleContent);
+        }
+    });
+    
+    const element = document.getElementById('individual_form_body');
+
+    // Check if the element exists and remove the 'title' attribute
+    if (element) {
+        element.removeAttribute('title');
+    }
+ 
+});
+
+
+
+
  
 </script>
 
@@ -331,7 +391,7 @@ window.onload = function() {
 					<form action="" id="individual_form"
 						th:each="user_data: ${user_data}">
 						<fieldset th:disabled="${formmode != 'modify'}">
-							<div class="card-body">
+							<div class="card-body" id="individual_form_body">
 								<h5>KNOW YOUR CUSTOMER DETAILS</h5>
 								<h6>Primary Account Holder</h6>
 
@@ -1651,7 +1711,8 @@ window.onload = function() {
 											id="expectedTurnover"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
-									<div class="col-sm-2">Anticipated expected transactions</div>
+									<div class="col-sm-2 label">Anticipated expected
+										transactions</div>
 
 									<div class="col-sm-1">
 										<label for="debitFrequency" title="Transaction Frequency"
@@ -1849,7 +1910,7 @@ window.onload = function() {
 
 									</div>
 
-									<div class="col-sm-1">CBUAE BBL check</div>
+									<div class="col-sm-1 label">CBUAE BBL check</div>
 									<div class="col-sm-1">
 										<input type="radio" id="bbl_yes_primary" name="cbuCheckDone"
 											value="Yes" th:checked="${user_data.cbuCheckDone == 'Yes'}" />
@@ -1859,7 +1920,7 @@ window.onload = function() {
 											for="bbl_no_primary">No</label>
 									</div>
 
-									<div class="col-sm-1">Google open Search</div>
+									<div class="col-sm-1 label">Google open Search</div>
 									<div class="col-sm-1">
 										<input type="radio" id="google_yes_primary"
 											name="googleMediaSearch" value="Yes"
@@ -1869,7 +1930,7 @@ window.onload = function() {
 											th:checked="${user_data.googleMediaSearch == 'No'}" /> <label
 											for="google_no_primary">No</label>
 									</div>
-									<div class="col-sm-1">Deny list screening</div>
+									<div class="col-sm-1  label">Deny list screening</div>
 									<div class="col-sm-1">
 										<input type="radio" id="denylistyes"
 											name="internalDenyListScreening" value="Yes"
@@ -1887,7 +1948,7 @@ window.onload = function() {
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 
 
-									<div class="col-sm-2">Specify Suspicion Observed</div>
+									<div class="col-sm-2  label">Specify Suspicion Observed</div>
 
 									<div class="col-sm-1">
 										<input type="text" name="suspicionObserved1"
@@ -1895,8 +1956,8 @@ window.onload = function() {
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.suspicionObserved1}" />
 									</div>
-									<div class="col-sm-3">branch has obtained the supporting
-										document to discount the red flag</div>
+									<div class="col-sm-3  label">branch has obtained the
+										supporting document to discount the red flag</div>
 									<div class="col-sm-1">
 										<input type="radio" id="supportingDocumentObtained2Yes"
 											name="supportingDocumentObtained2" value="Yes"
@@ -1907,7 +1968,7 @@ window.onload = function() {
 											th:checked="${user_data.supportingDocumentObtained2 == 'No'}" />
 										<label for="denylistno">No</label>
 									</div>
-									<div class="col-sm-1">
+									<div class="col-sm-1  label">
 										<input type="text" name="reasonForRedFlag1"
 											id="reasonForRedFlag1"
 											class="form-control form-control-sm bg-white border border-dark"
@@ -1973,7 +2034,7 @@ window.onload = function() {
 										</div>
 									</div>
 
-									<div class="col-sm-1">CBUAE BBL check</div>
+									<div class="col-sm-1  label">CBUAE BBL check</div>
 									<div class="col-sm-1">
 										<input type="radio" id="jointCbuCheckDone_yes"
 											name="jointCbuCheckDone" value="Yes"
@@ -1984,7 +2045,7 @@ window.onload = function() {
 											for="jointCbuCheckDone_no">No</label>
 									</div>
 
-									<div class="col-sm-1">Google open Search</div>
+									<div class="col-sm-1  label">Google open Search</div>
 									<div class="col-sm-1">
 										<input type="radio" id="jointGoogleMediaSearch_yes"
 											name="jointGoogleMediaSearch" value="Yes"
@@ -1996,7 +2057,7 @@ window.onload = function() {
 										<label for="jointGoogleMediaSearch_no">No</label>
 									</div>
 
-									<div class="col-sm-1">Deny list screening</div>
+									<div class="col-sm-1  label">Deny list screening</div>
 									<div class="col-sm-1">
 										<input type="radio" id="jointdenylistyes"
 											name="jointInternalDenyListScreening" value="Yes"
@@ -2010,7 +2071,7 @@ window.onload = function() {
 								</div>
 
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
-									<div class="col-sm-2">Specify Suspicion Observed</div>
+									<div class="col-sm-2  label">Specify Suspicion Observed</div>
 									<div class="col-sm-1">
 										<input type="text" name="jointSuspicionObserved"
 											id="jointSuspicionObserved"
@@ -2018,8 +2079,8 @@ window.onload = function() {
 											th:value="${user_data.jointSuspicionObserved}" />
 									</div>
 
-									<div class="col-sm-3">branch has obtained the supporting
-										document to discount the red flag</div>
+									<div class="col-sm-3  label">branch has obtained the
+										supporting document to discount the red flag</div>
 									<div class="col-sm-1">
 										<input type="radio" id="jointSupportingDocumentObtained_yes"
 											name="jointSupportingDocumentObtained" value="Yes"
@@ -2031,7 +2092,7 @@ window.onload = function() {
 										<label for="jointSupportingDocumentObtained_no">No</label>
 									</div>
 
-									<div class="col-sm-1">
+									<div class="col-sm-1 ">
 										<input type="text" name="jointSupportingDocumentDetails"
 											id="jointSupportingDocumentDetails"
 											th:value="${user_data.jointSupportingDocumentDetails }"
@@ -2045,8 +2106,8 @@ window.onload = function() {
 								<hr>
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<!-- Customer PEP Status -->
-									<div class="col-sm-1">Whether customer PEP</div>
-									<div class="col-sm-1 ">
+									<div class="col-sm-2  label">Whether customer PEP</div>
+									<div class="">
 										<div class="radio-group">
 											<input type="radio" id="pep_yes" name="isPep" value="Yes"
 												th:checked="${user_data.isPep == 'Yes'}" /> <label
@@ -2062,8 +2123,8 @@ window.onload = function() {
 
 
 									<!-- Senior Management Approval -->
-									<div class="col-sm-1">Senior approval</div>
-									<div class="col-sm-1 radio-group ">
+									<div class="col-sm-1  label">Senior approval</div>
+									<div class=" radio-group ">
 										<input type="radio" id="approval_yes"
 											name="seniorManagementApproval" value="Yes"
 											th:checked="${user_data.seniorManagementApproval == 'Yes'}" />
@@ -2077,8 +2138,8 @@ window.onload = function() {
 									</div>
 
 									<!-- Foreign Currency Request -->
-									<div class="col-sm-1">Requesting Foreign</div>
-									<div class="col-sm-1 radio-group">
+									<div class="col-sm-1  label">Requesting Foreign</div>
+									<div class=" radio-group">
 										<input type="radio" id="request_foreign_yes"
 											name="foreignCurrencyRequest" value="Yes"
 											th:checked="${user_data.foreignCurrencyRequest == 'Yes'}" />
@@ -2093,8 +2154,8 @@ window.onload = function() {
 										<label for="request_foreign_na">NA</label>
 									</div>
 
-									<div class="col-sm-1">Senior Approval FC</div>
-									<div class="col-sm-2 radio-group">
+									<div class="col-sm-1  label">Senior Approval FC</div>
+									<div class=" radio-group">
 										<input type="radio" id="seniorApprovalYes"
 											name="seniorManagementApprovalFc" value="Yes"
 											th:checked="${user_data.seniorManagementApprovalFc == 'Yes'}" />
@@ -2109,8 +2170,8 @@ window.onload = function() {
 										<label for="seniorApprovalNa">NA</label>
 									</div>
 									<!-- Customer Risk -->
-									<div class="col-sm-1">Customer Risk</div>
-									<div class="col-sm-2 radio-group">
+									<div class="col-sm-1  label">Customer Risk</div>
+									<div class=" radio-group">
 										<input type="radio" id="risk_high" name="customerRisk"
 											value="High" th:checked="${user_data.customerRisk == 'High'}" />
 										<label for="risk_high">High</label> <input type="radio"
@@ -2127,7 +2188,8 @@ window.onload = function() {
 								</div>
 								<div class="row formline" style="padding: 15px 0px 2px 0px;">
 									<!-- Reason for Categorizing Customer -->
-									<div class="col-sm-2">Reason for Categorizing Customer</div>
+									<div class="col-sm-1  label">Reason for Categorizing
+										Customer</div>
 									<div class="col-sm-2 radio-group">
 										<input type="text" name="highRiskReason" id="highRiskReason"
 											th:value="${user_data.highRiskReason}"
@@ -2135,7 +2197,7 @@ window.onload = function() {
 									</div>
 
 									<!-- Due Diligence -->
-									<div class="col-sm-1">Due Diligence</div>
+									<div class="col-sm-1  label">Due Diligence</div>
 									<div class="col-sm-2">
 										<input type="text" name="furtherDueDiligence"
 											id="furtherDueDiligence"
@@ -2144,7 +2206,7 @@ window.onload = function() {
 									</div>
 
 									<!-- Observations of Bank -->
-									<div class="col-sm-1">Observations of Bank</div>
+									<div class="col-sm-1  label">Observations of Bank</div>
 									<div class="col-sm-2">
 										<input type="text" name="observationsOfBankOfficial"
 											id="observationsOfBankOfficial"
