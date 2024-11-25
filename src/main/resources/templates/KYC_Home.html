@@ -92,6 +92,20 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 input[type="number"] {
 	-moz-appearance: textfield; /* Firefox */
 }
+
+
+
+#usertableInd {
+	width: 100%;
+	table-layout: fixed;
+}
+
+#usertableInd th, #usertableInd td {
+	white-space: nowrap;
+	max-width: 200px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
 </style>
 <script type="text/javascript">
 	function submitForm(mode) {
@@ -152,6 +166,20 @@ input[type="number"] {
 			}
 		}
 	}
+
+	// Initialize DataTable on document ready
+	$(document).ready(function() {
+		$('#usertable').DataTable({
+			destroy : true,
+			scrollY : "500px",
+			scrollCollapse : true,
+			paging : true,
+			autoWidth : false, // Prevent auto width adjustments
+			ordering : true,
+			pageLength : 100,
+			lengthChange : false
+		});
+	});
 </script>
 
 
@@ -163,7 +191,7 @@ input[type="number"] {
 		<div class="card">
 			<div class="card-header">
 				<h4>KYC</h4>
-					</div>
+			</div>
 			<div class="card-body">
 				<form id="kycForm" action="kyc" method="post">
 					<div class="button_container card-title">
@@ -189,7 +217,7 @@ input[type="number"] {
 
 
 
-				<div class="table table-responsive table-sm"
+				<div class=""
 					th:if="${formmode == 'individual'}">
 					<table class="table table-bordered  table-hover table-sm"
 						id="usertable">
@@ -256,7 +284,7 @@ input[type="number"] {
 
 
 
-				<div class="table-responsive" th:if="${formmode == 'corporate'}">
+				<div class="" th:if="${formmode == 'corporate'}">
 					<table class="table table-bordered  table-hover table-sm"
 						id="usertable">
 						<thead>
