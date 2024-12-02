@@ -109,7 +109,7 @@ public class Kyc_individual_service {
 	}
 
 	public File GrtPdf(String Cust_Id) throws FileNotFoundException, JRException, SQLException {
-		String path = env.getProperty("output.exportpath");
+		String path = env.getProperty("output.exportpath");            
 		String fileName = "";
 		File outputFile = null;
 
