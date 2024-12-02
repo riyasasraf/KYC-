@@ -842,14 +842,14 @@ public class XBRLNavigationController {
 	}
 
 	@RequestMapping(value = "/kyc/corporate", method = { RequestMethod.GET, RequestMethod.POST })
-	public String kyccorporate(@RequestParam(required = false) String formmode,
+	public String kyccorporate(@RequestParam(required = false) String formmode,@RequestParam(required = false) String uae,
 			@RequestParam(required = false) String custid, @ModelAttribute Kyc_Corprate data, Model model)
 			throws FileNotFoundException, JRException, SQLException {
 
 		if ("submit".equals(formmode)) {
-
-		
+	
 			Kyc_Corprate_service.updateKycData(custid, data);
+
 
 		} else if ("verified".equals(formmode)) {
 
