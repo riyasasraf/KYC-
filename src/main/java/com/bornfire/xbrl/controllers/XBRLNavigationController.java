@@ -797,22 +797,38 @@ public class XBRLNavigationController {
 	com.bornfire.xbrl.services.Kyc_Corprate_service Kyc_Corprate_service;
 
 	@RequestMapping(value = "kyc", method = { RequestMethod.GET, RequestMethod.POST })
-	public String KYCHome(@RequestParam(required = false) String formmode, Model md) {
+	public String KYCHome(@RequestParam(required = false) String formmode, Model md,
+			@RequestParam(required = false) String customerRisk, @RequestParam(required = false) Integer age) {
 
 		if ("individual".equals(formmode)) {
+			if (customerRisk != null && !customerRisk.isEmpty() && age != null && age > 0) {
+				List<Object[]> results = kyc_repo.GetDynamicValue(customerRisk, age);
+				md.addAttribute("reportlist", results);
 
-			List<Object[]> results = kyc_repo.Getlist();
+			} else {
 
-			md.addAttribute("reportlist", results);
+				List<Object[]> results = kyc_repo.Getlist();
+				md.addAttribute("reportlist", results);
+			}
 		}
 
 		else if ("corporate".equals(formmode)) {
-			List<Object[]> corporate = kyc_corporate_repo.Getlist();
+			if (customerRisk != null && !customerRisk.isEmpty() && age != null && age > 0) {
 
-			md.addAttribute("kycData", corporate);
+				List<Object[]> results = kyc_corporate_repo.getDynamicValue(customerRisk, age);
+				md.addAttribute("kycData", results);
+
+			}
+
+			else {
+
+				List<Object[]> corporate = kyc_corporate_repo.getList();
+				md.addAttribute("kycData", corporate);
+			}
 		}
 
 		md.addAttribute("formmode", formmode);
+
 		return "KYC_Home";
 	}
 
@@ -848,14 +864,13 @@ public class XBRLNavigationController {
 
 		if ("submit".equals(formmode)) {
 
-		
 			Kyc_Corprate_service.updateKycData(custid, data);
 
 		} else if ("verified".equals(formmode)) {
 
 			Kyc_Corprate_service.verified(custid);
 		} else if ("download".equals(formmode)) {
-	
+
 			Kyc_Corprate_service.GrtPdf(custid);
 		}
 
