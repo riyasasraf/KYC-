@@ -45,7 +45,12 @@
 body {
 	font-size: .7REM;
 }
+.headderbutton{
+font-weight: bold;
+font-size: large;
+color: #007bff;
 
+}
 label {
 	white-space: nowrap;
 	overflow: hidden;
@@ -2313,16 +2318,17 @@ document.addEventListener('DOMContentLoaded', () => {
 							</div>
 
 
-							<button type="button" class="btn btn-xs btn-primary"
-								th:if="${formmode == 'modify'}" form="individual_form"
-								id="btnSubmit" onclick="submitform();">Submit</button>
+							
 
 						</fieldset>
 					</form>
 					<div class="card-footer text-center">
-						<button type="button" class="btn btn-xs btn-primary"
+						<button type="button" class="btn btn-xs headderbutton"
 							onclick="goHome();" id="btnUpload">Home</button>
-						<button type="reset" class="btn btn-xs btn-primary" id="btnClear"
+							<button type="button" class="btn btn-xs headderbutton"
+								th:if="${formmode == 'modify'}" form="headderbutton"
+								id="btnSubmit" onclick="submitform();">Submit</button>
+						<button type="reset" class="btn btn-xs headderbutton" id="btnClear"
 							onclick="goBack();">Back</button>
 					</div>
 

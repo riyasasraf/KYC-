@@ -46,6 +46,12 @@ body {
 	font-size: .7REM;
 }
 
+.headderbutton {
+	font-weight: bold;
+	font-size: large;
+	color: #007bff;
+}
+
 label {
 	white-space: nowrap;
 	overflow: hidden;
@@ -352,7 +358,7 @@ function submitForm() {
 									<div class="col-sm-2">
 										<input type="text" name="CustomerId" id="customerID"
 											class="form-control form-control-sm bg-white border border-dark"
-											th:value="${user_data.CustomerId}" />
+											th:value="${user_data.CustomerId}"  disabled="disabled"/>
 									</div>
 
 									<div class="col-sm-1">
@@ -734,28 +740,28 @@ function submitForm() {
 									</div>
 
 									<div class="col-sm-2">
-										<input type="text" name="UboDirPoa1ShareholdingPercent"
+										<input type="Number" name="UboDirPoa1ShareholdingPercent"
 											id="shareholding1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.UboDirPoa1ShareholdingPercent}" />
 									</div>
 									<div class="col-sm-1"></div>
 									<div class="col-sm-2">
-										<input type="text" name="UboDirPoa2ShareholdingPercent"
+										<input type="Number" name="UboDirPoa2ShareholdingPercent"
 											id="shareholding2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.UboDirPoa2ShareholdingPercent}" />
 									</div>
 									<div class="col-sm-1"></div>
 									<div class="col-sm-2">
-										<input type="text" name="UboDirPoa3ShareholdingPercent"
+										<input type="Number" name="UboDirPoa3ShareholdingPercent"
 											id="shareholding3"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.UboDirPoa3ShareholdingPercent}" />
 									</div>
 									<div class="col-sm-1"></div>
 									<div class="col-sm-2">
-										<input type="text" name="UboDirPoa4ShareholdingPercent"
+										<input type="Number" name="UboDirPoa4ShareholdingPercent"
 											id="shareholding4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.UboDirPoa4ShareholdingPercent}" />
@@ -772,7 +778,7 @@ function submitForm() {
 										<input type="radio" id="passport_yes_1"
 											name="UboDirPoa1Passport" value="Yes"
 											th:checked="${user_data.UboDirPoa1Passport == 'Yes'}" /> <label
-											for="passport_yes_1">Yes</label> <input type="radio"
+											for="passport_yes_1" >Yes</label> <input type="radio"
 											id="passport_no_1" name="UboDirPoa1Passport" value="No"
 											th:checked="${user_data.UboDirPoa1Passport == 'No'}" /> <label
 											for="passport_no_1">No</label>
@@ -1013,31 +1019,31 @@ function submitForm() {
 									<!-- Input Fields for Relationship with Bank in Years -->
 									<div class="col-sm-2">
 										<input type="text" name="LinkedRelationshipDurationYears1"
-											id="relationshipWithBankYears1"
+											id="relationshipWithBankYears1" maxlength="4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears1}" />
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="LinkedRelationshipDurationYears2"
-											id="relationshipWithBankYears2"
+											id="relationshipWithBankYears2" maxlength="4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears2}" />
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="LinkedRelationshipDurationYears3"
-											id="relationshipWithBankYears3"
+											id="relationshipWithBankYears3" maxlength="4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears3}" />
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="LinkedRelationshipDurationYears4"
-											id="relationshipWithBankYears4"
+											id="relationshipWithBankYears4" maxlength="4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears4}" />
 									</div>
 									<div class="col-sm-2">
 										<input type="text" name="LinkedRelationshipDurationYears5"
-											id="relationshipWithBankYears5"
+											id="relationshipWithBankYears5" maxlength="4"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.LinkedRelationshipDurationYears5}" />
 									</div>
@@ -1227,7 +1233,8 @@ function submitForm() {
 											turnover</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="CurrentTurnover" id="CurrentTurnover"
+										<input type="Number" name="CurrentTurnover"
+											id="CurrentTurnover"
 											th:value="${#numbers.formatDecimal(user_data.CurrentTurnover, 2, 2 )}"
 											class="form-control form-control-sm bg-white border border-dark" />
 									</div>
@@ -1238,7 +1245,7 @@ function submitForm() {
 											turnover</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="ExpectedTurnover"
+										<input type="Number" name="ExpectedTurnover"
 											id="ExpectedTurnover"
 											th:value="${#numbers.formatDecimal(user_data.ExpectedTurnover, 2, 2)}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1251,7 +1258,7 @@ function submitForm() {
 											title="Tran Expected debit">Tran Expt debit</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="ExpectedDebitTransactions"
+										<input type="Number" name="ExpectedDebitTransactions"
 											id="ExpectedDebitTransactions"
 											th:value="${#numbers.formatDecimal(user_data.ExpectedDebitTransactions, 2, 2)}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1262,7 +1269,7 @@ function submitForm() {
 											title="Tran Expected credit">Tran Expt credit</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="ExpectedCreditTransactions"
+										<input type="Number" name="ExpectedCreditTransactions"
 											id="ExpectedCreditTransactions"
 											th:value="${#numbers.formatDecimal(user_data.ExpectedCreditTransactions, 2, 2)}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1288,7 +1295,7 @@ function submitForm() {
 											title="Expected volume of transactions (frequency)">Frequency</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="FrequencyOfTransactions"
+										<input type="Number" name="FrequencyOfTransactions"
 											id="ExpectedTransactionFrequency"
 											th:value="${user_data.FrequencyOfTransactions}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -1299,7 +1306,7 @@ function submitForm() {
 											title="Expected volume of transactions">Volume</label>
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="ExpectedTransactionVolume"
+										<input type="Number" name="ExpectedTransactionVolume"
 											id="ExpectedTransactionVolume"
 											th:value="${user_data.ExpectedTransactionVolume}"
 											class="form-control form-control-sm bg-white border border-dark" />
@@ -2326,8 +2333,8 @@ function submitForm() {
 										<label for="Expected Number of Cash Transactions in a month"
 											title="Expected Number of Cash Transactions in a month">Expt
 											No Cash Tran in month</label>
-										<div style="display: flex; ">
-											<p  class="col-sm-6">Deposits</p>
+										<div style="display: flex;">
+											<p class="col-sm-6">Deposits</p>
 
 
 											<p class="col-sm-6">Withdrawals</p>
@@ -2339,7 +2346,7 @@ function submitForm() {
 											title="Expected Turnover Cash Transactions %  Annually">Expt
 											Turnover Cash Tran % Annually</label>
 										<div style="display: flex;">
-											<p  class="col-sm-6">Deposits</p>
+											<p class="col-sm-6">Deposits</p>
 
 
 											<p class="col-sm-6">Withdrawals</p>
@@ -2363,35 +2370,35 @@ function submitForm() {
 									</div>
 
 									<div class="col-sm-1">
-										<input type="text" name="VolumeDeposit1" id="VolumeDeposit1"
+										<input type="Number" name="VolumeDeposit1" id="VolumeDeposit1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.VolumeDeposit1}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="VolumeWithdraw1" id="VolumeWithdraw1"
+										<input type="Number" name="VolumeWithdraw1" id="VolumeWithdraw1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.VolumeWithdraw1}" />
 									</div>
 
 									<div class="col-sm-1">
-										<input type="text" name="NumberDeposit1" id="NumberDeposit1"
+										<input type="Number" name="NumberDeposit1" id="NumberDeposit1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.NumberDeposit1}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="NumberWithdraw1" id="NumberWithdraw1"
+										<input type="Number" name="NumberWithdraw1" id="NumberWithdraw1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.NumberWithdraw1}" />
 									</div>
 
 									<div class="col-sm-1">
-										<input type="text" name="TurnoverDeposit1"
+										<input type="Number" name="TurnoverDeposit1"
 											id="TurnoverDeposit1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.TurnoverDeposit1}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="TurnoverWithdraw1"
+										<input type="Number" name="TurnoverWithdraw1"
 											id="TurnoverWithdraw1"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.TurnoverWithdraw1}" />
@@ -2412,33 +2419,33 @@ function submitForm() {
 											th:value="${user_data.ProductsOffered2}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="VolumeDeposit2" id="VolumeDeposit2"
+										<input type="Number" name="VolumeDeposit2" id="VolumeDeposit2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.VolumeDeposit2}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="VolumeWithdraw2" id="VolumeWithdraw2"
+										<input type="Number" name="VolumeWithdraw2" id="VolumeWithdraw2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.VolumeWithdraw2}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="NumberDeposit2" id="NumberDeposit2"
+										<input type="Number" name="NumberDeposit2" id="NumberDeposit2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.NumberDeposit2}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="NumberWithdraw2" id="NumberWithdraw2"
+										<input type="Number" name="NumberWithdraw2" id="NumberWithdraw2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.NumberWithdraw2}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="TurnoverDeposit2"
+										<input type="Number" name="TurnoverDeposit2"
 											id="TurnoverDeposit2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.TurnoverDeposit2}" />
 									</div>
 									<div class="col-sm-1">
-										<input type="text" name="TurnoverWithdraw2"
+										<input type="Number" name="TurnoverWithdraw2"
 											id="TurnoverWithdraw2"
 											class="form-control form-control-sm bg-white border border-dark"
 											th:value="${user_data.TurnoverWithdraw2}" />
@@ -2698,18 +2705,19 @@ function submitForm() {
 											th:value="${user_data.BranchOfficialPlace}" />
 									</div>
 								</div>
-								<button type="button" class="btn btn-xs btn-primary"
-									th:if="${formmode == 'modify'}" form="individual_form"
-									id="btnSubmit" onclick="submitForm();">Submit</button>
+
 							</div>
 						</fieldset>
 					</form>
 
 					<div class="card-footer text-center">
-						<button type="button" class="btn btn-xs btn-primary"
+						<button type="button" class="btn btn-xs headderbutton"
 							onclick="goHome();" id="btnUpload">Home</button>
-						<button type="reset" class="btn btn-xs btn-primary" id="btnClear"
-							onclick="goBack();">Back</button>
+						<button type="button" class="btn btn-xs headderbutton"
+							th:if="${formmode == 'modify'}" form="individual_form"
+							id="btnSubmit" onclick="submitForm();">Submit</button>
+						<button type="reset" class="btn btn-xs headderbutton"
+							id="btnClear" onclick="goBack();">Back</button>
 					</div>
 
 

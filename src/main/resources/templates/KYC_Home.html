@@ -42,6 +42,37 @@
 </head>
 
 <style>
+.filterable .filters input[readonly] {
+	background-color: transparent;
+	border: none;
+	cursor: auto;
+	box-shadow: none;
+	padding: 0;
+	height: auto;
+}
+
+.filterable .filters input[readonly]::-webkit-input-placeholder {
+	color: #333;
+}
+
+.filterable .filters input[readonly]::-moz-placeholder {
+	color: #333;
+}
+
+.filterable .filters input[readonly]:-ms-input-placeholder {
+	color: #333;
+}
+
+.filterable .filters input[readonly]::-webkit-input-placeholder {
+	color: #333;
+}
+.filterable .filters input{
+background-color: transparent;
+	padding: 0;
+	height: auto;
+	border: none;
+	box-shadow: none;
+}
 td:first-child {
 	width: 50%; /* Adjust width as needed */
 	white-space: nowrap; /* Prevent wrapping of text */
@@ -58,8 +89,8 @@ td:first-child {
 	width: 90.5%;
 	padding-left: 128px;
 	margin-right: 0;
-	margin-left: 9.5%;
-	margin-top: 130px;
+	margin-left: 8%;
+	margin-top: 100px;
 	padding-bottom: 40px;
 }
 
@@ -105,6 +136,8 @@ input[type="number"] {
 	-moz-appearance: textfield; /* Firefox */
 }
 
+
+
 #usertableInd {
 	width: 100%;
 }
@@ -114,8 +147,17 @@ input[type="number"] {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
+.headderbutton {
+	font-weight: bold;
+	font-size: large;
+	color: #007bff;
+}
 </style>
 <script type="text/javascript">
+
+
+
 	function submitForm(mode) {
 
 		const newUrl = `?formmode=${mode}`;
@@ -174,7 +216,7 @@ input[type="number"] {
 			}
 		}
 	}
-
+/* 
 	// Initialize DataTable on document ready
 	$(document).ready(function() {
 		$('#usertable').DataTable({
@@ -187,7 +229,7 @@ input[type="number"] {
 			pageLength : 100,
 			lengthChange : false
 		});
-	});
+	}); */
 
 	function updateDropdownValue(element) {
 		const selectedValue = element.textContent;
@@ -196,191 +238,294 @@ input[type="number"] {
 		document.getElementById('customerRiskError').style.display = 'none';
 	}
 	// Form validation logic
-		function validateForm() {
-			let isValid = true;
-	
-			// Validate Customer Risk
-			const customerRisk = document.getElementById('customerRisk').value;
-			if (!customerRisk) {
-				document.getElementById('customerRiskError').style.display = 'block';
-				isValid = false;
-			} else {
-				document.getElementById('customerRiskError').style.display = 'none';
-			}
-	
-			// Validate Age
-			const age = document.getElementById('age').value;
-			if (!age || age < 0) {
-				document.getElementById('ageError').style.display = 'block';
-				isValid = false;
-			} else {
-				document.getElementById('ageError').style.display = 'none';
-			}
-	
-			// If valid, proceed with submission or further processing
-			if (isValid) {
-			    const currentUrl = new URL(window.location.href);
-			    const formmode = currentUrl.searchParams.get('formmode');
-				location.href = `kyc?formmode=${formmode}&age=${age}&customerRisk=${customerRisk}`;
-				}
+	function validateForm() {
+		let isValid = true;
+
+		// Validate Customer Risk
+		const customerRisk = document.getElementById('customerRisk').value;
+		if (!customerRisk) {
+			document.getElementById('customerRiskError').style.display = 'block';
+			isValid = false;
+		} else {
+			document.getElementById('customerRiskError').style.display = 'none';
 		}
+
+		// Validate Age
+		const age = document.getElementById('age').value;
+		if (!age) {
+			document.getElementById('ageError').style.display = 'block';
+			isValid = false;
+		} else {
+			document.getElementById('ageError').style.display = 'none';
+		}
+
+		// If valid, proceed with submission or further processing
+		if (isValid) {
+			const currentUrl = new URL(window.location.href);
+			 const formmode = document.getElementById('formmode')?.value || 'individual';
+			location.href = `kyc?formmode=${formmode}&age=${age}&customerRisk=${customerRisk}`;
+		}
+	}
+
+	function filterbutton() {
+	    // Toggle the readonly attribute on clicking the <thead>
+	    $('.filterable .btn-filter').each(function () {
+	        var $panel = $(this).parents('.filterable');
+	        var $filters = $panel.find('.filters input');
+	        var $tbody = $panel.find('.table tbody');
+
+	        if ($filters.prop('readonly') === true) {
+	            $filters.prop('readonly', false); // Remove readonly
+	            $filters.first().focus();
+	        } else {
+	            $filters.val('').prop('readonly', true); // Add readonly back
+	            $tbody.find('.no-result').remove();
+	            $tbody.find('tr').show();
+	        }
+	    });
+
+	    // Handle filtering logic on keyup in the input fields
+	    $('.filterable .filters input').keyup(function (e) {
+	        var code = e.keyCode || e.which;
+	        if (code === 9) return; // Ignore tab key
+
+	        var $input = $(this);
+	        var inputContent = $input.val().toLowerCase();
+	        var $panel = $input.parents('.filterable');
+	        var column = $panel.find('.filters th').index($input.parents('th'));
+	        var $table = $panel.find('.table');
+	        var $rows = $table.find('tbody tr');
+
+	        var $filteredRows = $rows.filter(function () {
+	            var value = $(this).find('td').eq(column).text().toLowerCase();
+	            return value.indexOf(inputContent) === -1;
+	        });
+
+	        $table.find('tbody .no-result').remove();
+	        $rows.show();
+	        $filteredRows.hide();
+
+	        if ($filteredRows.length === $rows.length) {
+	            $table.find('tbody').prepend(
+	                $('<tr class="no-result text-center"><td colspan="' +
+	                    $table.find('.filters th').length +
+	                    '">No Record found</td></tr>')
+	            );
+	        }
+	    });
+	}
+
+
 </script>
 
 
 
 <title>XBRL</title>
 <body>
-	<div>
-		<div th:insert="XBRLHeaderMenu :: header"></div>
 
-		<div class="container-manager">
-			<div class="card">
-				<div class="card-header">
-					<h4>KYC</h4>
-				</div>
-				<div class="card-body">
-					<form id="kycForm" action="kyc" method="post">
-						<div class="button_container card-title">
-							<!-- 	th:classappend="${formmode == 'individual'} ? 'btn-primary' : 'btn-outline-primary'" -->
-							<div style="width: 90%; display: flex;">
-								<div
-									style="width: 50%; display: flex; align-items: center; justify-content: center;">
-									<button type="button" class="btn"
-										th:classappend="${formmode == 'individual'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
-										id="individual" onclick="submitForm(this.id)">CDD
-										Individual</button>
-								</div>
+	<div th:insert="XBRLHeaderMenu :: header"></div>
+
+	<div class="container-manager">
+		<div class="card">
+			<div class="card-header pb-0">
 
 
-
-								<div
-									style="width: 50%; display: flex; align-items: center; justify-content: center;">
-									<button type="button" class="btn"
-										th:classappend="${formmode == 'corporate'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
-										id="corporate" onclick="submitForm(this.id)">CDD
-										Corporate</button>
-								</div>
-							</div>
-							<div style="width: 10%; display: flex;">
-								<div
-									style="width: 100%; display: flex; align-items: center; justify-content: center;">
-									<button type="button" class="btn btn-primary"
-										th:if="${formmode}" data-toggle="modal"
-										data-target="#exampleModalCenter" id="filter">Filter</button>
-								</div>
+				<form id="kycForm" action="kyc" method="post">
+					<div class="button_container card-title">
+						<div
+							style="width: 5%; text-align: center; display: flex; align-items: center; justify-content: center; font-size: x-large; font-weight: bolder;">KYC</div>
+						<div style="width: 85%; display: flex;">
+							<div
+								style="width: 50%; display: flex; align-items: center; justify-content: center;">
+								<button type="button" class="btn"
+									th:classappend="${formmode == 'individual'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
+									id="individual" onclick="submitForm(this.id)">CDD
+									Individual</button>
 							</div>
 
+
+
+							<div
+								style="width: 50%; display: flex; align-items: center; justify-content: center;">
+								<button type="button" class="btn"
+									th:classappend="${formmode == 'corporate'} ? 'btn-outline-primary2' : 'btn-outline-primary'"
+									id="corporate" onclick="submitForm(this.id)">CDD
+									Corporate</button>
+							</div>
 						</div>
-					</form>
+						<div style="width: 10%; display: flex;">
+							<div
+								style="width: 100%; display: flex; align-items: center; justify-content: center;">
 
+								<button type="button" class="btn  headderbutton"
+									th:if="${formmode}" data-toggle="modal"
+									data-target="#exampleModalCenter" id="filter">Filter</button>
+							</div>
+						</div>
+
+					</div>
+				</form>
+
+			</div>
+			<div class="card-body">
+
+
+				<div class="card w-100 border panel panel-primary filterable">
 
 
 					<div class="" th:if="${formmode == 'individual'}">
-						<table class="table table-bordered  table-hover table-sm"
-							id="usertable">
-							<thead>
-								<tr>
-									<th style="width: 10%;">Customer ID</th>
-									<th style="width: 15%;">Name</th>
-									<th style="width: 8%;">Account Number</th>
-									<th style="width: 8%;">Account Type</th>
-									<th style="width: 8%;">Account Opening Date</th>
-									<th style="width: 8%;">Risk Category</th>
-									<th style="width: 8%;">Risk Review Date</th>
-									<th style="width: 8%;">KYC Date</th>
-									<th style="width: 8%;">KYC Review Date</th>
-									<th style="width: 8%;">Age</th>
+						<div class="panel panel-primary filterable">
 
-									<!-- <th>Action</th>
- -->
-								</tr>
+							<!-- <button type="button" class="custom-btn btn-filter">Filter</button> -->
 
-							</thead>
-							<tbody>
-								<tr th:each="row : ${reportlist} "
-									th:attr="data-custid=${row[0]}"
-									onclick="navigateToForm(this,'view','individual')">
-									<td th:text="${row[0]}" style="width: 10%;"></td>
-									<td th:text="${row[1]}" style="width: 15%;"></td>
-									<td th:text="${row[2]}" style="width: 8%;"></td>
-									<td th:text="${row[3]}" style="width: 8%;"></td>
-									<td th:text="${#dates.format(row[4], 'dd-MM-yyyy')}"
-										style="width: 8%;"></td>
-									<td th:text="${row[9]}" style="width: 8%;"></td>
-									<td th:text="${row[7]}" style="width: 8%;"></td>
-									<td th:text="${row[6]}" style="width: 8%;"></td>
-									<td th:text="${row[5]}" style="width: 8%;"></td>
 
-									<td
-										th:text="${row[8] != null ? (row[8]< 0 ? row[8].toString() + ' days' : row[8].abs().toString() + ' days') : 'Not Available'}"
-										th:class="${row[8] != null && row[8] < 0 ? 'redcolor' : ''}"
-										style="width: 8%;"></td>
+							<table class="table table-bordered  table-hover table-sm "
+								id="usertable">
 
-									<!-- <td align="center" width="100px" style="padding: 2px;">
-									<div class="dropdown">
-										<button class="btn btn-primary btn-very-sm" type="button"
-											id="dropdownMenuButton" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false" >Action</button>
-										<div class="dropdown-menu"
-											aria-labelledby="dropdownMenuButton">
-											<a class="dropdown-item" th:attr="data-custid=${row[0]}"
-												onclick="navigateToForm(this,'view','individual')">View</a>
-											Safely check if row[5] is 'Y' only if it's not null
-											<a class="dropdown-item"
-												th:if="${row[5] != null and row[5] == 'Y'}"
-												th:attr="data-custid=${row[0]}"
-												onclick="navigateToForm(this,'verify','individual')">Verify</a>
-										</div>
-									</div>
-								</td> -->
-								</tr>
 
-							</tbody>
-						</table>
+								<thead class="thead-light" >
+									<tr class="filters btn-filter" onclick="filterbutton()">
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Customer ID" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold" placeholder="Name"
+											readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Account Number" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Account Type" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Acct Opening Date" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Risk Category" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Risk Review Date" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold" placeholder="KYC Date"
+											readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="KYC Review Date" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold" placeholder="Age"
+											readonly></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="row : ${reportlist} "
+										th:attr="data-custid=${row[0]}"
+										onclick="navigateToForm(this,'view','individual')">
+
+										<td th:text="${row[0]}" style="width: 10%;"></td>
+										<td th:text="${row[1]}" style="width: 15%;"></td>
+										<td th:text="${row[2]}" style="width: 8%;"></td>
+										<td th:text="${row[3]}" style="width: 8%;"></td>
+										<td th:text="${#dates.format(row[4], 'dd-MM-yyyy')}"
+											style="width: 8%;"></td>
+										<td th:text="${row[9]}" style="width: 8%;"></td>
+										<td th:text="${row[7]}" style="width: 8%;"></td>
+										<td th:text="${row[6]}" style="width: 8%;"></td>
+										<td th:text="${row[5]}" style="width: 8%;"></td>
+
+										<td
+											th:text="${row[8] != null ? (row[8]< 0 ? row[8].toString() + ' days' : row[8].abs().toString() + ' days') : 'Not Available'}"
+											th:class="${row[8] != null && row[8] < 0 ? 'redcolor' : ''}"
+											style="width: 8%;"></td>
+
+
+									</tr>
+
+								</tbody>
+							</table>
+							
+						</div>
 					</div>
 
 
 
 
 					<div class="" th:if="${formmode == 'corporate'}">
-						<table class="table table-bordered  table-hover table-sm"
-							id="usertable">
-							<thead>
-								<tr>
+						<div class="panel panel-primary filterable">
 
-									<th style="width: 20%;">Customer ID</th>
-									<th>Company Name</th>
-									<th>Account Number</th>
-									<th>Trade License Number</th>
-									<th style="width: 8%;">Risk Category</th>
-									<th style="width: 8%;">Risk Review Date</th>
-									<th style="width: 8%;">KYC Date</th>
-									<th style="width: 8%;">KYC Review Date</th>
-									<th style="width: 8%;">Age</th>
+							
 
-								</tr>
-
-							</thead>
-							<tbody>
-								<tr th:each="row : ${kycData}"
-									onclick="navigateToForm(this,'view','corporate')"
-									th:attr="data-custid=${row[0]}">
-									<td th:text="${row[0]}"></td>
-									<td th:text="${row[1]}"></td>
-									<td th:text="${row[2]}"></td>
-									<td th:text="${row[3]}"></td>
-									<td th:text="${row[8]}" style="width: 8%;"></td>
-									<td th:text="${row[5]}" style="width: 8%;"></td>
-									<td th:text="${row[7]}" style="width: 8%;"></td>
-									<td th:text="${row[6]}" style="width: 8%;"></td>
-
-									<td
-										th:text="${row[7] != null ? (row[7]< 0 ? row[7].toString() + ' days' : row[7].abs().toString() + ' days') : 'Not Available'}"
-										th:class="${row[7] != null && row[7] < 0 ? 'redcolor' : ''}"
-										style="width: 8%;"></td>
+							<table class="table table-bordered  table-hover table-sm"
+								id="usertable">
 
 
-									<!-- <td align="center" width="100px">
+								<thead class="thead-light btn-filter" onclick="filterbutton()">
+									
+
+										<!-- 					<th style="width: 20%;">Customer ID</th>
+											<th>Company Name</th>
+											<th>Account Number</th>
+											<th>Trade License Number</th>
+											<th style="width: 8%;">Risk Category</th>
+											<th style="width: 8%;">Risk Review Date</th>
+											<th style="width: 8%;">KYC Date</th>
+											<th style="width: 8%;">KYC Review Date</th>
+											<th style="width: 8%;">Age</th> -->
+									<tr class="filters">
+										<th style="text-align: center; width:10% !important;"><input
+											type="text" class="form-control font-weight-bold"
+											placeholder="Customer ID" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Company Name" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Account Number" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Trade License Number" readonly></th>
+
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Risk Category" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="Risk Review Date" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold" placeholder="KYC Date"
+											readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold"
+											placeholder="KYC Review Date" readonly></th>
+										<th style="text-align: center"><input type="text"
+											class="form-control font-weight-bold" placeholder="Age"
+											readonly></th>
+									</tr>
+
+
+
+								</thead>
+								<tbody>
+									<tr th:each="row : ${kycData}"
+										onclick="navigateToForm(this,'view','corporate')"
+										th:attr="data-custid=${row[0]}">
+
+										<td style="width: 10% !important" th:text="${row[0]}"></td>
+										<td th:text="${row[1]}"></td>
+										<td th:text="${row[2]}"></td>
+										<td th:text="${row[3]}"></td>
+										<td th:text="${row[8]}" style="width: 8%;"></td>
+										<td th:text="${#dates.format(row[5], 'dd-MM-yyyy')}" style="width: 8%;"></td>
+										<td th:text="${row[7]}" style="width: 8%;"></td>
+										<td th:text="${#dates.format(row[6], 'dd-MM-yyyy')}" style="width: 8%;"></td>
+
+										<td
+											th:text="${row[7] != null ? (row[7]< 0 ? row[7].toString() + ' days' : row[7].abs().toString() + ' days') : 'Not Available'}"
+											th:class="${row[7] != null && row[7] < 0 ? 'redcolor' : ''}"
+											style="width: 8%;"></td>
+
+
+										<!-- <td align="center" width="100px">
 									<div class="dropdown">
 										<button class="btn btn-primary dropdown-toggle" type="button"
 											id="dropdownMenuButton" data-toggle="dropdown"
@@ -395,17 +540,18 @@ input[type="number"] {
 										</div>
 									</div>
 								</td> -->
-								</tr>
-							</tbody>
-						</table>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 
 					<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 				</div>
 				<div class="card-footer text-center">
-					<button type="button" class="btn btn-xs btn-primary"
+					<button type="button" class="btn btn-xs headderbutton"
 						onclick="goHome();" id="btnUpload">Home</button>
-					<button type="reset" class="btn btn-xs btn-primary" id="btnClear"
+					<button type="reset" class="btn btn-xs headderbutton" id="btnClear"
 						onclick="goBack();">Back</button>
 				</div>
 
@@ -459,23 +605,24 @@ input[type="number"] {
 								<td>
 									<div>
 										<input type="number" id="age" name="age" class="form-control"
-											required min="18" max="100" />
+											required />
 									</div> <small id="ageError" class="text-danger"
-									style="display: none;">Age must be between 18 and 100.</small>
+									style="display: none;">Please enter the age</small>
 								</td>
 							</tr>
 						</table>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
+					<button type="button" class="btn headderbutton"
 						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary"
+					<button type="button" class="btn headderbutton"
 						onclick="validateForm()">Filter</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 
 

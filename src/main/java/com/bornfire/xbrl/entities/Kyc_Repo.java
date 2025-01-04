@@ -17,8 +17,6 @@ public interface Kyc_Repo extends JpaRepository<KYC_I, String> {
             + "FROM kyc_ind "
             + "WHERE del_flg = 'N'", nativeQuery = true)
 
-
-
 	List<Object[]> Getlist();
 
 	@Query(value = "SELECT customer_id, name, account_number, ACCOUNT_TYPE, ACCOUNT_OPENING_DATE, MODIFY_FLG, "
