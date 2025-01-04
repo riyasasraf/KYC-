@@ -374,7 +374,9 @@ input[type="number"] {
 
 
 					<div class="" th:if="${formmode == 'individual'}">
-						<div class="panel panel-primary filterable">
+						
+
+ 						<div class="table-wrapper filterable" style="overflow-y: auto; max-height: 300px; border: 1px solid #ccc;">
 
 							<!-- <button type="button" class="custom-btn btn-filter">Filter</button> -->
 
@@ -451,8 +453,9 @@ input[type="number"] {
 
 
 					<div class="" th:if="${formmode == 'corporate'}">
-						<div class="panel panel-primary filterable">
+						
 
+						<div class="table-wrapper filterable" style="overflow-y: auto; max-height: 300px; border: 1px solid #ccc;">
 							
 
 							<table class="table table-bordered  table-hover table-sm"
